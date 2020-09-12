@@ -26,5 +26,16 @@ namespace MediKal.Controllers
 
             return View();
         }
+
+        public ActionResult SignIn()
+        {
+            return View();
+        }
+
+        public ActionResult SignUp()
+        {
+            return View();
+        }
+
     }
 }
