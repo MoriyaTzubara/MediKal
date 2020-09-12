@@ -120,6 +120,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -200,6 +201,14 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\SignIn.cshtml" />
     <Content Include="Views\Home\SignUp.cshtml" />
+    <Content Include="Views\Shared\_UserLayout.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\AddMedicine.cshtml" />
+    <Content Include="Views\Account\UpdateMedicine.cshtml" />
+    <Content Include="Views\Account\AllMedicines.cshtml" />
+    <Content Include="Views\Account\MyMedicines.cshtml" />
+    <Content Include="Views\Account\MedicineChart.cshtml" />
+    <Content Include="Views\Account\AllUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
