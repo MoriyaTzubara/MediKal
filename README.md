@@ -1,4 +1,1 @@
-MediKal💊
-GOOD LUCK!
-😊
-
+MediKal💊 GOOD LUCK! 😊
