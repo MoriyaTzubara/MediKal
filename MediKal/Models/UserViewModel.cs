@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using BE;
@@ -8,24 +9,24 @@ namespace MediKal.Models
 {
     public class UserViewModel
     {
-        private User user;
+        
+        public User user;
 
         public UserViewModel(User _user)
         {
             user = _user;
         }
-        
-        public int Id
+        private int Id
         {
             get { return user.Id; }
         }
-
+        [DisplayName("User name")]
         public string UserName
         {
             get { return user.UserName; }
             set { user.UserName = value; }
         }
-       
+        [DisplayName("Email")]
         public string Mail
         {
             get { return user.Mail; }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BE;
+using MediKal.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -75,11 +77,6 @@ namespace MediKal.Controllers
         }
         // FOR DOCTOR
         public ActionResult AllPatients()
-        {
-            return View();
-        }
-        // FOR MANAGEMENT
-        public ActionResult AllUsers()
         {
             return View();
         }
