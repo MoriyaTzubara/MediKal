@@ -26,5 +26,21 @@ namespace MediKal.Controllers
 
             return View();
         }
+        [HttpGet]
+        public ActionResult SignIn()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SignIn(string Mail, string Password)
+        {
+            return Redirect("~/Account");
+        }
+
+        public ActionResult SignUp()
+        {
+            return View();
+        }
+
     }
 }
