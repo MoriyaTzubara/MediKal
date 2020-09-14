@@ -8,16 +8,10 @@ namespace BE
 {
     public class User
     {
-        private static int staticId = 0;
-
         public int Id { get; private set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public string Mail { get; set; }
         public UserTypeEnum UserType { get; set; }
-        public User()
-        {
-            Id = staticId++;
-        }
     }
 }

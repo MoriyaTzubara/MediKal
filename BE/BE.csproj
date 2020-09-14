@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Enums.cs" />
     <Compile Include="Medicine.cs" />
+    <Compile Include="Prescription.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

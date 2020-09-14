@@ -8,8 +8,11 @@ namespace BE
 {
     public enum UserTypeEnum
     {
-        מטופל,
-        רופא,
-        מנהל
+       Doctor,
+       Patient,
+       Management
+    }
+    public enum DosageEnum
+    {
     }
 }
