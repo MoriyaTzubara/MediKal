@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BE;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,8 @@ namespace MediKal.Controllers
     {
         public ActionResult Index()
         {
+            //BL.CRUDdrugs bl = new BL.CRUDdrugs();
+            //bool Result = bl.AddDrug(new Medicine { ActiveIngredients = "", Company = "", GenericName = "", ImagePath = "", Name = "" });
             return View();
         }
 
