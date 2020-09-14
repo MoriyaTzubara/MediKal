@@ -8,5 +8,9 @@ namespace DAL
 {
     class SQLusers
     {
+        public string getStr(string b)
+        {
+            return b;
+        }
     }
 }
