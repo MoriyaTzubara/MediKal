@@ -130,7 +130,11 @@
   <ItemGroup>
     <Compile Include="DAL.cs" />
     <Compile Include="IDAL.cs" />
+    <Compile Include="MedicinesContext.cs" />
+    <Compile Include="PatientsContext.cs" />
+    <Compile Include="PrescriptionsContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsersContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

@@ -135,11 +135,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\MedicinesContext.cs" />
     <Compile Include="Models\MedicineViewModel.cs" />
-    <Compile Include="Models\PatientsContext.cs" />
-    <Compile Include="Models\PrescriptionsContext.cs" />
-    <Compile Include="Models\usersContext.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

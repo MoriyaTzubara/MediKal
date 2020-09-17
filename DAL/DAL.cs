@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
+using MediKal.Models;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace DAL
 {
@@ -11,62 +13,130 @@ namespace DAL
     {
         public void AddMedicine(Medicine medicine)
         {
-            throw new NotImplementedException();
+                using (var db = new MedicinesContext())
+                {
+                    db.Medicines.Add(medicine);
+                    db.SaveChanges();
+                }
         }
 
         public void AddPatient(Patient patient)
         {
-            throw new NotImplementedException();
+            using (var db = new PatientsContext())
+            {
+                db.Patients.Add(patient);
+                db.SaveChanges();
+            }
         }
 
         public void AddPrescription(Prescription prescription)
         {
-            throw new NotImplementedException();
+            using (var db = new PrescriptionsContext())
+            {
+                db.Prescriptions.Add(prescription);
+                db.SaveChanges();
+            }
         }
 
         public void AddUser(User user)
         {
-            throw new NotImplementedException();
+            using (var db = new UsersContext())
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+            }
         }
 
         public void DeleteMedicine(int id)
         {
-            throw new NotImplementedException();
+            using (var db = new MedicinesContext())
+            {
+                Medicine medicine = db.Medicines.Find(id);
+                db.Medicines.Remove(medicine);
+                db.SaveChanges();
+            }
         }
 
         public void DeletePatient(int id)
         {
-            throw new NotImplementedException();
+            using (var db = new PatientsContext())
+            {
+                Patient patient = db.Patients.Find(id);
+                db.Patients.Remove(patient);
+                db.SaveChanges();
+            }
         }
 
         public void DeletePrescription(int id)
         {
-            throw new NotImplementedException();
+            using (var db = new PrescriptionsContext())
+            {
+                Prescription prescription = db.Prescriptions.Find(id);
+                db.Prescriptions.Remove(prescription);
+                db.SaveChanges();
+            }
         }
 
         public void DeleteUser(int id)
         {
-            throw new NotImplementedException();
+            using (var db = new UsersContext())
+            {
+                User user = db.Users.Find(id);
+                db.Users.Remove(user);
+                db.SaveChanges();
+            }
         }
 
         public IEnumerable<Medicine> GetMedicines()
         {
-            throw new NotImplementedException();
+            List<Medicine> result = new List<Medicine>();
+            using (var db = new MedicinesContext())
+            {
+                foreach (var medicine in db.Medicines)
+                {
+                    result.Add(medicine);
+                }
+            }
+            return result;
         }
 
         public IEnumerable<Patient> GetPatients()
         {
-            throw new NotImplementedException();
+            List<Patient> result = new List<Patient>();
+            using (var db = new PatientsContext())
+            {
+                foreach (var patient in db.Patients)
+                {
+                    result.Add(patient);
+                }
+            }
+            return result;
         }
 
         public IEnumerable<Prescription> GetPrescriptions()
         {
-            throw new NotImplementedException();
+            List<Prescription> result = new List<Prescription>();
+            using (var db = new PrescriptionsContext())
+            {
+                foreach (var prescription in db.Prescriptions)
+                {
+                    result.Add(prescription);
+                }
+            }
+            return result;
         }
 
         public IEnumerable<User> GetUsers()
         {
-            throw new NotImplementedException();
+            List<User> result = new List<User>();
+            using (var db = new UsersContext())
+            {
+                foreach (var user in db.Users)
+                {
+                    result.Add(user);
+                }
+            }
+            return result;
         }
 
         public void UpdateMedicine(Medicine medicine)
