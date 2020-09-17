@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class User
+    class Patient
     {
         public int Id { get; private set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
+        public string FullName { get; set; }
+        public DateTime Birthday { get; set; }
+        public string Background { get; set; }
+        public BloodTypeEnum BloodType { get; set; }
         public string Phone { get; set; }
         public string Mail { get; set; }
-        public DateTime Birthday { get; set; }
-        public UserTypeEnum UserType { get; set; }
     }
 }

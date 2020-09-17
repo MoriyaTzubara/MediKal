@@ -11,7 +11,7 @@ namespace BE
         public int Id { get; private set; }
         public string GenericName { get; set; }
         public string Name { get; set; }
-        public string ActiveIngredients { get; set; }
+        public List<string> ActiveIngredients { get; set; }
         public string ImagePath { get; set; }
         public string Company { get; set; }
     }

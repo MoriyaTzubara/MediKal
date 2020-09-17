@@ -9,10 +9,26 @@ namespace BE
     public enum UserTypeEnum
     {
        Doctor,
-       Patient,
-       Management
+       Manager
     }
-    public enum DosageEnum
+    public enum BloodTypeEnum
     {
+        הכל,
+        A_plus,
+        A_minus,
+        B_plus,
+        B_minus,
+        AB_plus,
+        AB_minus,
+        O_plus,
+        O_minus,
+        לא_ידוע,
+        אחר
+    }
+    public enum FrequencyEnum
+    {
+        day,
+        week,
+        month
     }
 }
