@@ -11,8 +11,11 @@ namespace BE
         public int Id { get; private set; }
         public int PatientId { get; set; }
         public int DoctorId { get; set; }
-        public DosageEnum Dosage { get; set; }//מינון
+        public int NumOfTimes { get; set; }//כמה פעמים לוקחים את התרופה
+        public FrequencyEnum Frequency { get; set; }//כל כמה זמן לקחת
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
+        public int MedicineId { get; set; }
+        public string Comments { get; set; }
     }
 }
