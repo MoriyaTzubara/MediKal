@@ -32,7 +32,7 @@ namespace MediKal.Models
             set { medicine.Name = value; }
         }
         [DisplayName("Active ingredients")]
-        public string ActiveIngredients
+        public List<string> ActiveIngredients
         {
             get { return medicine.ActiveIngredients; }
             set { medicine.ActiveIngredients = value; }

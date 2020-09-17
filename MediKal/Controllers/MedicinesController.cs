@@ -13,13 +13,7 @@ namespace MediKal.Controllers
 {
     public class MedicinesController : Controller
     {
-        private MediKalContext db = new MediKalContext();
-       
-        
-        public ActionResult MedicineChart()
-        {
-            return View();
-        }
+        private MedicinesContext db = new MedicinesContext();
 
         // GET: Medicines
         public ActionResult Index()
@@ -53,7 +47,7 @@ namespace MediKal.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,GenericName,Name,ActiveIngredients,ImagePath,Company")] Medicine medicine)
+        public ActionResult Create([Bind(Include = "Id,GenericName,Name,ImagePath,Company")] Medicine medicine)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +79,7 @@ namespace MediKal.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,GenericName,Name,ActiveIngredients,ImagePath,Company")] Medicine medicine)
+        public ActionResult Edit([Bind(Include = "Id,GenericName,Name,ImagePath,Company")] Medicine medicine)
         {
             if (ModelState.IsValid)
             {
