@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using BE;
 using MediKal.Models;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace DAL
 {
