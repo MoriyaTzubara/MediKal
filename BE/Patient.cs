@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class Patient
+    public class Patient
     {
         public int Id { get; private set; }
         public string FullName { get; set; }

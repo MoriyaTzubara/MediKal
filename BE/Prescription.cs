@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class Prescription
+    public class Prescription
     {
         public int Id { get; private set; }
         public int PatientId { get; set; }

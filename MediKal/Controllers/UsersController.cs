@@ -13,7 +13,7 @@ namespace MediKal.Controllers
 {
     public class UsersController : Controller
     {
-        private UserContext db = new UserContext();
+        private usersContext db = new usersContext();
 
         // GET: Users
         public ActionResult Index()
@@ -47,7 +47,7 @@ namespace MediKal.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UserName,Password,Mail,UserType")] User user)
+        public ActionResult Create([Bind(Include = "Id,UserName,Password,Phone,Mail,Birthday,UserType")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace MediKal.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,UserName,Password,Mail,UserType")] User user)
+        public ActionResult Edit([Bind(Include = "Id,UserName,Password,Phone,Mail,Birthday,UserType")] User user)
         {
             if (ModelState.IsValid)
             {

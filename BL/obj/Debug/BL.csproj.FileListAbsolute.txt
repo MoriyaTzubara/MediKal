@@ -38,3 +38,5 @@ C:\Users\User\Desktop\מחשוב ענן\Medikal\MediKal\BL\obj\Debug\BL.csproj.C
 C:\Users\User\Desktop\מחשוב ענן\Medikal\MediKal\BL\obj\Debug\BL.csproj.CopyComplete
 C:\Users\User\Desktop\מחשוב ענן\Medikal\MediKal\BL\obj\Debug\BL.dll
 C:\Users\User\Desktop\מחשוב ענן\Medikal\MediKal\BL\obj\Debug\BL.pdb
+C:\Users\User\source\repos\MediKal\BL\bin\Debug\BL.dll.config
+C:\Users\User\source\repos\MediKal\BL\bin\Debug\DAL.dll.config
