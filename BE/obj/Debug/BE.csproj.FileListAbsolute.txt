@@ -9,3 +9,9 @@ C:\Users\User\Desktop\MediKal\BE\obj\Debug\BE.csprojAssemblyReference.cache
 C:\Users\User\Desktop\MediKal\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\MediKal\BE\obj\Debug\BE.dll
 C:\Users\User\Desktop\MediKal\BE\obj\Debug\BE.pdb
+C:\Users\User\Desktop\מחשוב ענן\Medikal\MediKal\BE\bin\Debug\BE.dll
+C:\Users\User\Desktop\מחשוב ענן\Medikal\MediKal\BE\bin\Debug\BE.pdb
+C:\Users\User\Desktop\מחשוב ענן\Medikal\MediKal\BE\obj\Debug\BE.csprojAssemblyReference.cache
+C:\Users\User\Desktop\מחשוב ענן\Medikal\MediKal\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\מחשוב ענן\Medikal\MediKal\BE\obj\Debug\BE.dll
+C:\Users\User\Desktop\מחשוב ענן\Medikal\MediKal\BE\obj\Debug\BE.pdb
