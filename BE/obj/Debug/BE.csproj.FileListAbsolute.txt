@@ -1,6 +1,5 @@
 C:\Users\User\source\repos\MediKal\BE\bin\Debug\BE.dll
 C:\Users\User\source\repos\MediKal\BE\bin\Debug\BE.pdb
-C:\Users\User\source\repos\MediKal\BE\obj\Debug\BE.csprojAssemblyReference.cache
 C:\Users\User\source\repos\MediKal\BE\obj\Debug\BE.dll
 C:\Users\User\source\repos\MediKal\BE\obj\Debug\BE.pdb
 C:\Users\User\Desktop\MediKal\BE\bin\Debug\BE.dll

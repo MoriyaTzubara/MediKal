@@ -4,49 +4,52 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
+using DAL;
 
 namespace BL
 {
-    class BL : IBL
+    public class BL : IBL
     {
+        IDAL dal = new DAL.DAL();
+
         public void AddMedicine(Medicine medicine)
         {
-            throw new NotImplementedException();
+            dal.AddMedicine(medicine);
         }
 
         public void AddPatient(Patient patient)
         {
-            throw new NotImplementedException();
+            dal.AddPatient(patient);
         }
 
         public void AddPrescription(Prescription prescription)
         {
-            throw new NotImplementedException();
+            dal.AddPrescription(prescription);
         }
 
         public void AddUser(User user)
         {
-            throw new NotImplementedException();
+            dal.AddUser(user);
         }
 
         public void DeleteMedicine(int id)
         {
-            throw new NotImplementedException();
+            dal.DeleteMedicine(id);
         }
 
         public void DeletePatient(int id)
         {
-            throw new NotImplementedException();
+            dal.DeletePatient(id);
         }
 
         public void DeletePrescription(int id)
         {
-            throw new NotImplementedException();
+            dal.DeletePrescription(id);
         }
 
         public void DeleteUser(int id)
         {
-            throw new NotImplementedException();
+            dal.DeleteUser(id);
         }
 
         public void ForgotPassword(string mail)
@@ -61,32 +64,32 @@ namespace BL
 
         public Medicine GetMedicineById(int id)
         {
-            throw new NotImplementedException();
+            return dal.GetMedicines().FirstOrDefault(item => item.Id == id);
         }
 
         public IEnumerable<Medicine> GetMedicines()
         {
-            throw new NotImplementedException();
+            return dal.GetMedicines();
         }
 
         public Patient GetPatientById(int id)
         {
-            throw new NotImplementedException();
+            return dal.GetPatients().FirstOrDefault(item => item.Id == id);
         }
 
         public IEnumerable<Patient> GetPatients()
         {
-            throw new NotImplementedException();
+            return dal.GetPatients();
         }
 
         public Prescription GetPrescriptionById(int id)
         {
-            throw new NotImplementedException();
+            return dal.GetPrescriptions().FirstOrDefault(item => item.Id == id);
         }
 
         public IEnumerable<Prescription> GetPrescriptions()
         {
-            throw new NotImplementedException();
+            return dal.GetPrescriptions();
         }
 
         public IEnumerable<Prescription> GetPrescriptionsOfDoctor(int id)
@@ -101,12 +104,12 @@ namespace BL
 
         public User GetUserById(int id)
         {
-            throw new NotImplementedException();
+            return dal.GetUsers().FirstOrDefault(item => item.Id == id);
         }
 
         public IEnumerable<User> GetUsers()
         {
-            throw new NotImplementedException();
+            return dal.GetUsers();
         }
 
         public bool IsMedicineImage(string imagePath)
@@ -141,22 +144,22 @@ namespace BL
 
         public void UpdateMedicine(Medicine medicine)
         {
-            throw new NotImplementedException();
+            dal.UpdateMedicine(medicine);
         }
 
         public void UpdatePatient(Patient patient)
         {
-            throw new NotImplementedException();
+            dal.UpdatePatient(patient);
         }
 
         public void UpdatePrescription(Prescription prescription)
         {
-            throw new NotImplementedException();
+            dal.UpdatePrescription(prescription);
         }
 
         public void UpdateUser(User user)
         {
-            throw new NotImplementedException();
+            dal.UpdateUser(user);
         }
     }
 }

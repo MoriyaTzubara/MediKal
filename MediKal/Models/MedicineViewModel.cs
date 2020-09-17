@@ -20,18 +20,18 @@ namespace MediKal.Models
             get { return medicine.Id; }
         }
         [DisplayName("Name")]
-        public string UserName
+        public string Name
         {
             get { return medicine.Name; }
             set { medicine.Name = value; }
         }
-        [DisplayName("Generic name")]
+        [DisplayName("Generic Name")]
         public string GenericName
         {
             get { return medicine.GenericName; }
             set { medicine.Name = value; }
         }
-        [DisplayName("Active ingredients")]
+        [DisplayName("Active Ingredients")]
         public List<string> ActiveIngredients
         {
             get { return medicine.ActiveIngredients; }
@@ -43,7 +43,7 @@ namespace MediKal.Models
             get { return medicine.Company; }
             set { medicine.Company = value; }
         }
-        [DisplayName("Image path")]
+        [DisplayName("Image Path")]
         public string ImagePath
         {
             get { return medicine.ImagePath; }

@@ -1,11 +1,11 @@
-﻿@model IEnumerable<BE.Medicine>
+﻿@model IEnumerable<MediKal.Models.MedicineViewModel>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Medicines</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -42,9 +42,9 @@
             @Html.DisplayFor(modelItem => item.Company)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.medicine.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.medicine.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.medicine.Id })
         </td>
     </tr>
 }

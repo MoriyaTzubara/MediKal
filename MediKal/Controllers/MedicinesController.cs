@@ -7,33 +7,31 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BE;
+using BL;
 using MediKal.Models;
 
 namespace MediKal.Controllers
 {
     public class MedicinesController : Controller
     {
-        private MedicinesContext db = new MedicinesContext();
-
         // GET: Medicines
         public ActionResult Index()
         {
-            return View(db.Medicines.ToList());
+            IBL bl = new BL.BL();
+            var medicines = bl.GetMedicines().Select(item => new MedicineViewModel(item));
+            return View(medicines);
         }
 
         // GET: Medicines/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Medicine medicine = db.Medicines.Find(id);
+            IBL bl = new BL.BL();
+            Medicine medicine = bl.GetMedicineById(id);
             if (medicine == null)
             {
                 return HttpNotFound();
             }
-            return View(medicine);
+            return View(new MedicineViewModel(medicine));
         }
 
         // GET: Medicines/Create
@@ -51,27 +49,23 @@ namespace MediKal.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Medicines.Add(medicine);
-                db.SaveChanges();
+                IBL bl = new BL.BL();
+                bl.AddMedicine(medicine);
                 return RedirectToAction("Index");
             }
-
             return View(medicine);
         }
 
         // GET: Medicines/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Medicine medicine = db.Medicines.Find(id);
+            IBL bl = new BL.BL();
+            Medicine medicine = bl.GetMedicineById(id);
             if (medicine == null)
             {
                 return HttpNotFound();
             }
-            return View(medicine);
+            return View(new MedicineViewModel(medicine));
         }
 
         // POST: Medicines/Edit/5
@@ -83,26 +77,23 @@ namespace MediKal.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(medicine).State = EntityState.Modified;
-                db.SaveChanges();
+                IBL bl = new BL.BL();
+                bl.UpdateMedicine(medicine);
                 return RedirectToAction("Index");
             }
-            return View(medicine);
+            return View(new MedicineViewModel(medicine));
         }
 
         // GET: Medicines/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Medicine medicine = db.Medicines.Find(id);
+            IBL bl = new BL.BL();
+            Medicine medicine = bl.GetMedicineById(id);
             if (medicine == null)
             {
                 return HttpNotFound();
             }
-            return View(medicine);
+            return View(new MedicineViewModel(medicine));
         }
 
         // POST: Medicines/Delete/5
@@ -110,19 +101,14 @@ namespace MediKal.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Medicine medicine = db.Medicines.Find(id);
-            db.Medicines.Remove(medicine);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
+            IBL bl = new BL.BL();
+            Medicine medicine = bl.GetMedicineById(id);
+            if (medicine == null)
             {
-                db.Dispose();
+                return HttpNotFound();
             }
-            base.Dispose(disposing);
+            bl.DeleteMedicine(id);
+            return RedirectToAction("Index");
         }
     }
 }

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace DAL
 {
-    class DAL : IDAL
+    public class DAL : IDAL
     {
         public void AddMedicine(Medicine medicine)
         {
