@@ -1,4 +1,4 @@
-﻿@model BE.Patient
+﻿@model MediKal.Models.PatientViewModel
 
 @{
     ViewBag.Title = "Edit";
@@ -15,7 +15,7 @@
         <h4>Patient</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.patient.Id)
 
         <div class="form-group">
             @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label col-md-2" })

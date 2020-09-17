@@ -7,33 +7,31 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BE;
+using BL;
 using MediKal.Models;
 
 namespace MediKal.Controllers
 {
     public class UsersController : Controller
     {
-        private usersContext db = new usersContext();
-
         // GET: Users
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            IBL bl = new BL.BL();
+            var users = bl.GetUsers().Select(item => new UserViewModel(item));
+            return View(users);
         }
 
         // GET: Users/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.Users.Find(id);
+            IBL bl = new BL.BL();
+            User user = bl.GetUserById(id);
             if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(new UserViewModel(user));
         }
 
         // GET: Users/Create
@@ -51,27 +49,24 @@ namespace MediKal.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Users.Add(user);
-                db.SaveChanges();
+                IBL bl = new BL.BL();
+                bl.AddUser(user);
                 return RedirectToAction("Index");
             }
 
-            return View(user);
+            return View(new UserViewModel(user));
         }
 
         // GET: Users/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.Users.Find(id);
+            IBL bl = new BL.BL();
+            User user = bl.GetUserById(id);
             if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(new UserViewModel(user));
         }
 
         // POST: Users/Edit/5
@@ -83,26 +78,23 @@ namespace MediKal.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
+                IBL bl = new BL.BL();
+                bl.UpdateUser(user);
                 return RedirectToAction("Index");
             }
-            return View(user);
+            return View(new UserViewModel(user));
         }
 
         // GET: Users/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.Users.Find(id);
+            IBL bl = new BL.BL();
+            User user = bl.GetUserById(id);
             if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(new UserViewModel(user));
         }
 
         // POST: Users/Delete/5
@@ -110,19 +102,11 @@ namespace MediKal.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            User user = db.Users.Find(id);
-            db.Users.Remove(user);
-            db.SaveChanges();
+            IBL bl = new BL.BL();
+            User user = bl.GetUserById(id);
+            bl.DeleteUser(id);
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

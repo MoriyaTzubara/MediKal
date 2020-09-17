@@ -136,6 +136,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\MedicineViewModel.cs" />
+    <Compile Include="Models\PatientViewModel.cs" />
+    <Compile Include="Models\PrescriptionViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -211,8 +213,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\SignIn.cshtml" />
-    <Content Include="Views\Home\SignUp.cshtml" />
+    <Content Include="Views\Account\SignIn.cshtml" />
+    <Content Include="Views\Account\SignUp.cshtml" />
     <Content Include="Views\Shared\_UserLayout.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Prescriptions\Create.cshtml" />

@@ -7,33 +7,31 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BE;
+using BL;
 using MediKal.Models;
 
 namespace MediKal.Controllers
 {
     public class PatientsController : Controller
     {
-        private PatientsContext db = new PatientsContext();
-
         // GET: Patients
         public ActionResult Index()
         {
-            return View(db.Patients.ToList());
+            IBL bl = new BL.BL();
+            var patients = bl.GetPatients().Select(item => new PatientViewModel(item));
+            return View(patients);
         }
 
         // GET: Patients/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Patient patient = db.Patients.Find(id);
+            IBL bl = new BL.BL();
+            Patient patient = bl.GetPatientById(id);
             if (patient == null)
             {
                 return HttpNotFound();
             }
-            return View(patient);
+            return View(new PatientViewModel(patient));
         }
 
         // GET: Patients/Create
@@ -51,8 +49,8 @@ namespace MediKal.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Patients.Add(patient);
-                db.SaveChanges();
+                IBL bl = new BL.BL();
+                bl.AddPatient(patient);
                 return RedirectToAction("Index");
             }
 
@@ -60,18 +58,15 @@ namespace MediKal.Controllers
         }
 
         // GET: Patients/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Patient patient = db.Patients.Find(id);
+            IBL bl = new BL.BL();
+            Patient patient = bl.GetPatientById(id);
             if (patient == null)
             {
                 return HttpNotFound();
             }
-            return View(patient);
+            return View(new PatientViewModel(patient));
         }
 
         // POST: Patients/Edit/5
@@ -83,26 +78,23 @@ namespace MediKal.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(patient).State = EntityState.Modified;
-                db.SaveChanges();
+                IBL bl = new BL.BL();
+                bl.UpdatePatient(patient);
                 return RedirectToAction("Index");
             }
-            return View(patient);
+            return View(new PatientViewModel(patient));
         }
 
         // GET: Patients/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Patient patient = db.Patients.Find(id);
+            IBL bl = new BL.BL();
+            Patient patient = bl.GetPatientById(id);
             if (patient == null)
             {
                 return HttpNotFound();
             }
-            return View(patient);
+            return View(new PatientViewModel(patient));
         }
 
         // POST: Patients/Delete/5
@@ -110,19 +102,10 @@ namespace MediKal.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Patient patient = db.Patients.Find(id);
-            db.Patients.Remove(patient);
-            db.SaveChanges();
+            IBL bl = new BL.BL();
+            bl.DeletePatient(id);
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

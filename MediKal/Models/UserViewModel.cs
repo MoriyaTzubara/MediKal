@@ -33,5 +33,22 @@ namespace MediKal.Models
             set { user.Mail = value; }
         }
 
+        public DateTime Birthday
+        {
+            get { return user.Birthday; }
+            set { user.Birthday = value; }
+        }
+        public string Phone
+        {
+            get { return user.Phone; }
+            set { user.Phone = value; }
+        }
+        [DisplayName("User Type")]
+        public UserTypeEnum UserType
+        {
+            get { return user.UserType; }
+            set { user.UserType = value; }
+        }
+
     }
 }

@@ -1,11 +1,11 @@
-﻿@model IEnumerable<BE.Prescription>
+﻿@model IEnumerable<MediKal.Models.PrescriptionViewModel>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Prescriptions</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -66,9 +66,9 @@
             @Html.DisplayFor(modelItem => item.Comments)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.prescription.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.prescription.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.prescription.Id })
         </td>
     </tr>
 }

@@ -7,33 +7,32 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BE;
+using BL;
 using MediKal.Models;
 
 namespace MediKal.Controllers
 {
     public class PrescriptionsController : Controller
     {
-        private PrescriptionsContext db = new PrescriptionsContext();
 
         // GET: Prescriptions
         public ActionResult Index()
         {
-            return View(db.Prescriptions.ToList());
+            IBL bl = new BL.BL();
+            var prescriptions = bl.GetPrescriptions().Select(item => new PrescriptionViewModel(item));
+            return View(prescriptions);
         }
 
         // GET: Prescriptions/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Prescription prescription = db.Prescriptions.Find(id);
+            IBL bl = new BL.BL();
+            Prescription prescription = bl.GetPrescriptionById(id);
             if (prescription == null)
             {
                 return HttpNotFound();
             }
-            return View(prescription);
+            return View(new PrescriptionViewModel(prescription));
         }
 
         // GET: Prescriptions/Create
@@ -51,27 +50,24 @@ namespace MediKal.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Prescriptions.Add(prescription);
-                db.SaveChanges();
+                IBL bl = new BL.BL();
+                bl.AddPrescription(prescription);
                 return RedirectToAction("Index");
             }
 
-            return View(prescription);
+            return View(new PrescriptionViewModel(prescription));
         }
 
         // GET: Prescriptions/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Prescription prescription = db.Prescriptions.Find(id);
+            IBL bl = new BL.BL();
+            Prescription prescription = bl.GetPrescriptionById(id);
             if (prescription == null)
             {
                 return HttpNotFound();
             }
-            return View(prescription);
+            return View(new PrescriptionViewModel(prescription));
         }
 
         // POST: Prescriptions/Edit/5
@@ -83,26 +79,23 @@ namespace MediKal.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(prescription).State = EntityState.Modified;
-                db.SaveChanges();
+                IBL bl = new BL.BL();
+                bl.UpdatePrescription(prescription);
                 return RedirectToAction("Index");
             }
-            return View(prescription);
+            return View(new PrescriptionViewModel(prescription));
         }
 
         // GET: Prescriptions/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Prescription prescription = db.Prescriptions.Find(id);
+            IBL bl = new BL.BL();
+            Prescription prescription = bl.GetPrescriptionById(id);
             if (prescription == null)
             {
                 return HttpNotFound();
             }
-            return View(prescription);
+            return View(new PrescriptionViewModel(prescription));
         }
 
         // POST: Prescriptions/Delete/5
@@ -110,19 +103,9 @@ namespace MediKal.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Prescription prescription = db.Prescriptions.Find(id);
-            db.Prescriptions.Remove(prescription);
-            db.SaveChanges();
+            IBL bl = new BL.BL();
+            bl.DeletePrescription(id);
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

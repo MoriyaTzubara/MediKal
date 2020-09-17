@@ -8,7 +8,7 @@ using MediKal.Models;
 
 namespace DAL
 {
-    class DAL : IDAL
+    public class DAL : IDAL
     {
         public void AddMedicine(Medicine medicine)
         {

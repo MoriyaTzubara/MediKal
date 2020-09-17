@@ -15,70 +15,23 @@ namespace MediKal.Controllers
         {
             return View();
         }
-        // FOR MANAGEMENT
-        public ActionResult AddMedicine()
+        [HttpGet]
+        public ActionResult SignIn()
         {
             return View();
         }
-        // FOR MANAGEMENT
-        public ActionResult DeleteMedicine()
+        [HttpPost]
+        public ActionResult SignIn(string Mail, string Password)
+        {
+            return Redirect("~/Account");
+        }
+        public ActionResult SignUp()
         {
             return View();
         }
-        // FOR MANAGEMENT
-        public ActionResult UpdateMedicine()
+        public ActionResult SignOut()
         {
-            return View();
-        }
-        // FOR MANAGEMENT
-        public ActionResult AllMedicines()
-        {
-            return View();
-        }
-        // FOR PATIENT
-        public ActionResult MyMedicines()
-        {
-            return View();
-        }
-        // FOR MANAGEMENT
-        public ActionResult MedicineChart()
-        {
-            return View();
-        }
-        // FOR DOCTOR
-        public ActionResult AddPrescription()
-        {
-            return View();
-        }
-        // FOR DOCTOR
-        public ActionResult DeletePrescription()
-        {
-            return View();
-        }
-        // FOR DOCTOR
-        public ActionResult UpdatePrescription()
-        {
-            return View();
-        }
-        // FOR MANAGEMENT AND DOCTOR
-        public ActionResult AllPrescriptions()
-        {
-            return View();
-        }
-        // FOR PATIENT
-        public ActionResult MyPrescriptions()
-        {
-            return View();
-        }
-        //FOR DOCTOR
-        public ActionResult PatientHistory()
-        {
-            return View();
-        }
-        // FOR DOCTOR
-        public ActionResult AllPatients()
-        {
-            return View();
+            return RedirectToAction("Index","Home");
         }
     }
 }

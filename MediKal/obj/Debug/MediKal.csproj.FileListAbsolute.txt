@@ -258,3 +258,6 @@ C:\Users\User\Desktop\מחשוב ענן\Medikal\MediKal\MediKal\obj\Debug\MediKa
 C:\Users\User\Desktop\מחשוב ענן\Medikal\MediKal\MediKal\obj\Debug\MediKal.dll
 C:\Users\User\Desktop\מחשוב ענן\Medikal\MediKal\MediKal\obj\Debug\MediKal.pdb
 C:\Users\User\source\repos\MediKal\MediKal\bin\BL.dll.config
+C:\Users\User\source\repos\MediKal\MediKal\bin\DAL.dll
+C:\Users\User\source\repos\MediKal\MediKal\bin\DAL.pdb
+C:\Users\User\source\repos\MediKal\MediKal\bin\DAL.dll.config

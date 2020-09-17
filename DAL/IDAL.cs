@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    interface IDAL
+    public interface IDAL
     {
         // ADD
         void AddUser(User user);

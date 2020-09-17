@@ -1,4 +1,4 @@
-﻿@model BE.Patient
+﻿@model MediKal.Models.PatientViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -62,6 +62,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.patient.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
