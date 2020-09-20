@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
-using MediKal.Models;
 
 namespace DAL
 {
@@ -12,7 +13,7 @@ namespace DAL
     {
         public void AddMedicine(Medicine medicine)
         {
-                using (var db = new MedicinesContext())
+                using (var db = new MediKalDB())
                 {
                     db.Medicines.Add(medicine);
                     db.SaveChanges();
@@ -21,7 +22,7 @@ namespace DAL
 
         public void AddPatient(Patient patient)
         {
-            using (var db = new PatientsContext())
+            using (var db = new MediKalDB())
             {
                 db.Patients.Add(patient);
                 db.SaveChanges();
@@ -30,7 +31,7 @@ namespace DAL
 
         public void AddPrescription(Prescription prescription)
         {
-            using (var db = new PrescriptionsContext())
+            using (var db = new MediKalDB())
             {
                 db.Prescriptions.Add(prescription);
                 db.SaveChanges();
@@ -39,7 +40,7 @@ namespace DAL
 
         public void AddUser(User user)
         {
-            using (var db = new UsersContext())
+            using (var db = new MediKalDB())
             {
                 db.Users.Add(user);
                 db.SaveChanges();
@@ -48,7 +49,7 @@ namespace DAL
 
         public void DeleteMedicine(int id)
         {
-            using (var db = new MedicinesContext())
+            using (var db = new MediKalDB())
             {
                 Medicine medicine = db.Medicines.Find(id);
                 db.Medicines.Remove(medicine);
@@ -58,7 +59,7 @@ namespace DAL
 
         public void DeletePatient(int id)
         {
-            using (var db = new PatientsContext())
+            using (var db = new MediKalDB())
             {
                 Patient patient = db.Patients.Find(id);
                 db.Patients.Remove(patient);
@@ -68,7 +69,7 @@ namespace DAL
 
         public void DeletePrescription(int id)
         {
-            using (var db = new PrescriptionsContext())
+            using (var db = new MediKalDB())
             {
                 Prescription prescription = db.Prescriptions.Find(id);
                 db.Prescriptions.Remove(prescription);
@@ -78,7 +79,7 @@ namespace DAL
 
         public void DeleteUser(int id)
         {
-            using (var db = new UsersContext())
+            using (var db = new MediKalDB())
             {
                 User user = db.Users.Find(id);
                 db.Users.Remove(user);
@@ -89,7 +90,7 @@ namespace DAL
         public IEnumerable<Medicine> GetMedicines()
         {
             List<Medicine> result = new List<Medicine>();
-            using (var db = new MedicinesContext())
+            using (var db = new MediKalDB())
             {
                 foreach (var medicine in db.Medicines)
                 {
@@ -102,7 +103,7 @@ namespace DAL
         public IEnumerable<Patient> GetPatients()
         {
             List<Patient> result = new List<Patient>();
-            using (var db = new PatientsContext())
+            using (var db = new MediKalDB())
             {
                 foreach (var patient in db.Patients)
                 {
@@ -115,7 +116,7 @@ namespace DAL
         public IEnumerable<Prescription> GetPrescriptions()
         {
             List<Prescription> result = new List<Prescription>();
-            using (var db = new PrescriptionsContext())
+            using (var db = new MediKalDB())
             {
                 foreach (var prescription in db.Prescriptions)
                 {
@@ -128,7 +129,7 @@ namespace DAL
         public IEnumerable<User> GetUsers()
         {
             List<User> result = new List<User>();
-            using (var db = new UsersContext())
+            using (var db = new MediKalDB())
             {
                 foreach (var user in db.Users)
                 {
@@ -140,7 +141,21 @@ namespace DAL
 
         public void UpdateMedicine(Medicine medicine)
         {
-            throw new NotImplementedException();
+            using (var db = new MediKalDB())
+            {
+                var tmp = db.Medicines.First(m => m.Id == medicine.Id);
+                if (medicine.ActiveIngredients != null)
+                    tmp.ActiveIngredients = medicine.ActiveIngredients;
+                if (medicine.Company != null)
+                    tmp.Company = medicine.Company;
+                if (medicine.GenericName != null)
+                    tmp.GenericName = medicine.GenericName;
+                if (medicine.ImagePath != null)
+                    tmp.ImagePath = medicine.ImagePath;
+                if (medicine.Name != null)
+                    tmp.Name = medicine.Name;
+                db.SaveChanges();
+            }
         }
 
         public void UpdatePatient(Patient patient)
