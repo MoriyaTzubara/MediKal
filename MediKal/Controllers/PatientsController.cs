@@ -54,7 +54,7 @@ namespace MediKal.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(patient);
+            return View(new PatientViewModel(patient));
         }
 
         // GET: Patients/Edit/5
