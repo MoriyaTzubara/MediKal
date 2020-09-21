@@ -15,7 +15,7 @@ namespace MediKal.Models
         {
             medicine = _medicine;
         }
-        private int Id
+        public int Id
         {
             get { return medicine.Id; }
         }

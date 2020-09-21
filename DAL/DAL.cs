@@ -20,17 +20,19 @@ namespace DAL
                     db.Medicines.Add(medicine);
                     db.SaveChanges();
                 }
-            }catch(Exception e) { throw new Exception(e.Message); }
+            }
+            catch (Exception e) { throw new Exception(e.Message); }
         }
 
         public void AddPatient(Patient patient)
         {
-            try { 
-            using (var db = new MediKalDB())
+            try
             {
-                db.Patients.Add(patient);
-                db.SaveChanges();
-            }
+                using (var db = new MediKalDB())
+                {
+                    db.Patients.Add(patient);
+                    db.SaveChanges();
+                }
             }
             catch (Exception e) { throw new Exception(e.Message); }
 
@@ -38,11 +40,12 @@ namespace DAL
 
         public void AddPrescription(Prescription prescription)
         {
-            try { 
-            using (var db = new MediKalDB())
+            try
             {
-                db.Prescriptions.Add(prescription);
-                db.SaveChanges();
+                using (var db = new MediKalDB())
+                {
+                    db.Prescriptions.Add(prescription);
+                    db.SaveChanges();
                 }
             }
             catch (Exception e) { throw new Exception(e.Message); }
@@ -51,11 +54,12 @@ namespace DAL
 
         public void AddUser(User user)
         {
-            try { 
-            using (var db = new MediKalDB())
+            try
             {
-                db.Users.Add(user);
-                db.SaveChanges();
+                using (var db = new MediKalDB())
+                {
+                    db.Users.Add(user);
+                    db.SaveChanges();
                 }
             }
             catch (Exception e) { throw new Exception(e.Message); }
@@ -64,12 +68,13 @@ namespace DAL
 
         public void DeleteMedicine(int id)
         {
-            try { 
-            using (var db = new MediKalDB())
+            try
             {
-                Medicine medicine = db.Medicines.Find(id);
-                db.Medicines.Remove(medicine);
-                db.SaveChanges();
+                using (var db = new MediKalDB())
+                {
+                    Medicine medicine = db.Medicines.Find(id);
+                    db.Medicines.Remove(medicine);
+                    db.SaveChanges();
                 }
             }
             catch (Exception e) { throw new Exception(e.Message); }
@@ -78,12 +83,13 @@ namespace DAL
 
         public void DeletePatient(int id)
         {
-            try { 
-            using (var db = new MediKalDB())
+            try
             {
-                Patient patient = db.Patients.Find(id);
-                db.Patients.Remove(patient);
-                db.SaveChanges();
+                using (var db = new MediKalDB())
+                {
+                    Patient patient = db.Patients.Find(id);
+                    db.Patients.Remove(patient);
+                    db.SaveChanges();
                 }
             }
             catch (Exception e) { throw new Exception(e.Message); }
@@ -92,12 +98,13 @@ namespace DAL
 
         public void DeletePrescription(int id)
         {
-            try { 
-            using (var db = new MediKalDB())
+            try
             {
-                Prescription prescription = db.Prescriptions.Find(id);
-                db.Prescriptions.Remove(prescription);
-                db.SaveChanges();
+                using (var db = new MediKalDB())
+                {
+                    Prescription prescription = db.Prescriptions.Find(id);
+                    db.Prescriptions.Remove(prescription);
+                    db.SaveChanges();
                 }
             }
             catch (Exception e) { throw new Exception(e.Message); }
@@ -106,12 +113,13 @@ namespace DAL
 
         public void DeleteUser(int id)
         {
-            try { 
-            using (var db = new MediKalDB())
+            try
             {
-                User user = db.Users.Find(id);
-                db.Users.Remove(user);
-                db.SaveChanges();
+                using (var db = new MediKalDB())
+                {
+                    User user = db.Users.Find(id);
+                    db.Users.Remove(user);
+                    db.SaveChanges();
                 }
             }
             catch (Exception e) { throw new Exception(e.Message); }
@@ -120,16 +128,17 @@ namespace DAL
 
         public IEnumerable<Medicine> GetMedicines()
         {
-            try { 
-            List<Medicine> result = new List<Medicine>();
-            using (var db = new MediKalDB())
+            try
             {
-                foreach (var medicine in db.Medicines)
+                List<Medicine> result = new List<Medicine>();
+                using (var db = new MediKalDB())
                 {
-                    result.Add(medicine);
+                    foreach (var medicine in db.Medicines)
+                    {
+                        result.Add(medicine);
+                    }
                 }
-            }
-            return result;
+                return result;
             }
             catch (Exception e) { throw new Exception(e.Message); }
 
@@ -137,16 +146,17 @@ namespace DAL
 
         public IEnumerable<Patient> GetPatients()
         {
-            try { 
-            List<Patient> result = new List<Patient>();
-            using (var db = new MediKalDB())
+            try
             {
-                foreach (var patient in db.Patients)
+                List<Patient> result = new List<Patient>();
+                using (var db = new MediKalDB())
                 {
-                    result.Add(patient);
+                    foreach (var patient in db.Patients)
+                    {
+                        result.Add(patient);
+                    }
                 }
-            }
-            return result;
+                return result;
             }
             catch (Exception e) { throw new Exception(e.Message); }
 
@@ -154,16 +164,17 @@ namespace DAL
 
         public IEnumerable<Prescription> GetPrescriptions()
         {
-            try {
-            List<Prescription> result = new List<Prescription>();
-            using (var db = new MediKalDB())
+            try
             {
-                foreach (var prescription in db.Prescriptions)
+                List<Prescription> result = new List<Prescription>();
+                using (var db = new MediKalDB())
                 {
-                    result.Add(prescription);
+                    foreach (var prescription in db.Prescriptions)
+                    {
+                        result.Add(prescription);
+                    }
                 }
-            }
-            return result;
+                return result;
             }
             catch (Exception e) { throw new Exception(e.Message); }
 
@@ -171,57 +182,79 @@ namespace DAL
 
         public IEnumerable<User> GetUsers()
         {
-            try { 
-            List<User> result = new List<User>();
-            using (var db = new MediKalDB())
+            try
             {
-                foreach (var user in db.Users)
+                List<User> result = new List<User>();
+                using (var db = new MediKalDB())
                 {
-                    result.Add(user);
+                    foreach (var user in db.Users)
+                    {
+                        result.Add(user);
+                    }
                 }
-            }
-            return result;
+                return result;
             }
             catch (Exception e) { throw new Exception(e.Message); }
 
         }
 
-        public void UpdateMedicine(Medicine medicine)
+        public void UpdateMedicine(Medicine medicine, int Id)
         {
-            try { 
-            using (var db = new MediKalDB())
+            try
             {
-                var tmp = db.Medicines.First(m => m.Id == medicine.Id);
-                if (medicine.ActiveIngredients != null)
+                using (var db = new MediKalDB())
+                {
+                    var tmp = db.Medicines.First(m => m.Id == Id);
                     tmp.ActiveIngredients = medicine.ActiveIngredients;
-                if (medicine.Company != null)
                     tmp.Company = medicine.Company;
-                if (medicine.GenericName != null)
                     tmp.GenericName = medicine.GenericName;
-                if (medicine.ImagePath != null)
                     tmp.ImagePath = medicine.ImagePath;
-                if (medicine.Name != null)
                     tmp.Name = medicine.Name;
-                db.SaveChanges();
+                    db.SaveChanges();
                 }
             }
             catch (Exception e) { throw new Exception(e.Message); }
 
         }
 
-        public void UpdatePatient(Patient patient)
+        public void UpdatePatient(Patient patient, int Id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var db = new MediKalDB())
+                {
+                    var tmp = db.Patients.First(p => p.Id == Id);
+                    tmp.Background = patient.Background;
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception e) { throw new Exception(e.Message); }
         }
 
-        public void UpdatePrescription(Prescription prescription)
+        public void UpdatePrescription(Prescription prescription, int Id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var db = new MediKalDB())
+                {
+                    var tmp = db.Prescriptions.First(p => p.Id == Id);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception e) { throw new Exception(e.Message); }
         }
 
-        public void UpdateUser(User user)
+        public void UpdateUser(User user, int Id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var db = new MediKalDB())
+                {
+                    var tmp = db.Users.First(u => u.Id == Id);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception e) { throw new Exception(e.Message); }
         }
     }
 }

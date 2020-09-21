@@ -142,24 +142,24 @@ namespace BL
             throw new NotImplementedException();
         }
 
-        public void UpdateMedicine(Medicine medicine)
+        public void UpdateMedicine(Medicine medicine,int Id)
         {
-            dal.UpdateMedicine(medicine);
+            dal.UpdateMedicine(medicine,Id);
         }
 
-        public void UpdatePatient(Patient patient)
+        public void UpdatePatient(Patient patient, int Id)
         {
-            dal.UpdatePatient(patient);
+            dal.UpdatePatient(patient,Id);
         }
 
-        public void UpdatePrescription(Prescription prescription)
+        public void UpdatePrescription(Prescription prescription, int Id)
         {
-            dal.UpdatePrescription(prescription);
+            dal.UpdatePrescription(prescription,Id);
         }
 
-        public void UpdateUser(User user)
+        public void UpdateUser(User user, int Id)
         {
-            dal.UpdateUser(user);
+            dal.UpdateUser(user,Id);
         }
     }
 }

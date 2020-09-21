@@ -74,12 +74,12 @@ namespace MediKal.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FullName,Birthday,Background,BloodType,Phone,Mail")] Patient patient)
+        public ActionResult Edit(Patient patient, int Id)
         {
             if (ModelState.IsValid)
             {
                 IBL bl = new BL.BL();
-                bl.UpdatePatient(patient);
+                bl.UpdatePatient(patient,Id);
                 return RedirectToAction("Index");
             }
             return View(new PatientViewModel(patient));
