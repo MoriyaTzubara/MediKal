@@ -227,7 +227,7 @@ namespace DAL
                     tmp.Background = patient.Background;
                     tmp.Birthday = patient.Birthday;
                     tmp.BloodType = patient.BloodType;
-                    tmp.FullName = tmp.FullName;
+                    tmp.FullName = patient.FullName;
                     tmp.Mail = patient.Mail;
                     tmp.Phone = patient.Phone;
                     db.SaveChanges();
