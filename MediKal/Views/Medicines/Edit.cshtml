@@ -7,16 +7,15 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit","Medicines",Model))
 {
     @Html.AntiForgeryToken()
-    
     <div class="form-horizontal">
         <h4>Medicine</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.medicine.Id)
-
+        @*@Html.HiddenFor(model => model.medicine.Id)*@
+        <input type="hidden" name="Id" value=@Model.medicine.Id />
         <div class="form-group">
             @Html.LabelFor(model => model.GenericName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
