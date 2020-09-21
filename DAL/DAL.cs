@@ -225,6 +225,11 @@ namespace DAL
                 {
                     var tmp = db.Patients.First(p => p.Id == Id);
                     tmp.Background = patient.Background;
+                    tmp.Birthday = patient.Birthday;
+                    tmp.BloodType = patient.BloodType;
+                    tmp.FullName = tmp.FullName;
+                    tmp.Mail = patient.Mail;
+                    tmp.Phone = patient.Phone;
                     db.SaveChanges();
                 }
             }
@@ -238,6 +243,14 @@ namespace DAL
                 using (var db = new MediKalDB())
                 {
                     var tmp = db.Prescriptions.First(p => p.Id == Id);
+                    tmp.Comments = prescription.Comments;
+                    tmp.DoctorId = prescription.DoctorId;
+                    tmp.EndTime = prescription.EndTime;
+                    tmp.Frequency = prescription.Frequency;
+                    tmp.MedicineId = prescription.MedicineId;
+                    tmp.NumOfTimes = prescription.NumOfTimes;
+                    tmp.PatientId = prescription.PatientId;
+                    tmp.StartTime = prescription.StartTime;
                     db.SaveChanges();
                 }
             }
@@ -251,6 +264,12 @@ namespace DAL
                 using (var db = new MediKalDB())
                 {
                     var tmp = db.Users.First(u => u.Id == Id);
+                    tmp.Birthday = user.Birthday;
+                    tmp.Mail = user.Mail;
+                    tmp.Password = user.Password;
+                    tmp.Phone = user.Phone;
+                    tmp.UserName = user.UserName;
+                    tmp.UserType = user.UserType;
                     db.SaveChanges();
                 }
             }
