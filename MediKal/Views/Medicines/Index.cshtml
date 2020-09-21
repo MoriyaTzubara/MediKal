@@ -1,52 +1,71 @@
 ﻿@model IEnumerable<MediKal.Models.MedicineViewModel>
-
+@using MediKal.Models
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
+    <style>
+        .flip-card {
+            background-color: transparent;
+            /*width: 300px;
+            height: 300px;
+            perspective: 1000px;*/
+        }
 
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .flip-card-front {
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+    </style>
 <h2>Medicines</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.GenericName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImagePath)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Company)
-        </th>
-        <th></th>
-    </tr>
+<div class="row">
+    @foreach (var item in Model)
+    {
+    <div class="col-3">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    @Html.DisplayImage(item.ImagePath)
+                </div>
+                <div class="flip-card-back">
+                    @Html.DisplayFor(modelItem => item.GenericName)
+                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.Company)
+                    @Html.ActionLink("Edit", "Edit", new { id = item.medicine.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.medicine.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.medicine.Id })
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.GenericName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImagePath)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Company)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.medicine.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.medicine.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.medicine.Id })
-        </td>
-    </tr>
-}
-
-</table>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+</div>
