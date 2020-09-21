@@ -11,6 +11,7 @@ namespace DAL
 {
     public class DAL : IDAL
     {
+        #region ADD
         public void AddMedicine(Medicine medicine)
         {
             try
@@ -65,7 +66,8 @@ namespace DAL
             catch (Exception e) { throw new Exception(e.Message); }
 
         }
-
+        #endregion
+        #region DELETE
         public void DeleteMedicine(int id)
         {
             try
@@ -125,7 +127,8 @@ namespace DAL
             catch (Exception e) { throw new Exception(e.Message); }
 
         }
-
+        #endregion
+        #region GET
         public IEnumerable<Medicine> GetMedicines()
         {
             try
@@ -197,7 +200,8 @@ namespace DAL
             catch (Exception e) { throw new Exception(e.Message); }
 
         }
-
+        #endregion
+        #region UPDATE
         public void UpdateMedicine(Medicine medicine, int Id)
         {
             try
@@ -275,5 +279,6 @@ namespace DAL
             }
             catch (Exception e) { throw new Exception(e.Message); }
         }
+        #endregion
     }
 }
