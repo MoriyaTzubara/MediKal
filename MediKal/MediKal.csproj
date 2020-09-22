@@ -151,6 +151,7 @@
     <Content Include="css\animate.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\my-style.css" />
     <Content Include="css\owl.carousel.css" />
     <Content Include="css\owl.theme.default.min.css" />
     <Content Include="css\tooplate-style.css" />
@@ -160,8 +161,10 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\about-bg.jpg" />
+    <Content Include="images\ampoule.svg" />
     <Content Include="images\appointment-image.jpg" />
     <Content Include="images\author-image.jpg" />
+    <Content Include="images\medicine.svg" />
     <Content Include="images\news-image.jpg" />
     <Content Include="images\news-image1.jpg" />
     <Content Include="images\news-image2.jpg" />
