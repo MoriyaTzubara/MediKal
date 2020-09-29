@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    class Doctor:User
+    public class Doctor:User
     {
         public int LicenseNum { get; set; }
         public SpecialtyEnum Specialty { get; set; }

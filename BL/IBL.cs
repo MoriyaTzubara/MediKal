@@ -26,8 +26,10 @@ namespace BL
         void DeletePrescription(int id);
         // GET
         IEnumerable<User> GetUsers();
-        IEnumerable<Medicine> GetMedicines();
+        IEnumerable<Doctor> GetDoctors();
+        IEnumerable<Manager> GetManagers();
         IEnumerable<Patient> GetPatients();
+        IEnumerable<Medicine> GetMedicines();
         IEnumerable<Prescription> GetPrescriptions();
         // GET BY ID
         User GetUserById(int id);

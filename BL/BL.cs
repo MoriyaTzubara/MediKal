@@ -186,5 +186,14 @@ namespace BL
         {
             dal.UpdateUser(user,Id);
         }
+        public IEnumerable<Doctor> GetDoctors()
+        {
+            return dal.GetDoctors();
+        }
+        public IEnumerable<Manager> GetManagers()
+        {
+            return dal.GetManagers();
+        }
+
     }
 }

@@ -200,6 +200,15 @@ namespace DAL
             catch (Exception e) { throw new Exception(e.Message); }
 
         }
+        public IEnumerable<Doctor> GetDoctors()
+        {
+            throw new NotImplementedException();
+        }
+        public IEnumerable<Manager> GetManagers()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
         #region UPDATE
         public void UpdateMedicine(Medicine medicine, int Id)
@@ -231,7 +240,7 @@ namespace DAL
                     tmp.Background = patient.Background;
                     tmp.Birthday = patient.Birthday;
                     tmp.BloodType = patient.BloodType;
-                    tmp.FullName = patient.FullName;
+                    tmp.UserName = patient.UserName;
                     tmp.Mail = patient.Mail;
                     tmp.Phone = patient.Phone;
                     db.SaveChanges();
@@ -280,5 +289,6 @@ namespace DAL
             catch (Exception e) { throw new Exception(e.Message); }
         }
         #endregion
+
     }
 }

@@ -26,8 +26,10 @@ namespace DAL
         void DeletePrescription(int id);
         // GET
         IEnumerable<User> GetUsers();
-        IEnumerable<Medicine> GetMedicines();
         IEnumerable<Patient> GetPatients();
+        IEnumerable<Doctor> GetDoctors();
+        IEnumerable<Manager> GetManagers();
+        IEnumerable<Medicine> GetMedicines();
         IEnumerable<Prescription> GetPrescriptions();
     }
 }
