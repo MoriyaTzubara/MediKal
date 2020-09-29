@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace BE
 {
+    public enum SpecialtyEnum
+    {
+
+    }
     public enum UserTypeEnum
     {
        Doctor,
