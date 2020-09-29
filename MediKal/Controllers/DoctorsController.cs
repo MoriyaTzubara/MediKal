@@ -19,20 +19,20 @@ namespace MediKal.Controllers
         public ActionResult Index()
         {
             IBL bl = new BL.BL();
-            var doctors = bl.getdo
-            return View(db.Doctors.ToList());
+            var doctors = bl.GetDoctors();
+            return View(doctors);
         }
 
         // GET: Doctors/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
             IBL bl = new BL.BL();
 
-            if (id == null)
+            if (id == -1)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Doctor doctor = db.Doctors.Find(id);
+            Doctor doctor =(Doctor) bl.GetUserById(id);
             if (doctor == null)
             {
                 return HttpNotFound();
@@ -43,8 +43,6 @@ namespace MediKal.Controllers
         // GET: Doctors/Create
         public ActionResult Create()
         {
-            IBL bl = new BL.BL();
-
             return View();
         }
 
@@ -59,7 +57,7 @@ namespace MediKal.Controllers
 
             if (ModelState.IsValid)
             {
-                db.Doctors.Add(doctor);
+                bl.add(doctor);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

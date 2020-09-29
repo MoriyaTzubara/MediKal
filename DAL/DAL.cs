@@ -288,6 +288,36 @@ namespace DAL
             }
             catch (Exception e) { throw new Exception(e.Message); }
         }
+
+        public void AddDoctor(Doctor doctor)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddManager(Manager manager)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateDoctor(Doctor doctor, int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateManager(Manager manager, int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteDoctor(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteManager(int id)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
 
     }

@@ -195,5 +195,50 @@ namespace BL
             return dal.GetManagers();
         }
 
+        public void AddDoctor(Doctor doctor)
+        {
+            dal.AddDoctor(doctor);
+        }
+
+        public void AddManager(Manager manager)
+        {
+            dal.AddManager(manager);
+        }
+
+        public void UpdateDoctor(Doctor doctor, int Id)
+        {
+            dal.UpdateDoctor(doctor, Id);
+        }
+
+        public void UpdateManager(Manager manager, int Id)
+        {
+            dal.UpdateManager(manager, Id);
+        }
+
+        public void DeleteDoctor(int id)
+        {
+            dal.DeleteDoctor(id);
+        }
+
+        public void DeleteManager(int id)
+        {
+            dal.DeleteManager(id);
+        }
+
+        public Doctor GetDoctorById(int id)
+        {
+            var doctors = dal.GetDoctors();
+            return (from item in doctors
+                    where item.Id == id
+                    select item).Single();
+        }
+
+        public Manager GetManagerById(int id)
+        {
+            var managers = dal.GetManagers();
+            return (from item in managers
+                    where item.Id == id
+                    select item).Single();
+        }
     }
 }
