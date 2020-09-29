@@ -37,8 +37,8 @@ namespace MediKal.Models
         [DisplayName("Full Name")]
         public string FullName
         {
-            get { return patient.FullName; }
-            set { patient.FullName = value; }
+            get { return patient.UserName; }
+            set { patient.UserName = value; }
         }
 
         public string Mail
