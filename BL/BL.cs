@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
@@ -130,7 +131,25 @@ namespace BL
 
         public void SendMail(string mailAdress, string receiverName, string message)
         {
-            throw new NotImplementedException();
+            MailMessage mail;
+            SmtpClient smtp;
+            mail = new MailMessage();
+            mail.To.Add(mailAdress);//dam@zichron.org
+            mail.From = new MailAddress("deamlandapp@gmail.com");
+            mail.Body = $"שלום {receiverName}, <br>" + message;
+            mail.IsBodyHtml = true;
+            smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Credentials = new System.Net.NetworkCredential("deamlandapp@gmail.com", "0533151327");
+            smtp.EnableSsl = true;
+            try
+            {
+                smtp.Send(mail);
+            }
+            catch
+            {
+                throw new Exception("Send mail failed");
+            }
         }
 
         public void SendSMS(string phoneNumber, string receiverName, string message)
