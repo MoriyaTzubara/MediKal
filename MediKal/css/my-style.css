@@ -258,6 +258,9 @@
 .round-img {
     border-radius: 50%;
 }
+.round {
+    border-radius: 50%;
+}
 
 .social-button {
     display: inline-block;
@@ -598,8 +601,8 @@ body.show-menu {
 .card-face__social {
     display: inline-block;
     margin: 0 7px;
-    width: 36px;
-    height: 36px;
+    width: 50px;
+    height: 50px;
     -webkit-animation: socials 1.5s;
     animation: socials 1.5s;
     -webkit-animation-fill-mode: both;

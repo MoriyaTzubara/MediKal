@@ -169,6 +169,7 @@
     <Content Include="images\news-image1.jpg" />
     <Content Include="images\news-image2.jpg" />
     <Content Include="images\news-image3.jpg" />
+    <Content Include="images\prescription.svg" />
     <Content Include="images\slider1.jpg" />
     <Content Include="images\slider2.jpg" />
     <Content Include="images\slider3.jpg" />
@@ -286,7 +287,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50709</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50709/</IISUrl>
+          <IISUrl>http://localhost:50710/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

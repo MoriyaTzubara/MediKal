@@ -24,9 +24,40 @@
             <div class="card-face face-1">
                 <!-- Menu trigger -->
                 <button class="card-face__menu-button" data-card-menu="data-card-menu"><img src="http://imgh.us/dots_1.svg" width="5" height="23" draggable="false" /></button><!-- Avatar -->
-                <div class="card-face__avatar"><!-- Bullet notification --><span class="card-face__bullet">2</span><!-- User avatar --><img src="https://s3.amazonaws.com/uifaces/faces/twitter/csswizardry/128.jpg" width="110" height="110" draggable="false" /></div><!-- Name -->
-                <h2 class="card-face__name">Mattia Astorino</h2><!-- Title --><span class="card-face__title">Web Designer & Developer</span><!-- Cart Footer -->
-                <div class="card-face-footer"><a class="card-face__social" href="https://dribbble.com/astorino_mattia" target="_blank"><img src="http://imgh.us/dribbble.svg" width="36" height="36" draggable="false" /></a><a class="card-face__social" href="https://www.behance.net/mattia_astorino" target="_blank"><img src="http://imgh.us/beh.svg" width="36" height="36" draggable="false" /></a><a class="card-face__social" href="https://plus.google.com/u/0/+MattiaAstorino/posts" target="_blank"><img src="http://imgh.us/plus_5.svg" width="36" height="36" draggable="false" /></a></div>
+                <div class="card-face__avatar">
+                    <!-- Bullet notification --><span class="card-face__bullet">2</span>
+                    <!-- User avatar -->
+                    <img src="~/images/author-image.jpg" width="110" height="110" draggable="false" />
+                    @*<img src="https://s3.amazonaws.com/uifaces/faces/twitter/csswizardry/128.jpg" width="110" height="110" draggable="false" />*@
+                </div>
+                <!-- Name -->
+                <h2 class="card-face__name">Dr. @item.UserName</h2>
+                <!-- Title -->
+                <br />
+                <div class="row">
+                    <i class="fa fa-envelope"></i>
+                    <span>@item.Mail</span>
+                </div>
+                <br />
+                <div class="row">
+                    <i class="fa fa-phone"></i>
+                    <span>@item.Phone</span>
+                </div>
+                <br />
+                <br />
+                <br />
+                <!-- Cart Footer -->
+                <div class="card-face-footer">
+                    <a class="round btn-gray card-face__social" href="https://dribbble.com/astorino_mattia" target="_blank">
+                        <img class="" src="~/images/prescription.svg" width="45" height="45" draggable="false" />
+                    </a>
+                    <a class="round btn-gray card-face__social" href="https://dribbble.com/astorino_mattia" target="_blank">
+                        <img class="" src="~/images/prescription.svg" width="45" height="45" draggable="false" />
+                    </a>
+                    <a class="round btn-gray card-face__social" href="https://dribbble.com/astorino_mattia" target="_blank">
+                        <img class="" src="~/images/prescription.svg" width="45" height="45" draggable="false" />
+                    </a>
+                </div>
             </div>
         </div>
     }
