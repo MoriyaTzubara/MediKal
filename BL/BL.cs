@@ -94,12 +94,18 @@ namespace BL
 
         public IEnumerable<Prescription> GetPrescriptionsOfDoctor(int id)
         {
-            throw new NotImplementedException();
+            var prescriptions = dal.GetPrescriptions();
+            return from item in prescriptions
+                   where item.DoctorId == id
+                   select item;
         }
 
         public IEnumerable<Prescription> GetPrescriptionsOfPatient(int id)
         {
-            throw new NotImplementedException();
+            var prescriptions = dal.GetPrescriptions();
+            return from item in prescriptions
+                   where item.PatientId == id
+                   select item;
         }
 
         public User GetUserById(int id)
