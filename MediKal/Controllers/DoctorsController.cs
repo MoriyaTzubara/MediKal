@@ -57,24 +57,22 @@ namespace MediKal.Controllers
 
             if (ModelState.IsValid)
             {
-                bl.add(doctor);
-                db.SaveChanges();
+                bl.AddDoctor(doctor);
                 return RedirectToAction("Index");
             }
-
             return View(doctor);
         }
 
         // GET: Doctors/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
             IBL bl = new BL.BL();
 
-            if (id == null)
+            if (id == -1)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Doctor doctor = db.Doctors.Find(id);
+            Doctor doctor = bl.GetDoctorById(id);
             if (doctor == null)
             {
                 return HttpNotFound();
@@ -93,23 +91,22 @@ namespace MediKal.Controllers
 
             if (ModelState.IsValid)
             {
-                db.Entry(doctor).State = EntityState.Modified;
-                db.SaveChanges();
+                bl.UpdateDoctor(doctor, doctor.Id);
                 return RedirectToAction("Index");
             }
             return View(doctor);
         }
 
         // GET: Doctors/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
             IBL bl = new BL.BL();
 
-            if (id == null)
+            if (id == -1)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Doctor doctor = db.Doctors.Find(id);
+            Doctor doctor = bl.GetDoctorById(id);
             if (doctor == null)
             {
                 return HttpNotFound();
@@ -124,9 +121,7 @@ namespace MediKal.Controllers
         {
             IBL bl = new BL.BL();
 
-            Doctor doctor = db.Doctors.Find(id);
-            db.Doctors.Remove(doctor);
-            db.SaveChanges();
+            bl.DeleteDoctor(id);
             return RedirectToAction("Index");
         }
     }
