@@ -66,6 +66,39 @@ namespace DAL
             catch (Exception e) { throw new Exception(e.Message); }
 
         }
+
+        public void AddDoctor(Doctor doctor)
+        {
+            User tmp = new User();
+            tmp.Birthday = doctor.Birthday;
+            tmp.Mail = doctor.Mail;
+            tmp.Password = doctor.Password;
+            tmp.Phone = doctor.Phone;
+            tmp.UserName = doctor.UserName;
+            tmp.UserType = doctor.UserType;
+            AddUser(tmp);
+            try
+            {
+                using (var db = new MediKalDB())
+                {
+                    db.Doctors.Add(doctor);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception e) { throw new Exception(e.Message); }
+        }
+
+        public void AddManager(Manager manager)
+        {
+            User tmp = new User();
+            tmp.Birthday = manager.Birthday;
+            tmp.Mail = manager.Mail;
+            tmp.Password = manager.Password;
+            tmp.Phone = manager.Phone;
+            tmp.UserName = manager.UserName;
+            tmp.UserType = manager.UserType;
+            AddUser(tmp);
+        }
         #endregion
         #region DELETE
         public void DeleteMedicine(int id)
@@ -126,6 +159,26 @@ namespace DAL
             }
             catch (Exception e) { throw new Exception(e.Message); }
 
+        }
+        public void DeleteDoctor(int id)
+        {
+                try
+                {
+                    using (var db = new MediKalDB())
+                    {
+                        User user = db.Users.Find(id);
+                        Doctor doctor = db.Doctors.Find(id);
+                        db.Doctors.Remove(doctor);
+                        db.Users.Remove(user);
+                        db.SaveChanges();
+                    }
+                }
+                catch (Exception e) { throw new Exception(e.Message); }
+            }
+
+        public void DeleteManager(int id)
+        {
+            DeleteUser(id);
         }
         #endregion
         #region GET
@@ -202,7 +255,21 @@ namespace DAL
         }
         public IEnumerable<Doctor> GetDoctors()
         {
+            //try
+            //{
+            //    List<Doctor> result = new List<Doctor>();
+            //    using (var db = new MediKalDB())
+            //    {
+            //        foreach (var doctor in db.Doctors)
+            //        {
+            //            result.Add(doctor);
+            //        }
+            //    }
+            //    return result;
+            //}
+            //catch (Exception e) { throw new Exception(e.Message); }
             throw new NotImplementedException();
+
         }
         public IEnumerable<Manager> GetManagers()
         {
@@ -289,35 +356,46 @@ namespace DAL
             catch (Exception e) { throw new Exception(e.Message); }
         }
 
-        public void AddDoctor(Doctor doctor)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddManager(Manager manager)
-        {
-            throw new NotImplementedException();
-        }
-
         public void UpdateDoctor(Doctor doctor, int Id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var db = new MediKalDB())
+                {
+                    var helper = db.Doctors.First(d => d.Id == Id);
+                    User tmp = new User();
+                    tmp.Birthday = doctor.Birthday;
+                    tmp.Mail = doctor.Mail;
+                    tmp.Password = doctor.Password;
+                    tmp.Phone = doctor.Phone;
+                    tmp.UserName = doctor.UserName;
+                    tmp.UserType = doctor.UserType;
+                    UpdateUser(tmp, Id);
+                    helper.LicenseNum = doctor.LicenseNum;
+                    helper.Specialty = doctor.Specialty;
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception e) { throw new Exception(e.Message); }
         }
 
         public void UpdateManager(Manager manager, int Id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                    User tmp = new User();
+                    tmp.Birthday = manager.Birthday;
+                    tmp.Mail = manager.Mail;
+                    tmp.Password = manager.Password;
+                    tmp.Phone = manager.Phone;
+                    tmp.UserName = manager.UserName;
+                    tmp.UserType = manager.UserType;
+                    UpdateUser(tmp, Id);
+            }
+            catch (Exception e) { throw new Exception(e.Message); }
         }
 
-        public void DeleteDoctor(int id)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void DeleteManager(int id)
-        {
-            throw new NotImplementedException();
-        }
         #endregion
 
     }
