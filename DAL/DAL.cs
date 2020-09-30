@@ -195,10 +195,11 @@ namespace DAL
                     }
                 }
                 return result;
-            }
-            catch (Exception e) { throw new Exception(e.Message); }
-
         }
+            catch (Exception e) { throw new Exception(e.Message);
+    }
+
+}
 
         public IEnumerable<Patient> GetPatients()
         {
