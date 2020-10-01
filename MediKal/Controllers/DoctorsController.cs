@@ -54,7 +54,7 @@ namespace MediKal.Controllers
         public ActionResult Create([Bind(Include = "Id,LicenseNum,Specialty,UserName,Password,Phone,Mail,Birthday,UserType")] Doctor doctor)
         {
             IBL bl = new BL.BL();
-
+            //doctor.PersonId = 211466370;
             if (ModelState.IsValid)
             {
                 bl.AddDoctor(doctor);
