@@ -53,30 +53,30 @@ namespace DAL
 
         }
 
-        public void AddUser(User user)
-        {
-            try
-            {
-                using (var db = new MediKalDB())
-                {
-                    db.Users.Add(user);
-                    db.SaveChanges();
-                }
-            }
-            catch (Exception e) { throw new Exception(e.Message); }
+        //public void AddUser(User user)
+        //{
+        //    try
+        //    {
+        //        using (var db = new MediKalDB())
+        //        {
+        //            db.Users.Add(user);
+        //            db.SaveChanges();
+        //        }
+        //    }
+        //    catch (Exception e) { throw new Exception(e.Message); }
 
-        }
+        //}
 
         public void AddDoctor(Doctor doctor)
         {
-            User tmp = new User();
-            tmp.Birthday = doctor.Birthday;
-            tmp.Mail = doctor.Mail;
-            tmp.Password = doctor.Password;
-            tmp.Phone = doctor.Phone;
-            tmp.UserName = doctor.UserName;
-            tmp.UserType = doctor.UserType;
-            AddUser(tmp);
+            //User tmp = new User();
+            //tmp.Birthday = doctor.Birthday;
+            //tmp.Mail = doctor.Mail;
+            //tmp.Password = doctor.Password;
+            //tmp.Phone = doctor.Phone;
+            //tmp.UserName = doctor.UserName;
+            //tmp.UserType = doctor.UserType;
+            //AddUser(tmp);
             try
             {
                 using (var db = new MediKalDB())
@@ -90,14 +90,23 @@ namespace DAL
 
         public void AddManager(Manager manager)
         {
-            User tmp = new User();
-            tmp.Birthday = manager.Birthday;
-            tmp.Mail = manager.Mail;
-            tmp.Password = manager.Password;
-            tmp.Phone = manager.Phone;
-            tmp.UserName = manager.UserName;
-            tmp.UserType = manager.UserType;
-            AddUser(tmp);
+            //User tmp = new User();
+            //tmp.Birthday = manager.Birthday;
+            //tmp.Mail = manager.Mail;
+            //tmp.Password = manager.Password;
+            //tmp.Phone = manager.Phone;
+            //tmp.UserName = manager.UserName;
+            //tmp.UserType = manager.UserType;
+            //AddUser(tmp);
+            try
+            {
+                using (var db = new MediKalDB())
+                {
+                    db.Managers.Add(manager);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception e) { throw new Exception(e.Message); }
         }
         #endregion
         #region DELETE
@@ -146,30 +155,41 @@ namespace DAL
 
         }
 
-        public void DeleteUser(int id)
-        {
-            try
-            {
-                using (var db = new MediKalDB())
-                {
-                    User user = db.Users.Find(id);
-                    db.Users.Remove(user);
-                    db.SaveChanges();
-                }
-            }
-            catch (Exception e) { throw new Exception(e.Message); }
+        //public void DeleteUser(int id)
+        //{
+        //    try
+        //    {
+        //        using (var db = new MediKalDB())
+        //        {
+        //            Doctor userD = db.Doctors.Find(id);
+        //            if (userD != null)
+        //                db.Doctors.Remove(userD);
+        //            else
+        //            {
+        //                Manager userM = db.Managers.Find(id);
+        //                if (userM != null)
+        //                    db.Managers.Remove(userM);
+        //                else
+        //                {
+        //                    Patient userP = db.Patients.Find(id);
+        //                    if (userP != null)
+        //                        db.Patients.Remove(userP);
+        //                }
+        //            }
+        //            db.SaveChanges();
+        //        }
+        //    }
+        //    catch (Exception e) { throw new Exception(e.Message); }
 
-        }
+        //}
         public void DeleteDoctor(int id)
         {
                 try
                 {
                     using (var db = new MediKalDB())
                     {
-                        User user = db.Users.Find(id);
                         Doctor doctor = db.Doctors.Find(id);
                         db.Doctors.Remove(doctor);
-                        db.Users.Remove(user);
                         db.SaveChanges();
                     }
                 }
@@ -178,7 +198,16 @@ namespace DAL
 
         public void DeleteManager(int id)
         {
-            DeleteUser(id);
+            try
+            {
+                using (var db = new MediKalDB())
+                {
+                    Manager manager = db.Managers.Find(id);
+                    db.Managers.Remove(manager);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception e) { throw new Exception(e.Message); }
         }
         #endregion
         #region GET
@@ -244,8 +273,19 @@ namespace DAL
                 List<User> result = new List<User>();
                 using (var db = new MediKalDB())
                 {
-                    foreach (var user in db.Users)
+                    foreach (var d in db.Doctors)
                     {
+                        User user = new User(d.Id) { Birthday = d.Birthday, Mail = d.Mail, Password = d.Password, Phone = d.Phone, UserName = d.UserName, UserType = d.UserType };
+                        result.Add(user);
+                    }
+                    foreach (var d in db.Managers)
+                    {
+                        User user = new User(d.Id) { Birthday = d.Birthday, Mail = d.Mail, Password = d.Password, Phone = d.Phone, UserName = d.UserName, UserType = d.UserType };
+                        result.Add(user);
+                    }
+                    foreach (var d in db.Patients)
+                    {
+                        User user = new User(d.Id) { Birthday = d.Birthday, Mail = d.Mail, Password = d.Password, Phone = d.Phone, UserName = d.UserName, UserType = d.UserType };
                         result.Add(user);
                     }
                 }
@@ -256,25 +296,36 @@ namespace DAL
         }
         public IEnumerable<Doctor> GetDoctors()
         {
-            //try
-            //{
-            //    List<Doctor> result = new List<Doctor>();
-            //    using (var db = new MediKalDB())
-            //    {
-            //        foreach (var doctor in db.Doctors)
-            //        {
-            //            result.Add(doctor);
-            //        }
-            //    }
-            //    return result;
-            //}
-            //catch (Exception e) { throw new Exception(e.Message); }
-            throw new NotImplementedException();
+            try
+            {
+                List<Doctor> result = new List<Doctor>();
+                using (var db = new MediKalDB())
+                {
+                    foreach (var doctor in db.Doctors)
+                    {
+                        result.Add(doctor);
+                    }
+                }
+                return result;
+            }
+            catch (Exception e) { throw new Exception(e.Message); }
 
         }
         public IEnumerable<Manager> GetManagers()
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<Manager> result = new List<Manager>();
+                using (var db = new MediKalDB())
+                {
+                    foreach (var manager in db.Managers)
+                    {
+                        result.Add(manager);
+                    }
+                }
+                return result;
+            }
+            catch (Exception e) { throw new Exception(e.Message); }
         }
 
         #endregion
@@ -338,24 +389,24 @@ namespace DAL
             catch (Exception e) { throw new Exception(e.Message); }
         }
 
-        public void UpdateUser(User user, int Id)
-        {
-            try
-            {
-                using (var db = new MediKalDB())
-                {
-                    var tmp = db.Users.First(u => u.Id == Id);
-                    tmp.Birthday = user.Birthday;
-                    tmp.Mail = user.Mail;
-                    tmp.Password = user.Password;
-                    tmp.Phone = user.Phone;
-                    tmp.UserName = user.UserName;
-                    tmp.UserType = user.UserType;
-                    db.SaveChanges();
-                }
-            }
-            catch (Exception e) { throw new Exception(e.Message); }
-        }
+        //public void UpdateUser(User user, int Id)
+        //{
+        //    try
+        //    {
+        //        using (var db = new MediKalDB())
+        //        {
+        //            var tmp = db.Users.First(u => u.Id == Id);
+        //            tmp.Birthday = user.Birthday;
+        //            tmp.Mail = user.Mail;
+        //            tmp.Password = user.Password;
+        //            tmp.Phone = user.Phone;
+        //            tmp.UserName = user.UserName;
+        //            tmp.UserType = user.UserType;
+        //            db.SaveChanges();
+        //        }
+        //    }
+        //    catch (Exception e) { throw new Exception(e.Message); }
+        //}
 
         public void UpdateDoctor(Doctor doctor, int Id)
         {
@@ -363,17 +414,15 @@ namespace DAL
             {
                 using (var db = new MediKalDB())
                 {
-                    var helper = db.Doctors.First(d => d.Id == Id);
-                    User tmp = new User();
+                    var tmp = db.Doctors.First(d => d.Id == Id);
                     tmp.Birthday = doctor.Birthday;
                     tmp.Mail = doctor.Mail;
                     tmp.Password = doctor.Password;
                     tmp.Phone = doctor.Phone;
                     tmp.UserName = doctor.UserName;
                     tmp.UserType = doctor.UserType;
-                    UpdateUser(tmp, Id);
-                    helper.LicenseNum = doctor.LicenseNum;
-                    helper.Specialty = doctor.Specialty;
+                    tmp.LicenseNum = doctor.LicenseNum;
+                    tmp.Specialty = doctor.Specialty;
                     db.SaveChanges();
                 }
             }
@@ -384,14 +433,17 @@ namespace DAL
         {
             try
             {
-                    User tmp = new User();
+                using (var db = new MediKalDB())
+                {
+                    var tmp = db.Managers.First(m => m.Id == Id);
                     tmp.Birthday = manager.Birthday;
                     tmp.Mail = manager.Mail;
                     tmp.Password = manager.Password;
                     tmp.Phone = manager.Phone;
                     tmp.UserName = manager.UserName;
                     tmp.UserType = manager.UserType;
-                    UpdateUser(tmp, Id);
+                    db.SaveChanges();
+                }
             }
             catch (Exception e) { throw new Exception(e.Message); }
         }

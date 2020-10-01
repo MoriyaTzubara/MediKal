@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using Nexmo.Api;
 using BE;
 using DAL;
 
@@ -28,9 +29,9 @@ namespace BL
             dal.AddPrescription(prescription);
         }
 
-        public void AddUser(User user)
+        public void AddManager(Manager manager)
         {
-            dal.AddUser(user);
+            dal.AddManager(manager);
         }
 
         public void DeleteMedicine(int id)
@@ -48,10 +49,10 @@ namespace BL
             dal.DeletePrescription(id);
         }
 
-        public void DeleteUser(int id)
-        {
-            dal.DeleteUser(id);
-        }
+        //public void DeleteUser(int id)
+        //{
+        //    dal.DeleteUser(id);
+        //}
 
         public void ForgotPassword(string mail)
         {
@@ -152,9 +153,25 @@ namespace BL
             }
         }
 
-        public void SendSMS(string phoneNumber, string receiverName, string message)
+        public bool SendSMS(string phoneNumber, string receiverName, string message)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var client = new Client(creds: new Nexmo.Api.Request.Credentials
+                {
+                    ApiKey = "458e9f53",
+                    ApiSecret = "yFQBWJUuLGPsYiH3"
+                });
+                var results = client.SMS.Send(request: new SMS.SMSRequest
+                {
+                    from = "Vonage APIs",
+                    to = "972" + (int.Parse(phoneNumber)).ToString(),
+                    text = $"Hello,{receiverName}!\n{message}",
+                    type = "unicode"
+
+                });
+                return true;
+            } catch(Exception e) { throw new Exception(e.Message); }
         }
 
         public void SignIn(string userName, string password)
@@ -182,10 +199,10 @@ namespace BL
             dal.UpdatePrescription(prescription,Id);
         }
 
-        public void UpdateUser(User user, int Id)
-        {
-            dal.UpdateUser(user,Id);
-        }
+        //public void UpdateUser(User user, int Id)
+        //{
+        //    dal.UpdateUser(user,Id);
+        //}
         public IEnumerable<Doctor> GetDoctors()
         {
             return dal.GetDoctors();
@@ -200,10 +217,6 @@ namespace BL
             dal.AddDoctor(doctor);
         }
 
-        public void AddManager(Manager manager)
-        {
-            dal.AddManager(manager);
-        }
 
         public void UpdateDoctor(Doctor doctor, int Id)
         {

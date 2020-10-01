@@ -32,7 +32,7 @@ namespace MediKal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Doctor doctor =(Doctor) bl.GetUserById(id);
+            Doctor doctor =(Doctor) bl.GetDoctorById(id);
             if (doctor == null)
             {
                 return HttpNotFound();

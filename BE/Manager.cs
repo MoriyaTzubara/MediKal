@@ -8,5 +8,6 @@ namespace BE
 {
     public class Manager:User
     {
+        public Manager(int id) : base(id) { }
     }
 }
