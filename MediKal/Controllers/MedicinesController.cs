@@ -18,7 +18,8 @@ namespace MediKal.Controllers
         public ActionResult Index()
         {
             IBL bl = new BL.BL();
-            var medicines = bl.GetMedicines().Select(item => new MedicineViewModel(item));
+      //      var medicines = bl.GetMedicines().Select(item => new MedicineViewModel(item));
+            bl.ReadExcelMedicines("",1);
             return View(medicines);
         }
 

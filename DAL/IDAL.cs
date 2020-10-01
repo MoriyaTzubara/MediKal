@@ -38,6 +38,7 @@ namespace DAL
         IEnumerable<Manager> GetManagers();
         IEnumerable<Medicine> GetMedicines();
         IEnumerable<Prescription> GetPrescriptions();
+        void ReadExcelMedicines(string path, int sheet);
 
     }
 }

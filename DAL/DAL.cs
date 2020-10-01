@@ -448,6 +448,20 @@ namespace DAL
             catch (Exception e) { throw new Exception(e.Message); }
         }
 
+        public void ReadExcelMedicines(string path, int sheet)
+        {
+            Excel excel = new Excel(@"C:\Users\User\Desktop\my version.xls",1);
+            Medicine medicine;
+            for (int i = 1; i < 101; i++)
+            {
+                medicine = new Medicine(int.Parse(excel.ReadCell(i, 1)));
+                medicine.Name = excel.ReadCell(i, 2);
+                medicine.Company = excel.ReadCell(i, 3);
+                medicine.GenericName = excel.ReadCell(i, 4);
+                AddMedicine(medicine);
+            }
+        }
+
 
         #endregion
 

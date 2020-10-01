@@ -12,6 +12,7 @@ namespace BE
     }
     public enum UserTypeEnum
     {
+       Patient,
        Doctor,
        Manager
     }

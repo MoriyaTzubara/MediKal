@@ -147,6 +147,7 @@
     <Compile Include="IDAL.cs" />
     <Compile Include="MediKalDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validation.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

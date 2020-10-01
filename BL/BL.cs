@@ -174,14 +174,27 @@ namespace BL
             } catch(Exception e) { throw new Exception(e.Message); }
         }
 
-        public void SignIn(string userName, string password)
+        public bool SignIn(int id, string password)
         {
-            throw new NotImplementedException();
+            User user = GetUserById(id);
+            if (user != null && user.Password == password)
+                return true;
+            return false;
+
         }
 
         public void SignUp(User newUser)
         {
-            throw new NotImplementedException();
+            if (!Validation.IsId(newUser.Id))
+                throw new Exception("מספר ת.ז לא תקין");
+            if (GetUserById(newUser.Id) == null)
+                throw new Exception("אינך רשום במערכת, אנא פנה למנהל");
+            if (newUser.UserType == UserTypeEnum.Doctor)
+                dal.UpdateDoctor((Doctor) newUser, newUser.Id);
+            if (newUser.UserType == UserTypeEnum.Manager)
+                dal.UpdateManager((Manager)newUser, newUser.Id);
+            if (newUser.UserType == UserTypeEnum.Patient)
+                dal.UpdatePatient((Patient)newUser, newUser.Id);
         }
 
         public void UpdateMedicine(Medicine medicine,int Id)
@@ -252,6 +265,11 @@ namespace BL
             return (from item in managers
                     where item.Id == id
                     select item).Single();
+        }
+
+        public void ReadExcelMedicines(string path, int sheet)
+        {
+            dal.ReadExcelMedicines(path,sheet);
         }
     }
 }
