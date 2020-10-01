@@ -15,6 +15,7 @@ namespace BE
         public string Mail { get; set; }
         public DateTime Birthday { get; set; }
         public UserTypeEnum UserType { get; set; }
+        public User() { }
         public User(int id)
         {
             Id = id;

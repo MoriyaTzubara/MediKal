@@ -28,5 +28,10 @@ namespace BE
                 return "";
         }
 
+        ~Excel()
+        {
+            _Excel.Quit();
+        }
+
     }
 }

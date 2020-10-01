@@ -14,15 +14,15 @@ namespace DAL
         #region ADD
         public void AddMedicine(Medicine medicine)
         {
-            try
-            {
+            //try
+            //{
                 using (var db = new MediKalDB())
                 {
                     db.Medicines.Add(medicine);
                     db.SaveChanges();
                 }
-            }
-            catch (Exception e) { throw new Exception(e.Message); }
+            //}
+            //catch (Exception e) { throw new Exception(e.Message); }
         }
 
         public void AddPatient(Patient patient)
@@ -213,8 +213,8 @@ namespace DAL
         #region GET
         public IEnumerable<Medicine> GetMedicines()
         {
-            try
-            {
+            //try
+            //{
                 List<Medicine> result = new List<Medicine>();
                 using (var db = new MediKalDB())
                 {
@@ -224,11 +224,13 @@ namespace DAL
                     }
                 }
                 return result;
-        }
-            catch (Exception e) { throw new Exception(e.Message);
-    }
+            //}
+            //catch (Exception e)
+            //{
+            //    throw new Exception(e.Message);
+            //}
 
-}
+        }
 
         public IEnumerable<Patient> GetPatients()
         {
@@ -451,10 +453,11 @@ namespace DAL
         public void ReadExcelMedicines(string path, int sheet)
         {
             Excel excel = new Excel(@"C:\Users\User\Desktop\my version.xls",1);
-            Medicine medicine;
-            for (int i = 1; i < 101; i++)
+            Medicine medicine ;
+            for (int i = 2; i < 102; i++)
             {
-                medicine = new Medicine(int.Parse(excel.ReadCell(i, 1)));
+                medicine = new Medicine();
+                medicine.NDCId = excel.ReadCell(i, 1);
                 medicine.Name = excel.ReadCell(i, 2);
                 medicine.Company = excel.ReadCell(i, 3);
                 medicine.GenericName = excel.ReadCell(i, 4);
