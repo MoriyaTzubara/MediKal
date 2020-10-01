@@ -16,11 +16,15 @@ namespace BL
 
         public void AddMedicine(Medicine medicine)
         {
+            if (!Validation.IsNDCId(medicine.NDCId))
+                throw new Exception("ת.ז. זו קיימת כבר");
             dal.AddMedicine(medicine);
         }
 
         public void AddPatient(Patient patient)
         {
+            if(!Validation.ValidIdDB(patient.PersonId))
+                throw new Exception("ת.ז. זו קיימת כבר");
             dal.AddPatient(patient);
         }
 
@@ -31,12 +35,14 @@ namespace BL
 
         public void AddManager(Manager manager)
         {
+            if (!Validation.ValidIdDB(manager.PersonId))
+                throw new Exception("ת.ז. זו קיימת כבר");
             dal.AddManager(manager);
         }
 
-        public void DeleteMedicine(int id)
+        public void DeleteMedicine(string NDCid)
         {
-            dal.DeleteMedicine(id);
+            dal.DeleteMedicine(NDCid);
         }
 
         public void DeletePatient(int id)
@@ -64,9 +70,9 @@ namespace BL
             throw new NotImplementedException();
         }
 
-        public Medicine GetMedicineById(int id)
+        public Medicine GetMedicineById(string NDCid)
         {
-            return dal.GetMedicines().FirstOrDefault(item => item.Id == id);
+            return dal.GetMedicines().FirstOrDefault(item => item.NDCId == NDCid);
         }
 
         public IEnumerable<Medicine> GetMedicines()
@@ -197,9 +203,9 @@ namespace BL
                 dal.UpdatePatient((Patient)newUser, newUser.Id);
         }
 
-        public void UpdateMedicine(Medicine medicine,int Id)
+        public void UpdateMedicine(Medicine medicine,string NDCId)
         {
-            dal.UpdateMedicine(medicine,Id);
+            dal.UpdateMedicine(medicine,NDCId);
         }
 
         public void UpdatePatient(Patient patient, int Id)
@@ -227,6 +233,8 @@ namespace BL
 
         public void AddDoctor(Doctor doctor)
         {
+            if (!Validation.ValidIdDB(doctor.PersonId))
+                throw new Exception("ת.ז. זו קיימת כבר");
             dal.AddDoctor(doctor);
         }
 

@@ -9,6 +9,7 @@ namespace BE
     public class User
     {
         public int Id { get; private set; }
+        public int PersonId { get; private set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public string Phone { get; set; }

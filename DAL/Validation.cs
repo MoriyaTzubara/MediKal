@@ -24,6 +24,22 @@ namespace DAL
             return true;
         }
 
+        public static bool IsNDCId(string id) 
+        {
+            DAL dal = new DAL();
+            if (dal.GetMedicines().Any(m => m.NDCId == id))
+                return false;
+            return true;
+        }
+
+        public static bool ValidIdDB(int id)
+        {
+            DAL dal = new DAL();
+            if (dal.GetUsers().Any(u => u.Id == id))
+                return false;
+            return true;
+        }
+
         public static bool IsId(object idn)
         {
             if (idn == null || idn == "000000000")

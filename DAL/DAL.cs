@@ -110,13 +110,13 @@ namespace DAL
         }
         #endregion
         #region DELETE
-        public void DeleteMedicine(int id)
+        public void DeleteMedicine(string NDCid)
         {
             try
             {
                 using (var db = new MediKalDB())
                 {
-                    Medicine medicine = db.Medicines.Find(id);
+                    Medicine medicine = db.Medicines.Find(NDCid);
                     db.Medicines.Remove(medicine);
                     db.SaveChanges();
                 }
@@ -332,13 +332,13 @@ namespace DAL
 
         #endregion
         #region UPDATE
-        public void UpdateMedicine(Medicine medicine, int Id)
+        public void UpdateMedicine(Medicine medicine, string NDCId)
         {
             try
             {
                 using (var db = new MediKalDB())
                 {
-                    var tmp = db.Medicines.First(m => m.Id == Id);
+                    var tmp = db.Medicines.First(m => m.NDCId == NDCId);
                     tmp.ActiveIngredients = medicine.ActiveIngredients;
                     tmp.Company = medicine.Company;
                     tmp.GenericName = medicine.GenericName;
@@ -357,7 +357,7 @@ namespace DAL
             {
                 using (var db = new MediKalDB())
                 {
-                    var tmp = db.Patients.First(p => p.Id == Id);
+                    var tmp = db.Patients.First(p => p.PersonId == Id);
                     tmp.Background = patient.Background;
                     tmp.Birthday = patient.Birthday;
                     tmp.BloodType = patient.BloodType;
@@ -416,7 +416,7 @@ namespace DAL
             {
                 using (var db = new MediKalDB())
                 {
-                    var tmp = db.Doctors.First(d => d.Id == Id);
+                    var tmp = db.Doctors.First(d => d.PersonId == Id);
                     tmp.Birthday = doctor.Birthday;
                     tmp.Mail = doctor.Mail;
                     tmp.Password = doctor.Password;
@@ -437,7 +437,7 @@ namespace DAL
             {
                 using (var db = new MediKalDB())
                 {
-                    var tmp = db.Managers.First(m => m.Id == Id);
+                    var tmp = db.Managers.First(m => m.PersonId == Id);
                     tmp.Birthday = manager.Birthday;
                     tmp.Mail = manager.Mail;
                     tmp.Password = manager.Password;

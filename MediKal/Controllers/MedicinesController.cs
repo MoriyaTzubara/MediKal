@@ -18,13 +18,13 @@ namespace MediKal.Controllers
         public ActionResult Index()
         {
             IBL bl = new BL.BL();
-            bl.ReadExcelMedicines("", 1);
+            //bl.ReadExcelMedicines("", 1);
             var medicines = bl.GetMedicines().Select(item => new MedicineViewModel(item));
             return View(medicines);
         }
 
         // GET: Medicines/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
             IBL bl = new BL.BL();
             Medicine medicine = bl.GetMedicineById(id);
@@ -46,7 +46,7 @@ namespace MediKal.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,GenericName,Name,ImagePath,Company")] Medicine medicine)
+        public ActionResult Create([Bind(Include = "NDCId,GenericName,Name,ImagePath,Company")] Medicine medicine)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace MediKal.Controllers
         }
 
         // GET: Medicines/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
             IBL bl = new BL.BL();
             Medicine medicine = bl.GetMedicineById(id);
@@ -74,7 +74,7 @@ namespace MediKal.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Medicine medicine,int Id)
+        public ActionResult Edit(Medicine medicine,string Id)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace MediKal.Controllers
         }
 
         // GET: Medicines/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
             IBL bl = new BL.BL();
             Medicine medicine = bl.GetMedicineById(id);
@@ -100,7 +100,7 @@ namespace MediKal.Controllers
         // POST: Medicines/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
             IBL bl = new BL.BL();
             Medicine medicine = bl.GetMedicineById(id);
