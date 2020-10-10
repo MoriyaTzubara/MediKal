@@ -38,6 +38,7 @@ namespace MediKal.Controllers
         // GET: Medicines/Create
         public ActionResult Create()
         {
+            Session["Message"] = "";
             return View();
         }
 
@@ -110,6 +111,19 @@ namespace MediKal.Controllers
             }
             bl.DeleteMedicine(id);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult AddImage(string id)
+        {
+            IBL bl = new BL.BL();
+            Medicine medicine = bl.FindMedicineInExcel(id);
+            if (medicine == null)
+            {
+                Session["Message"] = "NDCId not found";
+                return View("Create");
+            }
+            else 
+            return View("AddImage",new MedicineViewModel(medicine));
         }
     }
 }

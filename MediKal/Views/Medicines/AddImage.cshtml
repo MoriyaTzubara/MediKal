@@ -1,59 +1,59 @@
-﻿@model BE.Medicine
+﻿@model MediKal.Models.MedicineViewModel
 
 @{
     ViewBag.Title = "AddImage";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<h2>AddImage</h2>
+<br />
+<br />
+<div class="m-5 p-3 row">
+    <div class="col-sm-1 col-md-1 col-lg-4 col-xl-4"></div>
+    <div class="col-sm-10 col-md-10 col-lg-4 col-xl-4">
+        <h4>Add Medicine</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.NDCId)
+            </dt>
 
-<div>
-    <h4>Medicine</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NDCId)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NDCId)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.NDCId)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.GenericName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GenericName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.GenericName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.GenericName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Company)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ImagePath)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Company)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ImagePath)
-        </dd>
+        </dl>
+        <div class="col-md-10">
+            <input type="file" name="ImagePath" />
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Company)
-        </dt>
+    </div>
+    <p>
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Back to List", "Index")*@
+    </p>
 
-        <dd>
-            @Html.DisplayFor(model => model.Company)
-        </dd>
-
-    </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

@@ -261,6 +261,42 @@
 .round {
     border-radius: 50%;
 }
+.blue-btn, .blue-btn:link, .blue-btn:active {
+    cursor: pointer;
+    border: none;
+    color: white;
+    background-color: #00d6c8;
+    padding: 8px 20px 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: medium;
+    margin-top: 15px;
+    font-weight: bold;
+    text-overflow: initial;
+}
+
+    .blue-btn:hover {
+        background-color:#00ACC1;
+        color: white;
+    }
+.green-btn, .green-btn:link, .green-btn:active {
+    cursor: pointer;
+    border: none;
+    color: white;
+    background-color: #59ed2e;
+    padding: 8px 20px 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: medium;
+    margin-top: 15px;
+    font-weight: bold;
+    text-overflow: initial;
+}
+
+    .green-btn:hover {
+        background-color: #46d31c;
+        color: white;
+    }
 
 .social-button {
     display: inline-block;

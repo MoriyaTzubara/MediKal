@@ -480,7 +480,7 @@ namespace DAL
                     return medicine;
                 }
             }
-            throw new Exception("medicine not found");
+            return null;
         }
 
         #endregion
