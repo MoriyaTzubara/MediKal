@@ -43,17 +43,18 @@ http://www.tooplate.com/view/2098-health
     padding-bottom: 10px;
   }
 
-  h3 {
+h3 {
     font-size: 1.8em;
     line-height: 1.2em;
     margin-bottom: 0;
-  }
+    color: #00d6c8;
+}
 
-  h4 {
+h4 {
     color: black;
     font-size: 1.8em;
     padding-bottom: 2px;
-  }
+}
 
   h6 {
     letter-spacing: 0;

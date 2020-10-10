@@ -466,10 +466,15 @@ namespace DAL
         }
         public Medicine FindMedicineInExcel(string NDCId)
         {
+            if (NDCId.Length != 9)
+                return null;
+            if (NDCId[4] != '-') 
+                return null;
+
             Excel excel = new Excel(@"C:\Users\User\Desktop\my version.xls", 1);
             Medicine medicine;
             double id = Double.Parse(NDCId.Replace("-", "."));
-            int i = BinarySearch(id, 2, 16384);
+            int i = BinarySearch(excel,id, 2, 16384);
             if (i != -1)
                 {
                     medicine = new Medicine();
@@ -479,15 +484,10 @@ namespace DAL
                     medicine.GenericName = excel.ReadCell(i, 4);
                     return medicine;
                 }
-<<<<<<< HEAD
-            }
-=======
->>>>>>> 112ad1e76c4fe6c7361d38c27dd16bdf9538fc7d
             return null;
         }
-        int BinarySearch( double x, int left, int right)
+        int BinarySearch(Excel excel, double x, int left, int right)
         {
-            Excel excel = new Excel(@"C:\Users\User\Desktop\my version.xls", 1);
             if (left > right)
                 return -1;
 
@@ -496,9 +496,9 @@ namespace DAL
                 return middle;
 
             if (x < Double.Parse(excel.ReadCell(middle, 1).Replace("-", ".")))
-                return BinarySearch(x, left, middle - 1);
+                return BinarySearch(excel,x, left, middle - 1);
 
-            return BinarySearch(x, middle + 1, right);
+            return BinarySearch(excel,x, middle + 1, right);
         }
         #endregion
 
