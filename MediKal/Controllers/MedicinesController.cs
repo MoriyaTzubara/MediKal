@@ -24,7 +24,7 @@ namespace MediKal.Controllers
         }
 
         // GET: Medicines/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(double id)
         {
             IBL bl = new BL.BL();
             Medicine medicine = bl.GetMedicineById(id);
@@ -58,7 +58,7 @@ namespace MediKal.Controllers
         }
 
         // GET: Medicines/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(double id)
         {
             IBL bl = new BL.BL();
             Medicine medicine = bl.GetMedicineById(id);
@@ -74,7 +74,7 @@ namespace MediKal.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Medicine medicine,string Id)
+        public ActionResult Edit(Medicine medicine,double Id)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace MediKal.Controllers
         }
 
         // GET: Medicines/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(double id)
         {
             IBL bl = new BL.BL();
             Medicine medicine = bl.GetMedicineById(id);
@@ -100,7 +100,7 @@ namespace MediKal.Controllers
         // POST: Medicines/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(double id)
         {
             IBL bl = new BL.BL();
             Medicine medicine = bl.GetMedicineById(id);

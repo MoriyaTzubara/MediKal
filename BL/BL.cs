@@ -40,7 +40,7 @@ namespace BL
             dal.AddManager(manager);
         }
 
-        public void DeleteMedicine(string NDCid)
+        public void DeleteMedicine(double NDCid)
         {
             dal.DeleteMedicine(NDCid);
         }
@@ -65,12 +65,12 @@ namespace BL
             throw new NotImplementedException();
         }
 
-        public List<Warning> GetConflicts(int medicineId, int patientId)
+        public List<Warning> GetConflicts(double medicineId, int patientId)
         {
             throw new NotImplementedException();
         }
 
-        public Medicine GetMedicineById(string NDCid)
+        public Medicine GetMedicineById(double NDCid)
         {
             return dal.GetMedicines().FirstOrDefault(item => item.NDCId == NDCid);
         }
@@ -203,7 +203,7 @@ namespace BL
                 dal.UpdatePatient((Patient)newUser, newUser.Id);
         }
 
-        public void UpdateMedicine(Medicine medicine,string NDCId)
+        public void UpdateMedicine(Medicine medicine,double NDCId)
         {
             dal.UpdateMedicine(medicine,NDCId);
         }

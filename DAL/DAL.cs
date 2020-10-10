@@ -110,7 +110,7 @@ namespace DAL
         }
         #endregion
         #region DELETE
-        public void DeleteMedicine(string NDCid)
+        public void DeleteMedicine(double NDCid)
         {
             try
             {
@@ -332,7 +332,7 @@ namespace DAL
 
         #endregion
         #region UPDATE
-        public void UpdateMedicine(Medicine medicine, string NDCId)
+        public void UpdateMedicine(Medicine medicine, double NDCId)
         {
             try
             {
@@ -457,7 +457,7 @@ namespace DAL
             for (int i = 2; i < 102; i++)
             {
                 medicine = new Medicine();
-                medicine.NDCId = excel.ReadCell(i, 1);
+                medicine.NDCId = Double.Parse(excel.ReadCell(i, 1).Replace("-","."));
                 medicine.Name = excel.ReadCell(i, 2);
                 medicine.Company = excel.ReadCell(i, 3);
                 medicine.GenericName = excel.ReadCell(i, 4);

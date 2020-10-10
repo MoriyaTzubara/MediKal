@@ -16,6 +16,11 @@ namespace MediKal.Models
             patient = _patient;
         }
 
+        public int Id
+        {
+            get { return patient.Id; }
+            set { patient.Id = value; }
+        }
         public string Background
         {
             get { return patient.Background; }

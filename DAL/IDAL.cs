@@ -21,14 +21,14 @@ namespace DAL
         //void UpdateUser(User user, int Id);
         void UpdateDoctor(Doctor doctor, int Id);
         void UpdateManager(Manager manager, int Id);
-        void UpdateMedicine(Medicine medicine, string Id);
+        void UpdateMedicine(Medicine medicine, double Id);
         void UpdatePatient(Patient patient, int Id);
         void UpdatePrescription(Prescription prescription, int Id);
         // DELETE
         //void DeleteUser(int id);
         void DeleteDoctor(int id);
         void DeleteManager(int id);
-        void DeleteMedicine(string id);
+        void DeleteMedicine(double id);
         void DeletePatient(int id);
         void DeletePrescription(int id);
         // GET

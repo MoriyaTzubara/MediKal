@@ -25,10 +25,11 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.DoctorId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+         @*needs to be inserted without changing (the Id of the user)*@
+            @*<div class="col-md-10">
                 @Html.EditorFor(model => model.DoctorId, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DoctorId, "", new { @class = "text-danger" })
-            </div>
+            </div>*@
         </div>
 
         <div class="form-group">
@@ -62,7 +63,7 @@
                 @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        @*list of the medicines*@
         <div class="form-group">
             @Html.LabelFor(model => model.MedicineId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

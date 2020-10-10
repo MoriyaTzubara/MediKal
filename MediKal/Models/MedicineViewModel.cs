@@ -15,9 +15,10 @@ namespace MediKal.Models
         {
             medicine = _medicine;
         }
-        public string NDCId
+        public double NDCId
         {
             get { return medicine.NDCId; }
+            set { medicine.NDCId = value; }
         }
         [DisplayName("Name")]
         public string Name
