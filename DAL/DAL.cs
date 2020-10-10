@@ -464,7 +464,24 @@ namespace DAL
                 AddMedicine(medicine);
             }
         }
-
+        public Medicine FindMedicineInExcel(string NDCId)
+        {
+            Excel excel = new Excel(@"C:\Users\User\Desktop\my version.xls", 1);
+            Medicine medicine;
+            for (int i = 2; i < 16385; i++)
+            {
+                if (excel.ReadCell(i, 1) == NDCId)
+                {
+                    medicine = new Medicine();
+                    medicine.NDCId = Double.Parse(excel.ReadCell(i, 1).Replace("-", "."));
+                    medicine.Name = excel.ReadCell(i, 2);
+                    medicine.Company = excel.ReadCell(i, 3);
+                    medicine.GenericName = excel.ReadCell(i, 4);
+                    return medicine;
+                }
+            }
+            throw new Exception("medicine not found");
+        }
 
         #endregion
 

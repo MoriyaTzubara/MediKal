@@ -39,6 +39,6 @@ namespace DAL
         IEnumerable<Medicine> GetMedicines();
         IEnumerable<Prescription> GetPrescriptions();
         void ReadExcelMedicines(string path, int sheet);
-
+        Medicine FindMedicineInExcel(string NDCId);
     }
 }

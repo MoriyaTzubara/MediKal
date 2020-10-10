@@ -279,5 +279,14 @@ namespace BL
         {
             dal.ReadExcelMedicines(path,sheet);
         }
+
+        public Medicine FindMedicineInExcel(string NDCId)
+        {
+            try
+            {
+                return dal.FindMedicineInExcel(NDCId);
+            }
+            catch (Exception e) { throw e; }
+        }
     }
 }
