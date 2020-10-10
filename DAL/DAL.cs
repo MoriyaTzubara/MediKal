@@ -468,9 +468,9 @@ namespace DAL
         {
             Excel excel = new Excel(@"C:\Users\User\Desktop\my version.xls", 1);
             Medicine medicine;
-            for (int i = 2; i < 16385; i++)
-            {
-                if (excel.ReadCell(i, 1) == NDCId)
+            double id = Double.Parse(NDCId.Replace("-", "."));
+            int i = BinarySearch(id, 2, 16384);
+            if (i != -1)
                 {
                     medicine = new Medicine();
                     medicine.NDCId = Double.Parse(excel.ReadCell(i, 1).Replace("-", "."));
@@ -479,10 +479,27 @@ namespace DAL
                     medicine.GenericName = excel.ReadCell(i, 4);
                     return medicine;
                 }
+<<<<<<< HEAD
             }
+=======
+>>>>>>> 112ad1e76c4fe6c7361d38c27dd16bdf9538fc7d
             return null;
         }
+        int BinarySearch( double x, int left, int right)
+        {
+            Excel excel = new Excel(@"C:\Users\User\Desktop\my version.xls", 1);
+            if (left > right)
+                return -1;
 
+            int middle = (left + right) / 2;
+            if (Double.Parse(excel.ReadCell(middle, 1).Replace("-", ".")) == x)
+                return middle;
+
+            if (x < Double.Parse(excel.ReadCell(middle, 1).Replace("-", ".")))
+                return BinarySearch(x, left, middle - 1);
+
+            return BinarySearch(x, middle + 1, right);
+        }
         #endregion
 
     }
