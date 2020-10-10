@@ -50,6 +50,8 @@ namespace BL
         // VALIDATION
         bool IsMedicineImage(string imagePath);
         List<Warning> GetConflicts(double medicineId, int patientId);
+        Medicine FindMedicineInExcel(string NDCId);
+
         // SEND
         void SendMail(string mailAdress, string receiverName, string message);
         bool SendSMS(string phoneNumber, string receiverName, string message);
