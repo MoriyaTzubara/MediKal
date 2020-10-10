@@ -15,9 +15,9 @@ namespace MediKal.Models
         {
             medicine = _medicine;
         }
-        public int Id
+        public string NDCId
         {
-            get { return medicine.Id; }
+            get { return medicine.NDCId; }
         }
         [DisplayName("Name")]
         public string Name

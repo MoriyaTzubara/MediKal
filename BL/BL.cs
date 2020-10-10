@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using Nexmo.Api;
 using BE;
 using DAL;
 
@@ -15,11 +16,15 @@ namespace BL
 
         public void AddMedicine(Medicine medicine)
         {
+            if (!Validation.IsNDCId(medicine.NDCId))
+                throw new Exception("ת.ז. זו קיימת כבר");
             dal.AddMedicine(medicine);
         }
 
         public void AddPatient(Patient patient)
         {
+            if(!Validation.ValidIdDB(patient.PersonId))
+                throw new Exception("ת.ז. זו קיימת כבר");
             dal.AddPatient(patient);
         }
 
@@ -28,14 +33,16 @@ namespace BL
             dal.AddPrescription(prescription);
         }
 
-        public void AddUser(User user)
+        public void AddManager(Manager manager)
         {
-            dal.AddUser(user);
+            if (!Validation.ValidIdDB(manager.PersonId))
+                throw new Exception("ת.ז. זו קיימת כבר");
+            dal.AddManager(manager);
         }
 
-        public void DeleteMedicine(int id)
+        public void DeleteMedicine(string NDCid)
         {
-            dal.DeleteMedicine(id);
+            dal.DeleteMedicine(NDCid);
         }
 
         public void DeletePatient(int id)
@@ -48,10 +55,10 @@ namespace BL
             dal.DeletePrescription(id);
         }
 
-        public void DeleteUser(int id)
-        {
-            dal.DeleteUser(id);
-        }
+        //public void DeleteUser(int id)
+        //{
+        //    dal.DeleteUser(id);
+        //}
 
         public void ForgotPassword(string mail)
         {
@@ -63,9 +70,9 @@ namespace BL
             throw new NotImplementedException();
         }
 
-        public Medicine GetMedicineById(int id)
+        public Medicine GetMedicineById(string NDCid)
         {
-            return dal.GetMedicines().FirstOrDefault(item => item.Id == id);
+            return dal.GetMedicines().FirstOrDefault(item => item.NDCId == NDCid);
         }
 
         public IEnumerable<Medicine> GetMedicines()
@@ -152,24 +159,53 @@ namespace BL
             }
         }
 
-        public void SendSMS(string phoneNumber, string receiverName, string message)
+        public bool SendSMS(string phoneNumber, string receiverName, string message)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var client = new Client(creds: new Nexmo.Api.Request.Credentials
+                {
+                    ApiKey = "458e9f53",
+                    ApiSecret = "yFQBWJUuLGPsYiH3"
+                });
+                var results = client.SMS.Send(request: new SMS.SMSRequest
+                {
+                    from = "Vonage APIs",
+                    to = "972" + (int.Parse(phoneNumber)).ToString(),
+                    text = $"Hello,{receiverName}!\n{message}",
+                    type = "unicode"
+
+                });
+                return true;
+            } catch(Exception e) { throw new Exception(e.Message); }
         }
 
-        public void SignIn(string userName, string password)
+        public bool SignIn(int id, string password)
         {
-            throw new NotImplementedException();
+            User user = GetUserById(id);
+            if (user != null && user.Password == password)
+                return true;
+            return false;
+
         }
 
         public void SignUp(User newUser)
         {
-            throw new NotImplementedException();
+            if (!Validation.IsId(newUser.Id))
+                throw new Exception("מספר ת.ז לא תקין");
+            if (GetUserById(newUser.Id) == null)
+                throw new Exception("אינך רשום במערכת, אנא פנה למנהל");
+            if (newUser.UserType == UserTypeEnum.Doctor)
+                dal.UpdateDoctor((Doctor) newUser, newUser.Id);
+            if (newUser.UserType == UserTypeEnum.Manager)
+                dal.UpdateManager((Manager)newUser, newUser.Id);
+            if (newUser.UserType == UserTypeEnum.Patient)
+                dal.UpdatePatient((Patient)newUser, newUser.Id);
         }
 
-        public void UpdateMedicine(Medicine medicine,int Id)
+        public void UpdateMedicine(Medicine medicine,string NDCId)
         {
-            dal.UpdateMedicine(medicine,Id);
+            dal.UpdateMedicine(medicine,NDCId);
         }
 
         public void UpdatePatient(Patient patient, int Id)
@@ -182,10 +218,10 @@ namespace BL
             dal.UpdatePrescription(prescription,Id);
         }
 
-        public void UpdateUser(User user, int Id)
-        {
-            dal.UpdateUser(user,Id);
-        }
+        //public void UpdateUser(User user, int Id)
+        //{
+        //    dal.UpdateUser(user,Id);
+        //}
         public IEnumerable<Doctor> GetDoctors()
         {
             return dal.GetDoctors();
@@ -197,13 +233,11 @@ namespace BL
 
         public void AddDoctor(Doctor doctor)
         {
+            if (!Validation.ValidIdDB(doctor.PersonId))
+                throw new Exception("ת.ז. זו קיימת כבר");
             dal.AddDoctor(doctor);
         }
 
-        public void AddManager(Manager manager)
-        {
-            dal.AddManager(manager);
-        }
 
         public void UpdateDoctor(Doctor doctor, int Id)
         {
@@ -239,6 +273,11 @@ namespace BL
             return (from item in managers
                     where item.Id == id
                     select item).Single();
+        }
+
+        public void ReadExcelMedicines(string path, int sheet)
+        {
+            dal.ReadExcelMedicines(path,sheet);
         }
     }
 }

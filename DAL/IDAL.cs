@@ -10,7 +10,7 @@ namespace DAL
     public interface IDAL
     {
         // ADD
-        void AddUser(User user);
+        //void AddUser(User user);
         void AddDoctor(Doctor doctor);
         void AddManager(Manager manager);
         void AddMedicine(Medicine medicine);
@@ -18,17 +18,17 @@ namespace DAL
         void AddPrescription(Prescription prescription);
 
         // UPDATE
-        void UpdateUser(User user, int Id);
+        //void UpdateUser(User user, int Id);
         void UpdateDoctor(Doctor doctor, int Id);
         void UpdateManager(Manager manager, int Id);
-        void UpdateMedicine(Medicine medicine, int Id);
+        void UpdateMedicine(Medicine medicine, string Id);
         void UpdatePatient(Patient patient, int Id);
         void UpdatePrescription(Prescription prescription, int Id);
         // DELETE
-        void DeleteUser(int id);
+        //void DeleteUser(int id);
         void DeleteDoctor(int id);
         void DeleteManager(int id);
-        void DeleteMedicine(int id);
+        void DeleteMedicine(string id);
         void DeletePatient(int id);
         void DeletePrescription(int id);
         // GET
@@ -38,5 +38,7 @@ namespace DAL
         IEnumerable<Manager> GetManagers();
         IEnumerable<Medicine> GetMedicines();
         IEnumerable<Prescription> GetPrescriptions();
+        void ReadExcelMedicines(string path, int sheet);
+
     }
 }

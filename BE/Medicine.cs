@@ -9,10 +9,13 @@ namespace BE
     public class Medicine
     {
         public int Id { get; private set; }
+        public string NDCId { get; set; }
         public string GenericName { get; set; }
         public string Name { get; set; }
         public List<string> ActiveIngredients { get; set; }
         public string ImagePath { get; set; }
         public string Company { get; set; }
+        public Medicine() {  }
+        public Medicine(int id) { Id = id; }
     }
 }

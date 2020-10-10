@@ -10,5 +10,7 @@ namespace BE
     {
         public int LicenseNum { get; set; }
         public SpecialtyEnum Specialty { get; set; }
+        public Doctor() { }
+        public Doctor(int id):base(id) { }
     }
 }

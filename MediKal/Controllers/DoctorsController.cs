@@ -32,7 +32,7 @@ namespace MediKal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Doctor doctor =(Doctor) bl.GetUserById(id);
+            Doctor doctor =(Doctor) bl.GetDoctorById(id);
             if (doctor == null)
             {
                 return HttpNotFound();
@@ -54,7 +54,7 @@ namespace MediKal.Controllers
         public ActionResult Create([Bind(Include = "Id,LicenseNum,Specialty,UserName,Password,Phone,Mail,Birthday,UserType")] Doctor doctor)
         {
             IBL bl = new BL.BL();
-
+            //doctor.PersonId = 211466370;
             if (ModelState.IsValid)
             {
                 bl.AddDoctor(doctor);

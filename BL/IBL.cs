@@ -10,24 +10,24 @@ namespace BL
     public interface IBL
     {
         // ADD
-        void AddUser(User user);
+        //void AddUser(User user);
         void AddDoctor(Doctor doctor);
         void AddManager(Manager manager);
         void AddMedicine(Medicine medicine);
         void AddPatient(Patient patient);
         void AddPrescription(Prescription prescription);
         // UPDATE
-        void UpdateUser(User user, int Id);
+        //void UpdateUser(User user, int Id);
         void UpdateDoctor(Doctor doctor, int Id);
         void UpdateManager(Manager manager, int Id);
-        void UpdateMedicine(Medicine medicine, int Id);
+        void UpdateMedicine(Medicine medicine, string NDCId);
         void UpdatePatient(Patient patient, int Id);
         void UpdatePrescription(Prescription prescription, int Id);
         // DELETE
-        void DeleteUser(int id);
+        //void DeleteUser(int id);
         void DeleteDoctor(int id);
         void DeleteManager(int id);
-        void DeleteMedicine(int id);
+        void DeleteMedicine(string NDCid);
         void DeletePatient(int id);
         void DeletePrescription(int id);
         // GET
@@ -41,7 +41,7 @@ namespace BL
         User GetUserById(int id);
         Doctor GetDoctorById(int id);
         Manager GetManagerById(int id);
-        Medicine GetMedicineById(int id);
+        Medicine GetMedicineById(string NDCid);
         Patient GetPatientById(int id);
         Prescription GetPrescriptionById(int id);
         // FILTER
@@ -52,12 +52,13 @@ namespace BL
         List<Warning> GetConflicts(int medicineId, int patientId);
         // SEND
         void SendMail(string mailAdress, string receiverName, string message);
-        void SendSMS(string phoneNumber, string receiverName, string message);
+        bool SendSMS(string phoneNumber, string receiverName, string message);
         // ACCOUNT
-        void SignIn(string userName, string password);
+        bool SignIn(int id, string password);
         void SignUp(User newUser);
         void LogOut();
         void ForgotPassword(string mail);
+        void ReadExcelMedicines(string path, int sheet);
 
     }
 }
