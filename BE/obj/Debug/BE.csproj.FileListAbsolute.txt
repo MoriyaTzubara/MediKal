@@ -16,3 +16,4 @@ C:\Users\User\source\repos\MediKal\BE\obj\Debug\BE.dll
 C:\Users\User\source\repos\MediKal\BE\obj\Debug\BE.pdb
 C:\Users\User\Desktop\MediKal\BE\obj\Debug\BE.csproj.ResolveComReference.cache
 C:\Users\User\source\repos\MediKal\BE\obj\Debug\BE.csproj.ResolveComReference.cache
+C:\Users\User\source\repos\MediKal\BE\obj\Debug\BE.csprojAssemblyReference.cache

@@ -20,5 +20,7 @@ namespace MediKal.Models
         }
 
         public System.Data.Entity.DbSet<BE.Doctor> Doctors { get; set; }
+
+        public System.Data.Entity.DbSet<BE.Medicine> Medicines { get; set; }
     }
 }

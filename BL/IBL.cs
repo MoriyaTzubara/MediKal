@@ -20,14 +20,14 @@ namespace BL
         //void UpdateUser(User user, int Id);
         void UpdateDoctor(Doctor doctor, int Id);
         void UpdateManager(Manager manager, int Id);
-        void UpdateMedicine(Medicine medicine, string NDCId);
+        void UpdateMedicine(Medicine medicine, double NDCId);
         void UpdatePatient(Patient patient, int Id);
         void UpdatePrescription(Prescription prescription, int Id);
         // DELETE
         //void DeleteUser(int id);
         void DeleteDoctor(int id);
         void DeleteManager(int id);
-        void DeleteMedicine(string NDCid);
+        void DeleteMedicine(double NDCid);
         void DeletePatient(int id);
         void DeletePrescription(int id);
         // GET
@@ -41,7 +41,7 @@ namespace BL
         User GetUserById(int id);
         Doctor GetDoctorById(int id);
         Manager GetManagerById(int id);
-        Medicine GetMedicineById(string NDCid);
+        Medicine GetMedicineById(double NDCid);
         Patient GetPatientById(int id);
         Prescription GetPrescriptionById(int id);
         // FILTER
@@ -49,7 +49,7 @@ namespace BL
         IEnumerable<Prescription> GetPrescriptionsOfDoctor(int id);
         // VALIDATION
         bool IsMedicineImage(string imagePath);
-        List<Warning> GetConflicts(int medicineId, int patientId);
+        List<Warning> GetConflicts(double medicineId, int patientId);
         // SEND
         void SendMail(string mailAdress, string receiverName, string message);
         bool SendSMS(string phoneNumber, string receiverName, string message);

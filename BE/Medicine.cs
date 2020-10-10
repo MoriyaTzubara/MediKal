@@ -8,8 +8,8 @@ namespace BE
 {
     public class Medicine
     {
-        public int Id { get; private set; }
-        public string NDCId { get; set; }
+        public int Id { get; set; }
+        public double NDCId { get; set; }
         public string GenericName { get; set; }
         public string Name { get; set; }
         public List<string> ActiveIngredients { get; set; }

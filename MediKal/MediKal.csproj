@@ -243,6 +243,7 @@
     <Content Include="Views\Doctors\Details.cshtml" />
     <Content Include="Views\Doctors\Edit.cshtml" />
     <Content Include="Views\Doctors\Index.cshtml" />
+    <Content Include="Views\Medicines\AddImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
