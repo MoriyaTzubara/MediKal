@@ -4,7 +4,7 @@
     ViewBag.Title = "AddImage";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-@using (Html.BeginForm("Create", "Medicines"))
+@using (Html.BeginForm("Create", "Medicines",Model.medicine))
 {
     @Html.AntiForgeryToken()
 

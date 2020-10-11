@@ -116,7 +116,7 @@ namespace DAL
             {
                 using (var db = new MediKalDB())
                 {
-                    Medicine medicine = db.Medicines.Find(NDCid);
+                    Medicine medicine = db.Medicines.First(m => m.NDCId == NDCid);
                     db.Medicines.Remove(medicine);
                     db.SaveChanges();
                 }
