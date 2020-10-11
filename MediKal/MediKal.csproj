@@ -150,6 +150,7 @@
     <Compile Include="Controllers\MedicinesController.cs" />
     <Compile Include="Controllers\PatientsController.cs" />
     <Compile Include="Controllers\PrescriptionsController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -367,6 +368,7 @@
     <Content Include="Views\View.cshtml" />
     <Content Include="Views\Account\EnterId.cshtml" />
     <Content Include="Views\Account\EnterCode.cshtml" />
+    <Content Include="Views\Statistics\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

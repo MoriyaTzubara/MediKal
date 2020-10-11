@@ -390,6 +390,7 @@
     margin: 7px;
     font-weight: bold;
     text-overflow: initial;
+    font-family: Microsoft YaHei;
 }
 
     .blue-btn:hover {
@@ -408,6 +409,7 @@
     margin: 7px;
     font-weight: bold;
     text-overflow: initial;
+    font-family: Microsoft YaHei;
 }
 
     .green-btn:hover {
