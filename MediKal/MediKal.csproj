@@ -154,7 +154,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DoctorsContext.cs" />
+    <Compile Include="Models\DoctorViewModel.cs" />
     <Compile Include="Models\ExpansionHtmlHelper.cs" />
+    <Compile Include="Models\Extensions.cs" />
     <Compile Include="Models\MedicineViewModel.cs" />
     <Compile Include="Models\PatientViewModel.cs" />
     <Compile Include="Models\PrescriptionViewModel.cs" />
@@ -363,6 +365,8 @@
     <Content Include="Views\Shared\_ManagementLayout.cshtml" />
     <Content Include="Views\Shared\Succeeded.cshtml" />
     <Content Include="Views\View.cshtml" />
+    <Content Include="Views\Account\EnterId.cshtml" />
+    <Content Include="Views\Account\EnterCode.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

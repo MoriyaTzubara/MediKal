@@ -21,6 +21,20 @@ namespace MediKal.Controllers
         {
             return View();
         }
+        public ActionResult EnterId()
+        {
+            return View();
+        }
+        public ActionResult EnterCode(int Id)
+        {
+            IBL bl = new BL.BL();
+            var doctor = bl.GetDoctorById(Id);
+            if (doctor == null)
+            {
+                return View("Error");
+            }
+            return View(new DoctorViewModel(doctor));
+        }
         [HttpPost]
         public ActionResult SignIn(int Id, string Password)
         {
@@ -35,17 +49,23 @@ namespace MediKal.Controllers
             catch (Exception e) { return View(e.Message); }
         }
         [HttpGet]
-        public ActionResult SignUp()
+        public ActionResult SignUp(int Id)
         {
-            return View();
+            IBL bl = new BL.BL();
+            var doctor = bl.GetDoctorById(Id);
+            if (doctor == null)
+            {
+                return View("Error");
+            }
+            return View(new DoctorViewModel(doctor));
         }
         [HttpPost]
-        public ActionResult SignUp(int Id)
+        public ActionResult SignUp(DoctorViewModel doctorViewModel)
         {
             try
             {
                 IBL bl = new BL.BL();
-                User user = bl.GetUserById(Id);
+                User user = bl.GetUserById(doctorViewModel.Id);
                 //which view you want him to go to
                 return View();
             }

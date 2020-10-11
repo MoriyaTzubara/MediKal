@@ -1,0 +1,29 @@
+﻿
+@using (Html.BeginForm("EnterCode","Account"))
+{
+<div class="container">
+    <div class="m-5 p-3 row">
+        <div class="col-sm-1 col-md-1 col-lg-4 col-xl-4">
+        </div>
+        <div class="col-sm-10 col-md-10 col-lg-4 col-xl-4">
+            <form id="appointment-form" role="form" method="post" action="#">
+                <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+                    <img src="~/images/doctor.png" class="img-fluid" width="100" />
+                    <h2>Sign Up</h2>
+                    <p>*We'll send you an email code</p>
+                </div>
+
+                <div class="wow fadeInUp" data-wow-delay="0.8s">
+
+                    <div class="col-md-12 col-sm-12">
+                        @Html.TextBox("Id", "", new { @class = "form-control", placeholder = "Enter your ID" })
+                        <br />
+                        <button type="submit" class="green-btn" id="cf-submit" name="submit">Send me a code</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+}
