@@ -47,15 +47,14 @@ namespace MediKal.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "NDCId,GenericName,Name,ImagePath,Company")] Medicine medicine)
+        public ActionResult Create( Medicine medicine)
         {
-            if (ModelState.IsValid)
+            try
             {
                 IBL bl = new BL.BL();
                 bl.AddMedicine(medicine);
                 return RedirectToAction("Index");
-            }
-            return View(medicine);
+            }catch(Exception e) { return View(); }
         }
 
         // GET: Medicines/Edit/5
