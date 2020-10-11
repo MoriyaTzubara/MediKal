@@ -234,11 +234,13 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\about-bg.jpg" />
+    <Content Include="images\add-doctor.png" />
     <Content Include="images\ampoule.svg" />
     <Content Include="images\analysis.png" />
     <Content Include="images\appointment-image.jpg" />
     <Content Include="images\author-image.jpg" />
     <Content Include="images\doctor %281%29.png" />
+    <Content Include="images\doctor %282%29.png" />
     <Content Include="images\doctor.png" />
     <Content Include="images\green-bg.png" />
     <Content Include="images\medical-prescription.png" />
