@@ -35,7 +35,7 @@ namespace DAL
         public static bool ValidIdDB(int id)
         {
             DAL dal = new DAL();
-            if (dal.GetUsers().Any(u => u.PersonId == id))
+            if (dal.GetUsers().Any(u => u.Id == id))
                 return false;
             return true;
         }

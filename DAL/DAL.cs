@@ -77,15 +77,15 @@ namespace DAL
             //tmp.UserName = doctor.UserName;
             //tmp.UserType = doctor.UserType;
             //AddUser(tmp);
-            try
-            {
+            //try
+            //{
                 using (var db = new MediKalDB())
                 {
                     db.Doctors.Add(doctor);
                     db.SaveChanges();
                 }
-            }
-            catch (Exception e) { throw new Exception(e.Message); }
+            //}
+            //catch (Exception e) { throw new Exception(e.Message); }
         }
 
         public void AddManager(Manager manager)
@@ -357,7 +357,7 @@ namespace DAL
             {
                 using (var db = new MediKalDB())
                 {
-                    var tmp = db.Patients.First(p => p.PersonId == Id);
+                    var tmp = db.Patients.First(p => p.Id == Id);
                     tmp.Background = patient.Background;
                     tmp.Birthday = patient.Birthday;
                     tmp.BloodType = patient.BloodType;
@@ -416,7 +416,7 @@ namespace DAL
             {
                 using (var db = new MediKalDB())
                 {
-                    var tmp = db.Doctors.First(d => d.PersonId == Id);
+                    var tmp = db.Doctors.First(d => d.Id == Id);
                     tmp.Birthday = doctor.Birthday;
                     tmp.Mail = doctor.Mail;
                     tmp.Password = doctor.Password;
@@ -437,7 +437,7 @@ namespace DAL
             {
                 using (var db = new MediKalDB())
                 {
-                    var tmp = db.Managers.First(m => m.PersonId == Id);
+                    var tmp = db.Managers.First(m => m.Id == Id);
                     tmp.Birthday = manager.Birthday;
                     tmp.Mail = manager.Mail;
                     tmp.Password = manager.Password;
