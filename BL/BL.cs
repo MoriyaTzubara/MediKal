@@ -124,7 +124,7 @@ namespace BL
         {
             try
             {
-                return dal.GetUsers().First(item => item.Id == id);
+                return GetUsers().First(item => item.Id == id);
             }
             catch (ArgumentNullException e) { throw e; }
         }
@@ -301,6 +301,28 @@ namespace BL
                 return dal.FindMedicineInExcel(NDCId);
             }
             catch (Exception e) { throw e; }
+        }
+        public Doctor ConvertUserToDoctor(User user)
+        {
+            Doctor tmp = new Doctor();
+            tmp.Birthday = user.Birthday;
+            tmp.Mail = user.Mail;
+            tmp.Password = user.Password;
+            tmp.Phone = user.Phone;
+            tmp.UserName = user.UserName;
+            tmp.UserType = user.UserType;
+            return tmp;
+        }
+        public Patient ConvertUserToPatient(User user)
+        {
+            Patient tmp = new Patient();
+            tmp.Birthday = user.Birthday;
+            tmp.Mail = user.Mail;
+            tmp.Password = user.Password;
+            tmp.Phone = user.Phone;
+            tmp.UserName = user.UserName;
+            tmp.UserType = user.UserType;
+            return tmp;
         }
     }
 }

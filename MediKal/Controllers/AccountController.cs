@@ -28,12 +28,25 @@ namespace MediKal.Controllers
         public ActionResult EnterCode(int Id)
         {
             IBL bl = new BL.BL();
-            var doctor = bl.GetDoctorById(Id);
-            if (doctor == null)
+            var user = bl.GetUserById(Id);
+            if (user == null)
             {
                 return View("Error");
             }
-            return View(new DoctorViewModel(doctor));
+            string code = "1234";
+            Session["CorrectCode"] = code;
+            return View(new UserViewModel(user));
+        }
+        public ActionResult CheckCode(string CorrectCode, string Code,User user)
+        {
+            IBL bl = new BL.BL();
+            //sending error
+            if (CorrectCode != Code)
+                return View();
+            //correct
+            if (user.UserType == UserTypeEnum.Doctor)
+                return View("SignUpDoctor",new DoctorViewModel(bl.ConvertUserToDoctor(user)));
+            return View("SignUpPatient",new PatientViewModel(bl.ConvertUserToPatient(user)));
         }
         [HttpPost]
         public ActionResult SignIn(int Id, string Password)
@@ -43,22 +56,28 @@ namespace MediKal.Controllers
                 IBL bl = new BL.BL();
                 User user = bl.SignIn(Id, Password);
                 RouteConfig.user = user;
-                return Redirect("~/Account");
+                return View("Index");
 
             }
             catch (Exception e) { return View(e.Message); }
         }
+
         [HttpGet]
-        public ActionResult SignUp(int Id)
+        public ActionResult SignUp()
         {
-            IBL bl = new BL.BL();
-            var doctor = bl.GetDoctorById(Id);
-            if (doctor == null)
-            {
-                return View("Error");
-            }
-            return View(new DoctorViewModel(doctor));
+            return View("EnterId");
         }
+        [HttpGet]
+        //public ActionResult SignUp(int Id)
+        //{
+        //    IBL bl = new BL.BL();
+        //    var doctor = bl.GetDoctorById(Id);
+        //    if (doctor == null)
+        //    {
+        //        return View("Error");
+        //    }
+        //    return View(new DoctorViewModel(doctor));
+        //}
         [HttpPost]
         public ActionResult SignUp(DoctorViewModel doctorViewModel)
         {

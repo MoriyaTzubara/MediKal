@@ -61,6 +61,9 @@ namespace BL
         void LogOut();
         void ForgotPassword(string mail);
         void ReadExcelMedicines(string path, int sheet);
+        //CONVERT
+        Patient ConvertUserToPatient(User user);
+        Doctor ConvertUserToDoctor(User user);
 
     }
 }
