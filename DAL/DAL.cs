@@ -452,7 +452,7 @@ namespace DAL
 
         public void ReadExcelMedicines(string path, int sheet)
         {
-            Excel excel = new Excel(@"C:\Users\User\Desktop\my version.xls",1);
+            Excel excel = new Excel(System.Web.HttpContext.Current.Server.MapPath(path).Replace(@"MediKal\MediKal\DAL\MedicinesExcel\my version.xls", @"MediKal\DAL\MedicinesExcel\my version.xls"), 1);
             Medicine medicine ;
             for (int i = 2; i < 102; i++)
             {
@@ -470,8 +470,10 @@ namespace DAL
                 return null;
             if (NDCId[4] != '-') 
                 return null;
-
-            Excel excel = new Excel(@"C:\Users\User\Desktop\my version.xls", 1);
+            string startupPath = Environment.CurrentDirectory;
+            string path = $"~/DAL/MedicinesExcel/my version.xls";
+            
+            Excel excel = new Excel(System.Web.HttpContext.Current.Server.MapPath(path).Replace(@"MediKal\MediKal\DAL\MedicinesExcel\my version.xls", @"MediKal\DAL\MedicinesExcel\my version.xls"), 1);
             Medicine medicine;
             double id = Double.Parse(NDCId.Replace("-", "."));
             int i = BinarySearch(excel,id, 2, 16384);
