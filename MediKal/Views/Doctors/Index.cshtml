@@ -10,6 +10,53 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<div class="row">
+            <div class="col-4">
+                <div class="profile-card text-center shadow">
+
+                    <img class="bg-img" src="~/images/green-bg.png">
+                    <div class="profile-info">
+                        <img class="profile-pic" src="~/images/appointment-image.jpg">
+                        <h3 class="hvr-underline-from-center">Rod</h3>
+                        <a href="https://www.twitter.com/mike_youngg"><i class="fa fa-twitter"></i></a>
+                        <a href="mailto:michael_y@live.co.uk"><i class="fa fa-envelope-o"></i></a>
+                        <a href="https://www.linkedin.com"><i class="fa fa-linkedin"></i></a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="profile-card text-center shadow">
+
+                    <img class="bg-img" src="~/images/green-bg.png">
+                    <div class="profile-info">
+                        <img class="profile-pic" src="~/images/appointment-image.jpg">
+                        <h3 class="hvr-underline-from-center">Rod</h3>
+                        <a href="https://www.twitter.com/mike_youngg"><i class="fa fa-twitter"></i></a>
+                        <a href="mailto:michael_y@live.co.uk"><i class="fa fa-envelope-o"></i></a>
+                        <a href="https://www.linkedin.com"><i class="fa fa-linkedin"></i></a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="profile-card text-center shadow">
+
+                    <img class="bg-img" src="~/images/green-bg.png">
+                    <div class="profile-info">
+                        <img class="profile-pic" src="~/images/appointment-image.jpg">
+                        <h3 class="hvr-underline-from-center">Rod</h3>
+                        <a href="https://www.twitter.com/mike_youngg"><i class="fa fa-twitter"></i></a>
+                        <a href="mailto:michael_y@live.co.uk"><i class="fa fa-envelope-o"></i></a>
+                        <a href="https://www.linkedin.com"><i class="fa fa-linkedin"></i></a>
+                    </div>
+
+                </div>
+            </div>
+</div>
+
+
 <table class="table">
     <tr>
         <th>
@@ -39,38 +86,39 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.LicenseNum)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Specialty)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Birthday)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserType)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LicenseNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Specialty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserType)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>
