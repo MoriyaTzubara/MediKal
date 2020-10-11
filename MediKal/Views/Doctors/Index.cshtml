@@ -4,59 +4,38 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div>
+    <img src="~/images/add-doctor.png" class="mt-0 pt-0" height="160" />
+    <a href="~/Doctors/create" class="social-button">
+        <span class="fa fa-lg fa-plus"></span>
+    </a>
+    <h2 style="display:inline;margin-left:90px;">Medicines <span class="badge badge-pill bg-green">@Model.Count()</span></h2>
+</div>
+<hr />
 
 <div class="row">
-            <div class="col-4">
-                <div class="profile-card text-center shadow">
+    @foreach (var item in Model)
+    {
+        <div class="col-4 text-left">
+            <div class="profile-card text-center shadow">
 
-                    <img class="bg-img" src="~/images/green-bg.png">
-                    <div class="profile-info">
-                        <img class="profile-pic" src="~/images/appointment-image.jpg">
-                        <h3 class="hvr-underline-from-center">Rod</h3>
-                        <a href="https://www.twitter.com/mike_youngg"><i class="fa fa-twitter"></i></a>
-                        <a href="mailto:michael_y@live.co.uk"><i class="fa fa-envelope-o"></i></a>
-                        <a href="https://www.linkedin.com"><i class="fa fa-linkedin"></i></a>
-                    </div>
-
+                <img class="bg-img" src="~/images/green-bg.png">
+                <div class="profile-info">
+                    <i class="profile-pic"><img src="~/images/doctor (2).png" width="50"></i>
+                    <h3 class="hvr-underline-from-center">Dr. @item.UserName</h3>
+                    <p><i class="fa fa-phone"></i><br /> @item.Phone</p>
+                    <p><i class="fa fa-envelope-o"></i><br /> @item.Mail</p>
+                    <button class="btn blue-btn"><i class="fa fa-eye"></i> Prescriptions</button>
                 </div>
+
             </div>
-            <div class="col-4">
-                <div class="profile-card text-center shadow">
-
-                    <img class="bg-img" src="~/images/green-bg.png">
-                    <div class="profile-info">
-                        <img class="profile-pic" src="~/images/appointment-image.jpg">
-                        <h3 class="hvr-underline-from-center">Rod</h3>
-                        <a href="https://www.twitter.com/mike_youngg"><i class="fa fa-twitter"></i></a>
-                        <a href="mailto:michael_y@live.co.uk"><i class="fa fa-envelope-o"></i></a>
-                        <a href="https://www.linkedin.com"><i class="fa fa-linkedin"></i></a>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="profile-card text-center shadow">
-
-                    <img class="bg-img" src="~/images/green-bg.png">
-                    <div class="profile-info">
-                        <img class="profile-pic" src="~/images/appointment-image.jpg">
-                        <h3 class="hvr-underline-from-center">Rod</h3>
-                        <a href="https://www.twitter.com/mike_youngg"><i class="fa fa-twitter"></i></a>
-                        <a href="mailto:michael_y@live.co.uk"><i class="fa fa-envelope-o"></i></a>
-                        <a href="https://www.linkedin.com"><i class="fa fa-linkedin"></i></a>
-                    </div>
-
-                </div>
-            </div>
+        </div>
+    }
 </div>
 
-
+<br />
+<br />
+<br />
 <table class="table">
     <tr>
         <th>
