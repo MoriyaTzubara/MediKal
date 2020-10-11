@@ -13,30 +13,50 @@
     <div class="row">
         <div class="col-sm-1 col-md-1 col-lg-4 col-xl-4"></div>
         <div class="col-sm-10 col-md-10 col-lg-4 col-xl-4">
-            <img src="~/images/doctor.png" height="100" width="100" />
-            <br />
-            <br />
-            <h4>Invite Doctor</h4>
-            <p>*An invitation email for registration will be sent to the doctor</p>
-            <br />
-            <div class="form-group">
-                <div>
-                    @Html.TextBox("Id", null, new { @class = "form-control", placeholder = "Enter ID" })
-                    @Html.Label("Invalid ID number", new { @class = "text-danger" })
-                    @*@Html.Label(Session["Message"].ToString(), new { @class = "text-danger" })*@
+            @{ if (ViewBag.IsSucceeded == null)
+                {
+                    <div>
+                        <img src="~/images/doctor.png" height="100" width="100" />
+                        <br />
+                        <br />
+                        <h4>Invite Doctor</h4>
+                        <p>*An invitation email for registration will be sent to the doctor</p>
+                        <br />
+                        <div class="form-group">
+                            <div>
+                                @Html.TextBox("Id", null, new { @class = "form-control", placeholder = "Enter ID" })
+                                @Html.Label("Invalid ID number", new { @class = "text-danger" })
+                                @*@Html.Label(Session["Message"].ToString(), new { @class = "text-danger" })*@
+                                <br />
+                                @Html.TextBox("Mail", null, new { @class = "form-control", placeholder = "Enter Email" })
+                                @Html.Label("Invalid mail address", new { @class = "text-danger" })
+                                @*@Html.Label(Session["Message"].ToString(), new { @class = "text-danger" })*@
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <input type="submit" value="Invite" class="btn blue-btn" />
+                                <a href="~/Doctors" class="btn green-btn">Back to List</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (ViewBag.IsSucceeded == false)
+                {
+                    <img src="~/images/emoji.png" height="100" width="100" />
                     <br />
-                    @Html.TextBox("Mail", null, new { @class = "form-control", placeholder = "Enter Email" })
-                    @Html.Label("Invalid mail address", new { @class = "text-danger" })
-                    @*@Html.Label(Session["Message"].ToString(), new { @class = "text-danger" })*@
-                </div>
-            </div>
-            <div class="form-group">
-                <div>
-                    <input type="submit" value="Invite" class="btn blue-btn" />
-                    <a href="~/Doctors" class="btn green-btn">Back to List</a>
-                </div>
-            </div>
+                    <br />
+                    <h2>Oops something went wrong, please try again later</h2>
 
+                }
+                else if (ViewBag.IsSucceeded == true)
+                {
+                    <img src="~/images/sent.png" height="100" width="100" />
+                    <br />
+                    <br />
+                    <h2>The invitation was sent successfully</h2>
+                }
+            }
         </div>
     </div>
 }

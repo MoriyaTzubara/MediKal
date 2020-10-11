@@ -242,6 +242,7 @@
     <Content Include="images\doctor %281%29.png" />
     <Content Include="images\doctor %282%29.png" />
     <Content Include="images\doctor.png" />
+    <Content Include="images\emoji.png" />
     <Content Include="images\green-bg.png" />
     <Content Include="images\medical-prescription.png" />
     <Content Include="images\medicine.png" />
@@ -253,6 +254,7 @@
     <Content Include="images\one-medicine.png" />
     <Content Include="images\prescription.svg" />
     <Content Include="images\profile.png" />
+    <Content Include="images\sent.png" />
     <Content Include="images\slider1.jpg" />
     <Content Include="images\slider2.jpg" />
     <Content Include="images\slider3.jpg" />
@@ -341,6 +343,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_ManagementLayout.cshtml" />
+    <Content Include="Views\Shared\Succeeded.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">
