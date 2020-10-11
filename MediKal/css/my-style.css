@@ -261,6 +261,14 @@
 .round {
     border-radius: 50%;
 }
+.bg-blue {
+    background-color: #00d6c8;
+    color: white;
+}
+.bg-green {
+    background-color: #59ed2e;
+    color: white;
+}
 .blue-btn, .blue-btn:link, .blue-btn:active {
     cursor: pointer;
     border: none;
@@ -270,7 +278,7 @@
     border-radius: 20px;
     text-decoration: none;
     font-size: medium;
-    margin-top: 15px;
+    margin: 7px;
     font-weight: bold;
     text-overflow: initial;
 }
@@ -288,7 +296,7 @@
     border-radius: 20px;
     text-decoration: none;
     font-size: medium;
-    margin-top: 15px;
+    margin: 7px;
     font-weight: bold;
     text-overflow: initial;
 }

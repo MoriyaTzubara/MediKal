@@ -122,6 +122,11 @@ namespace MediKal.Controllers
                 Session["Message"] = "NDCId not found";
                 return View("Create");
             }
+            if(bl.GetMedicineById(medicine.NDCId)!=null)
+            {
+                Session["Message"] = "The medicine already exists";
+                return View("Create");
+            }
             else 
             return View("AddImage",new MedicineViewModel(medicine));
         }
