@@ -4,43 +4,38 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section id="appointment" data-stellar-background-ratio="3">
-    <div class="container">
-        <div class="row">
+        <div class="m-5 p-3 row">
+            <div class="col-sm-1 col-md-1 col-lg-4 col-xl-4"></div>
+            <div class="col-sm-10 col-md-10 col-lg-4 col-xl-4">
+                <div class="col-md-6 col-sm-6">
+                    <br />
+                    <br />
+                    <br />
+                    <!-- CONTACT FORM HERE -->
+                    <form id="appointment-form" role="form" method="post" action="#">
 
-            <div class="col-md-6 col-sm-6">
-                <img src="~/images/appointment-image.jpg" width="500" height="500" class="img-responsive" alt="">
-            </div>
-
-            <div class="col-md-6 col-sm-6">
-                <br />
-                <br />
-                <br />
-                <!-- CONTACT FORM HERE -->
-                <form id="appointment-form" role="form" method="post" action="#">
-
-                    <!-- SECTION TITLE -->
-                    <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
-                        <h2>Sign Up</h2>
-                    </div>
-
-                    <div class="wow fadeInUp" data-wow-delay="0.8s">
-                        <div class="col">
-                            <label for="name">User Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Full Name">
+                        <!-- SECTION TITLE -->
+                        <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+                            <h2>Sign Up</h2>
                         </div>
 
-                        <div class="col">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
-                        </div>
+                        <div class="wow fadeInUp" data-wow-delay="0.8s">
+                            <div class="col">
+                                <label for="name">User Name</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Full Name">
+                            </div>
 
-                        <div class="col">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="email" name="email" placeholder="Your Password">
-                        </div>
+                            <div class="col">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
+                            </div>
 
-                        @*<div class="col-md-6 col-sm-6">
+                            <div class="col">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="email" name="email" placeholder="Your Password">
+                            </div>
+
+                            @*<div class="col-md-6 col-sm-6">
                                 <label for="select">Select Department</label>
                                 <select class="form-control">
                                     <option>General Health</option>
@@ -50,18 +45,17 @@
                                 </select>
                             </div>*@
 
-                        <div class="col">
-                            @*<label for="telephone">Phone Number</label>
+                            <div class="col">
+                                @*<label for="telephone">Phone Number</label>
                                 <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone">
                                 <label for="Message">Additional Message</label>
                                 <textarea class="form-control" rows="5" id="message" name="message" placeholder="Message"></textarea>*@
-                            <br />
-                            <button type="submit" class="form-control" id="cf-submit" name="submit">Sign Up</button>
+                                <br />
+                                <button class="green-btn" type="submit" id="cf-submit" name="">Sign Up</button>
+                            </div>
                         </div>
-                    </div>
-                </form>
-            </div>
+                    </form>
+                </div>
 
+            </div>
         </div>
-    </div>
-</section>
