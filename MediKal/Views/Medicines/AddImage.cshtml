@@ -6,40 +6,42 @@
 }
 @using (Html.BeginForm("Create", "Medicines"))
 {
-<div class="row">
-    <div class="col-sm-1 col-md-1 col-lg-4 col-xl-4"></div>
-    <div class="col-sm-10 col-md-10 col-lg-4 col-xl-4">
-        <img src="~/images/ampoule.svg" height="100" width="100" />
-        <h3>@Model.GenericName</h3>
-        <br />
+    @Html.AntiForgeryToken()
 
-        <div class="text-left">
-            <b> @Html.DisplayNameFor(model => model.Name) : </b>
-            @Html.DisplayFor(model => model.Name)
-            <hr />
-            <b>@Html.DisplayNameFor(model => model.Company) : </b>
-            @Html.DisplayFor(model => model.Company)
-            <hr />
-        </div>
-        @*<div>
-            <input type="file" name="ImagePath" />
-            <div>
-                <input type="file" class="custom-file-input" id="customFile" name="ImagePath">
+    <div class="row">
+        <div class="col-sm-1 col-md-1 col-lg-4 col-xl-4"></div>
+        <div class="col-sm-10 col-md-10 col-lg-4 col-xl-4">
+            <img src="~/images/ampoule.svg" height="100" width="100" />
+            <h3>@Model.GenericName</h3>
+            <br />
+
+            <div class="text-left">
+                <b> @Html.DisplayNameFor(model => model.Name) : </b>
+                @Html.DisplayFor(model => model.Name)
+                <hr />
+                <b>@Html.DisplayNameFor(model => model.Company) : </b>
+                @Html.DisplayFor(model => model.Company)
+                <hr />
             </div>
-        </div>*@
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile" name="ImagePath">
-            <label class="custom-file-label" for="customFile">Choose Image</label>
-        </div>
-        @*@Html.Label("Check Image", new { @class = "text-danger" })*@
-        <br />
-        <br />
-        <div>
-            <input type="submit" value="Add Medicine" class="btn blue-btn" />
-            <a href="~/Medicines" class="btn green-btn">Back to List</a>
+            @*<div>
+                    <input type="file" name="ImagePath" />
+                    <div>
+                        <input type="file" class="custom-file-input" id="customFile" name="ImagePath">
+                    </div>
+                </div>*@
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFile" name="ImagePath">
+                <label class="custom-file-label" for="customFile">Choose Image</label>
+            </div>
+            @*@Html.Label("Check Image", new { @class = "text-danger" })*@
+            <br />
+            <br />
+            <div>
+                <input type="submit" value="Add Medicine" class="btn blue-btn" />
+                <a href="~/Medicines" class="btn green-btn">Back to List</a>
+            </div>
+
         </div>
 
     </div>
-
-</div>
 }
