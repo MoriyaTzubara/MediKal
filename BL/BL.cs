@@ -118,7 +118,11 @@ namespace BL
 
         public User GetUserById(int id)
         {
-            return dal.GetUsers().FirstOrDefault(item => item.Id == id);
+            try
+            {
+                return dal.GetUsers().First(item => item.Id == id);
+            }
+            catch (ArgumentNullException e) { throw e; }
         }
 
         public IEnumerable<User> GetUsers()
@@ -180,13 +184,12 @@ namespace BL
             } catch(Exception e) { throw new Exception(e.Message); }
         }
 
-        public bool SignIn(int id, string password)
+        public User SignIn(int id, string password)
         {
             User user = GetUserById(id);
             if (user != null && user.Password == password)
-                return true;
-            return false;
-
+                return user;
+            throw new Exception("user was not found");
         }
 
         public void SignUp(User newUser)
@@ -202,7 +205,6 @@ namespace BL
             if (newUser.UserType == UserTypeEnum.Patient)
                 dal.UpdatePatient((Patient)newUser, newUser.Id);
         }
-
         public void UpdateMedicine(Medicine medicine,double NDCId)
         {
             dal.UpdateMedicine(medicine,NDCId);

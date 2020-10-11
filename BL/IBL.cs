@@ -56,7 +56,7 @@ namespace BL
         void SendMail(string mailAdress, string receiverName, string message);
         bool SendSMS(string phoneNumber, string receiverName, string message);
         // ACCOUNT
-        bool SignIn(int id, string password);
+        User SignIn(int id, string password);
         void SignUp(User newUser);
         void LogOut();
         void ForgotPassword(string mail);

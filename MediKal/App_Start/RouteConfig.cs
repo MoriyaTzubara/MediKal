@@ -10,7 +10,7 @@ namespace MediKal
 {
     public class RouteConfig
     {
-        public User user = null;
+        public static User user = null;
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
