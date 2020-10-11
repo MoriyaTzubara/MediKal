@@ -23,8 +23,10 @@ namespace BL
 
         public void AddPatient(Patient patient)
         {
-            if(!Validation.ValidIdDB(patient.PersonId))
+            if(!Validation.ValidIdDB(patient.Id))
                 throw new Exception("ת.ז. זו קיימת כבר");
+            if (!Validation.IsEmail(patient.Mail))
+                throw new Exception("כתובת מייל לא חוקית");
             dal.AddPatient(patient);
         }
 
@@ -35,8 +37,10 @@ namespace BL
 
         public void AddManager(Manager manager)
         {
-            if (!Validation.ValidIdDB(manager.PersonId))
+            if (!Validation.ValidIdDB(manager.Id))
                 throw new Exception("ת.ז. זו קיימת כבר");
+            if (!Validation.IsEmail(manager.Mail))
+                throw new Exception("כתובת מייל לא חוקית");
             dal.AddManager(manager);
         }
 
@@ -212,6 +216,8 @@ namespace BL
 
         public void UpdatePatient(Patient patient, int Id)
         {
+            if (!Validation.IsEmail(patient.Mail))
+                throw new Exception("כתובת מייל לא חוקית");
             dal.UpdatePatient(patient,Id);
         }
 
@@ -235,19 +241,25 @@ namespace BL
 
         public void AddDoctor(Doctor doctor)
         {
-            if (!Validation.ValidIdDB(doctor.PersonId))
+            if (!Validation.ValidIdDB(doctor.Id))
                 throw new Exception("ת.ז. זו קיימת כבר");
+            if(!Validation.IsEmail(doctor.Mail))
+                throw new Exception("כתובת מייל לא חוקית");
             dal.AddDoctor(doctor);
         }
 
 
         public void UpdateDoctor(Doctor doctor, int Id)
         {
+            if (!Validation.IsEmail(doctor.Mail))
+                throw new Exception("כתובת מייל לא חוקית");
             dal.UpdateDoctor(doctor, Id);
         }
 
         public void UpdateManager(Manager manager, int Id)
         {
+            if (!Validation.IsEmail(manager.Mail))
+                throw new Exception("כתובת מייל לא חוקית");
             dal.UpdateManager(manager, Id);
         }
 

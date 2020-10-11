@@ -50,6 +50,7 @@ namespace MediKal.Controllers
             if (ModelState.IsValid)
             {
                 IBL bl = new BL.BL();
+                patient.UserType = UserTypeEnum.Patient;
                 bl.AddPatient(patient);
                 return RedirectToAction("Index");
             }

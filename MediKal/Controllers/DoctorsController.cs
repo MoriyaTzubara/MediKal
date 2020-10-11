@@ -57,6 +57,7 @@ namespace MediKal.Controllers
             //doctor.PersonId = 211466370;
             if (ModelState.IsValid)
             {
+                doctor.UserType = UserTypeEnum.Doctor;
                 bl.AddDoctor(doctor);
                 return RedirectToAction("Index");
             }

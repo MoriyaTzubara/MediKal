@@ -34,10 +34,12 @@ namespace MediKal.Controllers
             }
             catch (Exception e) { return View(e.Message); }
         }
+        [HttpGet]
         public ActionResult SignUp()
         {
             return View();
         }
+        [HttpPost]
         public ActionResult SignUp(int Id)
         {
             try

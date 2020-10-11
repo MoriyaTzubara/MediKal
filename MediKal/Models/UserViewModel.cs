@@ -33,7 +33,7 @@ namespace MediKal.Models
             set { user.Mail = value; }
         }
 
-        public DateTime Birthday
+        public DateTime? Birthday
         {
             get { return user.Birthday; }
             set { user.Birthday = value; }

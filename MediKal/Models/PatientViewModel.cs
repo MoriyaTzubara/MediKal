@@ -27,7 +27,7 @@ namespace MediKal.Models
             set { patient.Background = value; }
         }
 
-        public DateTime Birthday
+        public DateTime? Birthday
         {
             get { return patient.Birthday; }
             set { patient.Birthday = value; }
