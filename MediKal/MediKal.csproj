@@ -362,6 +362,7 @@
     <None Include="packages.config" />
     <Content Include="Views\Shared\_ManagementLayout.cshtml" />
     <Content Include="Views\Shared\Succeeded.cshtml" />
+    <Content Include="Views\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">
