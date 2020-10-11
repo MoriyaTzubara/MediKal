@@ -248,3 +248,4 @@ C:\Users\User\Desktop\פרויקטים\MediKal-11-10-2020\MediKal\DAL\obj\Debug\
 C:\Users\User\Desktop\פרויקטים\MediKal-11-10-2020\MediKal\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\User\Desktop\פרויקטים\MediKal-11-10-2020\MediKal\DAL\obj\Debug\DAL.dll
 C:\Users\User\Desktop\פרויקטים\MediKal-11-10-2020\MediKal\DAL\obj\Debug\DAL.pdb
+C:\Users\User\Desktop\MediKal\DAL\bin\Debug\credentials.json
