@@ -22,11 +22,14 @@
     </head>
 
     <div class="m-3 p-5">
-        <div id="filters">
+        <div id="filters" class="text-center">
             <!-- Button trigger modal -->
-            <button type="button" class="blue-btn" data-toggle="modal" data-target="#exampleModal">
-                filters
-            </button>
+            <h1>
+                Statistics            
+                <button type="button" class="blue-btn" data-toggle="modal" data-target="#exampleModal">
+                    filters
+                </button>
+            </h1>
         </div>
         <div id="data-table-chart.js">
             <div>
@@ -47,7 +50,7 @@
                     data: {
                         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
                         datasets: [{
-                            label: 'My First dataset',
+                            label: 'Medicine 1',
                             backgroundColor: window.chartColors.blue,
                             borderColor: window.chartColors.red,
                             data: [
@@ -61,7 +64,7 @@
                             ],
                             fill: false,
                         }, {
-                            label: 'My Second dataset',
+                            label: 'Medicine 2',
                             fill: false,
                             backgroundColor: window.chartColors.blue,
                             borderColor: window.chartColors.green,
