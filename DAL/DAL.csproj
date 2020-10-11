@@ -158,6 +158,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="credentials.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="MedicinesExcel\my version.xls" />
     <None Include="packages.config" />
   </ItemGroup>
