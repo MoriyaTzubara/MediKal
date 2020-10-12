@@ -51,6 +51,7 @@ namespace MediKal.Controllers
             if (ModelState.IsValid)
             {
                 IBL bl = new BL.BL();
+                prescription.PrescriptionDate = DateTime.Now;
                 bl.AddPrescription(prescription);
                 return RedirectToAction("Index");
             }
