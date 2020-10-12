@@ -274,6 +274,7 @@
     <Content Include="images\news-image2.jpg" />
     <Content Include="images\news-image3.jpg" />
     <Content Include="images\one-medicine.png" />
+    <Content Include="images\prescription.png" />
     <Content Include="images\prescription.svg" />
     <Content Include="images\profile.png" />
     <Content Include="images\sent.png" />
@@ -329,7 +330,6 @@
     <Content Include="Views\Account\SignUpDoctor.cshtml" />
     <Content Include="Views\Shared\_UserLayout.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
-    <Content Include="Views\Prescriptions\Create.cshtml" />
     <Content Include="Views\Prescriptions\Delete.cshtml" />
     <Content Include="Views\Prescriptions\Details.cshtml" />
     <Content Include="Views\Prescriptions\Edit.cshtml" />
@@ -372,6 +372,7 @@
     <Content Include="Views\Statistics\Index.cshtml" />
     <Content Include="Views\Prescriptions\PdfViewer.cshtml" />
     <Content Include="Views\Shared\_PrintLayout.cshtml" />
+    <Content Include="Views\Prescriptions\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">
