@@ -26,7 +26,7 @@ namespace MediKal.Models
         static public Medicine GetMedicine(this Prescription prescription)
         {
             IBL bl = new BL.BL();
-            return bl.GetMedicineById(prescription.MedicineId);
+            return bl.GetMedicineByPrimaryId(prescription.MedicineId);
         }
         static public int GetAge(this Patient user)
         {
