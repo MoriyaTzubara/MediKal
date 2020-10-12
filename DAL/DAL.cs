@@ -252,8 +252,8 @@ namespace DAL
 
         public IEnumerable<Prescription> GetPrescriptions()
         {
-            try
-            {
+            //try
+            //{
                 List<Prescription> result = new List<Prescription>();
                 using (var db = new MediKalDB())
                 {
@@ -263,8 +263,8 @@ namespace DAL
                     }
                 }
                 return result;
-            }
-            catch (Exception e) { throw new Exception(e.Message); }
+            //}
+            //catch (Exception e) { throw new Exception(e.Message); }
 
         }
 
