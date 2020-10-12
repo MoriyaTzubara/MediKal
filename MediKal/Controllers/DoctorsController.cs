@@ -125,5 +125,17 @@ namespace MediKal.Controllers
             bl.DeleteDoctor(id);
             return RedirectToAction("Index");
         }
+        public ActionResult InviteDoctor(Doctor doctor)
+        {
+            IBL bl = new BL.BL();
+            if (ModelState.IsValid) {
+                bl.AddDoctor(doctor);
+                //string link = $"{HttpContext.Current.Request.Url.Host}:{}"
+                bl.SendMail(doctor.Mail, "", "You are invited to sign up for Medical :) <a href='~/Account/SignUp'> Sign up </a>");
+                ViewBag.IsSucceeded = true;
+                return View("Create", doctor);
+            }
+            return View("Create", doctor);
+        }
     }
 }
