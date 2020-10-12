@@ -124,7 +124,7 @@ namespace BL
         {
             try
             {
-                return GetUsers().First(item => item.Id == id);
+                return GetUsers().FirstOrDefault(item => item.Id == id);
             }
             catch (ArgumentNullException e) { throw e; }
         }

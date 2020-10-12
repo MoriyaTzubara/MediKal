@@ -131,13 +131,17 @@ namespace MediKal.Controllers
             Session["ErrorId"] = "";
             IBL bl = new BL.BL();
             if (ModelState.IsValid) {
-                if (!bl.IsId(doctor.Id))
+                if (!bl.IsId(doctor.Id.ToString()))
                 {
                     Session["ErrorId"] = "Invalid ID";
+                    return View("Create", new DoctorViewModel(doctor));
+
                 }
                 if (bl.GetDoctorById(doctor.Id) != null)
                 {
                     Session["ErrorId"] = "ID already exists";
+                    return View("Create", new DoctorViewModel(doctor));
+
                 }
                 bl.AddDoctor(doctor);
                 //string link = $"{HttpContext.Current.Request.Url.Host}:{}"

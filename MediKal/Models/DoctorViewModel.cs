@@ -45,6 +45,7 @@ namespace MediKal.Models
             set { doctor.LicenseNum = value; }
         }
         [Required(ErrorMessage = "required field")]
+        [EmailAddress]
         public string Mail
         {
             get { return doctor.Mail; }

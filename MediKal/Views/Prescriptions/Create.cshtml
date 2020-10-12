@@ -18,7 +18,6 @@
             <h4>Add Prescription</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.prescription.Id)
 
             <div class="form-group">
                 @Html.LabelFor(model => model.DoctorId, htmlAttributes: new { @class = "control-label" })

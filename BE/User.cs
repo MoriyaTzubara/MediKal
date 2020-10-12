@@ -10,7 +10,7 @@ namespace BE
     public class User
     {
         [Key]
-        public int PrimaryId { get; private set; }
+        public int PrimaryId { get; set; }
 
         public int Id { get; set; }
         public string UserName { get; set; }
@@ -21,20 +21,19 @@ namespace BE
         public UserTypeEnum UserType { get; set; }
         public User() {
             this.Birthday = null;
-            this.Mail = "";
-            this.Password = "";
-            this.Phone = "";
-            this.UserName = "";
-            Id = 0;
+            this.Mail = null;
+            this.Password = null;
+            this.Phone = null;
+            this.UserName = null;
         }
         public User(int id)
         {
             this.Birthday = null;
-            this.Mail = "";
-            this.Password = "";
-            this.Phone = "";
-            this.UserName = "";
-            Id = id;
+            this.Mail = null;
+            this.Password = null;
+            this.Phone = null;
+            this.UserName = null;
+            this.Id = id;
 
         }
         public User(User user)

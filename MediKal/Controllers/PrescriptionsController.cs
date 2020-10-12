@@ -46,7 +46,7 @@ namespace MediKal.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,PatientId,DoctorId,NumOfTimes,Frequency,StartTime,EndTime,MedicineId,Comments")] Prescription prescription)
+        public ActionResult Create(Prescription prescription)
         {
             if (ModelState.IsValid)
             {
@@ -55,7 +55,7 @@ namespace MediKal.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(prescription);
+            return View(new PrescriptionViewModel(prescription));
         }
 
         // GET: Prescriptions/Edit/5
