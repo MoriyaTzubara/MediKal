@@ -9,6 +9,7 @@ namespace BE
     public class Prescription
     {
         public int Id { get; set; }
+        public DateTime PrescriptionDate { get; set; }
         public int PatientId { get; set; }
         public int DoctorId { get; set; }
         public int NumOfTimes { get; set; }//כמה פעמים לוקחים את התרופה

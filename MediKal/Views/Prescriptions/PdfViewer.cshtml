@@ -1,4 +1,5 @@
 ﻿@model MediKal.Models.PrescriptionViewModel
+    @using MediKal.Models
 @{
     Layout = "~/Views/Shared/_PrintLayout.cshtml";
 }
@@ -11,27 +12,91 @@
     <hr />
     <br />
     <div id="details">
-        <p>
-            <b>@Html.DisplayNameFor(model => model.PatientId) : </b>
-            @Html.DisplayFor(model => model.PatientId)
-        </p>
-        <br />
-        <p>
-            <b>@Html.DisplayNameFor(model => model.DoctorId) : </b>
-            @Html.DisplayFor(model => model.DoctorId)
-        </p>
-        <br />
-        <p>
-            <b>@Html.DisplayNameFor(model => model.NumOfTimes) : </b>
-            @Html.DisplayFor(model => model.NumOfTimes)
-        </p>
-        <br />
-        <p>
-            <b>@Html.DisplayNameFor(model => model.Frequency) : </b>
-            @Html.DisplayFor(model => model.Frequency)
-        </p>
-        <br />
-        <p>
+        <div id="prescriptionDetails">
+            <p>
+                <b>@Html.DisplayName("Prescription date:") : </b>
+                @Html.DisplayFor(model => model.prescription.PrescriptionDate)
+            </p>
+            <br />
+            <p>
+                <b>@Html.DisplayName("DR. " + Model.prescription.GetDoctor().UserName) : </b>
+            </p>
+            <br />
+            <p>
+                <b>@Html.DisplayName("Employee license num:") : </b>
+                @Html.DisplayFor(model => model.prescription.GetDoctor().LicenseNum)
+            </p>
+        </div>
+        <hr />
+        <div>
+            <table>
+                <tr>
+                    <td>
+                        <p>
+                            <b>@Html.DisplayName("Patient Full Name:") : </b>
+                            @Html.DisplayFor(model => model.prescription.GetPatient().UserName)
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <b>@Html.DisplayName("ID:") : </b>
+                            @Html.DisplayFor(model => model.prescription.GetPatient().Id)
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <b>@Html.DisplayName("Age:") : </b>
+                            @Html.DisplayFor(model => model.prescription.GetPatient().GetAge())
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            <b>@Html.DisplayName("Phone:") : </b>
+                            @Html.DisplayFor(model => model.prescription.GetPatient().Phone)
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <b>@Html.DisplayName("Mail:") : </b>
+                            @Html.DisplayFor(model => model.prescription.GetPatient().Mail)
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <hr />
+        <table>
+            <tr>
+                <td>
+                    <b>@Html.DisplayName("Name") : </b>
+                </td>
+                <td>
+                    <b>@Html.DisplayName("Generic Name") : </b>
+                </td>
+                <td>
+                    <b>@Html.DisplayName("Serving Option") : </b>
+                </td>
+                <td>
+                    <b>@Html.DisplayName("Times a Day") : </b>
+                </td>
+                <td>
+                    <b>@Html.DisplayName("Frequency") : </b>
+                </td>
+                <td>
+                    <b>@Html.DisplayNameFor(model => model.Comments) : </b>
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayFor(model => model.prescription.GetMedicine().Name)</td>
+                <td>@Html.DisplayFor(model => model.prescription.GetMedicine().GenericName)</td>
+                <td>@Html.DisplayFor(model => model.prescription.GetMedicine().ServingOption)</td>
+                <td>@Html.DisplayFor(model => model.NumOfTimes)</td>
+                <td>@Html.DisplayFor(model => model.Frequency)</td>
+                <td>@Html.DisplayFor(model => model.Comments)</td>
+            </tr>
+        </table>
             <b>@Html.DisplayNameFor(model => model.StartTime) : </b>
             @Html.DisplayFor(model => model.StartTime)
         </p>
@@ -42,13 +107,13 @@
         </p>
         <br />
         <p>
-            <b>@Html.DisplayNameFor(model => model.MedicineId) : </b>
-            @Html.DisplayFor(model => model.MedicineId)
+
         </p>
         <br />
+
+        <br />
         <p>
-            <b>@Html.DisplayNameFor(model => model.Comments) : </b>
-            @Html.DisplayFor(model => model.Comments)
+
         </p>
         <br />
         <br />

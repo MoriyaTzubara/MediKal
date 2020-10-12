@@ -463,6 +463,7 @@ namespace DAL
                 medicine.Name = excel.ReadCell(i, 2);
                 medicine.Company = excel.ReadCell(i, 3);
                 medicine.GenericName = excel.ReadCell(i, 4);
+                medicine.ServingOption = excel.ReadCell(i, 5);
                 AddMedicine(medicine);
             }
         }
@@ -486,6 +487,7 @@ namespace DAL
                     medicine.Name = excel.ReadCell(i, 2);
                     medicine.Company = excel.ReadCell(i, 3);
                     medicine.GenericName = excel.ReadCell(i, 4);
+                    medicine.ServingOption = excel.ReadCell(i, 5);
                     return medicine;
                 }
             return null;
