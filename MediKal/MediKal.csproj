@@ -370,6 +370,8 @@
     <Content Include="Views\Account\EnterId.cshtml" />
     <Content Include="Views\Account\EnterCode.cshtml" />
     <Content Include="Views\Statistics\Index.cshtml" />
+    <Content Include="Views\Prescriptions\PdfViewer.cshtml" />
+    <Content Include="Views\Shared\_PrintLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

@@ -18,12 +18,12 @@
         <div class="form-group">
             <div>
                 @Html.TextBox("id", null, new { @class = "form-control", placeholder = "Enter NDCId" })
-                @Html.Label(Session["Message"].ToString(), new { @class = "text-danger" } )
+                @Html.Label(Session["Message"].ToString(), new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             <div>
-                <input type="submit" value="search" class="btn blue-btn"/>
+                <input type="submit" value="search" class="btn blue-btn" />
                 <a href="~/Medicines" class="btn green-btn">Back to List</a>
             </div>
         </div>

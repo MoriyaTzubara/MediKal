@@ -1,0 +1,67 @@
+﻿@model MediKal.Models.PrescriptionViewModel
+@{
+    Layout = "~/Views/Shared/_PrintLayout.cshtml";
+}
+
+<button class="green-btn float-right" onclick="window.print()"><i class="fa fa-print"></i> Print</button>
+<br />
+<div>
+    <h4>Prescription</h4>
+    <h6>@DateTime.Now</h6>
+    <hr />
+    <br />
+    <div id="details">
+        <p>
+            <b>@Html.DisplayNameFor(model => model.PatientId) : </b>
+            @Html.DisplayFor(model => model.PatientId)
+        </p>
+        <br />
+        <p>
+            <b>@Html.DisplayNameFor(model => model.DoctorId) : </b>
+            @Html.DisplayFor(model => model.DoctorId)
+        </p>
+        <br />
+        <p>
+            <b>@Html.DisplayNameFor(model => model.NumOfTimes) : </b>
+            @Html.DisplayFor(model => model.NumOfTimes)
+        </p>
+        <br />
+        <p>
+            <b>@Html.DisplayNameFor(model => model.Frequency) : </b>
+            @Html.DisplayFor(model => model.Frequency)
+        </p>
+        <br />
+        <p>
+            <b>@Html.DisplayNameFor(model => model.StartTime) : </b>
+            @Html.DisplayFor(model => model.StartTime)
+        </p>
+        <br />
+        <p>
+            <b>@Html.DisplayNameFor(model => model.EndTime) : </b>
+            @Html.DisplayFor(model => model.EndTime)
+        </p>
+        <br />
+        <p>
+            <b>@Html.DisplayNameFor(model => model.MedicineId) : </b>
+            @Html.DisplayFor(model => model.MedicineId)
+        </p>
+        <br />
+        <p>
+            <b>@Html.DisplayNameFor(model => model.Comments) : </b>
+            @Html.DisplayFor(model => model.Comments)
+        </p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <hr />
+        <p>Doctor's signature:_______________________________</p>
+    </div>
+</div>
+<iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
