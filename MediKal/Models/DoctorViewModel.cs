@@ -1,6 +1,7 @@
 ﻿using BE;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -18,6 +19,7 @@ namespace MediKal.Models
         [StringLength(255, ErrorMessage = "Must be between 5 and 255 characters", MinimumLength = 5)]
         [DataType(DataType.Password)]
         [Compare("Password")]
+        [DisplayName("Confirm Password")]
         public string ConfirmPassword { get; set; }
 
         [Required(ErrorMessage = "required field")]
@@ -28,6 +30,7 @@ namespace MediKal.Models
         }
 
         [Required(ErrorMessage = "required field")]
+        [DisplayName("ID")]
         public int Id
         {
             get { return doctor.Id; }
@@ -35,6 +38,7 @@ namespace MediKal.Models
         }
 
         [Required(ErrorMessage = "required field")]
+        [DisplayName("License Number")]
         public int LicenseNum
         {
             get { return doctor.LicenseNum; }
@@ -71,6 +75,7 @@ namespace MediKal.Models
         }
         [Required(ErrorMessage = "required field")]
         [StringLength(30, ErrorMessage = "Can't be more than 30 letters")]
+        [DisplayName("Full Name")]
         public string UserName
         {
             get { return doctor.UserName; }

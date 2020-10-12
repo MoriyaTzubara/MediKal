@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -15,7 +16,8 @@ namespace MediKal.Models
         {
             patient = _patient;
         }
-
+        [DisplayName("ID")]
+        [Required(ErrorMessage = "required field")]
         public int Id
         {
             get { return patient.Id; }
@@ -26,32 +28,33 @@ namespace MediKal.Models
             get { return patient.Background; }
             set { patient.Background = value; }
         }
-
+        [Required(ErrorMessage = "required field")]
         public DateTime? Birthday
         {
             get { return patient.Birthday; }
             set { patient.Birthday = value; }
         }
         [DisplayName("Blood Type")]
+        [Required(ErrorMessage = "required field")]
         public BloodTypeEnum BloodType
         {
             get { return patient.BloodType; }
             set { patient.BloodType = value; }
         }
-        
+        [Required(ErrorMessage = "required field")]
         [DisplayName("Full Name")]
         public string FullName
         {
             get { return patient.UserName; }
             set { patient.UserName = value; }
         }
-
+        [Required(ErrorMessage = "required field")]
         public string Mail
         {
             get { return patient.Mail; }
             set { patient.Mail = value; }
         }
-
+        [Required(ErrorMessage = "required field")]
         public string Phone
         {
             get { return patient.Phone; }
