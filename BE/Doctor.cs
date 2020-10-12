@@ -10,7 +10,19 @@ namespace BE
     {
         public int LicenseNum { get; set; }
         public SpecialtyEnum Specialty { get; set; }
-        public Doctor() { }
-        public Doctor(int id):base(id) { }
+        public Doctor() :base(){
+            this.LicenseNum = 0;
+            this.UserType = UserTypeEnum.Doctor;
+        }
+        public Doctor(int id):base(id) {
+            this.LicenseNum = 0;
+            this.UserType = UserTypeEnum.Doctor;
+
+        }
+        public Doctor(Doctor doctor):base(doctor) {
+            this.LicenseNum = doctor.LicenseNum;
+            this.UserType = UserTypeEnum.Doctor;
+
+        }
     }
 }
