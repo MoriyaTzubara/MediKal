@@ -43,7 +43,8 @@ namespace MediKal.Controllers
         // GET: Doctors/Create
         public ActionResult Create()
         {
-            return View();
+            Session["ErrorId"] = "";
+            return View(new DoctorViewModel(new Doctor()));
         }
 
         // POST: Doctors/Create
@@ -61,7 +62,7 @@ namespace MediKal.Controllers
                 bl.AddDoctor(doctor);
                 return RedirectToAction("Index");
             }
-            return View(doctor);
+            return View(new DoctorViewModel(doctor));
         }
 
         // GET: Doctors/Edit/5
@@ -127,15 +128,24 @@ namespace MediKal.Controllers
         }
         public ActionResult InviteDoctor(Doctor doctor)
         {
+            Session["ErrorId"] = "";
             IBL bl = new BL.BL();
             if (ModelState.IsValid) {
+                if (!bl.IsId(doctor.Id))
+                {
+                    Session["ErrorId"] = "Invalid ID";
+                }
+                if (bl.GetDoctorById(doctor.Id) != null)
+                {
+                    Session["ErrorId"] = "ID already exists";
+                }
                 bl.AddDoctor(doctor);
                 //string link = $"{HttpContext.Current.Request.Url.Host}:{}"
                 bl.SendMail(doctor.Mail, "", "You are invited to sign up for Medical :) <a href='~/Account/SignUp'> Sign up </a>");
                 ViewBag.IsSucceeded = true;
-                return View("Create", doctor);
+                return View("Create", new DoctorViewModel(doctor));
             }
-            return View("Create", doctor);
+            return View("Create", new DoctorViewModel(doctor));
         }
     }
 }
