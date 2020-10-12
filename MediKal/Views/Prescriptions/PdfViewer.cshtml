@@ -17,11 +17,9 @@
                 <b>@Html.DisplayName("Prescription date:") : </b>
                 @Html.DisplayFor(model => model.prescription.PrescriptionDate)
             </p>
-            <br />
             <p>
-                <b>@Html.DisplayName("DR. " + Model.prescription.GetDoctor().UserName) : </b>
+                <b>@Html.DisplayName($"DR. {Model.prescription.GetDoctor().UserName}") : </b>
             </p>
-            <br />
             <p>
                 <b>@Html.DisplayName("Employee license num:") : </b>
                 @Html.DisplayFor(model => model.prescription.GetDoctor().LicenseNum)
@@ -33,33 +31,33 @@
                 <tr>
                     <td>
                         <p>
-                            <b>@Html.DisplayName("Patient Full Name:") : </b>
+                            <b>@Html.DisplayName("Full Name:") : </b>
                             @Html.DisplayFor(model => model.prescription.GetPatient().UserName)
                         </p>
                     </td>
                     <td>
                         <p>
-                            <b>@Html.DisplayName("ID:") : </b>
+                            <b>@Html.DisplayName("ID ") : </b>
                             @Html.DisplayFor(model => model.prescription.GetPatient().Id)
                         </p>
                     </td>
                     <td>
                         <p>
-                            <b>@Html.DisplayName("Age:") : </b>
-                            @Html.DisplayFor(model => model.prescription.GetPatient().GetAge())
+                            <b>@Html.DisplayName("Age ") : </b>
+                            @*@Html.EditorFor(model => model.prescription.GetPatient().GetAge(), new { htmlAttributes = new { @class = "form-control" } })*@
                         </p>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <p>
-                            <b>@Html.DisplayName("Phone:") : </b>
+                            <b>@Html.DisplayName("Phone: ") : </b>
                             @Html.DisplayFor(model => model.prescription.GetPatient().Phone)
                         </p>
                     </td>
                     <td>
                         <p>
-                            <b>@Html.DisplayName("Mail:") : </b>
+                            <b>@Html.DisplayName("Mail: ") : </b>
                             @Html.DisplayFor(model => model.prescription.GetPatient().Mail)
                         </p>
                     </td>
@@ -97,24 +95,6 @@
                 <td>@Html.DisplayFor(model => model.Comments)</td>
             </tr>
         </table>
-            <b>@Html.DisplayNameFor(model => model.StartTime) : </b>
-            @Html.DisplayFor(model => model.StartTime)
-        </p>
-        <br />
-        <p>
-            <b>@Html.DisplayNameFor(model => model.EndTime) : </b>
-            @Html.DisplayFor(model => model.EndTime)
-        </p>
-        <br />
-        <p>
-
-        </p>
-        <br />
-
-        <br />
-        <p>
-
-        </p>
         <br />
         <br />
         <br />

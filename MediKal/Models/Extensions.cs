@@ -28,7 +28,7 @@ namespace MediKal.Models
             IBL bl = new BL.BL();
             return bl.GetMedicineById(prescription.MedicineId);
         }
-        static public int GetAge(this User user)
+        static public int GetAge(this Patient user)
         {
             // Save today's date.
             var today = DateTime.Today;
