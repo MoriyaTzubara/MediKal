@@ -3,6 +3,11 @@
 @{
     Layout = "~/Views/Shared/_PrintLayout.cshtml";
 }
+<style>
+    td{
+        padding:15px;
+    }
+</style>
 
 <button class="green-btn float-right" onclick="window.print()"><i class="fa fa-print"></i> Print</button>
 <br />
@@ -14,14 +19,14 @@
     <div id="details">
         <div id="prescriptionDetails">
             <p>
-                <b>@Html.DisplayName("Prescription date:") : </b>
+                <b>@Html.DisplayName("Prescription date:")</b>
                 @Html.DisplayFor(model => model.prescription.PrescriptionDate)
             </p>
             <p>
-                <b>@Html.DisplayName($"DR. {Model.prescription.GetDoctor().UserName}") : </b>
+                <b>By: </b>@($"DR. {Model.prescription.GetDoctor().UserName}")
             </p>
             <p>
-                <b>@Html.DisplayName("Employee license num:") : </b>
+                <b>@Html.DisplayName("Employee license num:")</b>
                 @Html.DisplayFor(model => model.prescription.GetDoctor().LicenseNum)
             </p>
         </div>
@@ -30,36 +35,26 @@
             <table>
                 <tr>
                     <td>
-                        <p>
-                            <b>@Html.DisplayName("Full Name:") : </b>
-                            @Html.DisplayFor(model => model.prescription.GetPatient().UserName)
-                        </p>
+                        <b>@Html.DisplayName("Full Name:")</b>
+                        @Html.DisplayFor(model => model.prescription.GetPatient().UserName)
                     </td>
                     <td>
-                        <p>
-                            <b>@Html.DisplayName("ID ") : </b>
-                            @Html.DisplayFor(model => model.prescription.GetPatient().Id)
-                        </p>
+                        <b>@Html.DisplayName("ID: ")</b>
+                        @Html.DisplayFor(model => model.prescription.GetPatient().Id)
                     </td>
                     <td>
-                        <p>
-                            <b>@Html.DisplayName("Age ") : </b>
-                            @*@Html.EditorFor(model => model.prescription.GetPatient().GetAge(), new { htmlAttributes = new { @class = "form-control" } })*@
-                        </p>
+                        <b>@Html.DisplayName("Age: ")</b>
+                        @Html.Label(Model.prescription.GetPatient().GetAge().ToString())
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <p>
-                            <b>@Html.DisplayName("Phone: ") : </b>
-                            @Html.DisplayFor(model => model.prescription.GetPatient().Phone)
-                        </p>
+                        <b>@Html.DisplayName("Phone: ")</b>
+                        @Html.DisplayFor(model => model.prescription.GetPatient().Phone)
                     </td>
                     <td>
-                        <p>
-                            <b>@Html.DisplayName("Mail: ") : </b>
-                            @Html.DisplayFor(model => model.prescription.GetPatient().Mail)
-                        </p>
+                        <b>@Html.DisplayName("Mail: ")</b>
+                        @Html.DisplayFor(model => model.prescription.GetPatient().Mail)
                     </td>
                 </tr>
             </table>
@@ -68,33 +63,31 @@
         <table>
             <tr>
                 <td>
-                    <b>@Html.DisplayName("Name") : </b>
+                    <b>@Html.DisplayName("Name:")</b>
+                    @Html.DisplayFor(model => model.prescription.GetMedicine().Name)
                 </td>
                 <td>
-                    <b>@Html.DisplayName("Generic Name") : </b>
-                </td>
-                <td>
-                    <b>@Html.DisplayName("Serving Option") : </b>
-                </td>
-                <td>
-                    <b>@Html.DisplayName("Times a Day") : </b>
-                </td>
-                <td>
-                    <b>@Html.DisplayName("Frequency") : </b>
-                </td>
-                <td>
-                    <b>@Html.DisplayNameFor(model => model.Comments) : </b>
+                    <b>@Html.DisplayName("Generic Name:")</b>
+                    @Html.DisplayFor(model => model.prescription.GetMedicine().GenericName)
                 </td>
             </tr>
             <tr>
-                <td>@Html.DisplayFor(model => model.prescription.GetMedicine().Name)</td>
-                <td>@Html.DisplayFor(model => model.prescription.GetMedicine().GenericName)</td>
-                <td>@Html.DisplayFor(model => model.prescription.GetMedicine().ServingOption)</td>
-                <td>@Html.DisplayFor(model => model.NumOfTimes)</td>
-                <td>@Html.DisplayFor(model => model.Frequency)</td>
-                <td>@Html.DisplayFor(model => model.Comments)</td>
+                <td>
+                    <b>@Html.DisplayName("Serving Option:")</b>
+                    @Html.DisplayFor(model => model.prescription.GetMedicine().ServingOption)
+                </td>
+                <td>
+                    <b>@Html.DisplayName("Frequency")</b>
+                    @Html.DisplayFor(model => model.NumOfTimes) times in a @Html.DisplayFor(model => model.Frequency)
+
+                </td>
             </tr>
         </table>
+        <hr />
+        <b>@Html.DisplayNameFor(model=>model.Comments)</b>
+        <br />
+        @Html.DisplayFor(model => model.Comments)
+
         <br />
         <br />
         <br />
@@ -106,7 +99,9 @@
         <br />
         <br />
         <hr />
-        <p>Doctor's signature:_______________________________</p>
+        <br />
+        <br />
+        <p>Doctor's signature:___________________________________________</p>
     </div>
 </div>
 <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>

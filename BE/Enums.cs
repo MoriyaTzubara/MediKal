@@ -18,7 +18,6 @@ namespace BE
     }
     public enum BloodTypeEnum
     {
-        הכל,
         A_plus,
         A_minus,
         B_plus,
@@ -27,8 +26,6 @@ namespace BE
         AB_minus,
         O_plus,
         O_minus,
-        לא_ידוע,
-        אחר
     }
     public enum FrequencyEnum
     {
