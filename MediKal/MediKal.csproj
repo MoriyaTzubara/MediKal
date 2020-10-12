@@ -150,6 +150,7 @@
     <Compile Include="Controllers\MedicinesController.cs" />
     <Compile Include="Controllers\PatientsController.cs" />
     <Compile Include="Controllers\PrescriptionsController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -246,6 +247,7 @@
     <Content Include="css\ResponsiveDataTable.css" />
     <Content Include="css\SiderNavbar.css" />
     <Content Include="favicon.ico" />
+    <Content Include="favicon.svg" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="forms\appointment.php" />
@@ -367,6 +369,9 @@
     <Content Include="Views\View.cshtml" />
     <Content Include="Views\Account\EnterId.cshtml" />
     <Content Include="Views\Account\EnterCode.cshtml" />
+    <Content Include="Views\Statistics\Index.cshtml" />
+    <Content Include="Views\Prescriptions\PdfViewer.cshtml" />
+    <Content Include="Views\Shared\_PrintLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

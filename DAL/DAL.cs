@@ -452,6 +452,8 @@ namespace DAL
 
         public void ReadExcelMedicines(string path, int sheet)
         {
+            path = $"~/DAL/MedicinesExcel/my version.xls";
+
             Excel excel = new Excel(System.Web.HttpContext.Current.Server.MapPath(path).Replace(@"MediKal\MediKal\DAL\MedicinesExcel\my version.xls", @"MediKal\DAL\MedicinesExcel\my version.xls"), 1);
             Medicine medicine ;
             for (int i = 2; i < 102; i++)

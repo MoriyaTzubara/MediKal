@@ -107,5 +107,14 @@ namespace MediKal.Controllers
             bl.DeletePrescription(id);
             return RedirectToAction("Index");
         }
+
+        public ActionResult PdfViewer(int id)
+        {
+            IBL bl = new BL.BL();
+            var prescription = bl.GetPrescriptionById(id);
+            if (prescription == null)
+                return View("Error");
+            return View(new PrescriptionViewModel(prescription));
+        }
     }
 }

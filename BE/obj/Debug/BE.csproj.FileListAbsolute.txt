@@ -4,3 +4,8 @@ C:\Users\User\Desktop\MediKal\BE\obj\Debug\BE.csproj.ResolveComReference.cache
 C:\Users\User\Desktop\MediKal\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\MediKal\BE\obj\Debug\BE.dll
 C:\Users\User\Desktop\MediKal\BE\obj\Debug\BE.pdb
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BE\obj\Debug\BE.csproj.ResolveComReference.cache
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BE\obj\Debug\BE.dll
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BE\obj\Debug\BE.pdb
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BE\bin\Debug\BE.dll
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BE\bin\Debug\BE.pdb
