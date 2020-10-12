@@ -41,15 +41,15 @@ namespace DAL
 
         public void AddPrescription(Prescription prescription)
         {
-            try
-            {
+           // try
+            //{
                 using (var db = new MediKalDB())
                 {
                     db.Prescriptions.Add(prescription);
                     db.SaveChanges();
                 }
-            }
-            catch (Exception e) { throw new Exception(e.Message); }
+            //}
+           // catch (Exception e) { throw new Exception(e.Message); }
 
         }
 

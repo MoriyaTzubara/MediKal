@@ -1,7 +1,9 @@
 ﻿@model MediKal.Models.DoctorViewModel
 @using MediKal.Models
-@using (Html.BeginForm("Index", "Account"))
+@using (Html.BeginForm("SignUp", "Account"))
 {
+    @Html.HiddenFor(model=>model.Id)
+    @Html.HiddenFor(model=>model.Mail)
     <div class="container">
         <div class="m-5 p-3 row">
             <div class="col-sm-1 col-md-1 col-lg-4 col-xl-4">
@@ -27,7 +29,7 @@
                             <br />
                             @Html.Label("ConfirmPassword")
                             @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "form-control", type = "password", placeholder = "Enter your password again" })
-                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
                             <br />
                             @Html.Label("Phone")
                             @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", placeholder = "Enter your phone" })

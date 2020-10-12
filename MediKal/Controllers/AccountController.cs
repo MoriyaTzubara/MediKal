@@ -29,7 +29,7 @@ namespace MediKal.Controllers
         {
             IBL bl = new BL.BL();
             var user = bl.GetUserById(Id);
-            if (user == null)
+            if (user == null || user.UserName != null || user.Password != null)
             {
                 return View("Error");
             }
@@ -62,31 +62,20 @@ namespace MediKal.Controllers
             catch (Exception e) { return View(e.Message); }
         }
 
-        [HttpGet]
         public ActionResult SignUp()
         {
             return View("EnterId");
         }
-        [HttpGet]
-        //public ActionResult SignUp(int Id)
-        //{
-        //    IBL bl = new BL.BL();
-        //    var doctor = bl.GetDoctorById(Id);
-        //    if (doctor == null)
-        //    {
-        //        return View("Error");
-        //    }
-        //    return View(new DoctorViewModel(doctor));
-        //}
         [HttpPost]
-        public ActionResult SignUp(DoctorViewModel doctorViewModel)
+        public ActionResult SignUp(Doctor doctor)
         {
             try
             {
                 IBL bl = new BL.BL();
-                User user = bl.GetUserById(doctorViewModel.Id);
+                bl.UpdateDoctor(doctor,doctor.Id);
+                RouteConfig.user = bl.SignIn(doctor.Id, doctor.Password);
                 //which view you want him to go to
-                return View();
+                return View("Index");
             }
             catch (ArgumentNullException) { return View(); }
         }

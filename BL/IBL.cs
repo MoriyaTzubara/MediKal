@@ -66,5 +66,13 @@ namespace BL
         Patient ConvertUserToPatient(User user);
         Doctor ConvertUserToDoctor(User user);
 
+        bool IsId(object idn);
+        bool IsEmail(string s);
+        bool IsName(string s);
+        bool IsUserName(string s);
+
+
+
+
     }
 }

@@ -128,7 +128,7 @@ namespace BL
         {
             try
             {
-                return GetUsers().First(item => item.Id == id);
+                return GetUsers().FirstOrDefault(item => item.Id == id);
             }
             catch (ArgumentNullException e) { throw e; }
         }
@@ -282,7 +282,7 @@ namespace BL
             var doctors = dal.GetDoctors();
             return (from item in doctors
                     where item.Id == id
-                    select item).Single();
+                    select item).FirstOrDefault();
         }
 
         public Manager GetManagerById(int id)
@@ -290,7 +290,7 @@ namespace BL
             var managers = dal.GetManagers();
             return (from item in managers
                     where item.Id == id
-                    select item).Single();
+                    select item).FirstOrDefault();
         }
 
         public void ReadExcelMedicines(string path, int sheet)
@@ -328,5 +328,78 @@ namespace BL
             tmp.UserType = user.UserType;
             return tmp;
         }
+        public bool IsEmail(string s)
+        {
+            if (s == null || s == "")
+                return false;
+            if (s[0] == '@')
+                return false;
+            if (s.Contains('@') != true || s.Substring(s.IndexOf("@") + 1).Contains(".") != true)
+                return false;
+            foreach (var item in s)
+            {
+                if (item != '@' && item != '.' && item != '_' && !char.IsLetter(item) && char.IsWhiteSpace(item))
+                    return false;
+            }
+            return true;
+        }
+
+        public bool IsId(object idn)
+        {
+            if (idn == null || idn == "000000000")
+                return false;
+            string idnumber = "";
+            if (idn is string)
+                idnumber = idn.ToString();
+            else if (idn is int)
+                idnumber = idn.ToString();
+            else
+                return false;
+
+            if (idnumber.Length != 9)
+                return false;
+            int[] id = new int[idnumber.Length];
+            for (int i = 0; i < idnumber.Length; i++)
+                id[i] = idnumber[i] - '0';
+            for (int i = 1; i < 8; i = i + 2)
+            {
+                int a = id[i] * 2;
+                if (a > 9)
+                    a = (a % 10) + (a / 10);
+                id[i] = a;
+            }
+            int sumOfDigits = 0;
+            for (int i = 0; i < id.Length; i++)
+                sumOfDigits += id[i];
+            return sumOfDigits % 10 == 0;
+        }
+
+        public bool IsName(string s)
+        {
+            if (s == null || s == "")
+                return false;
+            foreach (var item in s)
+            {
+                if (!char.IsLetter(item) && !char.IsWhiteSpace(item))
+                    return false;
+            }
+            return true;
+        }
+
+        public bool IsUserName(string s)
+        {
+            if (s == null || s == "")
+                return false;
+            int numbers = 0;
+            foreach (var item in s)
+            {
+                if (!char.IsLetter(item) && !char.IsWhiteSpace(item))
+                    numbers++;
+            }
+            if (numbers == s.Length)
+                return false;
+            return true;
+        }
+
     }
 }

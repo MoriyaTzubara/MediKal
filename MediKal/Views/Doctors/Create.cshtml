@@ -1,4 +1,4 @@
-﻿@model BE.Doctor
+﻿@model MediKal.Models.DoctorViewModel
 @*@model DoctorViewModel*@
 
 @{
@@ -23,15 +23,14 @@
                         <p>*An invitation email for registration will be sent to the doctor</p>
                         <br />
                         <div class="form-group">
-                            <div>
-                                @Html.TextBox("Id", null, new { @class = "form-control", placeholder = "Enter ID" })
-                                @Html.Label("Invalid ID number", new { @class = "text-danger" })
-                                @*@Html.Label(Session["Message"].ToString(), new { @class = "text-danger" })*@
-                                <br />
-                                @Html.TextBox("Mail", null, new { @class = "form-control", placeholder = "Enter Email" })
-                                @Html.Label("Invalid mail address", new { @class = "text-danger" })
-                                @*@Html.Label(Session["Message"].ToString(), new { @class = "text-danger" })*@
-                            </div>
+                                        <div>
+                                            @Html.TextBox("Id", null, new { @class = "form-control", placeholder = "Enter ID" })
+                                            @Html.Label(Session["ErrorId"].ToString(), new { @class = "text-danger" })
+                                            @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+                                            <br />
+                                            @Html.TextBox("Mail", null, new { @class = "form-control", placeholder = "Enter Email" })
+                                            @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+                                        </div>
                         </div>
                         <div class="form-group">
                             <div>

@@ -8,7 +8,7 @@ namespace BE
 {
     public enum SpecialtyEnum
     {
-
+        stam
     }
     public enum UserTypeEnum
     {
