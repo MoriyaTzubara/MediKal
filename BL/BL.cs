@@ -78,6 +78,10 @@ namespace BL
         {
             return dal.GetMedicines().FirstOrDefault(item => item.NDCId == NDCid);
         }
+        public Medicine GetMedicineByPrimaryId(int id)
+        {
+            return dal.GetMedicines().FirstOrDefault(item => item.Id == id);
+        }
 
         public IEnumerable<Medicine> GetMedicines()
         {

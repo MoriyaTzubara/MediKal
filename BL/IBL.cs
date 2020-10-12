@@ -44,6 +44,7 @@ namespace BL
         Medicine GetMedicineById(double NDCid);
         Patient GetPatientById(int id);
         Prescription GetPrescriptionById(int id);
+        Medicine GetMedicineByPrimaryId(int id);
         // FILTER
         IEnumerable<Prescription> GetPrescriptionsOfPatient(int id);
         IEnumerable<Prescription> GetPrescriptionsOfDoctor(int id);
