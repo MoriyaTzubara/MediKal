@@ -10,6 +10,7 @@
     <meta content="" name="keywords">
 
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Favicons -->
     <link href="~/images/doctor.png" rel="icon">
@@ -97,8 +98,8 @@
                 </ul>
 
             </nav><!-- .nav-menu -->
-            <a class="green-btn" href="~/Account/SignOut">Sign Out</a>
-            <a class="blue-btn" href="~/Account/Index"><i class="fa fa-sign-in"></i>Hello @@user</a>
+            <a class="green-btn" href="~/Account/SignOut"><i class="fa fa-sign-out"></i> Sign Out</a>
+            <a class="blue-btn" href="~/Account/Index">Hello @RouteConfig.user.UserName</a>
 
         </div>
     </header><!-- End Header -->
@@ -146,6 +147,15 @@
                     @*<i class="fa-icon fa fa-home fa-2x"></i>*@
                     <span class="nav-text">
                         Statistics
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="~/Patients">
+                    <img class="fa-icon fa-2x" src="~/images/profile-user.png" />
+                    @*<i class="fa-icon fa fa-home fa-2x"></i>*@
+                    <span class="nav-text">
+                        Profile
                     </span>
                 </a>
             </li>

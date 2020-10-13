@@ -710,6 +710,8 @@ section {
   transition: all 0.3s ease-in-out;
   border-radius: 8px;
   z-index: 1;
+  height:300px;
+  width:250px;
 }
 
 .featured-services .icon-box::before {
