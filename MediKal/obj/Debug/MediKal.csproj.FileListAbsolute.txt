@@ -257,3 +257,5 @@ C:\Users\User\Desktop\MediKal\MediKal\obj\Debug\MediKal.csproj.CoreCompileInputs
 C:\Users\User\Desktop\MediKal\MediKal\obj\Debug\MediKal.csproj.CopyComplete
 C:\Users\User\Desktop\MediKal\MediKal\obj\Debug\MediKal.dll
 C:\Users\User\Desktop\MediKal\MediKal\obj\Debug\MediKal.pdb
+C:\Users\User\Desktop\MediKal\MediKal\bin\RestSharp.dll
+C:\Users\User\Desktop\MediKal\MediKal\bin\RestSharp.xml

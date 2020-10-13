@@ -110,7 +110,7 @@ namespace DAL
         }
         #endregion
         #region DELETE
-        public void DeleteMedicine(double NDCid)
+        public void DeleteMedicine(string NDCid)
         {
             try
             {
@@ -332,7 +332,7 @@ namespace DAL
 
         #endregion
         #region UPDATE
-        public void UpdateMedicine(Medicine medicine, double NDCId)
+        public void UpdateMedicine(Medicine medicine, string NDCId)
         {
             try
             {
@@ -459,7 +459,7 @@ namespace DAL
             for (int i = 2; i < 102; i++)
             {
                 medicine = new Medicine();
-                medicine.NDCId = Double.Parse(excel.ReadCell(i, 1).Replace("-","."));
+                medicine.NDCId = excel.ReadCell(i, 1);
                 medicine.Name = excel.ReadCell(i, 2);
                 medicine.Company = excel.ReadCell(i, 3);
                 medicine.GenericName = excel.ReadCell(i, 4);
@@ -483,7 +483,7 @@ namespace DAL
             if (i != -1)
                 {
                     medicine = new Medicine();
-                    medicine.NDCId = Double.Parse(excel.ReadCell(i, 1).Replace("-", "."));
+                    medicine.NDCId = excel.ReadCell(i, 1);
                     medicine.Name = excel.ReadCell(i, 2);
                     medicine.Company = excel.ReadCell(i, 3);
                     medicine.GenericName = excel.ReadCell(i, 4);
@@ -506,7 +506,10 @@ namespace DAL
 
             return BinarySearch(excel,x, middle + 1, right);
         }
+
+
         #endregion
+
 
     }
 }

@@ -151,5 +151,11 @@ namespace MediKal.Controllers
             }
             return View("Create", new DoctorViewModel(doctor));
         }
+        public ActionResult GetPrescriptionsOfDoctor(int Id)
+        {
+            IBL bl = new BL.BL();
+            var result = bl.GetPrescriptionsOfDoctor(Id).Select(item => new PrescriptionViewModel(item));
+            return View("~/Views/Prescriptions/Index.cshtml", result);
+        }
     }
 }

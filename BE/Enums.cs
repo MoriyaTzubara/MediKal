@@ -8,7 +8,11 @@ namespace BE
 {
     public enum SpecialtyEnum
     {
-        stam
+        Family_Doctor,
+        ENT,
+        Ophthalmologist,
+        Pediatrician
+
     }
     public enum UserTypeEnum
     {

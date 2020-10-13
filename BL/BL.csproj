@@ -222,6 +222,7 @@
   <ItemGroup>
     <Compile Include="BL.cs" />
     <Compile Include="IBL.cs" />
+    <Compile Include="ImageValidate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

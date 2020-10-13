@@ -125,3 +125,7 @@ C:\Users\User\Desktop\MediKal\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\MediKal\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\User\Desktop\MediKal\DAL\obj\Debug\DAL.dll
 C:\Users\User\Desktop\MediKal\DAL\obj\Debug\DAL.pdb
+C:\Users\User\Desktop\MediKal\DAL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\User\Desktop\MediKal\DAL\bin\Debug\RestSharp.dll
+C:\Users\User\Desktop\MediKal\DAL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\User\Desktop\MediKal\DAL\bin\Debug\RestSharp.xml

@@ -24,7 +24,7 @@ namespace DAL
             return true;
         }
 
-        public static bool IsNDCId(double id) 
+        public static bool IsNDCId(string id) 
         {
             DAL dal = new DAL();
             if (dal.GetMedicines().Any(m => m.NDCId == id))

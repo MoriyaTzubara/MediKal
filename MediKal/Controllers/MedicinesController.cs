@@ -24,7 +24,7 @@ namespace MediKal.Controllers
         }
 
         // GET: Medicines/Details/5
-        public ActionResult Details(double id)
+        public ActionResult Details(string id)
         {
             IBL bl = new BL.BL();
             Medicine medicine = bl.GetMedicineById(id);
@@ -47,18 +47,31 @@ namespace MediKal.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( Medicine medicine)
+        public ActionResult Create(Medicine medicine)
         {
             try
             {
                 IBL bl = new BL.BL();
-                bl.AddMedicine(medicine);
+                ImageValidate imageValidate = new ImageValidate();
+                bool result = true;
+                if (medicine.ImagePath != null)
+                {
+                    var path = Server.MapPath(Url.Content($"~/images/{medicine.ImagePath}"));
+                    result = imageValidate.Validate(path);
+                }
+                if (result)
+                    bl.AddMedicine(medicine);
+                else
+                {
+                    Session["Error"] = "This image isn't valid";
+                    return View("AddImage",new MedicineViewModel(medicine));
+                }
                 return RedirectToAction("Index");
             }catch(Exception e) { return View(); }
         }
 
         // GET: Medicines/Edit/5
-        public ActionResult Edit(double id)
+        public ActionResult Edit(string id)
         {
             IBL bl = new BL.BL();
             Medicine medicine = bl.GetMedicineById(id);
@@ -79,6 +92,7 @@ namespace MediKal.Controllers
             if (ModelState.IsValid)
             {
                 IBL bl = new BL.BL();
+                ImageValidate imageValidate = new ImageValidate();
                 bl.UpdateMedicine(medicine,medicine.NDCId);
                 return RedirectToAction("Index");
             }
@@ -86,7 +100,7 @@ namespace MediKal.Controllers
         }
 
         // GET: Medicines/Delete/5
-        public ActionResult Delete(double id)
+        public ActionResult Delete(string id)
         {
             IBL bl = new BL.BL();
             Medicine medicine = bl.GetMedicineById(id);
@@ -100,7 +114,7 @@ namespace MediKal.Controllers
         // POST: Medicines/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(double id)
+        public ActionResult DeleteConfirmed(string id)
         {
             IBL bl = new BL.BL();
             Medicine medicine = bl.GetMedicineById(id);
@@ -114,6 +128,8 @@ namespace MediKal.Controllers
 
         public ActionResult AddImage(string id)
         {
+            Session["Error"] = "";
+
             IBL bl = new BL.BL();
             Medicine medicine = bl.FindMedicineInExcel(id);
             if (medicine == null)
