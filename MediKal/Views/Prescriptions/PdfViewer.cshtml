@@ -76,12 +76,25 @@
                     <b>@Html.DisplayName("Serving Option:")</b>
                     @Html.DisplayFor(model => model.prescription.GetMedicine().ServingOption)
                 </td>
+            </tr>
+            <tr>
                 <td>
-                    <b>@Html.DisplayName("Frequency")</b>
+                    <b>@Html.DisplayName("Frequency: ")</b>
                     @Html.DisplayFor(model => model.NumOfTimes) times in a @Html.DisplayFor(model => model.Frequency)
 
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <br />
+                    <b>Start date: </b> @Html.Label(Model.StartTime.ToShortDateString())
+                </td>
+                <td>
+                    <br />
+                    <b>End date: </b>@Html.Label(Model.EndTime.ToShortDateString())
+                </td>
+            </tr>
+
         </table>
         <hr />
         <br />
