@@ -60,6 +60,20 @@ namespace MediKal.Models
             get { return patient.Phone; }
             set { patient.Phone = value; }
         }
+        [Required(ErrorMessage = "required field")]
+        [StringLength(255, ErrorMessage = "Must be between 5 and 255 characters", MinimumLength = 5)]
+        [DataType(DataType.Password)]
+        public string Password
+        {
+            get { return patient.Password; }
+            set { patient.Password = value; }
+        }
 
+        [Required(ErrorMessage = "required field")]
+        [StringLength(255, ErrorMessage = "Must be between 5 and 255 characters", MinimumLength = 5)]
+        [DataType(DataType.Password)]
+        [Compare("Password")]
+        [DisplayName("Confirm Password")]
+        public string ConfirmPassword { get; set; }
     }
 }

@@ -40,9 +40,11 @@ namespace BL
         // GET BY ID
         User GetUserById(int id);
         Doctor GetDoctorById(int id);
+        Doctor GetDoctorByPrimaryId(int PrimaryId);
         Manager GetManagerById(int id);
         Medicine GetMedicineById(string NDCid);
         Patient GetPatientById(int id);
+        Patient GetPatientByPrimaryId(int PrimaryId);
         Prescription GetPrescriptionById(int id);
         Medicine GetMedicineByPrimaryId(int id);
         // FILTER

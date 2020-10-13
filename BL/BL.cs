@@ -87,6 +87,10 @@ namespace BL
         {
             return dal.GetMedicines();
         }
+        public Patient GetPatientByPrimaryId(int PrimaryId)
+        {
+            return dal.GetPatients().FirstOrDefault(item => item.PrimaryId == PrimaryId);
+        }
 
         public Patient GetPatientById(int id)
         {
@@ -108,19 +112,19 @@ namespace BL
             return dal.GetPrescriptions();
         }
 
-        public IEnumerable<Prescription> GetPrescriptionsOfDoctor(int id)
+        public IEnumerable<Prescription> GetPrescriptionsOfDoctor(int PrimaryId)
         {
             var prescriptions = dal.GetPrescriptions();
             return from item in prescriptions
-                   where item.DoctorId == id
+                   where item.DoctorId == PrimaryId
                    select item;
         }
 
-        public IEnumerable<Prescription> GetPrescriptionsOfPatient(int id)
+        public IEnumerable<Prescription> GetPrescriptionsOfPatient(int PrimaryId)
         {
             var prescriptions = dal.GetPrescriptions();
             return from item in prescriptions
-                   where item.PatientId == id
+                   where item.PatientId == PrimaryId
                    select item;
         }
         public IEnumerable<string> GetMedicineOfPatient(int id)
@@ -291,6 +295,13 @@ namespace BL
                     select item).FirstOrDefault();
         }
 
+        public Doctor GetDoctorByPrimaryId(int PrimaryId)
+        {
+            var doctors = dal.GetDoctors();
+            return (from item in doctors
+                    where item.PrimaryId == PrimaryId
+                    select item).FirstOrDefault();
+        }
         public Manager GetManagerById(int id)
         {
             var managers = dal.GetManagers();

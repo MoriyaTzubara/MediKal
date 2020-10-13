@@ -18,7 +18,7 @@ namespace MediKal.Controllers
         public ActionResult Index()
         {
             IBL bl = new BL.BL();
-            var patients = bl.GetPatients().Select(item => new PatientViewModel(item));
+            var patients = bl.GetPatients();
             return View(patients);
         }
 
@@ -37,7 +37,8 @@ namespace MediKal.Controllers
         // GET: Patients/Create
         public ActionResult Create()
         {
-            return View();
+            Session["ErrorId"] = "";
+            return View(new PatientViewModel(new Patient()));
         }
 
         // POST: Patients/Create
@@ -107,6 +108,38 @@ namespace MediKal.Controllers
             bl.DeletePatient(id);
             return RedirectToAction("Index");
         }
+        
+        public ActionResult InvitePatient(Patient patient)
+        {
+            Session["ErrorId"] = "";
+            IBL bl = new BL.BL();
+            if (ModelState.IsValid)
+            {
+                if (!bl.IsId(patient.Id.ToString()))
+                {
+                    Session["ErrorId"] = "Invalid ID";
+                    return View("Create", new PatientViewModel(patient));
 
+                }
+                if (bl.GetDoctorById(patient.Id) != null)
+                {
+                    Session["ErrorId"] = "ID already exists";
+                    return View("Create", new PatientViewModel(patient));
+
+                }
+                bl.AddPatient(patient);
+                string link = $"http://{Request.Url.Host}:{Request.Url.Port}/Account/SignUp";
+                bl.SendMail(patient.Mail, "", $"You are invited to sign up for Medical :) <a href='{link}'> Sign up </a>");
+                ViewBag.IsSucceeded = true;
+                return View("Create", new PatientViewModel(patient));
+            }
+            return View("Create", new PatientViewModel(patient));
+        }
+        public ActionResult GetPrescriptionsOfPatient(int Id)
+        {
+            IBL bl = new BL.BL();
+            var result = bl.GetPrescriptionsOfPatient(Id).Select(item => new PrescriptionViewModel(item));
+            return View("~/Views/Prescriptions/Index.cshtml", result);
+        }
     }
 }

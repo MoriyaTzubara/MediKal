@@ -1,28 +1,50 @@
-﻿@model IEnumerable<MediKal.Models.PatientViewModel>
-
+﻿@model IEnumerable<BE.Patient>
+@using BE
+@using MediKal.Models
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_ManagementLayout.cshtml";
 }
+<div>
+    <img src="~/images/add-doctor.png" class="mt-0 pt-0" height="160" />
+    <a href="~/Patients/create" class="social-button">
+        <span class="fa fa-lg fa-plus"></span>
+    </a>
+    <h2 style="display:inline;margin-left:90px;">Patients<span class="badge badge-pill bg-green">@Model.Count()</span></h2>
+</div>
+<hr />
 
-<h2>Patients</h2>
+<div class="row">
+    @foreach (Patient item in Model)
+    {
+        <div class="col-4 text-left">
+            <div class="profile-card text-center shadow">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+                <img class="bg-img" src="~/images/green-bg.png">
+                <div class="profile-info">
+                    <i class="profile-pic"><img src="~/images/doctor (2).png" width="50"></i>
+                    <h3 class="hvr-underline-from-center">@item.UserName</h3>
+                    <p><br /> @item.GetAge() years old</p>
+                    <p><i class="fa fa-phone"></i><br /> @item.Phone</p>
+                    <p><i class="fa fa-envelope-o"></i><br /> @item.Mail</p>
+                    <div onclick="location.href='@($"/Patients/GetPrescriptionsOfPatient?Id={item.PrimaryId}")'" class="btn blue-btn"><i class="fa fa-eye"></i> Prescriptions</div>
+                </div>
+
+            </div>
+        </div>
+    }
+</div>
+
+<br />
+<br />
+<br />
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FullName)
+            @Html.DisplayNameFor(model => model.UserName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Birthday)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Background)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BloodType)
+            @Html.DisplayNameFor(model => model.Password)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Phone)
@@ -30,35 +52,42 @@
         <th>
             @Html.DisplayNameFor(model => model.Mail)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserType)
+        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Birthday)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Background)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BloodType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mail)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.patient.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.patient.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.patient.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserType)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>

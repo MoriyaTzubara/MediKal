@@ -1,9 +1,9 @@
-﻿@model MediKal.Models.DoctorViewModel
+﻿@model MediKal.Models.PatientViewModel
 @using MediKal.Models
-@using (Html.BeginForm("SignUpDoctor", "Account"))
+@using (Html.BeginForm("SignUpPatient", "Account"))
 {
-    @Html.HiddenFor(model=>model.Id)
-    @Html.HiddenFor(model=>model.Mail)
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.Mail)
     <div class="container">
         <div class="m-5 p-3 row">
             <div class="col-sm-1 col-md-1 col-lg-4 col-xl-4">
@@ -20,8 +20,8 @@
 
                         <div class="col-md-12 col-sm-12">
                             @Html.Label("User Name")
-                            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", placeholder = "Enter your user name" })
-                            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.FullName, new { @class = "form-control", placeholder = "Enter your user name" })
+                            @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
                             <br />
                             @Html.Label("Password")
                             @Html.TextBoxFor(model => model.Password, new { @class = "form-control", type = "password", placeholder = "Enter your password" })
@@ -34,10 +34,6 @@
                             @Html.Label("Phone")
                             @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", placeholder = "Enter your phone" })
                             @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-                            <br />
-                            @Html.Label("License Number")
-                            @Html.TextBoxFor(model => model.LicenseNum, new { @class = "form-control", placeholder = "Enter your license number" })
-                            @Html.ValidationMessageFor(model => model.LicenseNum, "", new { @class = "text-danger" })
                             <br />
                             <button type="submit" class="green-btn" id="cf-submit" name="submit">Sign Up</button>
                         </div>

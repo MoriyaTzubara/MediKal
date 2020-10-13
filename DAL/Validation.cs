@@ -42,7 +42,7 @@ namespace DAL
 
         public static bool IsId(object idn)
         {
-            if (idn == null || idn == "000000000")
+            if (idn == null || idn.ToString().Length != 9)
                 return false;
             string idnumber = "";
             if (idn is string)

@@ -1,76 +1,61 @@
 ﻿@model MediKal.Models.PatientViewModel
+@*@model DoctorViewModel*@
 
 @{
     ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_ManagementLayout.cshtml";
 }
 
-<h2>Create</h2>
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("InvitePatient", "Patients"))
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>Patient</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-            @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <br />
+    <div class="row">
+        <div class="col-sm-1 col-md-1 col-lg-4 col-xl-4"></div>
+        <div class="col-sm-10 col-md-10 col-lg-4 col-xl-4">
+            @{ if (ViewBag.IsSucceeded == null)
+                {
+                    <div>
+                        <img src="~/images/doctor.png" height="100" width="100" />
+                        <br />
+                        <br />
+                        <h4>Invite Patient</h4>
+                        <p>*An invitation email for registration will be sent to the doctor</p>
+                        <br />
+                        <div class="form-group">
+                            <div>
+                                @Html.TextBox("Id", null, new { @class = "form-control", placeholder = "Enter ID" })
+                                @Html.Label(Session["ErrorId"].ToString(), new { @class = "text-danger" })
+                                @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+                                <br />
+                                @Html.TextBox("Mail", null, new { @class = "form-control", placeholder = "Enter Email" })
+                                @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <input type="submit" value="Invite" class="btn blue-btn" />
+                                <a href="~/Doctors" class="btn green-btn">Back to List</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (ViewBag.IsSucceeded == false)
+                {
+                    <img src="~/images/emoji.png" height="100" width="100" />
+                    <br />
+                    <br />
+                    <h2>Oops something went wrong, please try again later</h2>
 
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Background, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Background, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Background, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.BloodType, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.BloodType, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.BloodType, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+                }
+                else if (ViewBag.IsSucceeded == true)
+                {
+                    <img src="~/images/sent.png" height="100" width="100" />
+                    <br />
+                    <br />
+                    <h2>The invitation was sent successfully</h2>
+                }
+            }
         </div>
     </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-</div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
