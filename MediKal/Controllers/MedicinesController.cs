@@ -60,11 +60,14 @@ namespace MediKal.Controllers
                     result = imageValidate.Validate(path);
                 }
                 if (result)
+                {
+                    //add image to drive
                     bl.AddMedicine(medicine);
+                }
                 else
                 {
                     Session["Error"] = "This image isn't valid";
-                    return View("AddImage",new MedicineViewModel(medicine));
+                    return View("AddImage", new MedicineViewModel(medicine));
                 }
                 return RedirectToAction("Index");
             }catch(Exception e) { return View(); }
