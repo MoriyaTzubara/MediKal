@@ -5,36 +5,39 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_ManagementLayout.cshtml";
 }
-
-<div>
-    <img src="~/images/add-doctor.png" class="mt-0 pt-0" height="160" />
-    <a href="~/Patients/create" class="social-button">
-        <span class="fa fa-lg fa-plus"></span>
-    </a>
-    <h2 style="display:inline;margin-left:90px;">Patients<span class="badge badge-pill bg-green">@Model.Count()</span></h2>
-</div>
+<br />
+<br />
+@if (ViewBag.IsSelectView != true)
+{
+    <div>
+        <img src="~/images/add-doctor.png" class="mt-0 pt-0" height="160" />
+        <a href="~/Patients/create" class="social-button">
+            <span class="fa fa-lg fa-plus"></span>
+        </a>
+        <h2 style="display:inline;margin-left:90px;">Patients<span class="badge badge-pill bg-green">@Model.Count()</span></h2>
+    </div>
 <hr />
-
+}
 <div class="row">
     @foreach (Patient item in Model)
     {
-            <div class="col-4 text-left">
-                <div class="profile-card text-center shadow">
-                    <img class="bg-img" src="~/images/green-bg.png">
-                    <div class="profile-info" style="margin-top:-60px;">
-                        <h3 class="hvr-underline-from-center">@item.UserName</h3>
-                        <p><br /> @item.GetAge() years old</p>
-                        <p><i class="fa fa-phone"></i><br /> @item.Phone</p>
-                        <p><i class="fa fa-envelope-o"></i><br /> @item.Mail</p>
-                        <div onclick="location.href='@($"/Patients/GetPrescriptionsOfPatient?Id={item.PrimaryId}")'" class="btn blue-btn"><i class="fa fa-eye"></i> Prescriptions</div>
-                        @if (ViewBag.IsSelectView == true)
-                        {
-                            <div onclick="location.href='@($"/Prescriptions/AddPrescriptionToPatient?patientId={item.PrimaryId}")'" class="btn green-btn"><i class="fa fa-plus"></i> Add Prescription</div>
-                        }
-                    </div>
-
+        <div class="col-4 text-left">
+            <div class="profile-card text-center shadow">
+                <img class="bg-img" src="~/images/green-bg.png">
+                <div class="profile-info" style="margin-top:-60px;">
+                    <h3 class="hvr-underline-from-center">@item.UserName</h3>
+                    <p><br /> @item.GetAge() years old</p>
+                    <p><i class="fa fa-phone"></i><br /> @item.Phone</p>
+                    <p><i class="fa fa-envelope-o"></i><br /> @item.Mail</p>
+                    <div onclick="location.href='@($"/Patients/GetPrescriptionsOfPatient?Id={item.PrimaryId}")'" class="btn blue-btn"><i class="fa fa-eye"></i> Prescriptions</div>
+                    @if (ViewBag.IsSelectView == true)
+                    {
+                        <div onclick="location.href='@($"/Prescriptions/AddPrescriptionToPatient?patientId={item.PrimaryId}")'" class="btn green-btn"><i class="fa fa-plus"></i> Add Prescription</div>
+                    }
                 </div>
+
             </div>
+        </div>
     }
 </div>
 

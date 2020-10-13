@@ -46,13 +46,12 @@ namespace MediKal.Models
         {
             IBL bl = new BL.BL();
             var medicines = bl.GetMedicines();
-            string options = "";
-            string isSelected = "";
+            string options = "<option>Choose medicine...</option>";
             foreach (var item in medicines)
             {
-                options += $"<option value ='{item.Id}' data-GenericName='{item.GenericName}' data-ServingOption='{item.ServingOption}'> {item.GenericName} </option>";
+                options += $"<option id='medicine{item.Id}' value ='{item.Id}' data-Name='{item.Name}' data-ServingOption='{item.ServingOption}'> {item.GenericName} </option>";
             }
-            return new MvcHtmlString($"<select required name='{name}'>{options}</select>");
+            return new MvcHtmlString($"<select required name='{name}' class='medicinesSelect' >{options}</select>");
 
         }
     }
