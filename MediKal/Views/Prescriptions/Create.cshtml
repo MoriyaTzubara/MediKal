@@ -1,86 +1,149 @@
 ﻿@model MediKal.Models.PrescriptionViewModel
-
+@using MediKal.Models
 @{
     ViewBag.Title = "View";
     Layout = "~/Views/Shared/_ManagementLayout.cshtml";
 }
-
-@using (Html.BeginForm())
+<script>
+    $('select').on('change', function() {
+      alert( this.value );
+    });
+</script>
+@using (Html.BeginForm("Create","Prescriptions"))
 {
     @Html.AntiForgeryToken()
 
+    @Html.HiddenFor(model => model.DoctorId)
+    @Html.HiddenFor(model => model.PatientId)
+
+
+
+    <style>
+        td {
+            padding: 15px;
+        }
+    </style>
+
+    <button class="green-btn float-right" onclick="window.print()"><i class="fa fa-print"></i> Print</button>
     <br />
-    <br />
-    <div class="row">
-        <div class="col-sm-1 col-md-1 col-lg-4 col-xl-4"></div>
-        <div class="col-sm-10 col-md-10 col-lg-4 col-xl-4">
-            <img src="~/images/prescription.png" height="100" width="100" />
-            <h4>Add Prescription</h4>
+    <div>
+        <h4>Prescription</h4>
+        <h6>@DateTime.Now</h6>
+        <hr />
+        <br />
+        <div id="details">
+            <div id="prescriptionDetails">
+                <p>
+                    <b>@Html.DisplayName("Prescription date:")</b>
+                    @Html.Label("PrescriptionDate", DateTime.Now.ToString())
+                </p>
+                <p>
+                    <b>By: </b>@($"DR. {Model.prescription.GetDoctor().UserName}")
+                </p>
+                <p>
+                    <b>@Html.DisplayName("Employee license num:")</b>
+                    @Html.DisplayFor(model => model.prescription.GetDoctor().LicenseNum)
+                </p>
+            </div>
             <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.DoctorId, htmlAttributes: new { @class = "control-label" })
-                <div>
-                    @Html.EditorFor(model => model.DoctorId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DoctorId, "", new { @class = "text-danger" })
-                </div>
+            <div>
+                <table>
+                    <tr>
+                        <td>
+                            <b>@Html.DisplayName("Full Name:")</b>
+                            @Html.DisplayFor(model => model.prescription.GetPatient().UserName)
+                        </td>
+                        <td>
+                            <b>@Html.DisplayName("ID: ")</b>
+                            @Html.DisplayFor(model => model.prescription.GetPatient().Id)
+                        </td>
+                        <td>
+                            <b>@Html.DisplayName("Age: ")</b>
+                            @Html.Label(Model.prescription.GetPatient().GetAge().ToString())
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>@Html.DisplayName("Phone: ")</b>
+                            @Html.DisplayFor(model => model.prescription.GetPatient().Phone)
+                        </td>
+                        <td>
+                            <b>@Html.DisplayName("Mail: ")</b>
+                            @Html.DisplayFor(model => model.prescription.GetPatient().Mail)
+                        </td>
+                    </tr>
+                </table>
             </div>
+            <hr />
+            <table>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayName("Name:")</b>
+                        @Html.DropDownEnumListForMedicines("MedicineId")
+                    </td>
+                    <td>
+                        <b>@Html.DisplayName("Generic Name:")</b>
+                        @Html.DisplayFor(model => model.prescription.GetMedicine().GenericName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayName("Serving Option:")</b>
+                        @Html.DisplayFor(model => model.prescription.GetMedicine().ServingOption)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayName("Frequency: ")</b>
+                        @Html.EditorFor(model => model.NumOfTimes, new { @class = "px-3" }) times in a @Html.EnumDropDownListFor(model => model.Frequency)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <br />
+                        <b>Start date: </b>
+                        <input name="StartTime" value="@DateTime.Now.ToString("yyyy-MM-dd")" type="date" />
+                    </td>
+                    <td>
+                        <br />
+                        <b>End date: </b>
+                        <input name="EndTime" type="date" />
+                    </td>
+                </tr>
+            </table>
+            <hr />
+            <br />
+            <b>@Html.DisplayNameFor(model => model.Comments)</b>
+            <br />
+            <textarea name="Comments" rows="5" cols="100"></textarea>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.NumOfTimes, htmlAttributes: new { @class = "control-label" })
-                <div>
-                    @Html.EditorFor(model => model.NumOfTimes, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.NumOfTimes, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Frequency, htmlAttributes: new { @class = "control-label" })
-                <div>
-                    @Html.EnumDropDownListFor(model => model.Frequency, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Frequency, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label" })
-                <div>
-                    @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label" })
-                <div>
-                    @Html.EditorFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.MedicineId, htmlAttributes: new { @class = "control-label" })
-                <div>
-                    @Html.EditorFor(model => model.MedicineId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.MedicineId, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label" })
-                <div>
-                    @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn blue-btn" />
-                    <a href="~/Medicines" class="btn green-btn">Back to List</a>
-                </div>
-            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <hr />
+            <br />
+            <br />
+            <p>Doctor's signature:___________________________________________</p>
         </div>
-</div>
-    }
+        <br />
+        <br />
+        <div class="float-right">
+            <input type="submit" value="Save" class="btn blue-btn" />
+            <a href="~/Medicines" class="btn green-btn">Back to List</a>
+        </div>
+
+    </div>
+    <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+}

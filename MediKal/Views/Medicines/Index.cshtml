@@ -27,6 +27,7 @@
                     </div>
                     <div class='square2' data-image="">
                         <div class="square-container2">
+<<<<<<< HEAD
                             @if (item.ImagePath != null)
                             { @Html.DisplayRoundImage(item.ImagePath.Replace(@"\\", @"\"), 100)}
                             <br />
@@ -40,9 +41,19 @@
                             <br />
                             @Html.LabelFor(modelItem => item.medicine.ServingOption) :  @Html.DisplayTextFor(modelItem => item.ServingOption)
                             <br />
+=======
+                            @*@Html.DisplayRoundImage(item.ImagePath, 100)*@
+                            <br />
+                            <b>@Html.LabelFor(modelItem => item.Name): </b>@Html.DisplayTextFor(modelItem => item.Name)
+                            <hr />
+                            <b>@Html.LabelFor(modelItem => item.Company): </b>@Html.DisplayTextFor(modelItem => item.Company)
+                            <hr />
+                            <b>@Html.LabelFor(modelItem => item.medicine.ServingOption) :</b>@Html.DisplayTextFor(modelItem => item.ServingOption)
+                            <hr />
+>>>>>>> 1bac8f785233c994c653fc5f7433bafcec7a7385
                             <div class="crud-btn fa fa-edit" onclick="location.href='@($"Medicines/Edit?id={item.medicine.NDCId}")'"></div>
                             <div class="crud-btn fa fa-eye" onclick="location.href='@($"Medicines/Details?id={item.medicine.NDCId}")'"></div>
-                            <div class="crud-btn fa fa-trash" onclick="location.href='@($"Medicines/Delete?id={item.medicine.NDCId}")'"></div>
+                            @*<div class="crud-btn fa fa-trash" onclick="location.href='@($"Medicines/Delete?id={item.medicine.NDCId}")'"></div>*@
                         </div>
                         <div class="flip-overlay"></div>
                     </div>

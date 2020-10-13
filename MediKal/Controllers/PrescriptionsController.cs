@@ -65,7 +65,7 @@ namespace MediKal.Controllers
                 Patient patient = prescription.GetPatient();
                 bl.SendSMS(patient.Phone, patient.UserName, "You have a new prescription!");
                 bl.SendMail(patient.Mail, patient.UserName, $"You have a new prescription!\n<a href='{link}'> Go to your account </a>");
-                return RedirectToAction("Index");
+                return PdfViewer(prescription.Id);
             }
 
             return View(new PrescriptionViewModel(prescription));
@@ -127,7 +127,25 @@ namespace MediKal.Controllers
             var prescription = bl.GetPrescriptionById(id);
             if (prescription == null)
                 return View("Error");
-            return View(new PrescriptionViewModel(prescription));
+            return View("PdfViewer", new PrescriptionViewModel(prescription));
+        }
+
+        public ActionResult ChoosePatient()
+        {
+            IBL bl = new BL.BL();
+            ViewBag.IsSelectView = true;
+            return View("~/Views/Patients/Index.cshtml", bl.GetPatients());
+        }
+        public ActionResult AddPrescriptionToPatient(int patientId)
+        {
+            IBL bl = new BL.BL();
+            var primaryDoctorId = bl.GetDoctorById(RouteConfig.user.Id).PrimaryId;
+            Prescription prescription = new Prescription()
+            {
+                PatientId = patientId,
+                DoctorId = primaryDoctorId };
+
+            return View("Create", new PrescriptionViewModel(prescription));
         }
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace MediKal.Models
 {
@@ -40,6 +41,19 @@ namespace MediKal.Models
             if (birthdate.Date > today.AddYears(-age)) 
                 age--;
             return age;
+        }
+        static public MvcHtmlString DropDownEnumListForMedicines(this HtmlHelper htmlHelper, string name)
+        {
+            IBL bl = new BL.BL();
+            var medicines = bl.GetMedicines();
+            string options = "";
+            string isSelected = "";
+            foreach (var item in medicines)
+            {
+                options += $"<option value ='{item.Id}' data-GenericName='{item.GenericName}' data-ServingOption='{item.ServingOption}'> {item.GenericName} </option>";
+            }
+            return new MvcHtmlString($"<select required name='{name}'>{options}</select>");
+
         }
     }
 }

@@ -5,6 +5,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_ManagementLayout.cshtml";
 }
+
 <div>
     <img src="~/images/add-doctor.png" class="mt-0 pt-0" height="160" />
     <a href="~/Patients/create" class="social-button">
@@ -17,21 +18,23 @@
 <div class="row">
     @foreach (Patient item in Model)
     {
-        <div class="col-4 text-left">
-            <div class="profile-card text-center shadow">
+            <div class="col-4 text-left">
+                <div class="profile-card text-center shadow">
+                    <img class="bg-img" src="~/images/green-bg.png">
+                    <div class="profile-info" style="margin-top:-60px;">
+                        <h3 class="hvr-underline-from-center">@item.UserName</h3>
+                        <p><br /> @item.GetAge() years old</p>
+                        <p><i class="fa fa-phone"></i><br /> @item.Phone</p>
+                        <p><i class="fa fa-envelope-o"></i><br /> @item.Mail</p>
+                        <div onclick="location.href='@($"/Patients/GetPrescriptionsOfPatient?Id={item.PrimaryId}")'" class="btn blue-btn"><i class="fa fa-eye"></i> Prescriptions</div>
+                        @if (ViewBag.IsSelectView == true)
+                        {
+                            <div onclick="location.href='@($"/Prescriptions/AddPrescriptionToPatient?patientId={item.PrimaryId}")'" class="btn green-btn"><i class="fa fa-plus"></i> Add Prescription</div>
+                        }
+                    </div>
 
-                <img class="bg-img" src="~/images/green-bg.png">
-                <div class="profile-info">
-                    <i class="profile-pic"><img src="~/images/doctor (2).png" width="50"></i>
-                    <h3 class="hvr-underline-from-center">@item.UserName</h3>
-                    <p><br /> @item.GetAge() years old</p>
-                    <p><i class="fa fa-phone"></i><br /> @item.Phone</p>
-                    <p><i class="fa fa-envelope-o"></i><br /> @item.Mail</p>
-                    <div onclick="location.href='@($"/Patients/GetPrescriptionsOfPatient?Id={item.PrimaryId}")'" class="btn blue-btn"><i class="fa fa-eye"></i> Prescriptions</div>
                 </div>
-
             </div>
-        </div>
     }
 </div>
 
