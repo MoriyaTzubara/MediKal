@@ -129,3 +129,7 @@ C:\Users\User\Desktop\MediKal\DAL\bin\Debug\Newtonsoft.Json.dll
 C:\Users\User\Desktop\MediKal\DAL\bin\Debug\RestSharp.dll
 C:\Users\User\Desktop\MediKal\DAL\bin\Debug\Newtonsoft.Json.xml
 C:\Users\User\Desktop\MediKal\DAL\bin\Debug\RestSharp.xml
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\DAL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\DAL\bin\Debug\RestSharp.dll
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\DAL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\DAL\bin\Debug\RestSharp.xml

@@ -259,3 +259,5 @@ C:\Users\User\Desktop\MediKal\MediKal\obj\Debug\MediKal.dll
 C:\Users\User\Desktop\MediKal\MediKal\obj\Debug\MediKal.pdb
 C:\Users\User\Desktop\MediKal\MediKal\bin\RestSharp.dll
 C:\Users\User\Desktop\MediKal\MediKal\bin\RestSharp.xml
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\RestSharp.dll
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\RestSharp.xml

@@ -1,18 +1,165 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_ManagementLayout.cshtml";
-}
+﻿<style>
+    h2{
+        color:#00d6c8;
+    }
+</style>
+@using BE
+@{ if (RouteConfig.user != null)
+    {
+        Layout = "~/Views/Shared/_ManagementLayout.cshtml";
+    <div class="m-5 p-3">
+        <section id="featured-services" class="featured-services">
+            <div class="container" data-aos="fade-up">
+                <div class="p-5">
+                    <h2>Welcome back</h2>
+                    <h1>@RouteConfig.user.UserName</h1>
+                    <h2>________</h2>
 
-<div class="m-5 p-3">
-    <h2>Dashboard</h2>
-    <hr />
-    <a href="~/Medicines">Medicines</a>
-    <hr />
-    <a href="~/Users">Users</a>
-    <hr />
-    <a href="~/Patients">Patients</a>
-    <hr />
-    <a href="~/Prescriptions">Prescriptions</a>
-    <hr />
-</div>
+                    <br />
+
+                </div>
+
+                <div class="row">
+                    @if (RouteConfig.user.UserType == UserTypeEnum.Doctor)
+                    {
+
+                        //רשימת כל התרופות
+                        //רשימת כל המרשמים שהוא יצר
+                        //הוספת מרשם לפציינט
+                        //לא יכול לעדכן או למחוק כלום, חוץ מפרטים אישיים
+                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                                <div class="icon"><i class="fa fa-user-md"></i></div>
+                                <h4 class="title"><a href="">Update your details</a></h4>
+                                <br />
+                                <p class="description">
+                                    E-mail:
+                                    <br />
+                                    @RouteConfig.user.Mail
+                                    <br />
+                                    Phone:
+                                    <br />
+                                    @RouteConfig.user.Phone
+                                    <br />
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                                <div class="icon"><i class="icofont-drug"></i></div>
+                                <h4 class="title"><a href="">Catalog of medicines</a></h4>
+                                <p class="description">
+                                    View all medications
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                                <div class="icon"><i class="fa fa-file"></i></div>
+                                <h4 class="title"><a href="">Your prescriptions</a></h4>
+                                <p class="description">
+                                    View all the prescriptions you have issued
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                                <div class="icon"><i class="fa fa-plus"></i></div>
+                                <h4 class="title"><a href="">New prescription</a></h4>
+                                <p class="description">
+                                    Add a new prescription to patient
+                                </p>
+                            </div>
+                        </div>
+
+
+                    }
+                    else if (RouteConfig.user.UserType == UserTypeEnum.Patient)
+                    {
+                        //צפייה בכל המרשמים
+                        //עדכון פרטים אישיים
+                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                                <div class="icon"><i class="fa fa-user-md"></i></div>
+                                <h4 class="title"><a href="">Update your details</a></h4>
+                                <br />
+                                <p class="description">
+                                    E-mail:
+                                    <br />
+                                    @RouteConfig.user.Mail
+                                    <br />
+                                    Phone:
+                                    <br />
+                                    @RouteConfig.user.Phone
+                                    <br />
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                                <div class="icon"><i class="fa fa-file"></i></div>
+                                <h4 class="title"><a href="">Your prescriptions</a></h4>
+                                <p class="description">
+                                    View all the prescriptions given to you
+                                </p>
+                            </div>
+                        </div>
+                    }
+                    else if (RouteConfig.user.UserType == UserTypeEnum.Manager)
+                    {
+                        //רשימה של תרופות, יכול להוסיף תרופה, יכול לעדכן תמונה בלבד
+                        //יכול לראות את כל הדוקטורים, יכול להזמין דוקטור חדש
+                        //יכול לראות את כל הפציינטים, יכול להזמין פציינט, יכול לעדכן פרטיים רפואים של פציינט
+                        //יכול לראות את כל המרשמים
+                        //סטטיסטיקות
+                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                                <div class="icon"><i class="fa fa-plus"></i></div>
+                                <h4 class="title"><a href="">Add medicine</a></h4>
+                                <p class="description">
+                                    Add a medicine to the catalog
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                                <div class="icon"><i class="fa fa-paper-plane"></i></div>
+                                <h4 class="title"><a href="">Invite user</a></h4>
+                                <p class="description">
+                                    Invite a doctor or patient
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                                <div class="icon"><i class="fa fa-file"></i></div>
+                                <h4 class="title"><a href="">All prescriptions</a></h4>
+                                <p class="description">
+                                    View all the prescriptions
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                                <div class="icon"><i class="fa fa-bar-chart"></i></div>
+                                <h4 class="title"><a href="">Statistics</a></h4>
+                                <p class="description">
+                                    View statistics
+                                </p>
+                            </div>
+                        </div>
+                    }
+
+
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+            }
+            }
