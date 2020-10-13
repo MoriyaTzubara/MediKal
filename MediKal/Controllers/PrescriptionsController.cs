@@ -19,7 +19,15 @@ namespace MediKal.Controllers
         public ActionResult Index()
         {
             IBL bl = new BL.BL();
-            var prescriptions = bl.GetPrescriptions().Select(item => new PrescriptionViewModel(item));
+            if (RouteConfig.user == null)
+                return View("Error");
+            IEnumerable<PrescriptionViewModel> prescriptions;
+            if (RouteConfig.user.UserType == UserTypeEnum.Manager)
+                prescriptions = bl.GetPrescriptions().Select(item => new PrescriptionViewModel(item));
+            else if (RouteConfig.user.UserType == UserTypeEnum.Manager)
+                prescriptions = bl.GetPrescriptionsOfDoctor(RouteConfig.user.PrimaryId).Select(item => new PrescriptionViewModel(item));
+            else
+                prescriptions = bl.GetPrescriptionsOfPatient(RouteConfig.user.PrimaryId).Select(item => new PrescriptionViewModel(item));
             return View(prescriptions);
         }
 
@@ -53,8 +61,16 @@ namespace MediKal.Controllers
                 IBL bl = new BL.BL();
                 prescription.PrescriptionDate = DateTime.Now;
                 bl.AddPrescription(prescription);
+<<<<<<< HEAD
                 bl.SendSMS(prescription.GetPatient().Phone, prescription.GetPatient().UserName, "");
                 return PdfViewer(prescription.Id);
+=======
+                string link = $"http://{Request.Url.Host}:{Request.Url.Port}/Account/SignIn";
+                Patient patient = prescription.GetPatient();
+                bl.SendSMS(patient.Phone, patient.UserName, "You have a new prescription!");
+                bl.SendMail(patient.Mail, patient.UserName, $"You have a new prescription!\n<a href='{link}'> Go to your account </a>");
+                return RedirectToAction("Index");
+>>>>>>> e279a054e99c22c1e1cae61ce6b46b1a311de3e5
             }
 
             return View(new PrescriptionViewModel(prescription));
