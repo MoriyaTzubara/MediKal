@@ -53,7 +53,10 @@ namespace MediKal.Controllers
                 IBL bl = new BL.BL();
                 prescription.PrescriptionDate = DateTime.Now;
                 bl.AddPrescription(prescription);
-                bl.SendSMS(prescription.GetPatient().Phone, prescription.GetPatient().UserName, "");
+                string link = $"http://{Request.Url.Host}:{Request.Url.Port}/Account/SignIn";
+                Patient patient = prescription.GetPatient();
+                bl.SendSMS(patient.Phone, patient.UserName, "You have a new prescription!");
+                bl.SendMail(patient.Mail, patient.UserName, $"You have a new prescription!\n<a href='{link}'> Go to your account </a>");
                 return RedirectToAction("Index");
             }
 
