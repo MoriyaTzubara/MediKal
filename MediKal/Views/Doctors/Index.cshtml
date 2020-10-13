@@ -26,7 +26,7 @@
                     <p><br /> @item.Specialty</p>
                     <p><i class="fa fa-phone"></i><br /> @item.Phone</p>
                     <p><i class="fa fa-envelope-o"></i><br /> @item.Mail</p>
-                    <div onclick="location.href='@($"GetPrescriptionsOfDoctor?Id={item.Id}")'" class="btn blue-btn"><i class="fa fa-eye"></i> Prescriptions</div>
+                    <div onclick="location.href='@($"/Doctors/GetPrescriptionsOfDoctor?Id={item.Id}")'" class="btn blue-btn"><i class="fa fa-eye"></i> Prescriptions</div>
                 </div>
 
             </div>

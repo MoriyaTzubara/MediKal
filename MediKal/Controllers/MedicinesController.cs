@@ -64,7 +64,7 @@ namespace MediKal.Controllers
                 else
                 {
                     Session["Error"] = "This image isn't valid";
-                    return View();
+                    return View("AddImage",new MedicineViewModel(medicine));
                 }
                 return RedirectToAction("Index");
             }catch(Exception e) { return View(); }
@@ -128,6 +128,8 @@ namespace MediKal.Controllers
 
         public ActionResult AddImage(string id)
         {
+            Session["Error"] = "";
+
             IBL bl = new BL.BL();
             Medicine medicine = bl.FindMedicineInExcel(id);
             if (medicine == null)
