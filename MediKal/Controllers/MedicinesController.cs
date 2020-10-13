@@ -42,7 +42,6 @@ namespace MediKal.Controllers
         {
             Session["Message"] = "";
             Session["Error"] = "Check the image first";
-            Session["Success"] = "";
             return View();
         }
 
@@ -70,6 +69,7 @@ namespace MediKal.Controllers
                 {
                     //add image to drive
                     bl.AddMedicine(medicine);
+
                 }
                 else
                 {
