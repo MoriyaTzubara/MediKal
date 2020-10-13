@@ -18,7 +18,8 @@
                 <div class="square-flip">
                     <div class='square' data-image="">
                         <div class="square-container">
-                            @Html.DisplayRoundImage(item.ImagePath, 150)
+                            @if (item.ImagePath != null)
+                            {@Html.DisplayRoundImage(item.ImagePath.Replace(@"\\", @"\"), 150)}
                             <br />
                             @Html.DisplayHeader(item.Name, 3)
                         </div>
@@ -26,7 +27,8 @@
                     </div>
                     <div class='square2' data-image="">
                         <div class="square-container2">
-                            @Html.DisplayRoundImage(item.ImagePath, 100)
+                            @if (item.ImagePath != null)
+                            { @Html.DisplayRoundImage(item.ImagePath.Replace(@"\\", @"\"), 100)}
                             <br />
                             <br />
                             @Html.LabelFor(modelItem => item.GenericName) :  @Html.DisplayTextFor(modelItem => item.GenericName)

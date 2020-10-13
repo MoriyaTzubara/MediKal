@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using BE;
 using BL;
+using DAL;
 using MediKal.Models;
 
 namespace MediKal.Controllers
@@ -27,6 +28,7 @@ namespace MediKal.Controllers
         public ActionResult Details(string id)
         {
             IBL bl = new BL.BL();
+            Session["Error"] = "";
             Medicine medicine = bl.GetMedicineById(id);
             if (medicine == null)
             {
@@ -39,6 +41,8 @@ namespace MediKal.Controllers
         public ActionResult Create()
         {
             Session["Message"] = "";
+            Session["Error"] = "Check the image first";
+            Session["Success"] = "";
             return View();
         }
 
@@ -47,17 +51,20 @@ namespace MediKal.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Medicine medicine)
+        public ActionResult Create(Medicine medicine,HttpPostedFileBase file)
         {
             try
             {
                 IBL bl = new BL.BL();
+                GoogleDriveAPIHelper googleDrive = new GoogleDriveAPIHelper();
+                googleDrive.UploadFileOnDrive(file);
+                medicine.ImagePath = googleDrive.DownloadGoogleFileByName(file.FileName);
                 ImageValidate imageValidate = new ImageValidate();
                 bool result = true;
                 if (medicine.ImagePath != null)
                 {
-                    var path = Server.MapPath(Url.Content($"~/images/{medicine.ImagePath}"));
-                    result = imageValidate.Validate(path);
+                    //var path = Server.MapPath(Url.Content($"~/images/{medicine.ImagePath}"));
+                    result = imageValidate.Validate(medicine.ImagePath);
                 }
                 if (result)
                 {
@@ -72,7 +79,6 @@ namespace MediKal.Controllers
                 return RedirectToAction("Index");
             }catch(Exception e) { return View(); }
         }
-
         // GET: Medicines/Edit/5
         public ActionResult Edit(string id)
         {
@@ -96,7 +102,22 @@ namespace MediKal.Controllers
             {
                 IBL bl = new BL.BL();
                 ImageValidate imageValidate = new ImageValidate();
-                bl.UpdateMedicine(medicine,medicine.NDCId);
+                bool result = true;
+                if (medicine.ImagePath != null)
+                {
+                    var path = Server.MapPath(Url.Content($"~/images/{medicine.ImagePath}"));
+                    result = imageValidate.Validate(path);
+                }
+                if (result)
+                {
+                    //add image to drive
+                    bl.UpdateMedicine(medicine, medicine.NDCId);
+                }
+                else
+                {
+                    Session["Error"] = "This image isn't valid";
+                    return View("Details", new MedicineViewModel(medicine));
+                }
                 return RedirectToAction("Index");
             }
             return View(new MedicineViewModel(medicine));
