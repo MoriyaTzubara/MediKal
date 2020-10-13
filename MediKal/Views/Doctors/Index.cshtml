@@ -23,9 +23,10 @@
                 <div class="profile-info">
                     <i class="profile-pic"><img src="~/images/doctor (2).png" width="50"></i>
                     <h3 class="hvr-underline-from-center">Dr. @item.UserName</h3>
+                    <p><br /> @item.Specialty</p>
                     <p><i class="fa fa-phone"></i><br /> @item.Phone</p>
                     <p><i class="fa fa-envelope-o"></i><br /> @item.Mail</p>
-                    <button class="btn blue-btn"><i class="fa fa-eye"></i> Prescriptions</button>
+                    <div onclick="location.href='@($"GetPrescriptionsOfDoctor?Id={item.Id}")'" class="btn blue-btn"><i class="fa fa-eye"></i> Prescriptions</div>
                 </div>
 
             </div>

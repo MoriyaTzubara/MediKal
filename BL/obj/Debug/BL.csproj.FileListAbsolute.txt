@@ -95,3 +95,5 @@ C:\Users\User\Desktop\MediKal\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\MediKal\BL\obj\Debug\BL.csproj.CopyComplete
 C:\Users\User\Desktop\MediKal\BL\obj\Debug\BL.dll
 C:\Users\User\Desktop\MediKal\BL\obj\Debug\BL.pdb
+C:\Users\User\Desktop\MediKal\BL\bin\Debug\RestSharp.dll
+C:\Users\User\Desktop\MediKal\BL\bin\Debug\RestSharp.xml

@@ -10,7 +10,7 @@ namespace BE
     {
         public int Id { get; set; }
         public string ServingOption { get; set; }
-        public double NDCId { get; set; }
+        public string NDCId { get; set; }
         public string GenericName { get; set; }
         public string Name { get; set; }
         public List<string> ActiveIngredients { get; set; }

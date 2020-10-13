@@ -35,6 +35,9 @@
                             <br />
                             @Html.LabelFor(modelItem => item.Company) :  @Html.DisplayTextFor(modelItem => item.Company)
                             <br />
+                            <br />
+                            @Html.LabelFor(modelItem => item.medicine.ServingOption) :  @Html.DisplayTextFor(modelItem => item.ServingOption)
+                            <br />
                             <div class="crud-btn fa fa-edit" onclick="location.href='@($"Medicines/Edit?id={item.medicine.NDCId}")'"></div>
                             <div class="crud-btn fa fa-eye" onclick="location.href='@($"Medicines/Details?id={item.medicine.NDCId}")'"></div>
                             <div class="crud-btn fa fa-trash" onclick="location.href='@($"Medicines/Delete?id={item.medicine.NDCId}")'"></div>

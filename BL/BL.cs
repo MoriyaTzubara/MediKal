@@ -44,7 +44,7 @@ namespace BL
             dal.AddManager(manager);
         }
 
-        public void DeleteMedicine(double NDCid)
+        public void DeleteMedicine(string NDCid)
         {
             dal.DeleteMedicine(NDCid);
         }
@@ -69,12 +69,12 @@ namespace BL
             throw new NotImplementedException();
         }
 
-        public List<Warning> GetConflicts(double medicineId, int patientId)
+        public List<Warning> GetConflicts(string medicineId, int patientId)
         {
             throw new NotImplementedException();
         }
 
-        public Medicine GetMedicineById(double NDCid)
+        public Medicine GetMedicineById(string NDCid)
         {
             return dal.GetMedicines().FirstOrDefault(item => item.NDCId == NDCid);
         }
@@ -122,6 +122,12 @@ namespace BL
             return from item in prescriptions
                    where item.PatientId == id
                    select item;
+        }
+        public IEnumerable<string> GetMedicineOfPatient(int id)
+        {
+            var prescriptions = GetPrescriptionsOfPatient(id);
+            return from item in prescriptions
+                   select GetMedicineByPrimaryId(item.MedicineId).NDCId;
         }
 
         public User GetUserById(int id)
@@ -213,7 +219,7 @@ namespace BL
             if (newUser.UserType == UserTypeEnum.Patient)
                 dal.UpdatePatient((Patient)newUser, newUser.Id);
         }
-        public void UpdateMedicine(Medicine medicine,double NDCId)
+        public void UpdateMedicine(Medicine medicine,string NDCId)
         {
             dal.UpdateMedicine(medicine,NDCId);
         }
