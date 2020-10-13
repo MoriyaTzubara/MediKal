@@ -4,10 +4,12 @@
     ViewBag.Title = "View";
     Layout = "~/Views/Shared/_ManagementLayout.cshtml";
 }
-<script>
-    $('select').on('change', function() {
-      alert( this.value );
-    });
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script>
+    $(document).on('change', 'select', function (e) {
+        var id = $(this).find(":selected").attr("id");
+        document.getElementById('Name').innerHTML = document.getElementById(id).getAttribute('data-Name');
+        document.getElementById('ServingOption').innerHTML = document.getElementById(id).getAttribute('data-ServingOption');
+});
 </script>
 @using (Html.BeginForm("Create","Prescriptions"))
 {
@@ -22,13 +24,18 @@
         td {
             padding: 15px;
         }
+        select,input,select:active,select:focus,select:after,option{
+  border: none;
+  border-bottom: 1.5px solid #00d6c8;
+}
+        input[type=number]{
+            width:50px;
+            text-align:center;
+        }
     </style>
-
-    <button class="green-btn float-right" onclick="window.print()"><i class="fa fa-print"></i> Print</button>
     <br />
     <div>
-        <h4>Prescription</h4>
-        <h6>@DateTime.Now</h6>
+        <h4>New Prescription</h4>
         <hr />
         <br />
         <div id="details">
@@ -78,18 +85,18 @@
             <table>
                 <tr>
                     <td>
-                        <b>@Html.DisplayName("Name:")</b>
+                        <b>@Html.DisplayName("Generic Name:")</b>
                         @Html.DropDownEnumListForMedicines("MedicineId")
                     </td>
                     <td>
-                        <b>@Html.DisplayName("Generic Name:")</b>
-                        @Html.DisplayFor(model => model.prescription.GetMedicine().GenericName)
+                        <b>@Html.DisplayName("Name:")</b>
+                        <label id="Name"></label>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <b>@Html.DisplayName("Serving Option:")</b>
-                        @Html.DisplayFor(model => model.prescription.GetMedicine().ServingOption)
+                        <label id="ServingOption"></label>
                     </td>
                 </tr>
                 <tr>
