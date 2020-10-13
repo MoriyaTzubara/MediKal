@@ -23,6 +23,22 @@ namespace MediKal.Controllers
             Session["Error"] = "";
             return View();
         }
+        [HttpGet]
+        public ActionResult EditPersonalDetails()
+        {
+            UserViewModel userViewModel = new UserViewModel(RouteConfig.user);
+            return View(userViewModel);
+        }
+        [HttpPost]
+        public ActionResult EditPersonalDetails(User user)
+        {
+            IBL bl = new BL.BL();
+            if (user.UserType == UserTypeEnum.Doctor)
+                bl.UpdateDoctor(bl.ConvertUserToDoctor(user), user.Id);
+            if (user.UserType == UserTypeEnum.Patient)
+                bl.UpdatePatient(bl.ConvertUserToPatient(user), user.Id);
+            return View("Index");
+        }
         public ActionResult EnterId()
         {
             Session["Error"] = "";

@@ -19,7 +19,15 @@ namespace MediKal.Controllers
         public ActionResult Index()
         {
             IBL bl = new BL.BL();
-            var prescriptions = bl.GetPrescriptions().Select(item => new PrescriptionViewModel(item));
+            if (RouteConfig.user == null)
+                return View("Error");
+            IEnumerable<PrescriptionViewModel> prescriptions;
+            if (RouteConfig.user.UserType == UserTypeEnum.Manager)
+                prescriptions = bl.GetPrescriptions().Select(item => new PrescriptionViewModel(item));
+            else if (RouteConfig.user.UserType == UserTypeEnum.Manager)
+                prescriptions = bl.GetPrescriptionsOfDoctor(RouteConfig.user.PrimaryId).Select(item => new PrescriptionViewModel(item));
+            else
+                prescriptions = bl.GetPrescriptionsOfPatient(RouteConfig.user.PrimaryId).Select(item => new PrescriptionViewModel(item));
             return View(prescriptions);
         }
 
