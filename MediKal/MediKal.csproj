@@ -373,6 +373,7 @@
     <Content Include="Views\Prescriptions\PdfViewer.cshtml" />
     <Content Include="Views\Shared\_PrintLayout.cshtml" />
     <Content Include="Views\Prescriptions\Create.cshtml" />
+    <Content Include="Views\Account\SignUpPatient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

@@ -131,7 +131,7 @@ namespace DAL
             {
                 using (var db = new MediKalDB())
                 {
-                    Patient patient = db.Patients.Find(id);
+                    Patient patient = db.Patients.First(d => d.Id == id);
                     db.Patients.Remove(patient);
                     db.SaveChanges();
                 }
@@ -188,7 +188,7 @@ namespace DAL
                 {
                     using (var db = new MediKalDB())
                     {
-                        Doctor doctor = db.Doctors.Find(id);
+                        Doctor doctor = db.Doctors.First(d => d.Id == id);
                         db.Doctors.Remove(doctor);
                         db.SaveChanges();
                     }
@@ -202,7 +202,7 @@ namespace DAL
             {
                 using (var db = new MediKalDB())
                 {
-                    Manager manager = db.Managers.Find(id);
+                    Manager manager = db.Managers.First(d => d.Id == id);
                     db.Managers.Remove(manager);
                     db.SaveChanges();
                 }
@@ -364,6 +364,8 @@ namespace DAL
                     tmp.UserName = patient.UserName;
                     tmp.Mail = patient.Mail;
                     tmp.Phone = patient.Phone;
+                    tmp.Password = patient.Password;
+                    tmp.Mail = patient.Mail;
                     db.SaveChanges();
                 }
             }
@@ -425,6 +427,8 @@ namespace DAL
                     tmp.UserType = doctor.UserType;
                     tmp.LicenseNum = doctor.LicenseNum;
                     tmp.Specialty = doctor.Specialty;
+                    tmp.Password = doctor.Password;
+                    tmp.Mail = doctor.Mail;
                     db.SaveChanges();
                 }
             }

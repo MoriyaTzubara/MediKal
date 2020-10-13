@@ -1,0 +1,46 @@
+﻿@model MediKal.Models.PatientViewModel
+@using MediKal.Models
+@using (Html.BeginForm("SignUpPatient", "Account"))
+{
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.Mail)
+    <div class="container">
+        <div class="m-5 p-3 row">
+            <div class="col-sm-1 col-md-1 col-lg-4 col-xl-4">
+            </div>
+            <div class="col-sm-10 col-md-10 col-lg-4 col-xl-4">
+                <form id="appointment-form" role="form" method="post" action="#">
+                    <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+                        <img src="~/images/doctor.png" class="img-fluid" width="100" />
+                        <h2>Sign Up</h2>
+                        <p>Please fill in all the details</p>
+                    </div>
+
+                    <div class="wow fadeInUp" data-wow-delay="0.8s">
+
+                        <div class="col-md-12 col-sm-12">
+                            @Html.Label("User Name")
+                            @Html.TextBoxFor(model => model.FullName, new { @class = "form-control", placeholder = "Enter your user name" })
+                            @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                            <br />
+                            @Html.Label("Password")
+                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control", type = "password", placeholder = "Enter your password" })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            <br />
+                            @Html.Label("ConfirmPassword")
+                            @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "form-control", type = "password", placeholder = "Enter your password again" })
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                            <br />
+                            @Html.Label("Phone")
+                            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", placeholder = "Enter your phone" })
+                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                            <br />
+                            <button type="submit" class="green-btn" id="cf-submit" name="submit">Sign Up</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+}

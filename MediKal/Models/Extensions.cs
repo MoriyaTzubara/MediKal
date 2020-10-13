@@ -16,12 +16,12 @@ namespace MediKal.Models
         static public Patient GetPatient(this Prescription prescription)
         {
             IBL bl = new BL.BL();
-            return bl.GetPatientById(prescription.PatientId);
+            return bl.GetPatientByPrimaryId(prescription.PatientId);
         }
         static public Doctor GetDoctor(this Prescription prescription)
         {
             IBL bl = new BL.BL();
-            return bl.GetDoctorById(prescription.DoctorId);
+            return bl.GetDoctorByPrimaryId(prescription.DoctorId);
         }
         static public Medicine GetMedicine(this Prescription prescription)
         {

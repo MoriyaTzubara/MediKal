@@ -19,6 +19,7 @@ namespace MediKal.Controllers
         [HttpGet]
         public ActionResult SignIn()
         {
+            Session["Error"] = "";
             return View();
         }
         public ActionResult EnterId()
@@ -59,7 +60,10 @@ namespace MediKal.Controllers
                 return View("Index");
 
             }
-            catch (Exception e) { return View(e.Message); }
+            catch (Exception e) {
+                Session["Error"] = e.Message;
+                return View(); 
+            }
         }
 
         public ActionResult SignUp()
@@ -67,13 +71,27 @@ namespace MediKal.Controllers
             return View("EnterId");
         }
         [HttpPost]
-        public ActionResult SignUp(Doctor doctor)
+        public ActionResult SignUpDoctor(Doctor doctor)
         {
             try
             {
                 IBL bl = new BL.BL();
                 bl.UpdateDoctor(doctor,doctor.Id);
                 RouteConfig.user = bl.SignIn(doctor.Id, doctor.Password);
+                //which view you want him to go to
+                return View("Index");
+            }
+            catch (ArgumentNullException) { return View(); }
+        }
+
+        [HttpPost]
+        public ActionResult SignUpPatient(Patient patient)
+        {
+            try
+            {
+                IBL bl = new BL.BL();
+                bl.UpdatePatient(patient, patient.Id);
+                RouteConfig.user = bl.SignIn(patient.Id, patient.Password);
                 //which view you want him to go to
                 return View("Index");
             }

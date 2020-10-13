@@ -14,6 +14,7 @@
                 <div class="wow fadeInUp" data-wow-delay="0.8s">
 
                     <div class="col-md-12 col-sm-12">
+                        @Html.Label(Session["Error"].ToString(), new { @class = "text-danger" })
                         <input type="number" class="form-control" id="Id" name="Id" placeholder="Id">
                         <br />
                         <input type="password" class="form-control" id="Password" name="Password" placeholder="Password">
