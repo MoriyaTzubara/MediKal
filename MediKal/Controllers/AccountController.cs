@@ -135,6 +135,7 @@ namespace MediKal.Controllers
         //}
         public ActionResult SignOut()
         {
+            RouteConfig.user = null;
             return RedirectToAction("Index","Home");
         }
     }
