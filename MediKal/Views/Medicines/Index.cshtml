@@ -1,51 +1,57 @@
-﻿@model IEnumerable<MediKal.Models.MedicineViewModel>
+@model IEnumerable<MediKal.Models.MedicineViewModel>
 @using MediKal.Models
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_ManagementLayout.cshtml";
 }
     <div class="m-5 p-3">
-        <img src="~/images/ampoule.svg" height="100" width="100" />
-        <a href="~/Medicines/create" class="social-button">
-            <span class="fa fa-lg fa-plus"></span>
-        </a>
-        <h2 style="display:inline;margin-left:90px;">Medicines <span class="badge badge-pill bg-green">@Model.Count()</span></h2>
-    </div>
+        @{if (RouteConfig.user.UserType == BE.UserTypeEnum.Manager)
+            {<img src="~/images/ampoule.svg" height="100" width="100" />
+                <a href="~/Medicines/create" class="social-button">
+                    <span class="fa fa-lg fa-plus"></span>
+                </a>
+                }
+            }
+                <h2 style="display:inline;margin-left:90px;">Medicines <span class="badge badge-pill bg-green">@Model.Count()</span></h2>
+            </div>
 <hr />
-        <div class="row">
-            @foreach (var item in Model)
-            {
-                <div class="square-flip">
-                    <div class='square' data-image="">
-                        <div class="square-container">
-                            @if (item.ImagePath != null)
-                            {@Html.DisplayRoundImage(item.ImagePath.Replace(@"\\", @"\"), 150)}
-                            <br />
-                            @Html.DisplayHeader(item.Name, 3)
-                        </div>
-                        <div class="flip-overlay"></div>
-                    </div>
-                    <div class='square2' data-image="">
-                        <div class="square-container2">
-                            @*@Html.DisplayRoundImage(item.ImagePath, 100)*@
-                            <br />
-                            <b>@Html.LabelFor(modelItem => item.Name): </b>@Html.DisplayTextFor(modelItem => item.Name)
-                            <hr />
-                            <b>@Html.LabelFor(modelItem => item.Company): </b>@Html.DisplayTextFor(modelItem => item.Company)
-                            <hr />
-                            <b>@Html.LabelFor(modelItem => item.medicine.ServingOption) :</b>@Html.DisplayTextFor(modelItem => item.ServingOption)
-                            <hr />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="square-flip">
+            <div class='square' data-image="">
+                <div class="square-container">
+                    @if (item.ImagePath != null)
+                    {@Html.DisplayRoundImage(item.ImagePath.Replace(@"\\", @"\"), 150)}
+                    <br />
+                    @Html.DisplayHeader(item.Name, 3)
+                </div>
+                <div class="flip-overlay"></div>
+            </div>
+            <div class='square2' data-image="">
+                <div class="square-container2">
+                    @*@Html.DisplayRoundImage(item.ImagePath, 100)*@
+                    <br />
+                    <b>@Html.LabelFor(modelItem => item.Name): </b>@Html.DisplayTextFor(modelItem => item.Name)
+                    <hr />
+                    <b>@Html.LabelFor(modelItem => item.Company): </b>@Html.DisplayTextFor(modelItem => item.Company)
+                    <hr />
+                    <b>@Html.LabelFor(modelItem => item.medicine.ServingOption) :</b>@Html.DisplayTextFor(modelItem => item.ServingOption)
+                    <hr />
+                    @if (RouteConfig.user.UserType == BE.UserTypeEnum.Manager)
+                        {
                             <div class="crud-btn fa fa-edit" onclick="location.href='@($"Medicines/Edit?id={item.medicine.NDCId}")'"></div>
-                            @*<div class="crud-btn fa fa-eye" onclick="location.href='@($"Medicines/Details?id={item.medicine.NDCId}")'"></div>*@
+                        } @*<div class="crud-btn fa fa-eye" onclick="location.href='@($"Medicines/Details?id={item.medicine.NDCId}")'"></div>*@
                             @*<div class="crud-btn fa fa-trash" onclick="location.href='@($"Medicines/Delete?id={item.medicine.NDCId}")'"></div>*@
                         </div>
-                        <div class="flip-overlay"></div>
-                    </div>
-                </div>
+                <div class="flip-overlay"></div>
+            </div>
+        </div>
 
-            }
+    }
 
-
+    @{if (RouteConfig.user.UserType == BE.UserTypeEnum.Manager)
+        {
             <div class="square-not-flip" onclick="location.href='@Url.Action("create", "Medicines")'">
                 <div class='square2' data-image="">
                     <div class="square-container">
@@ -58,5 +64,6 @@
                     </div>
                 </div>
             </div>
-
+            }
+        }
         </div>
