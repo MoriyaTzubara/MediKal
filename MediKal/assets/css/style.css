@@ -713,7 +713,10 @@ section {
   height:300px;
   width:250px;
 }
+.icon-box{
+    margin-top:20px;
 
+}
 .featured-services .icon-box::before {
   content: '';
   position: absolute;

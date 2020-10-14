@@ -27,19 +27,6 @@
                     </div>
                     <div class='square2' data-image="">
                         <div class="square-container2">
-                            @if (item.ImagePath != null)
-                            { @Html.DisplayRoundImage(item.ImagePath.Replace(@"\\", @"\"), 100)}
-                            <br />
-                            <br />
-                            @Html.LabelFor(modelItem => item.GenericName) :  @Html.DisplayTextFor(modelItem => item.GenericName)
-                            <br />
-                            @Html.LabelFor(modelItem => item.Name) :  @Html.DisplayTextFor(modelItem => item.Name)
-                            <br />
-                            @Html.LabelFor(modelItem => item.Company) :  @Html.DisplayTextFor(modelItem => item.Company)
-                            <br />
-                            <br />
-                            @Html.LabelFor(modelItem => item.medicine.ServingOption) :  @Html.DisplayTextFor(modelItem => item.ServingOption)
-                            <br />
                             @*@Html.DisplayRoundImage(item.ImagePath, 100)*@
                             <br />
                             <b>@Html.LabelFor(modelItem => item.Name): </b>@Html.DisplayTextFor(modelItem => item.Name)

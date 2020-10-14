@@ -1,57 +1,72 @@
 ﻿@model MediKal.Models.MedicineViewModel
-    @using MediKal.Models
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "AddImage";
     Layout = "~/Views/Shared/_ManagementLayout.cshtml";
 }
+<script>
+    function previewFile(input) {
+        var file = $("input[type=file]").get(0).files[0];
 
-<h2>Details</h2>
+        if (file) {
+            var reader = new FileReader();
 
-<div>
-    <h4>Medicine</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        @Html.DisplayRoundImage(Model.ImagePath, 150)‏
-        <br />
-        <dt>
-            @Html.DisplayNameFor(model => model.GenericName)
-        </dt>
+            reader.onload = function () {
+                $("#previewImg").attr("src", reader.result);
+            }
+            document.getElementById("path").innerHTML = file.name;
 
-        <dd>
-            @Html.DisplayFor(model => model.GenericName)
-        </dd>
+            reader.readAsDataURL(file);
+            document.getElementById("previewImg").style.display = 'block';
+        }
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $("#form_UploadFile").click(function (e) {
+            $('#form_UploadFile').serialize();
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+        });
+        $('div').click
+</script>
+@using (Html.BeginForm("Edit", "Medicines", Model.medicine, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Company)
-        </dt>
+    <div class="row">
+        <div class="col-sm-1 col-md-1 col-lg-4 col-xl-4"></div>
+        <div class="col-sm-10 col-md-10 col-lg-4 col-xl-4">
+            <img src="~/images/ampoule.svg" height="100" width="100" />
+            <h3>@Model.GenericName</h3>
+            <br />
 
-        <dd>
-            @Html.DisplayFor(model => model.Company)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ServingOption)
-        </dt>
+            <div class="text-left">
+                <b> @Html.DisplayNameFor(model => model.Name) : </b>
+                @Html.DisplayFor(model => model.Name)
+                <hr />
+                <b>@Html.DisplayNameFor(model => model.Company) : </b>
+                @Html.DisplayFor(model => model.Company)
+                <hr />
+            </div>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFile" name="file" onchange="previewFile(this);">
+                <label id="path" class="custom-file-label" for="customFile">Choose Image</label>
+            </div>
+            <br />
+            <br />
 
-        <dd>
-            @Html.DisplayFor(model => model.ServingOption)
-        </dd>
+            <img class="round-img" style="display:none" width="250" height="250" id="previewImg">
+            <br />
+            <br />
+            @Html.Label(Session["Error"].ToString(), new { @class = "text-danger" })
+            @*@Html.Label("Check Image", new { @class = "text-danger" })*@
+            <br />
+            <div>
+                <input type="submit" value="Add Medicine" class="btn blue-btn" />
+                <a href="~/Medicines" class="btn green-btn">Back to List</a>
+            </div>
+        </div>
 
-    </dl>
-    <div class="custom-file">
-        <input type="file" class="custom-file-input" id="customFile" name="ImagePath">
-        <label class="custom-file-label" for="customFile">Choose Image</label>
-        @Html.Label(Session["Error"].ToString(), new { @class = "text-danger" })
     </div>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.medicine.NDCId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+}
