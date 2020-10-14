@@ -89,7 +89,7 @@ namespace MediKal.Controllers
                 return HttpNotFound();
             }
             Session["Error"] = "";
-            return View(new MedicineViewModel(medicine));
+            return View("Details",new MedicineViewModel(medicine));
         }
 
         // POST: Medicines/Edit/5
@@ -121,7 +121,7 @@ namespace MediKal.Controllers
                 else
                 {
                     Session["Error"] = "This image isn't valid";
-                    return View(new MedicineViewModel(medicine));
+                    return View("Details",new MedicineViewModel(medicine));
                 }
                 return RedirectToAction("Index");
             }

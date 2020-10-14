@@ -36,7 +36,7 @@
                             <b>@Html.LabelFor(modelItem => item.medicine.ServingOption) :</b>@Html.DisplayTextFor(modelItem => item.ServingOption)
                             <hr />
                             <div class="crud-btn fa fa-edit" onclick="location.href='@($"Medicines/Edit?id={item.medicine.NDCId}")'"></div>
-                            <div class="crud-btn fa fa-eye" onclick="location.href='@($"Medicines/Details?id={item.medicine.NDCId}")'"></div>
+                            @*<div class="crud-btn fa fa-eye" onclick="location.href='@($"Medicines/Details?id={item.medicine.NDCId}")'"></div>*@
                             @*<div class="crud-btn fa fa-trash" onclick="location.href='@($"Medicines/Delete?id={item.medicine.NDCId}")'"></div>*@
                         </div>
                         <div class="flip-overlay"></div>
