@@ -50,19 +50,19 @@
             </div>
             <div class="custom-file">
                 <input type="file" class="custom-file-input" id="customFile" name="file" onchange="previewFile(this);">
-                <label id="path" class="custom-file-label" for="customFile">Choose Image</label>
+                <label id="path" class="custom-file-label" for="customFile">Change Image</label>
             </div>
             <br />
             <br />
 
-            <img class="round-img" style="display:none" width="250" height="250" id="previewImg">
+            <img class="round-img" src="@Model.ImagePath"  width="250" height="250" id="previewImg">
             <br />
             <br />
             @Html.Label(Session["Error"].ToString(), new { @class = "text-danger" })
             @*@Html.Label("Check Image", new { @class = "text-danger" })*@
             <br />
             <div>
-                <input type="submit" value="Add Medicine" class="btn blue-btn" />
+                <input type="submit" value="save" class="btn blue-btn" />
                 <a href="~/Medicines" class="btn green-btn">Back to List</a>
             </div>
         </div>
