@@ -20,23 +20,23 @@
 
                         <div class="col-md-12 col-sm-12">
                             @Html.Label("User Name")
-                            @Html.TextBoxFor(model => model.FullName, new { @class = "form-control", placeholder = "Enter your user name" })
+                            @Html.TextBoxFor(model => model.FullName, new { @class = "", placeholder = "Enter your user name" })
                             @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
                             <br />
                             @Html.Label("Password")
-                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control", type = "password", placeholder = "Enter your password" })
+                            @Html.TextBoxFor(model => model.Password, new { @class = "", type = "password", placeholder = "Enter your password" })
                             @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                             <br />
                             @Html.Label("ConfirmPassword")
-                            @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "form-control", type = "password", placeholder = "Enter your password again" })
+                            @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "", type = "password", placeholder = "Enter your password again" })
                             @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
                             <br />
                             @Html.Label("Phone")
-                            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", placeholder = "Enter your phone" })
+                            @Html.TextBoxFor(model => model.Phone, new { @class = "", placeholder = "Enter your phone" })
                             @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                             <br />
                             @Html.Label("Birth Date")
-                            @Html.TextBoxFor(model => model.Birthday, new { @class = "form-control", placeholder = "Enter your birth date" })
+                            @Html.TextBoxFor(model => model.Birthday, new { @class = "", placeholder = "Enter your birth date" })
                             @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
                             <br />
                             <button type="submit" class="green-btn" id="cf-submit" name="submit">Sign Up</button>
