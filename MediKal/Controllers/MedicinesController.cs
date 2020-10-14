@@ -42,7 +42,6 @@ namespace MediKal.Controllers
         {
             Session["Message"] = "";
             Session["Error"] = "Check the image first";
-            Session["Success"] = "";
             return View();
         }
 
@@ -70,6 +69,7 @@ namespace MediKal.Controllers
                 {
                     //add image to drive
                     bl.AddMedicine(medicine);
+
                 }
                 else
                 {
@@ -96,27 +96,31 @@ namespace MediKal.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Medicine medicine)
+        public ActionResult Edit(Medicine medicine, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
                 IBL bl = new BL.BL();
+                GoogleDriveAPIHelper googleDrive = new GoogleDriveAPIHelper();
+                googleDrive.UploadFileOnDrive(file);
+                medicine.ImagePath = googleDrive.DownloadGoogleFileByName(file.FileName);
                 ImageValidate imageValidate = new ImageValidate();
                 bool result = true;
                 if (medicine.ImagePath != null)
                 {
-                    var path = Server.MapPath(Url.Content($"~/images/{medicine.ImagePath}"));
-                    result = imageValidate.Validate(path);
+                    //var path = Server.MapPath(Url.Content($"~/images/{medicine.ImagePath}"));
+                    result = imageValidate.Validate(medicine.ImagePath);
                 }
                 if (result)
                 {
                     //add image to drive
-                    bl.UpdateMedicine(medicine, medicine.NDCId);
+                    bl.UpdateMedicine(medicine,medicine.NDCId);
+
                 }
                 else
                 {
                     Session["Error"] = "This image isn't valid";
-                    return View("Details", new MedicineViewModel(medicine));
+                    return View(new MedicineViewModel(medicine));
                 }
                 return RedirectToAction("Index");
             }
