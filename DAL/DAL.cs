@@ -277,29 +277,17 @@ namespace DAL
                 {
                     foreach (var d in db.Doctors)
                     {
-<<<<<<< HEAD
-                        User user = new User(d.Id) { Birthday = d.Birthday, Mail = d.Mail, Password = d.Password, Phone = d.Phone, UserName = d.UserName, UserType = d.UserType,PrimaryId = d.PrimaryId };
-=======
                         User user = new User(d.Id) { Birthday = d.Birthday, Mail = d.Mail, Password = d.Password, Phone = d.Phone, UserName = d.UserName, UserType = d.UserType ,PrimaryId = d.PrimaryId};
->>>>>>> d1219f52651590d0e91b6bf1e0accb4ec00eb131
                         result.Add(user);
                     }
                     foreach (var d in db.Managers)
                     {
-<<<<<<< HEAD
-                        User user = new User(d.Id) { Birthday = d.Birthday, Mail = d.Mail, Password = d.Password, Phone = d.Phone, UserName = d.UserName, UserType = d.UserType , PrimaryId = d.PrimaryId };
-=======
                         User user = new User(d.Id) { Birthday = d.Birthday, Mail = d.Mail, Password = d.Password, Phone = d.Phone, UserName = d.UserName, UserType = d.UserType, PrimaryId = d.PrimaryId };
->>>>>>> d1219f52651590d0e91b6bf1e0accb4ec00eb131
                         result.Add(user);
                     }
                     foreach (var d in db.Patients)
                     {
-<<<<<<< HEAD
-                        User user = new User(d.Id) { Birthday = d.Birthday, Mail = d.Mail, Password = d.Password, Phone = d.Phone, UserName = d.UserName, UserType = d.UserType , PrimaryId = d.PrimaryId };
-=======
                         User user = new User(d.Id) { Birthday = d.Birthday, Mail = d.Mail, Password = d.Password, Phone = d.Phone, UserName = d.UserName, UserType = d.UserType, PrimaryId = d.PrimaryId };
->>>>>>> d1219f52651590d0e91b6bf1e0accb4ec00eb131
                         result.Add(user);
                     }
                 }

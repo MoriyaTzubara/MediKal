@@ -5,7 +5,6 @@
     Layout = "~/Views/Shared/_ManagementLayout.cshtml";
 }
     <div class="m-5 p-3">
-<<<<<<< HEAD
         @if (RouteConfig.user.UserType == BE.UserTypeEnum.Manager)
         {
             <img src="~/images/ampoule.svg" height="100" width="100" />
@@ -15,17 +14,6 @@
         }
         <h2 style="display:inline;margin-left:90px;">Medicines <span class="badge badge-pill bg-green">@Model.Count()</span></h2>
     </div>
-=======
-        @{if (RouteConfig.user.UserType == BE.UserTypeEnum.Manager)
-            {<img src="~/images/ampoule.svg" height="100" width="100" />
-                <a href="~/Medicines/create" class="social-button">
-                    <span class="fa fa-lg fa-plus"></span>
-                </a>
-                }
-            }
-                <h2 style="display:inline;margin-left:90px;">Medicines <span class="badge badge-pill bg-green">@Model.Count()</span></h2>
-            </div>
->>>>>>> d1219f52651590d0e91b6bf1e0accb4ec00eb131
 <hr />
 <div class="row">
     @foreach (var item in Model)
@@ -51,26 +39,18 @@
                     <b>@Html.LabelFor(modelItem => item.medicine.ServingOption) :</b>@Html.DisplayTextFor(modelItem => item.ServingOption)
                     <hr />
                     @if (RouteConfig.user.UserType == BE.UserTypeEnum.Manager)
-<<<<<<< HEAD
                     {
                         <div class="crud-btn fa fa-edit" onclick="location.href='@($"Medicines/Edit?id={item.medicine.NDCId}")'"></div>
-                    }  @*<div class="crud-btn fa fa-eye" onclick="location.href='@($"Medicines/Details?id={item.medicine.NDCId}")'"></div>*@
-                        @*<div class="crud-btn fa fa-trash" onclick="location.href='@($"Medicines/Delete?id={item.medicine.NDCId}")'"></div>*@
+                    } @*<div class="crud-btn fa fa-eye" onclick="location.href='@($"Medicines/Details?id={item.medicine.NDCId}")'"></div>*@
+                    @*<div class="crud-btn fa fa-trash" onclick="location.href='@($"Medicines/Delete?id={item.medicine.NDCId}")'"></div>*@
+                    <div class="flip-overlay"></div>
                 </div>
-=======
-                        {
-                            <div class="crud-btn fa fa-edit" onclick="location.href='@($"Medicines/Edit?id={item.medicine.NDCId}")'"></div>
-                        } @*<div class="crud-btn fa fa-eye" onclick="location.href='@($"Medicines/Details?id={item.medicine.NDCId}")'"></div>*@
-                            @*<div class="crud-btn fa fa-trash" onclick="location.href='@($"Medicines/Delete?id={item.medicine.NDCId}")'"></div>*@
-                        </div>
->>>>>>> d1219f52651590d0e91b6bf1e0accb4ec00eb131
-                <div class="flip-overlay"></div>
             </div>
         </div>
 
     }
 
-<<<<<<< HEAD
+
     @if (RouteConfig.user.UserType == BE.UserTypeEnum.Manager)
     {
         <div class="square-not-flip" onclick="location.href='@Url.Action("create", "Medicines")'">
@@ -80,27 +60,9 @@
                     <a href="~/Medicines/create" class="social-button" style="height:100px;width:100px;line-height:100px;font-size:50px;margin-left:-100px;">
                         <span class="fa fa-lg fa-plus"></span>
                     </a>
-                    <p>Create New</p>
-=======
-    @{if (RouteConfig.user.UserType == BE.UserTypeEnum.Manager)
-        {
-            <div class="square-not-flip" onclick="location.href='@Url.Action("create", "Medicines")'">
-                <div class='square2' data-image="">
-                    <div class="square-container">
-                        <img src="~/images/ampoule.svg" height="200" width="200" />
-                        <a href="~/Medicines/create" class="social-button" style="height:100px;width:100px;line-height:100px;font-size:50px;margin-left:-100px;">
-                            <span class="fa fa-lg fa-plus"></span>
-                        </a>
-                        <p>Create New</p>
->>>>>>> d1219f52651590d0e91b6bf1e0accb4ec00eb131
 
                 </div>
             </div>
-<<<<<<< HEAD
-=======
-            }
-        }
->>>>>>> d1219f52651590d0e91b6bf1e0accb4ec00eb131
         </div>
     }
 

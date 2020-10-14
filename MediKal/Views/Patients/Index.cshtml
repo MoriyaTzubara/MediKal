@@ -10,7 +10,6 @@
 @if (ViewBag.IsSelectView != true)
 {
 <div>
-<<<<<<< HEAD
     @if (RouteConfig.user.UserType == BE.UserTypeEnum.Manager)
     {
         <img src="~/images/add-doctor.png" class="mt-0 pt-0" height="160" />
@@ -20,17 +19,6 @@
     }
     <h2 style="display:inline;margin-left:90px;">Patients<span class="badge badge-pill bg-green">@Model.Count()</span></h2>
 </div>
-=======
-    @{if (RouteConfig.user.UserType == BE.UserTypeEnum.Manager)
-        {<img src="~/images/add-doctor.png" class="mt-0 pt-0" height="160" />
-            <a href="~/Patients/create" class="social-button">
-                <span class="fa fa-lg fa-plus"></span>
-            </a>
-            }
-        }
-            <h2 style="display:inline;margin-left:90px;">Patients<span class="badge badge-pill bg-green">@Model.Count()</span></h2>
-        </div>
->>>>>>> d1219f52651590d0e91b6bf1e0accb4ec00eb131
 <hr />
 }
 <div class="row">

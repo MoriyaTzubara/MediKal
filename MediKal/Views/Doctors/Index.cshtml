@@ -4,7 +4,6 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_ManagementLayout.cshtml";
 }
-<<<<<<< HEAD
 <div>
     @if (RouteConfig.user.UserType == BE.UserTypeEnum.Manager)
     { <img src="~/images/add-doctor.png" class="mt-0 pt-0" height="160" />
@@ -14,20 +13,6 @@
     }
     <h2 style="display:inline;margin-left:90px;">Doctors <span class="badge badge-pill bg-green">@Model.Count()</span></h2>
 </div>
-=======
-
-    <div>
-        @{if (RouteConfig.user.UserType == BE.UserTypeEnum.Manager)
-            { <img src="~/images/add-doctor.png" class="mt-0 pt-0" height="160" />
-            <a href="~/Doctors/create" class="social-button">
-                <span class="fa fa-lg fa-plus"></span>
-            </a>
-                }
-            }
-            <h2 style="display:inline;margin-left:90px;">Doctors <span class="badge badge-pill bg-green">@Model.Count()</span></h2>
-        </div>
-
->>>>>>> d1219f52651590d0e91b6bf1e0accb4ec00eb131
 <hr />
 
 <div class="row">
@@ -43,7 +28,7 @@
                     <p><br /> @item.Specialty</p>
                     <p><i class="fa fa-phone"></i><br /> @item.Phone</p>
                     <p><i class="fa fa-envelope-o"></i><br /> @item.Mail</p>
-                    <div onclick="location.href='@($"/Doctors/GetPrescriptionsOfDoctor?Id={item.Id}")'" class="btn blue-btn"><i class="fa fa-eye"></i> Prescriptions</div>
+                    <div onclick="location.href='@($"/Doctors/GetPrescriptionsOfDoctor?Id={item.PrimaryId}")'" class="btn blue-btn"><i class="fa fa-eye"></i> Prescriptions</div>
                 </div>
 
             </div>
