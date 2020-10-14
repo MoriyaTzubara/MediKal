@@ -21,9 +21,13 @@ namespace MediKal.Models
         {
             get { return user.Id; }
         }
+        public int PrimaryId
+        {
+            get { return user.PrimaryId; }
+        }
         [Required(ErrorMessage = "required field")]
         [DisplayName("Full name")]
-        public string FullName
+        public string UserName
         {
             get { return user.UserName; }
             set { user.UserName = value; }

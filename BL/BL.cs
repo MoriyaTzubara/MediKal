@@ -332,6 +332,8 @@ namespace BL
             tmp.Phone = user.Phone;
             tmp.UserName = user.UserName;
             tmp.UserType = user.UserType;
+            tmp.PrimaryId = user.PrimaryId;
+            tmp.Id = user.Id;
             return tmp;
         }
         public Patient ConvertUserToPatient(User user)
@@ -343,6 +345,8 @@ namespace BL
             tmp.Phone = user.Phone;
             tmp.UserName = user.UserName;
             tmp.UserType = user.UserType;
+            tmp.PrimaryId = user.PrimaryId;
+            tmp.Id = user.Id;
             return tmp;
         }
         public bool IsEmail(string s)

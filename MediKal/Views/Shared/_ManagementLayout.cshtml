@@ -173,8 +173,8 @@
                     </span>
                 </a>
             </li>
-            
-            <li>
+            @if (RouteConfig.user.UserType != BE.UserTypeEnum.Manager)
+            { <li>
                 <a href="~/Account/EditPersonalDetails">
                     <img class="fa-icon fa-2x" src="~/images/profile-user.png" />
                     <span class="nav-text">
@@ -182,6 +182,7 @@
                     </span>
                 </a>
             </li>
+            }
         </ul>
     </nav>
     <div class="area">
