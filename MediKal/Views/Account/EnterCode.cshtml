@@ -19,7 +19,8 @@
                         <div class="col-md-12 col-sm-12">
                             @Html.Hidden("CorrectCode", Session["CorrectCode"])
                             @Html.TextBox("Code", "", new { @class = "form-control", placeholder = "Enter code", type = "text" })
-                            @Html.Label(Session["Error"].ToString(), new { @class = "text-danger" })
+                            @Html.
+                                (Session["Error"].ToString(), new { @class = "text-danger" })
                             <br />
                             <button type="submit" class="green-btn" id="cf-submit" name="submit">continue</button>
                         </div>

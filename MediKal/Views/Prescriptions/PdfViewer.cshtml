@@ -13,7 +13,6 @@
 <br />
 <div>
     <h4>Prescription</h4>
-    <h6>@DateTime.Now</h6>
     <hr />
     <br />
     <div id="details">
@@ -63,12 +62,13 @@
         <table>
             <tr>
                 <td>
-                    <b>@Html.DisplayName("Name:")</b>
-                    @Html.DisplayFor(model => model.prescription.GetMedicine().Name)
-                </td>
-                <td>
                     <b>@Html.DisplayName("Generic Name:")</b>
                     @Html.DisplayFor(model => model.prescription.GetMedicine().GenericName)
+                </td>
+
+                <td>
+                    <b>@Html.DisplayName("Name:")</b>
+                    @Html.DisplayFor(model => model.prescription.GetMedicine().Name)
                 </td>
             </tr>
             <tr>

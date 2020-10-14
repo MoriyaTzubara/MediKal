@@ -24,14 +24,18 @@
         td {
             padding: 15px;
         }
-        select,input,select:active,select:focus,select:after,option{
+        /*select,input,select:active,select:focus,select:after,option{
   border: none;
   border-bottom: 1.5px solid #00d6c8;
-}
+}*/
         input[type=number]{
             width:50px;
             text-align:center;
+            margin:0px;
+            display:inline;
+            text-align:center;
         }
+
     </style>
     <br />
     <div>
@@ -102,19 +106,22 @@
                 <tr>
                     <td>
                         <b>@Html.DisplayName("Frequency: ")</b>
-                        @Html.EditorFor(model => model.NumOfTimes, new { @class = "px-3" }) times in a @Html.EnumDropDownListFor(model => model.Frequency)
-                    </td>
-                </tr>
+                        @Html.EditorFor(model => model.NumOfTimes) times in a @Html.EnumDropDownListFor(model => model.Frequency, new { @class = "frequency-select" })
+                        <br />
+                        </td>
+                    </tr>
                 <tr>
-                    <td>
-                        <br />
-                        <b>Start date: </b>
-                        <input name="StartTime" value="@DateTime.Now.ToString("yyyy-MM-dd")" type="date" />
-                    </td>
-                    <td>
-                        <br />
-                        <b>End date: </b>
-                        <input name="EndTime" type="date" />
+                    <td colspan="2">
+                        <div class="row">
+                            <div class="col">
+                                <b>Start date: </b>
+                                <input name="StartTime" value="@DateTime.Now.ToString("yyyy-MM-dd")" type="date" />
+                            </div>
+                            <div class="col">
+                                <b>End date: </b>
+                                <input name="EndTime" type="date" />
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </table>
@@ -142,7 +149,7 @@
         <br />
         <br />
         <div class="float-right">
-            <input type="submit" value="Save" class="btn blue-btn" />
+            <input type="submit" value="Save" class="blue-btn" />
             <a href="~/Medicines" class="btn green-btn">Back to List</a>
         </div>
 

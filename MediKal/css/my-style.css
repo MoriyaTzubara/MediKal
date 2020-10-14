@@ -1,4 +1,104 @@
-﻿/*
+﻿input[type=text],input[type=date],input[type=datetime],
+input[type=email],input[type=password],
+input[type=text],input[type=tel],input[type=number] {
+    display: block;
+    width: 100%;
+    padding-top: 36.6666666667px;
+    border: none;
+    border-radius: 0;
+    color: black;
+    font-size: medium;
+    border: none;
+    border-bottom: 1.5px solid #00d6c8;
+    background: none;
+    background-color: none;
+    font-family: 'Microsoft YaHei Light';
+    /*transition: .3s ease;*/
+}
+select, select:valid, select:focus {
+    outline:none;
+    border: none;
+    border-radius: 0;
+    color: black;
+    border: none;
+    border-bottom: 1.5px solid #00d6c8;
+    font-family: 'Microsoft YaHei Light';
+    width:auto;
+}
+    input:valid  {
+        border: none;
+        border-bottom: 1.5px solid #00d6c8;
+        background-color: none;
+        font-family: 'Microsoft YaHei Light';
+    }
+
+    input:focus {
+        outline: none;
+        border: none;
+        border-bottom: 1.5px solid #00d6c8;
+        background-color: none;
+        font-family: 'Microsoft YaHei Light';
+    }
+input:-webkit-autofill, select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    -webkit-text-fill-color: black !important;
+    font-family: 'Microsoft YaHei';
+    border: none;
+    border-bottom: 1.5px solid #00d6c8;
+    background-color: none;
+    font-family: 'Microsoft YaHei Light';
+}
+::selection {
+    background: rgba(33, 150, 243, 0.3);
+}
+
+
+
+
+
+
+
+/*.code-input {
+    display: block;
+    margin: 2em auto;
+    border: none;
+    padding: 0;
+    width: 10.5ch;
+    background: repeating-linear-gradient(90deg, dimgrey 0, dimgrey 1ch, transparent 0, transparent 1.5ch) 0 100%/ 10ch 2px no-repeat;
+    letter-spacing: 0.5ch;
+    font-size:30px;
+}
+
+    .code-input:focus {
+        outline: none;
+        color: #59ed2e;
+    }*/
+
+/*select,select:active, select:active:after, select.active, select:after {
+    border: none;
+    border-bottom: 1.5px solid #00d6c8;
+    width:100%;
+    margin-bottom:40px;
+    background:none;
+    background-color:none;
+}
+input, input:active, input:active:after, input.active, input:after, input:focus, input::selection{
+    border: none;
+    border-bottom: 1.5px solid #00d6c8;
+    width: 100%;
+    margin-bottom: 40px;
+}
+option:hover {
+    border: none;
+    border-bottom: 1.5px solid #00d6c8;
+    width: 100%;
+    margin-bottom: 40px;
+}*/
+
+
+
+
+/*
     --------------------------------------------------
                      PROFILE CARD
     --------------------------------------------------
@@ -387,12 +487,14 @@
     background-color: #00d6c8;
     padding: 8px 20px 8px 20px;
     border-radius: 20px;
-    text-decoration: none;
     font-size: medium;
     margin: 7px;
     font-weight: bold;
     text-overflow: initial;
     font-family: Microsoft YaHei;
+    display:inline-block;
+    width: auto;
+    background-color: #00d6c8;
 }
 
     .blue-btn:hover {

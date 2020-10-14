@@ -111,3 +111,15 @@ C:\Users\User\Desktop\MediKal\BL\bin\Debug\Google.Apis.pdb
 C:\Users\User\Desktop\MediKal\BL\bin\Debug\Google.Apis.xml
 C:\Users\User\Desktop\MediKal\BL\bin\Debug\Google.Apis.Core.pdb
 C:\Users\User\Desktop\MediKal\BL\bin\Debug\Google.Apis.Core.xml
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BL\bin\Debug\Google.Apis.Drive.v3.dll
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BL\bin\Debug\Google.Apis.Auth.dll
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BL\bin\Debug\Google.Apis.dll
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BL\bin\Debug\Google.Apis.Core.dll
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BL\bin\Debug\Google.Apis.Drive.v3.pdb
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BL\bin\Debug\Google.Apis.Drive.v3.xml
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BL\bin\Debug\Google.Apis.Auth.pdb
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BL\bin\Debug\Google.Apis.Auth.xml
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BL\bin\Debug\Google.Apis.pdb
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BL\bin\Debug\Google.Apis.xml
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BL\bin\Debug\Google.Apis.Core.pdb
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BL\bin\Debug\Google.Apis.Core.xml

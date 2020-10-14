@@ -9,3 +9,4 @@ C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BE\obj\Debug\BE.dll
 C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BE\obj\Debug\BE.pdb
 C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BE\bin\Debug\BE.dll
 C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BE\bin\Debug\BE.pdb
+C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BE\obj\Debug\BE.csprojAssemblyReference.cache

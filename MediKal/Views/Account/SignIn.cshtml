@@ -15,9 +15,8 @@
 
                     <div class="col-md-12 col-sm-12">
                         @Html.Label(Session["Error"].ToString(), new { @class = "text-danger" })
-                        <input type="number" class="form-control" id="Id" name="Id" placeholder="Id">
-                        <br />
-                        <input type="password" class="form-control" id="Password" name="Password" placeholder="Password">
+                        <input type="number"  id="Id" name="Id" placeholder="Id">
+                        <input type="password"  id="Password" name="Password" placeholder="Password">
                         <br />
                         <button type="submit" class="green-btn" id="cf-submit" name="submit"><i class="fa fa-sign-in"></i> Sign In</button>
                     </div>

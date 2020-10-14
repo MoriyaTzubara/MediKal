@@ -24,7 +24,7 @@ namespace MediKal.Controllers
             IEnumerable<PrescriptionViewModel> prescriptions;
             if (RouteConfig.user.UserType == UserTypeEnum.Manager)
                 prescriptions = bl.GetPrescriptions().Select(item => new PrescriptionViewModel(item));
-            else if (RouteConfig.user.UserType == UserTypeEnum.Manager)
+            else if (RouteConfig.user.UserType == UserTypeEnum.Doctor)
                 prescriptions = bl.GetPrescriptionsOfDoctor(RouteConfig.user.PrimaryId).Select(item => new PrescriptionViewModel(item));
             else
                 prescriptions = bl.GetPrescriptionsOfPatient(RouteConfig.user.PrimaryId).Select(item => new PrescriptionViewModel(item));
