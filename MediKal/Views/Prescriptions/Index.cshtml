@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<MediKal.Models.PrescriptionViewModel>
-
+@using MediKal.Models
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_ManagementLayout.cshtml";
@@ -17,23 +17,23 @@
             alert(document.getElementById("ifarme").getAttribute("src"));
         }
     </script>*@
-<div class="m-5 p-3">
-    <img src="~/images/prescription.png" height="100" width="100" />
-    <a href="~/Prescriptions/ChoosePatient" class="social-button">
-        <span class="fa fa-lg fa-plus"></span>
-    </a>
-    <h2 style="display:inline;margin-left:90px;">Prescriptions <span class="badge badge-pill bg-green">@Model.Count()</span></h2>
-</div>
+    <div class="m-5 p-3">
+        @if (RouteConfig.user.UserType == BE.UserTypeEnum.Doctor)
+        {
+            <img src="~/images/prescription.png" height="100" width="100" />
+        <a href="~/Prescriptions/ChoosePatient" class="social-button">
+            <span class="fa fa-lg fa-plus"></span>
+        </a>
+        }
+        <h2 style="display:inline;margin-left:90px;">Prescriptions <span class="badge badge-pill bg-green">@Model.Count()</span></h2>
+    </div>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.PatientId)
+            @Html.DisplayName("Patient")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DoctorId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumOfTimes)
+            @Html.DisplayName("Doctor")
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Frequency)
@@ -45,7 +45,7 @@
             @Html.DisplayNameFor(model => model.EndTime)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MedicineId)
+            @Html.DisplayName("Medicine")
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Comments)
@@ -58,25 +58,22 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.PatientId)
+                @Html.DisplayFor(modelItem => item.prescription.GetPatient().UserName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DoctorId)
+                @Html.DisplayFor(modelItem => item.prescription.GetDoctor().UserName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NumOfTimes)
+                @item.NumOfTimes times in a @item.Frequency
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Frequency)
+                @item.StartTime.ToShortDateString()
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StartTime)
+                @item.EndTime.ToShortDateString()
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EndTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MedicineId)
+                @Html.DisplayFor(modelItem => item.prescription.GetMedicine().Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Comments)
