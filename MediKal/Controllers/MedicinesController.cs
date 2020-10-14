@@ -67,9 +67,9 @@ namespace MediKal.Controllers
                 }
                 if (result)
                 {
+                    medicine.ImagePath = $"/GoogleDriveFiles/{file.FileName}";
                     //add image to drive
                     bl.AddMedicine(medicine);
-
                 }
                 else
                 {
@@ -88,6 +88,7 @@ namespace MediKal.Controllers
             {
                 return HttpNotFound();
             }
+            Session["Error"] = "";
             return View(new MedicineViewModel(medicine));
         }
 
@@ -98,7 +99,7 @@ namespace MediKal.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Medicine medicine, HttpPostedFileBase file)
         {
-            if (ModelState.IsValid)
+            try
             {
                 IBL bl = new BL.BL();
                 GoogleDriveAPIHelper googleDrive = new GoogleDriveAPIHelper();
@@ -113,9 +114,9 @@ namespace MediKal.Controllers
                 }
                 if (result)
                 {
+                    medicine.ImagePath = $"/GoogleDriveFiles/{file.FileName}";
                     //add image to drive
                     bl.UpdateMedicine(medicine,medicine.NDCId);
-
                 }
                 else
                 {
@@ -124,7 +125,7 @@ namespace MediKal.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            return View(new MedicineViewModel(medicine));
+            catch (Exception e) { return View(); }
         }
 
         // GET: Medicines/Delete/5
