@@ -7,10 +7,6 @@ C:\Users\User\Desktop\MediKal\BE\obj\Debug\BE.pdb
 C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BE\obj\Debug\BE.csproj.ResolveComReference.cache
 C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BE\obj\Debug\BE.dll
 C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BE\obj\Debug\BE.pdb
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BE\bin\Debug\BE.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BE\bin\Debug\BE.pdb
-<<<<<<< HEAD
 C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\BE\obj\Debug\BE.csprojAssemblyReference.cache
 C:\Users\User\Desktop\MediKal\BE\obj\Debug\BE.csprojAssemblyReference.cache
-=======
->>>>>>> e1bfa5f096bff7d344df12c392a2b3c38922a175
+
