@@ -27,7 +27,7 @@ namespace MediKal.Models
             set { warning.ConflictingMedicines = value; }
         }
 
-        public LevelOfRiskEnum LevelOfRisk
+        public string LevelOfRisk
         {
             get { return warning.LevelOfRisk; }
             set { warning.LevelOfRisk = value; }

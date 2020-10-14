@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DAL;
 namespace BL
 {
-    class DrugIntractionLogic
+    public class DrugIntractionLogic
     {
         public List<string> checkInteractions(List<string> DrugCodesNDC)
 

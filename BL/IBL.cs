@@ -37,6 +37,7 @@ namespace BL
         IEnumerable<Patient> GetPatients();
         IEnumerable<Medicine> GetMedicines();
         IEnumerable<Prescription> GetPrescriptions();
+        IEnumerable<string> GetMedicinesOfPatient(int id);
         // GET BY ID
         User GetUserById(int id);
         Doctor GetDoctorById(int id);

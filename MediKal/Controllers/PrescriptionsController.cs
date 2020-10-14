@@ -17,30 +17,45 @@ namespace MediKal.Controllers
         [HttpPost]
         public ActionResult GetWarningsByJson(int medicineId, int patientId)
         {
-            IEnumerable<Warning> warnings = new List<Warning>()
+            IBL bl = new BL.BL();
+            string NDCId = bl.GetMedicineByPrimaryId(medicineId).NDCId;
+            List<string> medicines = bl.GetMedicinesOfPatient(patientId).ToList();
+            medicines.Add(NDCId);
+            DrugIntractionLogic drugIntractionLogic = new DrugIntractionLogic();
+            List<string> warningsStrings = new List<string>();
+            warningsStrings = drugIntractionLogic.checkInteractions(medicines);
+            Warning warning = new Warning();
+            warning.ConflictingMedicines = warningsStrings[0];
+            if (warningsStrings.Count() != 1)
             {
-                new Warning()
-                {
-                    ConflictingMedicines = "Sterile Diluent, Amyvid",
-                    LevelOfRisk = LevelOfRiskEnum.High,
-                    Description = "This is a description"
+                warning.LevelOfRisk = warningsStrings[1];
+                warning.Description = warningsStrings[2];
+            }
 
-                },
-                new Warning()
-                {
-                    ConflictingMedicines = "EMGALITY, TALTZ",
-                    LevelOfRisk = LevelOfRiskEnum.Low,
-                    Description = "This is a description"
-                },
-                new Warning()
-                {
-                    ConflictingMedicines = "ZYPREXA, Verzenio",
-                    LevelOfRisk = LevelOfRiskEnum.Medium,
-                    Description = "This is a description"
-                }
-            };
-            var result = warnings.Select(item => new WarningViewModel(item));
-            return Json(warnings, JsonRequestBehavior.AllowGet);
+            //IEnumerable<Warning> warnings = new List<Warning>()
+            //{
+            //    new Warning()
+            //    {
+            //        ConflictingMedicines = "Sterile Diluent, Amyvid",
+            //        LevelOfRisk = LevelOfRiskEnum.High,
+            //        Description = "This is a description"
+
+            //    },
+            //    new Warning()
+            //    {
+            //        ConflictingMedicines = "EMGALITY, TALTZ",
+            //        LevelOfRisk = LevelOfRiskEnum.Low,
+            //        Description = "This is a description"
+            //    },
+            //    new Warning()
+            //    {
+            //        ConflictingMedicines = "ZYPREXA, Verzenio",
+            //        LevelOfRisk = LevelOfRiskEnum.Medium,
+            //        Description = "This is a description"
+            //    }
+            //};
+            var result = new WarningViewModel(warning);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
 
@@ -59,33 +74,33 @@ namespace MediKal.Controllers
                 prescriptions = bl.GetPrescriptionsOfPatient(RouteConfig.user.PrimaryId).Select(item => new PrescriptionViewModel(item));
             return View(prescriptions);
         }
-        public ActionResult GetWarnings(IEnumerable<Warning> warnings)
-        {
-            warnings = new List<Warning>()
-            {
-                new Warning()
-                {
-                    ConflictingMedicines = "Sterile Diluent, Amyvid",
-                    LevelOfRisk = LevelOfRiskEnum.High,
-                    Description = "This is a description"
+        //public ActionResult GetWarnings(IEnumerable<Warning> warnings)
+        //{
+        //    warnings = new List<Warning>()
+        //    {
+        //        new Warning()
+        //        {
+        //            ConflictingMedicines = "Sterile Diluent, Amyvid",
+        //            LevelOfRisk = LevelOfRiskEnum.High,
+        //            Description = "This is a description"
 
-                },
-                new Warning()
-                {
-                    ConflictingMedicines = "EMGALITY, TALTZ",
-                    LevelOfRisk = LevelOfRiskEnum.Low,
-                    Description = "This is a description"
-                },
-                new Warning()
-                {
-                    ConflictingMedicines = "ZYPREXA, Verzenio",
-                    LevelOfRisk = LevelOfRiskEnum.Medium,
-                    Description = "This is a description"
-                }
-            };
-            var result = warnings.Select(item => new WarningViewModel(item));
-            return View("GetWarnings", result);
-        }        
+        //        },
+        //        new Warning()
+        //        {
+        //            ConflictingMedicines = "EMGALITY, TALTZ",
+        //            LevelOfRisk = LevelOfRiskEnum.Low,
+        //            Description = "This is a description"
+        //        },
+        //        new Warning()
+        //        {
+        //            ConflictingMedicines = "ZYPREXA, Verzenio",
+        //            LevelOfRisk = LevelOfRiskEnum.Medium,
+        //            Description = "This is a description"
+        //        }
+        //    };
+        //    var result = warnings.Select(item => new WarningViewModel(item));
+        //    return View("GetWarnings", result);
+        //}        
         // GET: Prescriptions/Details/5
         public ActionResult Details(int id)
         {
