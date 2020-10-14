@@ -10,15 +10,15 @@
 @if (ViewBag.IsSelectView != true)
 {
 <div>
-    @{if (RouteConfig.user.UserType == BE.UserTypeEnum.Manager)
-        {<img src="~/images/add-doctor.png" class="mt-0 pt-0" height="160" />
-            <a href="~/Patients/create" class="social-button">
-                <span class="fa fa-lg fa-plus"></span>
-            </a>
-            }
-        }
-            <h2 style="display:inline;margin-left:90px;">Patients<span class="badge badge-pill bg-green">@Model.Count()</span></h2>
-        </div>
+    @if (RouteConfig.user.UserType == BE.UserTypeEnum.Manager)
+    {
+        <img src="~/images/add-doctor.png" class="mt-0 pt-0" height="160" />
+    <a href="~/Patients/create" class="social-button">
+        <span class="fa fa-lg fa-plus"></span>
+    </a>
+    }
+    <h2 style="display:inline;margin-left:90px;">Patients<span class="badge badge-pill bg-green">@Model.Count()</span></h2>
+</div>
 <hr />
 }
 <div class="row">
@@ -47,7 +47,7 @@
 <br />
 <br />
 <br />
-<table class="table">
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.UserName)
@@ -97,6 +97,6 @@
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
         </tr>
-    }
+    }*@
 
 </table>

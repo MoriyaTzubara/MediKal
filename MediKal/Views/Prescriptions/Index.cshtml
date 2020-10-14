@@ -1,4 +1,4 @@
-@model IEnumerable<MediKal.Models.PrescriptionViewModel>
+﻿@model IEnumerable<MediKal.Models.PrescriptionViewModel>
 @using MediKal.Models
 @{
     ViewBag.Title = "Index";
@@ -18,15 +18,15 @@
         }
     </script>*@
     <div class="m-5 p-3">
-        @{if (RouteConfig.user.UserType == BE.UserTypeEnum.Doctor)
-            {<img src="~/images/prescription.png" height="100" width="100" />
-                <a href="~/Prescriptions/ChoosePatient" class="social-button">
-                    <span class="fa fa-lg fa-plus"></span>
-                </a>
-                }
-            }
-                <h2 style="display:inline;margin-left:90px;">Prescriptions <span class="badge badge-pill bg-green">@Model.Count()</span></h2>
-            </div>
+        @if (RouteConfig.user.UserType == BE.UserTypeEnum.Doctor)
+        {
+            <img src="~/images/prescription.png" height="100" width="100" />
+        <a href="~/Prescriptions/ChoosePatient" class="social-button">
+            <span class="fa fa-lg fa-plus"></span>
+        </a>
+        }
+        <h2 style="display:inline;margin-left:90px;">Prescriptions <span class="badge badge-pill bg-green">@Model.Count()</span></h2>
+    </div>
 <table class="table">
     <tr>
         <th>
@@ -64,10 +64,10 @@
                 @Html.DisplayFor(modelItem => item.prescription.GetDoctor().UserName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NumOfTimes) times in a @Html.DisplayFor(modelItem => item.Frequency)
+                @item.NumOfTimes times in a @item.Frequency
             </td>
             <td>
-              @item.StartTime.ToShortDateString()
+                @item.StartTime.ToShortDateString()
             </td>
             <td>
                 @item.EndTime.ToShortDateString()
