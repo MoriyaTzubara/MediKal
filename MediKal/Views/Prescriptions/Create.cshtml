@@ -4,14 +4,15 @@
     ViewBag.Title = "View";
     Layout = "~/Views/Shared/_ManagementLayout.cshtml";
 }
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
     $(document).on('change', 'select', function (e) {
         var id = $(this).find(":selected").attr("id");
         document.getElementById('Name').innerHTML = document.getElementById(id).getAttribute('data-Name');
         document.getElementById('ServingOption').innerHTML = document.getElementById(id).getAttribute('data-ServingOption');
-});
+    });
 </script>
-@using (Html.BeginForm("Create","Prescriptions"))
+@using (Html.BeginForm("Create", "Prescriptions"))
 {
     @Html.AntiForgeryToken()
 
@@ -21,21 +22,20 @@
 
 
     <style>
-        td {
-            padding: 15px;
-        }
-        /*select,input,select:active,select:focus,select:after,option{
-  border: none;
-  border-bottom: 1.5px solid #00d6c8;
-}*/
-        input[type=number]{
-            width:50px;
-            text-align:center;
-            margin:0px;
-            display:inline;
-            text-align:center;
-        }
-
+                td {
+                    padding: 15px;
+                }
+                /*select,input,select:active,select:focus,select:after,option{
+          border: none;
+          border-bottom: 1.5px solid #00d6c8;
+        }*/
+                input[type=number] {
+                    width: 50px;
+                    text-align: center;
+                    margin: 0px;
+                    display: inline;
+                    text-align: center;
+                }
     </style>
     <br />
     <div>
@@ -108,8 +108,8 @@
                         <b>@Html.DisplayName("Frequency: ")</b>
                         @Html.EditorFor(model => model.NumOfTimes) times in a @Html.EnumDropDownListFor(model => model.Frequency, new { @class = "frequency-select" })
                         <br />
-                        </td>
-                    </tr>
+                    </td>
+                </tr>
                 <tr>
                     <td colspan="2">
                         <div class="row">
@@ -125,14 +125,19 @@
                     </td>
                 </tr>
             </table>
-            <hr />
-            <br />
-            <b>@Html.DisplayNameFor(model => model.Comments)</b>
-            <br />
-            <textarea name="Comments" rows="5" cols="100"></textarea>
+            
+            <button class="green-btn" onclick="getWarnings()">Check conflicts</button>
+            <div id="warningDiv" class="m-3 p-5">
 
-            <br />
-            <br />
+                <hr />
+                <br />
+                <b>@Html.DisplayNameFor(model => model.Comments)</b>
+                <br />
+                <textarea name="Comments" rows="5" cols="100"></textarea>
+
+                <br />
+                <br />
+            </div>
             <br />
             <br />
             <br />
@@ -161,21 +166,50 @@
     <br />
     <br />
     <table id="warnings">
+        <tr>
+            <td>Description</td>
+            <td>LevelOfRisk</td>
+            <td>ConflictingMedicines</td>
+        </tr>
     </table>
-    <script language="javascript">
-
-        $get("GetWarningsByJson", null, BindWarnings);
-
+}
+<script language="javascript">
+    function getWarnings()
+    {
+        var medicine = $("medicineForm").serialize();
+        $.post("GetWarningsByJson", medicine, BindWarnings);
+    }
         function BindWarnings(warnings) {
-            var tbl = $("#warnings");
+            var warningsTable = $("#warnings");
+            var warningDiv = $("#warningDiv");
             for (i = 0; i < warnings.length; i++) {
                 var newRow = "<tr>" +
-                    "<td>" + warnings[i].Description + "</td>"+
-                    "<td>" + warnings[i].LevelOfRisk + "</td>"+
+                    "<td>" + warnings[i].Description + "</td>" +
+                    "<td>" + warnings[i].LevelOfRisk + "</td>" +
                     "<td>" + warnings[i].ConflictingMedicines + "</td>" +
                     "</tr>";
-            }
-        }
+                warningsTable.append(newRow);
 
-    </script>
-}
+                var alert_color = "";
+                if (warnings[i].LevelOfRisk == "0")
+                    alert_color = "alert-danger";
+                else if (warnings[i].LevelOfRisk == "1")
+                    alert_color = "alert-warning";
+                else
+                    alert_color = "alert-info";
+
+                var newAlert = "<div class='alert " + alert_color + " ' role='alert'>"
+                    + warnings[i].Description + " | "
+                    + warnings[i].LevelOfRisk + " | "
+                    + warnings[i].ConflictingMedicines
+                    + "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>"
+                    + "</div>";
+
+                warningDiv.append(newAlert);
+
+            }
+        };
+    }
+
+</script>
+
