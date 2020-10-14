@@ -160,4 +160,22 @@
     <br />
     <br />
     <br />
+    <table id="warnings">
+    </table>
+    <script language="javascript">
+
+        $get("GetWarningsByJson", null, BindWarnings);
+
+        function BindWarnings(warnings) {
+            var tbl = $("#warnings");
+            for (i = 0; i < warnings.length; i++) {
+                var newRow = "<tr>" +
+                    "<td>" + warnings[i].Description + "</td>"+
+                    "<td>" + warnings[i].LevelOfRisk + "</td>"+
+                    "<td>" + warnings[i].ConflictingMedicines + "</td>" +
+                    "</tr>";
+            }
+        }
+
+    </script>
 }
