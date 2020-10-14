@@ -54,9 +54,9 @@ namespace DAL
 
             string comment = root.Elements("fullInteractionTypeGroup").Descendants("fullInteractionType").Descendants("comment").Select(s => s.Value)
              .Aggregate(new StringBuilder(), (s, i) => s.Append(i), s => s.ToString());
-            string severity = root.Elements("fullInteractionTypeGroup").Descendants("fullInteractionType").Descendants("interactionPair").Descendants("severity").Select(s => s.Value)
+            string severity = root.Elements("fullInteractionTypeGroup").Descendants("fullInteractionType").Descendants("interactionPair").Descendants("severity").Select(s => s.Value).FirstOrDefault()
               .Aggregate(new StringBuilder(), (s, i) => s.Append("severity degrees: " + i + " "), s => s.ToString());
-            string description = root.Elements("fullInteractionTypeGroup").Descendants("fullInteractionType").Descendants("interactionPair").Descendants("description").Select(s => s.Value)
+            string description = root.Elements("fullInteractionTypeGroup").Descendants("fullInteractionType").Descendants("interactionPair").Descendants("description").Select(s => s.Value).FirstOrDefault()
               .Aggregate(new StringBuilder(), (s, i) => s.Append(i + " "), s => s.ToString());
 
             result.Add(comment);
