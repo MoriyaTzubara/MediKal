@@ -127,7 +127,7 @@ namespace BL
                    where item.PatientId == PrimaryId
                    select item;
         }
-        public IEnumerable<string> GetMedicineOfPatient(int id)
+        public IEnumerable<string> GetMedicinesOfPatient(int id)
         {
             var prescriptions = GetPrescriptionsOfPatient(id);
             return from item in prescriptions

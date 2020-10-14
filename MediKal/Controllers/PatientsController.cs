@@ -82,7 +82,7 @@ namespace MediKal.Controllers
             {
                 IBL bl = new BL.BL();
                 bl.UpdatePatient(patient,Id);
-                return RedirectToAction("Index");
+                return RedirectToAction("ChoosePatient", "Prescriptions");
             }
             return View(new PatientViewModel(patient));
         }

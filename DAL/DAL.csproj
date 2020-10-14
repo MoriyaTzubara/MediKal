@@ -170,6 +170,7 @@
   <ItemGroup>
     <Compile Include="CheckImages.cs" />
     <Compile Include="DAL.cs" />
+    <Compile Include="DrugIntractions.cs" />
     <Compile Include="GoogleDriveAPIHelper.cs" />
     <Compile Include="IDAL.cs" />
     <Compile Include="MediKalDB.cs" />

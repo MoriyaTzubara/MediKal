@@ -19,6 +19,7 @@
     <input type="hidden" name="Id" value=@Model.patient.Id />
 
     <div class="form-group">
+<<<<<<< HEAD
         @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "" } })
@@ -35,6 +36,8 @@
     </div>
 
     <div class="form-group">
+=======
+>>>>>>> 63135a8f4a8ae43864489d0facc54ff37328166e
         @Html.LabelFor(model => model.Background, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Background, new { htmlAttributes = new { @class = "" } })
@@ -51,6 +54,7 @@
     </div>
 
     <div class="form-group">
+<<<<<<< HEAD
         @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "" } })
@@ -67,6 +71,8 @@
     </div>
 
     <div class="form-group">
+=======
+>>>>>>> 63135a8f4a8ae43864489d0facc54ff37328166e
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Save" class="btn btn-default" />
         </div>
@@ -75,5 +81,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <a href="~/Prescriptions/ChoosePatient" class="btn green-btn">Back to List</a>
 </div>

@@ -10,7 +10,7 @@ namespace BE
     {
         public int Id { get; set; }
         public string Description { get; set; }
-        public LevelOfRiskEnum LevelOfRisk { get; set; }
+        public string LevelOfRisk { get; set; }
         public string ConflictingMedicines { get; set; }
 
         /*

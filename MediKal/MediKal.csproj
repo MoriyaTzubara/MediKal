@@ -379,6 +379,7 @@
     <Content Include="Views\Prescriptions\Create.cshtml" />
     <Content Include="Views\Account\SignUpPatient.cshtml" />
     <Content Include="Views\Prescriptions\GetWarnings.cshtml" />
+    <Content Include="Views\Account\EditPersonalDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">
