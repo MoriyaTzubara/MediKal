@@ -1,4 +1,4 @@
-﻿using BE;
+using BE;
 using BL;
 using DAL;
 using MediKal.Models;
@@ -30,14 +30,19 @@ namespace MediKal.Controllers
             return View(userViewModel);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult EditPersonalDetails(User user)
         {
-            IBL bl = new BL.BL();
-            if (user.UserType == UserTypeEnum.Doctor)
-                bl.UpdateDoctor(bl.ConvertUserToDoctor(user), user.Id);
-            if (user.UserType == UserTypeEnum.Patient)
-                bl.UpdatePatient(bl.ConvertUserToPatient(user), user.Id);
-            return View("Index");
+            if (ModelState.IsValid)
+            {
+                IBL bl = new BL.BL();
+                if (user.UserType == UserTypeEnum.Doctor)
+                    bl.UpdateDoctor(bl.ConvertUserToDoctor(user), user.Id);
+                if (user.UserType == UserTypeEnum.Patient)
+                    bl.UpdatePatient(bl.ConvertUserToPatient(user), user.Id);
+                return View("Index");
+            }
+            return View(new UserViewModel(user));
         }
         public ActionResult EnterId()
         {
