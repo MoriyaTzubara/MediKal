@@ -146,6 +146,25 @@
                     </a>
                 </li>
             }
+            @if (RouteConfig.user.UserType == BE.UserTypeEnum.Doctor)
+            {
+                <li>
+                    <a href="~/Medicines">
+                        <img class="fa-icon fa-2x" src="~/images/medicine.png" />
+                        <span class="nav-text">
+                            Medicines
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="~/Patients">
+                        <img class="fa-icon fa-2x" src="~/images/profile.png" />
+                        <span class="nav-text">
+                            Patients
+                        </span>
+                    </a>
+                </li>
+            }
             @* FOR ALL USERS *@
             <li>
                 <a href="~/Prescriptions">
