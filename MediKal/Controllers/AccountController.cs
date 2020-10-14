@@ -23,27 +23,6 @@ namespace MediKal.Controllers
             Session["Error"] = "";
             return View();
         }
-        [HttpGet]
-        public ActionResult EditPersonalDetails()
-        {
-            UserViewModel userViewModel = new UserViewModel(RouteConfig.user);
-            return View(userViewModel);
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditPersonalDetails(User user)
-        {
-            if (ModelState.IsValid)
-            {
-                IBL bl = new BL.BL();
-                if (user.UserType == UserTypeEnum.Doctor)
-                    bl.UpdateDoctor(bl.ConvertUserToDoctor(user), user.Id);
-                if (user.UserType == UserTypeEnum.Patient)
-                    bl.UpdatePatient(bl.ConvertUserToPatient(user), user.Id);
-                return View("Index");
-            }
-            return View(new UserViewModel(user));
-        }
         public ActionResult EnterId()
         {
             Session["Error"] = "";
@@ -127,17 +106,35 @@ namespace MediKal.Controllers
             }
             catch (ArgumentNullException) { return View(); }
         }
-        //public ActionResult EditPersonalDetails(Patient user,int Id)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        IBL bl = new BL.BL();
-        //        if(user.UserType == UserTypeEnum.Doctor)
-        //        bl.UpdateDoctor(user, Id);
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(new PatientViewModel(patient));
-        //}
+        // GET: Patients/Edit/5
+        public ActionResult EditPersonalDetails()
+        {
+            IBL bl = new BL.BL();
+            if (RouteConfig.user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(new UserViewModel(RouteConfig.user));
+        }
+
+        // POST: Patients/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPersonalDetails(User user, int Id)
+        {
+            if (ModelState.IsValid)
+            {
+                IBL bl = new BL.BL();
+                if (user.UserType == UserTypeEnum.Doctor)
+                    bl.UpdateDoctor(bl.ConvertUserToDoctor(user), Id);
+                if (user.UserType == UserTypeEnum.Patient)
+                    bl.UpdatePatient(bl.ConvertUserToPatient(user), Id);
+                return RedirectToAction("Index", "Account");
+            }
+            return View(new UserViewModel(user));
+        }
         public ActionResult SignOut()
         {
             RouteConfig.user = null;

@@ -36,6 +36,7 @@
                     @if (ViewBag.IsSelectView == true)
                     {
                         <div onclick="location.href='@($"/Prescriptions/AddPrescriptionToPatient?patientId={item.PrimaryId}")'" class="btn green-btn"><i class="fa fa-plus"></i> Add Prescription</div>
+                        <div onclick="location.href='@($"/Patients/Edit?id={item.Id}")'" class="btn green-btn"><i class="fa fa-edit"></i> Edit Patient</div>
                     }
                 </div>
 

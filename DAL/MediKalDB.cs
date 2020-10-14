@@ -18,5 +18,6 @@ namespace DAL
         public DbSet<Prescription> Prescriptions { get; set; }
         public DbSet<Manager> Managers { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
+
     }
 }
