@@ -4,13 +4,81 @@
     ViewBag.Title = "View";
     Layout = "~/Views/Shared/_ManagementLayout.cshtml";
 }
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script>
+@*<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>*@
+
+<script type="text/javascript" language="javascript">
     $(document).on('change', 'select', function (e) {
         var id = $(this).find(":selected").attr("id");
         document.getElementById('Name').innerHTML = document.getElementById(id).getAttribute('data-Name');
         document.getElementById('ServingOption').innerHTML = document.getElementById(id).getAttribute('data-ServingOption');
+        var prescription = $("#prescriptionForm").serialize();
+        var primaryId = 0;
+        primaryId = parseInt($(this).find(":selected").val());
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("GetWarningsByJson", "Prescriptions")',
+            data: {
+                medicineId: primaryId,
+                patientId: @(Model.PatientId) },
+            success: BindWarnings
+        });
     });
+    function BindWarnings(warnings) {
+        var warningDiv = $("#warningDiv");
+        for (i = 0; i < warnings.length; i++) {
+            var alert_color = "";
+            if (warnings[i].LevelOfRisk == "0")
+                alert_color = "alert-danger";
+            else if (warnings[i].LevelOfRisk == "1")
+                alert_color = "alert-warning";
+            else
+                alert_color = "alert-info";
+            //alert_color = "alert-danger";
+            var newAlert = "<div class='alert " + alert_color + " ' role='alert'>"
+                + warnings[i].Description + " | "
+                + warnings[i].LevelOfRisk + " | "
+                + warnings[i].ConflictingMedicines
+                + "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>"
+                + "</div>";
+            //var toast = document.createElement("div");
+            //toast.setAttribute("aria-live", "assertive");
+            //toast.setAttribute("role", "alert");
+            //toast.setAttribute("aria-atomic", "true");
+            //toast.setAttribute("class", "toast");
+            //toast.setAttribute("data-autohide", "false");
+            //var toast_header = document.createElement("div");
+            //toast_header.setAttribute("class", "toast-header");
+            //var img = document.createElement("img");
+            //img.setAttribute("src", "...");
+            //img.setAttribute("class", "rounded mr-2");
+            //var strong = document.createElement("strong");
+            //strong.setAttribute("class", "mr-auto");
+            //strong.innerHTML = "header";
+            //var button = document.createElement("button");
+            //button.setAttribute("type", "button");
+            //button.setAttribute("class", "ml-2 mb-1 close");
+            //button.setAttribute("data-dismiss", "toast");
+            //button.setAttribute("aria-label", "Close");
+            //button.innerHTML = '<span aria-hidden="true">&times;</span>';
+            //var toast_body = document.createElement("div");
+            //toast_body.setAttribute("class", "toast-body");
+            //toast_body.innerHTML = "Hello, world! This is a toast message.";
+
+            //toast_header.append(img);
+            //toast_header.append(strong);
+            //toast_header.append(button);
+
+            //toast.append(toast_header);
+            //toast.append(toast_body);
+            //warningDiv.append(toast);
+
+            warningDiv.append(newAlert);
+
+        }
+    };
+
 </script>
 @using (Html.BeginForm("Create", "Prescriptions"))
 {
@@ -22,20 +90,20 @@
 
 
     <style>
-                td {
-                    padding: 15px;
-                }
-                /*select,input,select:active,select:focus,select:after,option{
+        td {
+            padding: 15px;
+        }
+        /*select,input,select:active,select:focus,select:after,option{
           border: none;
           border-bottom: 1.5px solid #00d6c8;
         }*/
-                input[type=number] {
-                    width: 50px;
-                    text-align: center;
-                    margin: 0px;
-                    display: inline;
-                    text-align: center;
-                }
+        input[type=number] {
+            width: 50px;
+            text-align: center;
+            margin: 0px;
+            display: inline;
+            text-align: center;
+        }
     </style>
     <br />
     <div>
@@ -86,58 +154,58 @@
                 </table>
             </div>
             <hr />
-            <table>
-                <tr>
-                    <td>
-                        <b>@Html.DisplayName("Generic Name:")</b>
-                        @Html.DropDownEnumListForMedicines("MedicineId")
-                    </td>
-                    <td>
-                        <b>@Html.DisplayName("Name:")</b>
-                        <label id="Name"></label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>@Html.DisplayName("Serving Option:")</b>
-                        <label id="ServingOption"></label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>@Html.DisplayName("Frequency: ")</b>
-                        @Html.EditorFor(model => model.NumOfTimes) times in a @Html.EnumDropDownListFor(model => model.Frequency, new { @class = "frequency-select" })
-                        <br />
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <div class="row">
-                            <div class="col">
-                                <b>Start date: </b>
-                                <input name="StartTime" value="@DateTime.Now.ToString("yyyy-MM-dd")" type="date" />
+            <form id="medicineForm">
+                <table>
+                    <tr>
+                        <td>
+                            <b>@Html.DisplayName("Generic Name:")</b>
+                            @Html.DropDownEnumListForMedicines("MedicineId")
+                        </td>
+                        <td>
+                            <b>@Html.DisplayName("Name:")</b>
+                            <label id="Name"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>@Html.DisplayName("Serving Option:")</b>
+                            <label id="ServingOption"></label>
+                        </td>
+                    </tr>
+                </table>
+                <div id="warningDiv" class="text-left "></div>
+                <table>
+                    <tr>
+                        <td>
+                            <b>@Html.DisplayName("Frequency: ")</b>
+                            @Html.EditorFor(model => model.NumOfTimes) times in a @Html.EnumDropDownListFor(model => model.Frequency, new { @class = "frequency-select" })
+                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="row">
+                                <div class="col">
+                                    <b>Start date: </b>
+                                    <input name="StartTime" value="@DateTime.Now.ToString("yyyy-MM-dd")" type="date" />
+                                </div>
+                                <div class="col">
+                                    <b>End date: </b>
+                                    <input name="EndTime" type="date" />
+                                </div>
                             </div>
-                            <div class="col">
-                                <b>End date: </b>
-                                <input name="EndTime" type="date" />
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-            
-            <button class="green-btn" onclick="getWarnings()">Check conflicts</button>
-            <div id="warningDiv" class="m-3 p-5">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <hr />
+            <br />
+            <b>@Html.DisplayNameFor(model => model.Comments)</b>
+            <br />
+            <textarea name="Comments" rows="5" cols="100"></textarea>
 
-                <hr />
-                <br />
-                <b>@Html.DisplayNameFor(model => model.Comments)</b>
-                <br />
-                <textarea name="Comments" rows="5" cols="100"></textarea>
-
-                <br />
-                <br />
-            </div>
+            <br />
+            <br />
             <br />
             <br />
             <br />
@@ -173,43 +241,3 @@
         </tr>
     </table>
 }
-<script language="javascript">
-    function getWarnings()
-    {
-        var medicine = $("medicineForm").serialize();
-        $.post("GetWarningsByJson", medicine, BindWarnings);
-    }
-        function BindWarnings(warnings) {
-            var warningsTable = $("#warnings");
-            var warningDiv = $("#warningDiv");
-            for (i = 0; i < warnings.length; i++) {
-                var newRow = "<tr>" +
-                    "<td>" + warnings[i].Description + "</td>" +
-                    "<td>" + warnings[i].LevelOfRisk + "</td>" +
-                    "<td>" + warnings[i].ConflictingMedicines + "</td>" +
-                    "</tr>";
-                warningsTable.append(newRow);
-
-                var alert_color = "";
-                if (warnings[i].LevelOfRisk == "0")
-                    alert_color = "alert-danger";
-                else if (warnings[i].LevelOfRisk == "1")
-                    alert_color = "alert-warning";
-                else
-                    alert_color = "alert-info";
-
-                var newAlert = "<div class='alert " + alert_color + " ' role='alert'>"
-                    + warnings[i].Description + " | "
-                    + warnings[i].LevelOfRisk + " | "
-                    + warnings[i].ConflictingMedicines
-                    + "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>"
-                    + "</div>";
-
-                warningDiv.append(newAlert);
-
-            }
-        };
-    }
-
-</script>
-
