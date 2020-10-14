@@ -1,4 +1,4 @@
-﻿@model MediKal.Models.PrescriptionViewModel
+@model MediKal.Models.PrescriptionViewModel
 @using MediKal.Models
 @{
     ViewBag.Title = "View";
@@ -150,7 +150,7 @@
         <br />
         <div class="float-right">
             <input type="submit" value="Save" class="blue-btn" />
-            <a href="~/Medicines" class="btn green-btn">Back to List</a>
+            <a href="~/Prescriptions/ChoosePatient" class="btn green-btn">Back to List</a>
         </div>
 
     </div>
@@ -160,4 +160,22 @@
     <br />
     <br />
     <br />
+    <table id="warnings">
+    </table>
+    <script language="javascript">
+
+        $get("GetWarningsByJson", null, BindWarnings);
+
+        function BindWarnings(warnings) {
+            var tbl = $("#warnings");
+            for (i = 0; i < warnings.length; i++) {
+                var newRow = "<tr>" +
+                    "<td>" + warnings[i].Description + "</td>"+
+                    "<td>" + warnings[i].LevelOfRisk + "</td>"+
+                    "<td>" + warnings[i].ConflictingMedicines + "</td>" +
+                    "</tr>";
+            }
+        }
+
+    </script>
 }

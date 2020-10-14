@@ -163,6 +163,7 @@
     <Compile Include="Models\PrescriptionViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\WarningViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\style.css" />
@@ -377,6 +378,7 @@
     <Content Include="Views\Shared\_PrintLayout.cshtml" />
     <Content Include="Views\Prescriptions\Create.cshtml" />
     <Content Include="Views\Account\SignUpPatient.cshtml" />
+    <Content Include="Views\Prescriptions\GetWarnings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

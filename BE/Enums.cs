@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace BE
 {
+    public enum LevelOfRiskEnum
+    {
+        High,
+        Medium,
+        Low,
+    }
     public enum SpecialtyEnum
     {
         Family_Doctor,
