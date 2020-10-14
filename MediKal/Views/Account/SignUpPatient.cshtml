@@ -35,6 +35,10 @@
                             @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", placeholder = "Enter your phone" })
                             @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                             <br />
+                            @Html.Label("Birth Date")
+                            @Html.TextBoxFor(model => model.Birthday, new { @class = "form-control", placeholder = "Enter your birth date" })
+                            @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
+                            <br />
                             <button type="submit" class="green-btn" id="cf-submit" name="submit">Sign Up</button>
                         </div>
                     </div>
