@@ -406,7 +406,8 @@ namespace BL
         }
         public Dictionary<string,int> GetStatisticMedicine(int medicineId, DateTime StartDate, DateTime EndDate)
         {
-            return dal.GetStatisticMedicine(medicineId, StartDate, EndDate);
+            var result = dal.GetStatisticMedicine(medicineId, StartDate, EndDate);
+            return result;
             //Dictionary<string,int> medicines = new Dictionary<string, int>();
             //foreach (var item in GetPrescriptionsOfMedicine(medicineId))
             //{
