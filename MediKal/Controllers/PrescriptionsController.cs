@@ -25,13 +25,15 @@ namespace MediKal.Controllers
             List<string> warningsStrings = new List<string>();
             warningsStrings = drugIntractionLogic.checkInteractions(medicines);
             Warning warning = new Warning();
-            warning.ConflictingMedicines = warningsStrings[0];
-            if (warningsStrings.Count() != 1)
+            if (warningsStrings.Count() == 1)
             {
-                warning.LevelOfRisk = warningsStrings[1];
-                warning.Description = warningsStrings[2];
+                return Json(new List<Warning>(), JsonRequestBehavior.AllowGet);
             }
-
+            warning.ConflictingMedicines = warningsStrings[0];
+            warning.LevelOfRisk = warningsStrings[1];
+            warning.Description = warningsStrings[2];
+            string[] helper = warning.Description.Split('.');
+            warning.Description = helper[0];
             //IEnumerable<Warning> warnings = new List<Warning>()
             //{
             //    new Warning()
@@ -54,7 +56,8 @@ namespace MediKal.Controllers
             //        Description = "This is a description"
             //    }
             //};
-            var result = new WarningViewModel(warning);
+            var result = new List<Warning>();
+            result.Add(warning);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
@@ -163,7 +166,7 @@ namespace MediKal.Controllers
             if (ModelState.IsValid)
             {
                 IBL bl = new BL.BL();
-                bl.UpdatePrescription(prescription,Id);
+                bl.UpdatePrescription(prescription, Id);
                 return RedirectToAction("Index");
             }
             return View(new PrescriptionViewModel(prescription));
@@ -213,7 +216,8 @@ namespace MediKal.Controllers
             Prescription prescription = new Prescription()
             {
                 PatientId = patientId,
-                DoctorId = primaryDoctorId };
+                DoctorId = primaryDoctorId
+            };
 
             return View("Create", new PrescriptionViewModel(prescription));
         }

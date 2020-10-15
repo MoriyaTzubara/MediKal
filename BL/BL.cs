@@ -23,7 +23,7 @@ namespace BL
 
         public void AddPatient(Patient patient)
         {
-            if(!Validation.ValidIdDB(patient.Id))
+            if (!Validation.ValidIdDB(patient.Id))
                 throw new Exception("ת.ז. זו קיימת כבר");
             if (!Validation.IsEmail(patient.Mail))
                 throw new Exception("כתובת מייל לא חוקית");
@@ -199,7 +199,7 @@ namespace BL
 
                 });
                 return true;
-            } catch(Exception e) { throw new Exception(e.Message); }
+            } catch (Exception e) { throw new Exception(e.Message); }
         }
 
         public User SignIn(int id, string password)
@@ -217,27 +217,27 @@ namespace BL
             if (GetUserById(newUser.Id) == null)
                 throw new Exception("אינך רשום במערכת, אנא פנה למנהל");
             if (newUser.UserType == UserTypeEnum.Doctor)
-                dal.UpdateDoctor((Doctor) newUser, newUser.Id);
+                dal.UpdateDoctor((Doctor)newUser, newUser.Id);
             if (newUser.UserType == UserTypeEnum.Manager)
                 dal.UpdateManager((Manager)newUser, newUser.Id);
             if (newUser.UserType == UserTypeEnum.Patient)
                 dal.UpdatePatient((Patient)newUser, newUser.Id);
         }
-        public void UpdateMedicine(Medicine medicine,string NDCId)
+        public void UpdateMedicine(Medicine medicine, string NDCId)
         {
-            dal.UpdateMedicine(medicine,NDCId);
+            dal.UpdateMedicine(medicine, NDCId);
         }
 
         public void UpdatePatient(Patient patient, int Id)
         {
             if (!Validation.IsEmail(patient.Mail))
                 throw new Exception("כתובת מייל לא חוקית");
-            dal.UpdatePatient(patient,Id);
+            dal.UpdatePatient(patient, Id);
         }
 
         public void UpdatePrescription(Prescription prescription, int Id)
         {
-            dal.UpdatePrescription(prescription,Id);
+            dal.UpdatePrescription(prescription, Id);
         }
 
         //public void UpdateUser(User user, int Id)
@@ -257,7 +257,7 @@ namespace BL
         {
             if (!Validation.ValidIdDB(doctor.Id))
                 throw new Exception("ת.ז. זו קיימת כבר");
-            if(!Validation.IsEmail(doctor.Mail))
+            if (!Validation.IsEmail(doctor.Mail))
                 throw new Exception("כתובת מייל לא חוקית");
             dal.AddDoctor(doctor);
         }
@@ -312,7 +312,7 @@ namespace BL
 
         public void ReadExcelMedicines(string path, int sheet)
         {
-            dal.ReadExcelMedicines(path,sheet);
+            dal.ReadExcelMedicines(path, sheet);
         }
 
         public Medicine FindMedicineInExcel(string NDCId)
@@ -420,6 +420,24 @@ namespace BL
             if (numbers == s.Length)
                 return false;
             return true;
+        }
+        public IEnumerable<Prescription> GetPrescriptionsOfMedicine(int medicineId)
+        {
+            return from item in GetPrescriptions()
+                   where item.MedicineId == medicineId
+                   select item;
+        }
+        public Dictionary<string,int> GetStatisticMedicine(int medicineId, DateTime StartDate, DateTime EndDate)
+        {
+            Dictionary<string,int> medicines = new Dictionary<string, int>();
+            foreach (var item in GetPrescriptionsOfMedicine(medicineId))
+            {
+                if (item.PrescriptionDate.Ticks >= StartDate.Ticks && item.PrescriptionDate.Ticks <= EndDate.Ticks)
+                {
+                    medicines[item.PrescriptionDate.Month.ToString("MMMM")] += 1;
+                }
+            }
+            return medicines;
         }
 
     }
