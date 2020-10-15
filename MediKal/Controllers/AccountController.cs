@@ -131,6 +131,7 @@ namespace MediKal.Controllers
                     bl.UpdateDoctor(bl.ConvertUserToDoctor(user), Id);
                 if (user.UserType == UserTypeEnum.Patient)
                     bl.UpdatePatient(bl.ConvertUserToPatient(user), Id);
+                RouteConfig.user = user;
                 return RedirectToAction("Index", "Account");
             }
             return View(new UserViewModel(user));

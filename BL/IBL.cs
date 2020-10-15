@@ -51,6 +51,7 @@ namespace BL
         // FILTER
         IEnumerable<Prescription> GetPrescriptionsOfPatient(int id);
         IEnumerable<Prescription> GetPrescriptionsOfDoctor(int id);
+        Dictionary<string,int> GetStatisticMedicine(int medicineId, DateTime StartDate, DateTime EndDate);
         // VALIDATION
         bool IsMedicineImage(string imagePath);
         List<Warning> GetConflicts(string medicineId, int patientId);

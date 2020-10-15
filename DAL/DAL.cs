@@ -366,6 +366,7 @@ namespace DAL
                     tmp.Phone = patient.Phone;
                     tmp.Password = patient.Password;
                     tmp.Mail = patient.Mail;
+                    tmp.PrimaryId = patient.PrimaryId;
                     db.SaveChanges();
                 }
             }
@@ -428,7 +429,7 @@ namespace DAL
                     tmp.LicenseNum = doctor.LicenseNum;
                     tmp.Specialty = doctor.Specialty;
                     tmp.Password = doctor.Password;
-                    tmp.Mail = doctor.Mail;
+                    tmp.PrimaryId = doctor.PrimaryId;
                     db.SaveChanges();
                 }
             }
@@ -448,6 +449,7 @@ namespace DAL
                     tmp.Phone = manager.Phone;
                     tmp.UserName = manager.UserName;
                     tmp.UserType = manager.UserType;
+                    tmp.PrimaryId = manager.PrimaryId;
                     db.SaveChanges();
                 }
             }
