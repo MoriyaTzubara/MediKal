@@ -576,7 +576,7 @@ namespace DAL
             {
                 return from pres in db.Prescriptions
                        from med in db.Medicines
-                       where pres.PatientId == id && med.Id == pres.MedicineId
+                       where pres.PatientId == id && med.Id == pres.MedicineId && pres.EndTime >= DateTime.Now
                        select med.NDCId;
                            }
         }
