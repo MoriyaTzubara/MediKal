@@ -51,7 +51,7 @@ namespace MediKal.Models
             {
                 options += $"<option id='medicine{item.Id}' value ='{item.Id}' data-Name='{item.Name}' data-ServingOption='{item.ServingOption}'> {item.GenericName} </option>";
             }
-            return new MvcHtmlString($"<select required name='{name}' class='medicinesSelect' >{options}</select>");
+            return new MvcHtmlString($"<select required name='{name}' id='medicines' class='medicinesSelect' >{options}</select>");
 
         }
     }

@@ -151,7 +151,7 @@ namespace MediKal.Controllers
             {
                 return HttpNotFound();
             }
-            bl.DeleteMedicine(id);
+            //bl.DeleteMedicine(id);
             return RedirectToAction("Index");
         }
 
