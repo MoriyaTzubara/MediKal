@@ -28,9 +28,7 @@ namespace DAL
         //void DeleteUser(int id);
         void DeleteDoctor(int id);
         void DeleteManager(int id);
-        void DeleteMedicine(string id);
         void DeletePatient(int id);
-        void DeletePrescription(int id);
         // GET
         IEnumerable<User> GetUsers();
         IEnumerable<Patient> GetPatients();
@@ -40,5 +38,21 @@ namespace DAL
         IEnumerable<Prescription> GetPrescriptions();
         void ReadExcelMedicines(string path, int sheet);
         Medicine FindMedicineInExcel(string NDCId);
+
+        User GetUserById(int id);
+        Doctor GetDoctorById(int id);
+        Doctor GetDoctorByPrimaryId(int PrimaryId);
+        Manager GetManagerById(int id);
+        Medicine GetMedicineById(string NDCid);
+        Patient GetPatientById(int id);
+        Patient GetPatientByPrimaryId(int PrimaryId);
+        Prescription GetPrescriptionById(int id);
+        Medicine GetMedicineByPrimaryId(int id);
+        // FILTER
+        IEnumerable<Prescription> GetPrescriptionsOfPatient(int id);
+        IEnumerable<Prescription> GetPrescriptionsOfDoctor(int id);
+        IEnumerable<Prescription> GetPrescriptionsOfMedicine(int medicineId);
+        IEnumerable<string> GetMedicinesOfPatient(int id);
+        Dictionary<string, int> GetStatisticMedicine(int medicineId, DateTime StartDate, DateTime EndDate);
     }
 }

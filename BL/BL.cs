@@ -44,20 +44,13 @@ namespace BL
             dal.AddManager(manager);
         }
 
-        public void DeleteMedicine(string NDCid)
-        {
-            dal.DeleteMedicine(NDCid);
-        }
+
 
         public void DeletePatient(int id)
         {
             dal.DeletePatient(id);
         }
 
-        public void DeletePrescription(int id)
-        {
-            dal.DeletePrescription(id);
-        }
 
         //public void DeleteUser(int id)
         //{
@@ -138,7 +131,7 @@ namespace BL
         {
             try
             {
-                return GetUsers().FirstOrDefault(item => item.Id == id);
+                return dal.GetUserById(id);
             }
             catch (ArgumentNullException e) { throw e; }
         }
@@ -146,11 +139,6 @@ namespace BL
         public IEnumerable<User> GetUsers()
         {
             return dal.GetUsers();
-        }
-
-        public bool IsMedicineImage(string imagePath)
-        {
-            throw new NotImplementedException();
         }
 
         public void LogOut()
@@ -289,25 +277,16 @@ namespace BL
 
         public Doctor GetDoctorById(int id)
         {
-            var doctors = dal.GetDoctors();
-            return (from item in doctors
-                    where item.Id == id
-                    select item).FirstOrDefault();
+            return dal.GetDoctorById(id);
         }
 
         public Doctor GetDoctorByPrimaryId(int PrimaryId)
         {
-            var doctors = dal.GetDoctors();
-            return (from item in doctors
-                    where item.PrimaryId == PrimaryId
-                    select item).FirstOrDefault();
+            return dal.GetDoctorByPrimaryId(PrimaryId);
         }
         public Manager GetManagerById(int id)
         {
-            var managers = dal.GetManagers();
-            return (from item in managers
-                    where item.Id == id
-                    select item).FirstOrDefault();
+            return dal.GetManagerById(id);
         }
 
         public void ReadExcelMedicines(string path, int sheet)
@@ -423,21 +402,20 @@ namespace BL
         }
         public IEnumerable<Prescription> GetPrescriptionsOfMedicine(int medicineId)
         {
-            return from item in GetPrescriptions()
-                   where item.MedicineId == medicineId
-                   select item;
+            return dal.GetPrescriptionsOfMedicine(medicineId);
         }
         public Dictionary<string,int> GetStatisticMedicine(int medicineId, DateTime StartDate, DateTime EndDate)
         {
-            Dictionary<string,int> medicines = new Dictionary<string, int>();
-            foreach (var item in GetPrescriptionsOfMedicine(medicineId))
-            {
-                if (item.PrescriptionDate.Ticks >= StartDate.Ticks && item.PrescriptionDate.Ticks <= EndDate.Ticks)
-                {
-                    medicines[item.PrescriptionDate.Month.ToString("MMMM")] += 1;
-                }
-            }
-            return medicines;
+            return dal.GetStatisticMedicine(medicineId, StartDate, EndDate);
+            //Dictionary<string,int> medicines = new Dictionary<string, int>();
+            //foreach (var item in GetPrescriptionsOfMedicine(medicineId))
+            //{
+            //    if (item.PrescriptionDate.Ticks >= StartDate.Ticks && item.PrescriptionDate.Ticks <= EndDate.Ticks)
+            //    {
+            //        medicines[item.PrescriptionDate.Month.ToString("MMMM")] += 1;
+            //    }
+            //}
+            //return medicines;
         }
 
     }

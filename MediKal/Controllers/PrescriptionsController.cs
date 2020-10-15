@@ -184,16 +184,6 @@ namespace MediKal.Controllers
             return View(new PrescriptionViewModel(prescription));
         }
 
-        // POST: Prescriptions/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            IBL bl = new BL.BL();
-            bl.DeletePrescription(id);
-            return RedirectToAction("Index");
-        }
-
         public ActionResult PdfViewer(int id)
         {
             IBL bl = new BL.BL();

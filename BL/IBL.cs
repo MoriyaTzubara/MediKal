@@ -27,9 +27,7 @@ namespace BL
         //void DeleteUser(int id);
         void DeleteDoctor(int id);
         void DeleteManager(int id);
-        void DeleteMedicine(string NDCid);
         void DeletePatient(int id);
-        void DeletePrescription(int id);
         // GET
         IEnumerable<User> GetUsers();
         IEnumerable<Doctor> GetDoctors();
@@ -53,7 +51,6 @@ namespace BL
         IEnumerable<Prescription> GetPrescriptionsOfDoctor(int id);
         Dictionary<string,int> GetStatisticMedicine(int medicineId, DateTime StartDate, DateTime EndDate);
         // VALIDATION
-        bool IsMedicineImage(string imagePath);
         List<Warning> GetConflicts(string medicineId, int patientId);
         Medicine FindMedicineInExcel(string NDCId);
 

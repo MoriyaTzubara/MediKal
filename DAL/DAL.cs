@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
@@ -14,16 +15,17 @@ namespace DAL
         #region ADD
         public void AddMedicine(Medicine medicine)
         {
-            //try
-            //{
+            try
+            {
                 using (var db = new MediKalDB())
                 {
                     db.Medicines.Add(medicine);
                     db.SaveChanges();
                 }
-            //}
-            //catch (Exception e) { throw new Exception(e.Message); }
         }
+            catch (Exception e) { throw new Exception(e.Message);
+    }
+}
 
         public void AddPatient(Patient patient)
         {
@@ -41,63 +43,36 @@ namespace DAL
 
         public void AddPrescription(Prescription prescription)
         {
-           // try
-            //{
+            try
+            {
                 using (var db = new MediKalDB())
                 {
                     db.Prescriptions.Add(prescription);
                     db.SaveChanges();
                 }
-            //}
-           // catch (Exception e) { throw new Exception(e.Message); }
-
         }
+            catch (Exception e) { throw new Exception(e.Message);
+    }
 
-        //public void AddUser(User user)
-        //{
-        //    try
-        //    {
-        //        using (var db = new MediKalDB())
-        //        {
-        //            db.Users.Add(user);
-        //            db.SaveChanges();
-        //        }
-        //    }
-        //    catch (Exception e) { throw new Exception(e.Message); }
+}
 
-        //}
 
         public void AddDoctor(Doctor doctor)
         {
-            //User tmp = new User();
-            //tmp.Birthday = doctor.Birthday;
-            //tmp.Mail = doctor.Mail;
-            //tmp.Password = doctor.Password;
-            //tmp.Phone = doctor.Phone;
-            //tmp.UserName = doctor.UserName;
-            //tmp.UserType = doctor.UserType;
-            //AddUser(tmp);
-            //try
-            //{
+            try
+            {
                 using (var db = new MediKalDB())
                 {
                     db.Doctors.Add(doctor);
                     db.SaveChanges();
                 }
-            //}
-            //catch (Exception e) { throw new Exception(e.Message); }
         }
+            catch (Exception e) { throw new Exception(e.Message);
+    }
+}
 
         public void AddManager(Manager manager)
         {
-            //User tmp = new User();
-            //tmp.Birthday = manager.Birthday;
-            //tmp.Mail = manager.Mail;
-            //tmp.Password = manager.Password;
-            //tmp.Phone = manager.Phone;
-            //tmp.UserName = manager.UserName;
-            //tmp.UserType = manager.UserType;
-            //AddUser(tmp);
             try
             {
                 using (var db = new MediKalDB())
@@ -110,21 +85,6 @@ namespace DAL
         }
         #endregion
         #region DELETE
-        public void DeleteMedicine(string NDCid)
-        {
-            try
-            {
-                using (var db = new MediKalDB())
-                {
-                    Medicine medicine = db.Medicines.First(m => m.NDCId == NDCid);
-                    db.Medicines.Remove(medicine);
-                    db.SaveChanges();
-                }
-            }
-            catch (Exception e) { throw new Exception(e.Message); }
-
-        }
-
         public void DeletePatient(int id)
         {
             try
@@ -140,48 +100,6 @@ namespace DAL
 
         }
 
-        public void DeletePrescription(int id)
-        {
-            try
-            {
-                using (var db = new MediKalDB())
-                {
-                    Prescription prescription = db.Prescriptions.Find(id);
-                    db.Prescriptions.Remove(prescription);
-                    db.SaveChanges();
-                }
-            }
-            catch (Exception e) { throw new Exception(e.Message); }
-
-        }
-
-        //public void DeleteUser(int id)
-        //{
-        //    try
-        //    {
-        //        using (var db = new MediKalDB())
-        //        {
-        //            Doctor userD = db.Doctors.Find(id);
-        //            if (userD != null)
-        //                db.Doctors.Remove(userD);
-        //            else
-        //            {
-        //                Manager userM = db.Managers.Find(id);
-        //                if (userM != null)
-        //                    db.Managers.Remove(userM);
-        //                else
-        //                {
-        //                    Patient userP = db.Patients.Find(id);
-        //                    if (userP != null)
-        //                        db.Patients.Remove(userP);
-        //                }
-        //            }
-        //            db.SaveChanges();
-        //        }
-        //    }
-        //    catch (Exception e) { throw new Exception(e.Message); }
-
-        //}
         public void DeleteDoctor(int id)
         {
                 try
@@ -213,8 +131,8 @@ namespace DAL
         #region GET
         public IEnumerable<Medicine> GetMedicines()
         {
-            //try
-            //{
+            try
+            {
                 List<Medicine> result = new List<Medicine>();
                 using (var db = new MediKalDB())
                 {
@@ -224,13 +142,13 @@ namespace DAL
                     }
                 }
                 return result;
-            //}
-            //catch (Exception e)
-            //{
-            //    throw new Exception(e.Message);
-            //}
-
         }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+    }
+
+}
 
         public IEnumerable<Patient> GetPatients()
         {
@@ -366,7 +284,6 @@ namespace DAL
                     tmp.Phone = patient.Phone;
                     tmp.Password = patient.Password;
                     tmp.Mail = patient.Mail;
-                    tmp.PrimaryId = patient.PrimaryId;
                     db.SaveChanges();
                 }
             }
@@ -394,25 +311,6 @@ namespace DAL
             catch (Exception e) { throw new Exception(e.Message); }
         }
 
-        //public void UpdateUser(User user, int Id)
-        //{
-        //    try
-        //    {
-        //        using (var db = new MediKalDB())
-        //        {
-        //            var tmp = db.Users.First(u => u.Id == Id);
-        //            tmp.Birthday = user.Birthday;
-        //            tmp.Mail = user.Mail;
-        //            tmp.Password = user.Password;
-        //            tmp.Phone = user.Phone;
-        //            tmp.UserName = user.UserName;
-        //            tmp.UserType = user.UserType;
-        //            db.SaveChanges();
-        //        }
-        //    }
-        //    catch (Exception e) { throw new Exception(e.Message); }
-        //}
-
         public void UpdateDoctor(Doctor doctor, int Id)
         {
             try
@@ -429,7 +327,6 @@ namespace DAL
                     tmp.LicenseNum = doctor.LicenseNum;
                     tmp.Specialty = doctor.Specialty;
                     tmp.Password = doctor.Password;
-                    tmp.PrimaryId = doctor.PrimaryId;
                     db.SaveChanges();
                 }
             }
@@ -449,7 +346,6 @@ namespace DAL
                     tmp.Phone = manager.Phone;
                     tmp.UserName = manager.UserName;
                     tmp.UserType = manager.UserType;
-                    tmp.PrimaryId = manager.PrimaryId;
                     db.SaveChanges();
                 }
             }
@@ -511,6 +407,170 @@ namespace DAL
                 return BinarySearch(excel,x, left, middle - 1);
 
             return BinarySearch(excel,x, middle + 1, right);
+        }
+
+        public User GetUserById(int id)
+        {
+            using (var db = new MediKalDB())
+            {
+                User user = new User();
+                foreach (var d in db.Doctors)
+                {
+                    if(d.Id == id)
+                    return new User(d.Id) { Birthday = d.Birthday, Mail = d.Mail, Password = d.Password, Phone = d.Phone, UserName = d.UserName, UserType = d.UserType, PrimaryId = d.PrimaryId };
+             
+                }
+                foreach (var d in db.Managers)
+                {
+                    if (d.Id == id)
+                        return new User(d.Id) { Birthday = d.Birthday, Mail = d.Mail, Password = d.Password, Phone = d.Phone, UserName = d.UserName, UserType = d.UserType, PrimaryId = d.PrimaryId };
+                }
+                foreach (var d in db.Patients)
+                {
+                    if (d.Id == id)
+                        return new User(d.Id) { Birthday = d.Birthday, Mail = d.Mail, Password = d.Password, Phone = d.Phone, UserName = d.UserName, UserType = d.UserType, PrimaryId = d.PrimaryId };
+                }
+                return user;
+            }
+        }
+
+        public Doctor GetDoctorById(int id)
+        {
+            using (var db = new MediKalDB())
+            {
+                return (from item in db.Doctors
+                 where item.Id == id
+                 select item).FirstOrDefault();
+            }
+        }
+
+        public Doctor GetDoctorByPrimaryId(int PrimaryId)
+        {
+            using (var db = new MediKalDB())
+            {
+                return (from item in db.Doctors
+                        where item.PrimaryId == PrimaryId
+                        select item).FirstOrDefault();
+            }
+        }
+
+        public Manager GetManagerById(int id)
+        {
+            using (var db = new MediKalDB())
+            {
+                return (from item in db.Managers
+                        where item.Id == id
+                        select item).FirstOrDefault();
+            }
+        }
+
+        public Medicine GetMedicineById(string NDCid)
+        {
+            using (var db = new MediKalDB())
+            {
+                return (from item in db.Medicines
+                        where item.NDCId == NDCid
+                        select item).FirstOrDefault();
+            }
+        }
+
+        public Patient GetPatientById(int id)
+        {
+            using (var db = new MediKalDB())
+            {
+                return (from item in db.Patients
+                        where item.Id == id
+                        select item).FirstOrDefault();
+            }
+        }
+
+        public Patient GetPatientByPrimaryId(int PrimaryId)
+        {
+            using (var db = new MediKalDB())
+            {
+                return (from item in db.Patients
+                        where item.PrimaryId == PrimaryId
+                        select item).FirstOrDefault();
+            }
+        }
+
+        public Prescription GetPrescriptionById(int id)
+        {
+            using (var db = new MediKalDB())
+            {
+                return (from item in db.Prescriptions
+                        where item.Id == id
+                        select item).FirstOrDefault();
+            }
+        }
+
+        public Medicine GetMedicineByPrimaryId(int id)
+        {
+            using (var db = new MediKalDB())
+            {
+                return (from item in db.Medicines
+                        where item.Id == id
+                        select item).FirstOrDefault();
+            }
+        }
+
+        public IEnumerable<Prescription> GetPrescriptionsOfPatient(int id)
+        {
+            using (var db = new MediKalDB())
+            {
+                return from item in db.Prescriptions
+                       where item.PatientId == id
+                       select item;
+            }
+        }
+
+        public IEnumerable<Prescription> GetPrescriptionsOfDoctor(int id)
+        {
+            using (var db = new MediKalDB())
+            {
+                return from item in db.Prescriptions
+                       where item.DoctorId == id
+                       select item;
+            }
+        }
+
+        public IEnumerable<Prescription> GetPrescriptionsOfMedicine(int medicineId)
+        {
+            using (var db = new MediKalDB())
+            {
+                return from item in db.Prescriptions
+                       where item.MedicineId == medicineId
+                       select item;
+            }
+        }
+        public Dictionary<string, int> GetStatisticMedicine(int medicineId, DateTime StartDate, DateTime EndDate)
+        {
+            using (var db = new MediKalDB())
+            {
+                List<string> months = new List<string>();
+                months = (from item in db.Prescriptions
+                             where item.MedicineId == medicineId && item.PrescriptionDate.Ticks >= StartDate.Ticks && item.PrescriptionDate.Ticks <= EndDate.Ticks
+                             select item.PrescriptionDate.Month.ToString("MMMM")).ToList();
+                Dictionary<string, int> dictionary = new Dictionary<string, int>();
+               foreach (var item in months)
+                {
+                    if(!dictionary.ContainsKey(item))
+                        dictionary[item] = 0;
+                    dictionary[item] += 1;
+                }
+                return dictionary;
+            }
+        }
+
+        public IEnumerable<string> GetMedicinesOfPatient(int id)
+        {
+            using (var db = new MediKalDB())
+            {
+                return from pres in db.Prescriptions
+                       from med in db.Medicines
+                       where pres.PatientId == id && med.Id == pres.MedicineId
+                       select med.NDCId;
+                           }
         }
 
 
