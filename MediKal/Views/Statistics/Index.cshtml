@@ -1,218 +1,281 @@
-﻿@{
+﻿@using MediKal.Models
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_ManagementLayout.cshtml";
 }
-    <head>
-        <title>Line Chart</title>
-        <script async="" src="//www.google-analytics.com/analytics.js"></script>
-        <script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
-        <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
-        <style>
-            canvas {
-                -moz-user-select: none;
-                -webkit-user-select: none;
-                -ms-user-select: none;
+<head>
+    <title>Line Chart</title>
+    <script async="" src="//www.google-analytics.com/analytics.js"></script>
+    <script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+    <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+
+    <meta name="NetsparkQuiltingResult" total-length="4007" removed="0" rules-found="w2341,w2719,w3949,w3116,w5202">
+    <style type="text/css">
+        /* Chart.js */
+        @@keyframes chartjs-render-animation {
+            from {
+                opacity: .99
             }
-        </style>
 
-        <meta name="NetsparkQuiltingResult" total-length="4007" removed="0" rules-found="w2341,w2719,w3949,w3116,w5202">
-        <style type="text/css">
-/* Chart.js */
-@@keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}</style>
-    </head>
+            to {
+                opacity: 1
+            }
+        }
 
-    <div class="m-3 p-5">
-        <div id="filters" class="text-center">
-            <!-- Button trigger modal -->
-            <h1>
-                Statistics            
-                <button type="button" class="blue-btn" data-toggle="modal" data-target="#exampleModal">
-                    filters
-                </button>
-            </h1>
-        </div>
-        <div id="data-table-chart.js">
-            <div>
-                <div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                <canvas id="canvas" style="display: block; height: 312px; width: 625px;" width="937" height="468" class="chartjs-render-monitor"></canvas>
-            </div>
-            <br>
-            <br>
-            <button id="randomizeData">Randomize Data</button>
-            <button id="addDataset">Add Dataset</button>
-            <button id="removeDataset">Remove Dataset</button>
-            <button id="addData">Add Data</button>
-            <button id="removeData">Remove Data</button>
-            <script>
-                var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-                var config = {
-                    type: 'line',
-                    data: {
-                        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                        datasets: [{
-                            label: 'Medicine 1',
-                            backgroundColor: window.chartColors.blue,
-                            borderColor: window.chartColors.red,
-                            data: [
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7
-                            ],
-                            fill: false,
-                        }, {
-                            label: 'Medicine 2',
-                            fill: false,
-                            backgroundColor: window.chartColors.blue,
-                            borderColor: window.chartColors.green,
-                            data: [
-                                randomScalingFactor(),
-                                randomScalingFactor(),
-                                randomScalingFactor(),
-                                randomScalingFactor(),
-                                randomScalingFactor(),
-                                randomScalingFactor(),
-                                randomScalingFactor()
-                            ],
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        title: {
-                            display: true,
-                            text: ''
-                        },
-                        tooltips: {
-                            mode: 'index',
-                            intersect: false,
-                        },
-                        hover: {
-                            mode: 'nearest',
-                            intersect: true
-                        },
-                        scales: {
-                            xAxes: [{
-                                display: true,
-                                scaleLabel: {
-                                    display: true,
-                                    labelString: 'Month'
-                                }
-                            }],
-                            yAxes: [{
-                                display: true,
-                                scaleLabel: {
-                                    display: true,
-                                    labelString: 'Value'
-                                }
-                            }]
-                        }
-                    }
-                };
+        .chartjs-render-monitor {
+            animation: chartjs-render-animation 1ms
+        }
 
-                window.onload = function () {
-                    var ctx = document.getElementById('canvas').getContext('2d');
-                    window.myLine = new Chart(ctx, config);
-                };
+        .chartjs-size-monitor, .chartjs-size-monitor-expand, .chartjs-size-monitor-shrink {
+            position: absolute;
+            direction: ltr;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+            visibility: hidden;
+            z-index: -1
+        }
 
-                document.getElementById('randomizeData').addEventListener('click', function () {
-                    config.data.datasets.forEach(function (dataset) {
-                        dataset.data = dataset.data.map(function () {
-                            return randomScalingFactor();
-                        });
+            .chartjs-size-monitor-expand > div {
+                position: absolute;
+                width: 1000000px;
+                height: 1000000px;
+                left: 0;
+                top: 0
+            }
 
-                    });
-
-                    window.myLine.update();
-                });
-
-                var colorNames = Object.keys(window.chartColors);
-                document.getElementById('addDataset').addEventListener('click', function () {
-                    var colorName = colorNames[config.data.datasets.length % colorNames.length];
-                    var newColor = window.chartColors[colorName];
-                    var newDataset = {
-                        label: 'Dataset ' + config.data.datasets.length,
-                        backgroundColor: newColor,
-                        borderColor: newColor,
-                        data: [],
-                        fill: false
-                    };
-
-                    for (var index = 0; index < config.data.labels.length; ++index) {
-                        newDataset.data.push(randomScalingFactor());
-                    }
-
-                    config.data.datasets.push(newDataset);
-                    window.myLine.update();
-                });
-
-                document.getElementById('addData').addEventListener('click', function () {
-                    if (config.data.datasets.length > 0) {
-                        var month = MONTHS[config.data.labels.length % MONTHS.length];
-                        config.data.labels.push(month);
-
-                        config.data.datasets.forEach(function (dataset) {
-                            dataset.data.push(randomScalingFactor());
-                        });
-
-                        window.myLine.update();
-                    }
-                });
-
-                document.getElementById('removeDataset').addEventListener('click', function () {
-                    config.data.datasets.splice(0, 1);
-                    window.myLine.update();
-                });
-
-                document.getElementById('removeData').addEventListener('click', function () {
-                    config.data.labels.splice(-1, 1); // remove the label first
-
-                    config.data.datasets.forEach(function (dataset) {
-                        dataset.data.pop();
-                    });
-
-                    window.myLine.update();
-                });
-            </script>
-        </div>
+            .chartjs-size-monitor-shrink > div {
+                position: absolute;
+                width: 200%;
+                height: 200%;
+                left: 0;
+                top: 0
+            }
+    </style>
+</head>
+<div class="m-3 p-5">
+    <div id="filters" class="text-center">
+        <!-- Button trigger modal -->
+        <h1>
+            Statistics
+            <button type="button" class="blue-btn" data-toggle="modal" data-target="#exampleModal">
+                filters
+            </button>
+        </h1>
     </div>
 
-
-
-    <div id="modals">
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row p-3">
-                            <b class="col-2">Range of dates: </b>
-                            <input type="date" class="col-4 form-control mx-1" />
-                            <input type="date" class="col-4 form-control mx-1" />
-                        </div>
-                        <div class="row p-3">
-                            <b class="col-2">Medicines: </b>
-                            <select class="col-8 form-control mx-1">
-                                <option selected>
-                                    Choose medinice
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="blue-btn" data-dismiss="modal">Close</button>
-                        <button type="button" class="green-btn">Filter</button>
-                    </div>
-                </div>
+    <form id="filtersForm">
+        <div class="col">
+            <b>@Html.DisplayName("Generic Name:")</b>
+            @Html.DropDownEnumListForMedicines("medicineId")
+        </div>
+        <div class="row m-3">
+            <div class="m-3">
+                <b>@Html.DisplayName("Start:")</b>
+                <input name="start" id="start" type="date" />
+            </div>
+            <div class="m-3">
+                <b>@Html.DisplayName("end:")</b>
+                <input name="end" id="end" type="date" />
             </div>
         </div>
+        </form>
+        <label id="status" class="loading-label"></label>
+        <div id="warningDiv" class="text-left ">
+        </div>
+
+
+    <div id="data-table-chart.js">
+        <div>
+            <div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+            <canvas id="canvas" style="display: block; height: 312px; width: 625px;" width="937" height="468" class="chartjs-render-monitor"></canvas>
+        </div>
+        <br>
+        <br>
+        <button id="randomizeData">Randomize Data</button>
+        <button id="addDataset">Add Dataset</button>
+        <button id="removeDataset">Remove Dataset</button>
+        <button id="addData">Add Data</button>
+        <button id="removeData">Remove Data</button>
     </div>
+</div>
+
+
+<script type="text/javascript" language="javascript">
+        $(document).on('change', 'select', function (e) {
+            $("#status").text("We check for conflicts...");
+            var id = $(this).find(":selected").val();
+            var start_date = $("#start").val();
+            var end_date = $("#end").val();
+        //document.getElementById('Name').innerHTML = document.getElementById(id).getAttribute('data-Name');
+        //document.getElementById('ServingOption').innerHTML = document.getElementById(id).getAttribute('data-ServingOption');
+            alert(start_date);
+
+            alert(end_date);
+           // $.post("GetStatisticsByJson", filters, BindWarnings);
+            $.ajax({
+                url: '@Url.Action("GetStatisticsByJson", "Statistics")',
+                data: {
+                    medicineId: id,
+                    start: start_date,
+                    end: end_date
+                },
+            success: BindWarnings
+        });
+         alert("c");
+
+    });
+
+    function BindWarnings(data) {
+        alert("d");
+        $("#status").text("");
+    };
+
+
+</script>
+
+<script>
+
+    var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var config = {
+        type: 'line',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [{
+                label: 'Medicine 1',
+                backgroundColor: window.chartColors.blue,
+                borderColor: window.chartColors.red,
+                data: [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                ],
+                fill: false,
+            }, {
+                label: 'Medicine 2',
+                fill: false,
+                backgroundColor: window.chartColors.blue,
+                borderColor: window.chartColors.green,
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor()
+                ],
+            }]
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+                text: ''
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: false,
+            },
+            hover: {
+                mode: 'nearest',
+                intersect: true
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Month'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Value'
+                    }
+                }]
+            }
+        }
+    };
+
+    window.onload = function () {
+        var ctx = document.getElementById('canvas').getContext('2d');
+        window.myLine = new Chart(ctx, config);
+    };
+
+    document.getElementById('randomizeData').addEventListener('click', function () {
+        config.data.datasets.forEach(function (dataset) {
+            dataset.data = dataset.data.map(function () {
+                return randomScalingFactor();
+            });
+
+        });
+
+        window.myLine.update();
+    });
+
+    var colorNames = Object.keys(window.chartColors);
+    document.getElementById('addDataset').addEventListener('click', function () {
+        var colorName = colorNames[config.data.datasets.length % colorNames.length];
+        var newColor = window.chartColors[colorName];
+        var newDataset = {
+            label: 'Dataset ' + config.data.datasets.length,
+            backgroundColor: newColor,
+            borderColor: newColor,
+            data: [],
+            fill: false
+        };
+
+        for (var index = 0; index < config.data.labels.length; ++index) {
+            newDataset.data.push(randomScalingFactor());
+        }
+
+        config.data.datasets.push(newDataset);
+        window.myLine.update();
+    });
+
+    document.getElementById('addData').addEventListener('click', function () {
+        if (config.data.datasets.length > 0) {
+            var month = MONTHS[config.data.labels.length % MONTHS.length];
+            config.data.labels.push(month);
+
+            config.data.datasets.forEach(function (dataset) {
+                dataset.data.push(randomScalingFactor());
+            });
+
+            window.myLine.update();
+        }
+    });
+
+    document.getElementById('removeDataset').addEventListener('click', function () {
+        config.data.datasets.splice(0, 1);
+        window.myLine.update();
+    });
+
+    document.getElementById('removeData').addEventListener('click', function () {
+        config.data.labels.splice(-1, 1); // remove the label first
+
+        config.data.datasets.forEach(function (dataset) {
+            dataset.data.pop();
+        });
+
+        window.myLine.update();
+    });
+
+</script>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BE;
+using BL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +10,21 @@ namespace MediKal.Controllers
 {
     public class StatisticsController : Controller
     {
+
+        public ActionResult GetStatisticsByJson(int medicineId, DateTime start, DateTime end)
+        {
+            IBL bl = new BL.BL();
+            var statisticDict = bl.GetStatisticMedicine(medicineId, start, end);
+            var result = from item in statisticDict
+                         select new
+                         {
+                             Month = item.Key,
+                             Count = item.Value
+                         };
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+
         // GET: Statistics
         public ActionResult Index()
         {
