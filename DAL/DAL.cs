@@ -549,7 +549,7 @@ namespace DAL
             {
                 List<string> months = new List<string>();
                 months = (from item in db.Prescriptions
-                             where item.MedicineId == medicineId && item.PrescriptionDate.Ticks >= StartDate.Ticks && item.PrescriptionDate.Ticks <= EndDate.Ticks
+                             where item.MedicineId == medicineId && item.PrescriptionDate >= StartDate && item.PrescriptionDate <= EndDate
                              select item.PrescriptionDate.Month.ToString("MMMM")).ToList();
                 Dictionary<string, int> dictionary = new Dictionary<string, int>();
                foreach (var item in months)
@@ -568,7 +568,7 @@ namespace DAL
             {
                 return from pres in db.Prescriptions
                        from med in db.Medicines
-                       where pres.PatientId == id && med.Id == pres.MedicineId
+                       where pres.PatientId == id && med.Id == pres.MedicineId && pres.EndTime >= DateTime.Now
                        select med.NDCId;
                            }
         }
