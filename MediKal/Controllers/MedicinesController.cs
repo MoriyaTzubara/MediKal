@@ -140,6 +140,24 @@ namespace MediKal.Controllers
             return View(new MedicineViewModel(medicine));
         }
 
+<<<<<<< HEAD
+=======
+        // POST: Medicines/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(string id)
+        {
+            IBL bl = new BL.BL();
+            Medicine medicine = bl.GetMedicineById(id);
+            if (medicine == null)
+            {
+                return HttpNotFound();
+            }
+            //bl.DeleteMedicine(id);
+            return RedirectToAction("Index");
+        }
+
+>>>>>>> 25014f293f202d8b1c298d3034f7e85b129fdcad
         public ActionResult AddImage(string id)
         {
             Session["Error"] = "";

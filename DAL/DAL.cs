@@ -545,18 +545,35 @@ namespace DAL
         }
         public Dictionary<string, int> GetStatisticMedicine(int medicineId, DateTime StartDate, DateTime EndDate)
         {
+            if (StartDate > EndDate)
+                return new Dictionary<string, int>();
             using (var db = new MediKalDB())
             {
+<<<<<<< HEAD
                 List<string> months = new List<string>();
                 months = (from item in db.Prescriptions
                              where item.MedicineId == medicineId && item.PrescriptionDate >= StartDate && item.PrescriptionDate <= EndDate
                              select item.PrescriptionDate.Month.ToString("MMMM")).ToList();
                 Dictionary<string, int> dictionary = new Dictionary<string, int>();
                foreach (var item in months)
+=======
+                var months =  from item in db.Prescriptions
+                              where item.MedicineId == medicineId &&
+                                     item.PrescriptionDate >= StartDate &&
+                                     item.PrescriptionDate <= EndDate
+                              select item.PrescriptionDate;
+                
+               Dictionary<string, int> dictionary = new Dictionary<string, int>();
+                int count = ((EndDate.Year - StartDate.Year) * 12) + EndDate.Month - StartDate.Month;
+                for (int i = 0;i<=count;i++) 
+>>>>>>> 25014f293f202d8b1c298d3034f7e85b129fdcad
                 {
-                    if(!dictionary.ContainsKey(item))
-                        dictionary[item] = 0;
-                    dictionary[item] += 1;
+                    dictionary[StartDate.AddMonths(i).ToString("MMMM")] = 0;
+                }
+               
+                foreach (var item in months)
+                {
+                    dictionary[item.ToString("MMMM")] += 1;
                 }
                 return dictionary;
             }
