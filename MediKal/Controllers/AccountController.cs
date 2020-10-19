@@ -114,6 +114,7 @@ namespace MediKal.Controllers
             {
                 return HttpNotFound();
             }
+            Session["Error"] = "";
             return View(new UserViewModel(RouteConfig.user));
         }
 
@@ -124,17 +125,23 @@ namespace MediKal.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditPersonalDetails(User user, int Id)
         {
-            if (ModelState.IsValid)
+            try
             {
-                IBL bl = new BL.BL();
-                if (user.UserType == UserTypeEnum.Doctor)
-                    bl.UpdateDoctor(bl.ConvertUserToDoctor(user), Id);
-                if (user.UserType == UserTypeEnum.Patient)
-                    bl.UpdatePatient(bl.ConvertUserToPatient(user), Id);
-                RouteConfig.user = user;
-                return RedirectToAction("Index", "Account");
+                if (ModelState.IsValid)
+                {
+                    IBL bl = new BL.BL();
+                    if (user.UserType == UserTypeEnum.Doctor)
+                        bl.UpdateDoctor(bl.ConvertUserToDoctor(user), Id);
+                    if (user.UserType == UserTypeEnum.Patient)
+                        bl.UpdatePatient(bl.ConvertUserToPatient(user), Id);
+                    RouteConfig.user = user;
+                    return RedirectToAction("Index", "Account");
+                }
+                return View(new UserViewModel(user));
+            }catch(Exception e) { 
+                Session["Error"] = e.Message;
+                return View(new UserViewModel(user));
             }
-            return View(new UserViewModel(user));
         }
         public ActionResult SignOut()
         {

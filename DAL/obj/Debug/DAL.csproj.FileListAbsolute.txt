@@ -161,3 +161,16 @@ C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\DAL\bin\Debug\Google.
 C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\DAL\bin\Debug\Google.Apis.Core.xml
 C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\DAL\bin\Debug\Google.Apis.Drive.v3.pdb
 C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\DAL\bin\Debug\Google.Apis.Drive.v3.xml
+C:\Users\User\Desktop\MediKal\DAL\bin\Debug\Nexmo.Api.dll
+C:\Users\User\Desktop\MediKal\DAL\bin\Debug\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\User\Desktop\MediKal\DAL\bin\Debug\jose-jwt.dll
+C:\Users\User\Desktop\MediKal\DAL\bin\Debug\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\User\Desktop\MediKal\DAL\bin\Debug\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\User\Desktop\MediKal\DAL\bin\Debug\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\User\Desktop\MediKal\DAL\bin\Debug\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\User\Desktop\MediKal\DAL\bin\Debug\Nexmo.Api.xml
+C:\Users\User\Desktop\MediKal\DAL\bin\Debug\Microsoft.Extensions.Configuration.Json.xml
+C:\Users\User\Desktop\MediKal\DAL\bin\Debug\Microsoft.Extensions.FileProviders.Abstractions.xml
+C:\Users\User\Desktop\MediKal\DAL\bin\Debug\Microsoft.Extensions.Configuration.FileExtensions.xml
+C:\Users\User\Desktop\MediKal\DAL\bin\Debug\Microsoft.Extensions.FileProviders.Physical.xml
+C:\Users\User\Desktop\MediKal\DAL\bin\Debug\Microsoft.Extensions.FileSystemGlobbing.xml

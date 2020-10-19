@@ -55,6 +55,11 @@ namespace MediKal.Controllers
             try
             {
                 IBL bl = new BL.BL();
+                if (file == null)
+                {
+                    bl.AddMedicine(medicine);
+                    return RedirectToAction("Index");
+                }
                 GoogleDriveAPIHelper googleDrive = new GoogleDriveAPIHelper();
                 googleDrive.UploadFileOnDrive(file);
                 medicine.ImagePath = googleDrive.DownloadGoogleFileByName(file.FileName);

@@ -13,20 +13,32 @@ namespace BL
     public class BL : IBL
     {
         IDAL dal = new DAL.DAL();
-
+        #region ADD
+        public void AddDoctor(Doctor doctor)
+        {
+            if (!Validation.IsId(doctor.Id))
+                throw new Exception("This ID isn't valid");
+            if (!Validation.ValidIdDB(doctor.Id))
+                throw new Exception("This ID already exists");
+            if (!Validation.IsEmail(doctor.Mail))
+                throw new Exception("This email isn't valid");
+            dal.AddDoctor(doctor);
+        }
         public void AddMedicine(Medicine medicine)
         {
             if (!Validation.IsNDCId(medicine.NDCId))
-                throw new Exception("ת.ז. זו קיימת כבר");
+                throw new Exception("This ID already exists ");
             dal.AddMedicine(medicine);
         }
 
         public void AddPatient(Patient patient)
         {
+            if (!Validation.IsId(patient.Id))
+                throw new Exception("This ID isn't valid");
             if (!Validation.ValidIdDB(patient.Id))
-                throw new Exception("ת.ז. זו קיימת כבר");
+                throw new Exception("This ID already exists ");
             if (!Validation.IsEmail(patient.Mail))
-                throw new Exception("כתובת מייל לא חוקית");
+                throw new Exception("This email isn't valid");
             dal.AddPatient(patient);
         }
 
@@ -37,57 +49,69 @@ namespace BL
 
         public void AddManager(Manager manager)
         {
+            if (!Validation.IsId(manager.Id))
+                throw new Exception("This ID isn't valid");
             if (!Validation.ValidIdDB(manager.Id))
-                throw new Exception("ת.ז. זו קיימת כבר");
+                throw new Exception("This ID already exists");
             if (!Validation.IsEmail(manager.Mail))
-                throw new Exception("כתובת מייל לא חוקית");
+                throw new Exception("This email isn't valid");
             dal.AddManager(manager);
         }
-
-
-
+        #endregion
+        #region DELETE
         public void DeletePatient(int id)
         {
             dal.DeletePatient(id);
         }
-
-
-        //public void DeleteUser(int id)
-        //{
-        //    dal.DeleteUser(id);
-        //}
-
-        public void ForgotPassword(string mail)
+        public void DeleteDoctor(int id)
         {
-            throw new NotImplementedException();
+            dal.DeleteDoctor(id);
         }
 
-        public List<Warning> GetConflicts(string medicineId, int patientId)
+        public void DeleteManager(int id)
         {
-            throw new NotImplementedException();
+            dal.DeleteManager(id);
+        }
+        #endregion
+        #region UPDATE
+        public void UpdateMedicine(Medicine medicine, string NDCId)
+        {
+            dal.UpdateMedicine(medicine, NDCId);
         }
 
-        public Medicine GetMedicineById(string NDCid)
+        public void UpdatePatient(Patient patient, int Id)
         {
-            return dal.GetMedicines().FirstOrDefault(item => item.NDCId == NDCid);
+            if (!Validation.IsEmail(patient.Mail))
+                throw new Exception("This email isn't valid");
+            dal.UpdatePatient(patient, Id);
         }
-        public Medicine GetMedicineByPrimaryId(int id)
+        public void UpdateDoctor(Doctor doctor, int Id)
         {
-            return dal.GetMedicines().FirstOrDefault(item => item.Id == id);
+            if (!Validation.IsEmail(doctor.Mail))
+                throw new Exception("This email isn't valid");
+            dal.UpdateDoctor(doctor, Id);
         }
 
+        public void UpdateManager(Manager manager, int Id)
+        {
+            if (!Validation.IsEmail(manager.Mail))
+                throw new Exception("This email isn't valid");
+            dal.UpdateManager(manager, Id);
+        }
+
+        #endregion
+        #region GET
+        public IEnumerable<Doctor> GetDoctors()
+        {
+            return dal.GetDoctors();
+        }
+        public IEnumerable<Manager> GetManagers()
+        {
+            return dal.GetManagers();
+        }
         public IEnumerable<Medicine> GetMedicines()
         {
             return dal.GetMedicines();
-        }
-        public Patient GetPatientByPrimaryId(int PrimaryId)
-        {
-            return dal.GetPatients().FirstOrDefault(item => item.PrimaryId == PrimaryId);
-        }
-
-        public Patient GetPatientById(int id)
-        {
-            return dal.GetPatients().FirstOrDefault(item => item.Id == id);
         }
 
         public IEnumerable<Patient> GetPatients()
@@ -95,38 +119,49 @@ namespace BL
             return dal.GetPatients();
         }
 
-        public Prescription GetPrescriptionById(int id)
-        {
-            return dal.GetPrescriptions().FirstOrDefault(item => item.Id == id);
-        }
-
         public IEnumerable<Prescription> GetPrescriptions()
         {
             return dal.GetPrescriptions();
         }
-
-        public IEnumerable<Prescription> GetPrescriptionsOfDoctor(int PrimaryId)
+        public IEnumerable<User> GetUsers()
         {
-            var prescriptions = dal.GetPrescriptions();
-            return from item in prescriptions
-                   where item.DoctorId == PrimaryId
-                   select item;
+            return dal.GetUsers();
+        }
+        #endregion
+        #region GET BY ID
+        public Medicine GetMedicineById(string NDCid)
+        {
+            return dal.GetMedicineById(NDCid);
+        }
+        public Medicine GetMedicineByPrimaryId(int id)
+        {
+            return dal.GetMedicineByPrimaryId(id);
+        }
+        public Patient GetPatientByPrimaryId(int PrimaryId)
+        {
+            return dal.GetPatientByPrimaryId(PrimaryId);
         }
 
-        public IEnumerable<Prescription> GetPrescriptionsOfPatient(int PrimaryId)
+        public Patient GetPatientById(int id)
         {
-            var prescriptions = dal.GetPrescriptions();
-            return from item in prescriptions
-                   where item.PatientId == PrimaryId
-                   select item;
+            return dal.GetPatientById(id);
         }
-        public IEnumerable<string> GetMedicinesOfPatient(int id)
+        public Prescription GetPrescriptionById(int id)
         {
-            var prescriptions = GetPrescriptionsOfPatient(id);
-            return from item in prescriptions
-                   select GetMedicineByPrimaryId(item.MedicineId).NDCId;
+            return dal.GetPrescriptionById(id);
         }
-
+        public Doctor GetDoctorById(int id)
+        {
+            return dal.GetDoctorById(id);
+        }
+        public Doctor GetDoctorByPrimaryId(int PrimaryId)
+        {
+            return dal.GetDoctorByPrimaryId(PrimaryId);
+        }
+        public Manager GetManagerById(int id)
+        {
+            return dal.GetManagerById(id);
+        }
         public User GetUserById(int id)
         {
             try
@@ -135,17 +170,54 @@ namespace BL
             }
             catch (ArgumentNullException e) { throw e; }
         }
-
-        public IEnumerable<User> GetUsers()
+        #endregion
+        #region FILTER
+        public IEnumerable<Prescription> GetPrescriptionsOfDoctor(int PrimaryId)
         {
-            return dal.GetUsers();
+            return dal.GetPrescriptionsOfDoctor(PrimaryId);
         }
 
-        public void LogOut()
+        public IEnumerable<Prescription> GetPrescriptionsOfPatient(int PrimaryId)
         {
-            throw new NotImplementedException();
+            return dal.GetPrescriptionsOfPatient(PrimaryId);
+        }
+        public IEnumerable<string> GetMedicinesOfPatient(int id)
+        {
+            return dal.GetMedicinesOfPatient(id);
+        }
+        public IEnumerable<Prescription> GetPrescriptionsOfMedicine(int medicineId)
+        {
+            return dal.GetPrescriptionsOfMedicine(medicineId);
+        }
+        public Dictionary<string, int> GetStatisticMedicine(int medicineId, DateTime StartDate, DateTime EndDate)
+        {
+            return dal.GetStatisticMedicine(medicineId, StartDate, EndDate);
+        }
+        #endregion
+        #region ACCOUNT
+        public User SignIn(int id, string password)
+        {
+            User user = GetUserById(id);
+            if (user != null && user.Password == password)
+                return user;
+            throw new Exception("user was not found");
         }
 
+        public void SignUp(User newUser)
+        {
+            if (!Validation.IsId(newUser.Id))
+                throw new Exception("This ID is't valid");
+            if (GetUserById(newUser.Id) == null)
+                throw new Exception("You are not registered, please contact the manager");
+            if (newUser.UserType == UserTypeEnum.Doctor)
+                dal.UpdateDoctor((Doctor)newUser, newUser.Id);
+            if (newUser.UserType == UserTypeEnum.Manager)
+                dal.UpdateManager((Manager)newUser, newUser.Id);
+            if (newUser.UserType == UserTypeEnum.Patient)
+                dal.UpdatePatient((Patient)newUser, newUser.Id);
+        }
+        #endregion
+        #region SEND
         public void SendMail(string mailAdress, string receiverName, string message)
         {
             MailMessage mail;
@@ -153,7 +225,7 @@ namespace BL
             mail = new MailMessage();
             mail.To.Add(mailAdress);//dam@zichron.org
             mail.From = new MailAddress("deamlandapp@gmail.com");
-            mail.Body = $"שלום {receiverName}, <br>" + message;
+            mail.Body = $"Hello {receiverName}, <br>" + message;
             mail.IsBodyHtml = true;
             smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com";
@@ -171,124 +243,10 @@ namespace BL
 
         public bool SendSMS(string phoneNumber, string receiverName, string message)
         {
-            try
-            {
-                var client = new Client(creds: new Nexmo.Api.Request.Credentials
-                {
-                    ApiKey = "458e9f53",
-                    ApiSecret = "yFQBWJUuLGPsYiH3"
-                });
-                var results = client.SMS.Send(request: new SMS.SMSRequest
-                {
-                    from = "Vonage APIs",
-                    to = "972" + (int.Parse(phoneNumber)).ToString(),
-                    text = $"Hello,{receiverName}!\n{message}",
-                    type = "unicode"
-
-                });
-                return true;
-            } catch (Exception e) { throw new Exception(e.Message); }
+           return dal.SendSMS(phoneNumber, receiverName, message);
         }
-
-        public User SignIn(int id, string password)
-        {
-            User user = GetUserById(id);
-            if (user != null && user.Password == password)
-                return user;
-            throw new Exception("user was not found");
-        }
-
-        public void SignUp(User newUser)
-        {
-            if (!Validation.IsId(newUser.Id))
-                throw new Exception("מספר ת.ז לא תקין");
-            if (GetUserById(newUser.Id) == null)
-                throw new Exception("אינך רשום במערכת, אנא פנה למנהל");
-            if (newUser.UserType == UserTypeEnum.Doctor)
-                dal.UpdateDoctor((Doctor)newUser, newUser.Id);
-            if (newUser.UserType == UserTypeEnum.Manager)
-                dal.UpdateManager((Manager)newUser, newUser.Id);
-            if (newUser.UserType == UserTypeEnum.Patient)
-                dal.UpdatePatient((Patient)newUser, newUser.Id);
-        }
-        public void UpdateMedicine(Medicine medicine, string NDCId)
-        {
-            dal.UpdateMedicine(medicine, NDCId);
-        }
-
-        public void UpdatePatient(Patient patient, int Id)
-        {
-            if (!Validation.IsEmail(patient.Mail))
-                throw new Exception("כתובת מייל לא חוקית");
-            dal.UpdatePatient(patient, Id);
-        }
-
-        public void UpdatePrescription(Prescription prescription, int Id)
-        {
-            dal.UpdatePrescription(prescription, Id);
-        }
-
-        //public void UpdateUser(User user, int Id)
-        //{
-        //    dal.UpdateUser(user,Id);
-        //}
-        public IEnumerable<Doctor> GetDoctors()
-        {
-            return dal.GetDoctors();
-        }
-        public IEnumerable<Manager> GetManagers()
-        {
-            return dal.GetManagers();
-        }
-
-        public void AddDoctor(Doctor doctor)
-        {
-            if (!Validation.ValidIdDB(doctor.Id))
-                throw new Exception("ת.ז. זו קיימת כבר");
-            if (!Validation.IsEmail(doctor.Mail))
-                throw new Exception("כתובת מייל לא חוקית");
-            dal.AddDoctor(doctor);
-        }
-
-
-        public void UpdateDoctor(Doctor doctor, int Id)
-        {
-            if (!Validation.IsEmail(doctor.Mail))
-                throw new Exception("כתובת מייל לא חוקית");
-            dal.UpdateDoctor(doctor, Id);
-        }
-
-        public void UpdateManager(Manager manager, int Id)
-        {
-            if (!Validation.IsEmail(manager.Mail))
-                throw new Exception("כתובת מייל לא חוקית");
-            dal.UpdateManager(manager, Id);
-        }
-
-        public void DeleteDoctor(int id)
-        {
-            dal.DeleteDoctor(id);
-        }
-
-        public void DeleteManager(int id)
-        {
-            dal.DeleteManager(id);
-        }
-
-        public Doctor GetDoctorById(int id)
-        {
-            return dal.GetDoctorById(id);
-        }
-
-        public Doctor GetDoctorByPrimaryId(int PrimaryId)
-        {
-            return dal.GetDoctorByPrimaryId(PrimaryId);
-        }
-        public Manager GetManagerById(int id)
-        {
-            return dal.GetManagerById(id);
-        }
-
+        #endregion
+        #region MEDICINES HELPERS
         public void ReadExcelMedicines(string path, int sheet)
         {
             dal.ReadExcelMedicines(path, sheet);
@@ -302,6 +260,8 @@ namespace BL
             }
             catch (Exception e) { throw e; }
         }
+        #endregion
+        #region CONVERT
         public Doctor ConvertUserToDoctor(User user)
         {
             Doctor tmp = new Doctor();
@@ -328,6 +288,8 @@ namespace BL
             tmp.Id = user.Id;
             return tmp;
         }
+        #endregion
+        #region VAIDATION
         public bool IsEmail(string s)
         {
             if (s == null || s == "")
@@ -400,23 +362,8 @@ namespace BL
                 return false;
             return true;
         }
-        public IEnumerable<Prescription> GetPrescriptionsOfMedicine(int medicineId)
-        {
-            return dal.GetPrescriptionsOfMedicine(medicineId);
-        }
-        public Dictionary<string,int> GetStatisticMedicine(int medicineId, DateTime StartDate, DateTime EndDate)
-        {
-            return dal.GetStatisticMedicine(medicineId, StartDate, EndDate);
-            //Dictionary<string,int> medicines = new Dictionary<string, int>();
-            //foreach (var item in GetPrescriptionsOfMedicine(medicineId))
-            //{
-            //    if (item.PrescriptionDate.Ticks >= StartDate.Ticks && item.PrescriptionDate.Ticks <= EndDate.Ticks)
-            //    {
-            //        medicines[item.PrescriptionDate.Month.ToString("MMMM")] += 1;
-            //    }
-            //}
-            //return medicines;
-        }
+        #endregion
+
 
     }
 }

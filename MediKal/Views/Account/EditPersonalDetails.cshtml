@@ -5,54 +5,26 @@
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Edit Personal Details</h2>
 
 @using (Html.BeginForm("EditPersonalDetails", "Account", Model))
 {
-    @Html.AntiForgeryToken()    
-   <div class="form-horizontal">
-        <h4>User</h4>
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "" } })
-                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-            </div>
-            </div>
-<div class="form-horizontal">
-    <h4>Patient</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @*@Html.HiddenFor(model => model.patient.Id)*@
-    <input type="hidden" name="Id" value=@Model.Id />
-    <input type="hidden" name="Id" value=@Model.user.PrimaryId />
-    <input type="hidden" name="Id" value=@Model.user.UserType />
+        <input type="hidden" name="Id" value=@Model.Id />
+        <input type="hidden" name="Id" value=@Model.user.PrimaryId />
+        <input type="hidden" name="Id" value=@Model.user.UserType />
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "" } })
-            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })        </div>
+            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+        </div>
     </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "" } })
-                @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
-            </div>
-            </div>
+
     <div class="form-group">
         @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -61,13 +33,6 @@
         </div>
     </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "" } })
-                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-            </div>
-            </div>
     <div class="form-group">
         @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -76,13 +41,6 @@
         </div>
     </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "" } })
-                @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
-            </div>
-        </div>   
     <div class="form-group">
         @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -91,13 +49,6 @@
         </div>
     </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn green-btn" />
-                @Html.ActionLink("Back to List", "Index", "", new { @class = "blue-btn" })
-
-            </div>
-            </div>
     <div class="form-group">
         @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -111,5 +62,4 @@
             <a href="~/Account" class="btn green-btn">Back to List</a>
         </div>
     </div>
-</div>
 }

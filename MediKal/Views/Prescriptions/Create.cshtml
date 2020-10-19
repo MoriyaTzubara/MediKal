@@ -37,6 +37,7 @@
         $("#status").text("");
         var warningDiv = $("#warningDiv").empty();
         if (warnings.length > 0) {
+            $("#SaveButton").prop('disabled', true);
             for (i = 0; i < warnings.length; i++) {
                 var newAlert = "<div class='alert alert-danger' role='alert'>"
                     + "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>"
@@ -59,6 +60,10 @@
                 + "<b> We didn't find conflictings </b>"
                 + "</div>";
             warningDiv.append(newAlert);
+            $("#SaveButton").prop('disabled', false);
+
+
+
 
         }
     };
@@ -205,7 +210,7 @@
         <br />
         <br />
         <div class="float-right">
-            <input type="submit" value="Save" class="blue-btn" />
+            <input disabled="disabled" type="submit" id="SaveButton" value="Save" class="blue-btn" />
             <a href="~/Prescriptions/ChoosePatient" class="btn green-btn">Back to List</a>
         </div>
 
@@ -216,11 +221,5 @@
     <br />
     <br />
     <br />
-    <table id="warnings">
-        <tr>
-            <td>Description</td>
-            <td>LevelOfRisk</td>
-            <td>ConflictingMedicines</td>
-        </tr>
-    </table>
+
 }

@@ -34,7 +34,7 @@ namespace BE
             Marshal.ReleaseComObject(WorkBook);
             Marshal.ReleaseComObject(WorkSheet);
             Marshal.ReleaseComObject(_Excel);
-           // _Excel.Quit();
+            //_Excel.Quit();
         }
 
     }

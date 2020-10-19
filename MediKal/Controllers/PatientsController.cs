@@ -113,27 +113,21 @@ namespace MediKal.Controllers
         {
             Session["ErrorId"] = "";
             IBL bl = new BL.BL();
-            if (ModelState.IsValid)
+            try
             {
-                if (!bl.IsId(patient.Id.ToString()))
+                if (ModelState.IsValid)
                 {
-                    Session["ErrorId"] = "Invalid ID";
-                    return View("Create", new PatientViewModel(patient));
-
+                    bl.AddPatient(patient);
+                    string link = $"http://{Request.Url.Host}:{Request.Url.Port}/Account/EnterId";
+                    bl.SendMail(patient.Mail, "", $"You are invited to sign up for Medical :) <a href='{link}'> Sign up </a>");
+                    ViewBag.IsSucceeded = true;
                 }
-                if (bl.GetDoctorById(patient.Id) != null)
-                {
-                    Session["ErrorId"] = "ID already exists";
-                    return View("Create", new PatientViewModel(patient));
-
-                }
-                bl.AddPatient(patient);
-                string link = $"http://{Request.Url.Host}:{Request.Url.Port}/Account/SignUp";
-                bl.SendMail(patient.Mail, "", $"You are invited to sign up for Medical :) <a href='{link}'> Sign up </a>");
-                ViewBag.IsSucceeded = true;
                 return View("Create", new PatientViewModel(patient));
             }
-            return View("Create", new PatientViewModel(patient));
+            catch (Exception e) {
+                Session["ErrorId"] = e.Message;
+                return View("Create", new PatientViewModel(patient));
+            }
         }
         public ActionResult GetPrescriptionsOfPatient(int Id)
         {

@@ -25,11 +25,12 @@
                         <div class="form-group">
                             <div>
                                 @Html.TextBox("Id", null, new { @class = "", placeholder = "Enter ID" })
-                                @Html.Label(Session["ErrorId"].ToString(), new { @class = "text-danger" })
                                 @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
                                 <br />
                                 @Html.TextBox("Mail", null, new { @class = "", placeholder = "Enter Email" })
                                 @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+                               <br />
+                                @Html.Label(Session["ErrorId"].ToString(), new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">

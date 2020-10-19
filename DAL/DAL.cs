@@ -7,6 +7,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
+using Nexmo.Api;
 
 namespace DAL
 {
@@ -22,10 +23,12 @@ namespace DAL
                     db.Medicines.Add(medicine);
                     db.SaveChanges();
                 }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
-            catch (Exception e) { throw new Exception(e.Message);
-    }
-}
 
         public void AddPatient(Patient patient)
         {
@@ -50,11 +53,13 @@ namespace DAL
                     db.Prescriptions.Add(prescription);
                     db.SaveChanges();
                 }
-        }
-            catch (Exception e) { throw new Exception(e.Message);
-    }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
 
-}
+        }
 
 
         public void AddDoctor(Doctor doctor)
@@ -66,10 +71,12 @@ namespace DAL
                     db.Doctors.Add(doctor);
                     db.SaveChanges();
                 }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
-            catch (Exception e) { throw new Exception(e.Message);
-    }
-}
 
         public void AddManager(Manager manager)
         {
@@ -99,21 +106,19 @@ namespace DAL
             catch (Exception e) { throw new Exception(e.Message); }
 
         }
-
         public void DeleteDoctor(int id)
         {
-                try
+            try
+            {
+                using (var db = new MediKalDB())
                 {
-                    using (var db = new MediKalDB())
-                    {
-                        Doctor doctor = db.Doctors.First(d => d.Id == id);
-                        db.Doctors.Remove(doctor);
-                        db.SaveChanges();
-                    }
+                    Doctor doctor = db.Doctors.First(d => d.Id == id);
+                    db.Doctors.Remove(doctor);
+                    db.SaveChanges();
                 }
-                catch (Exception e) { throw new Exception(e.Message); }
             }
-
+            catch (Exception e) { throw new Exception(e.Message); }
+        }
         public void DeleteManager(int id)
         {
             try
@@ -142,13 +147,13 @@ namespace DAL
                     }
                 }
                 return result;
-        }
+            }
             catch (Exception e)
             {
                 throw new Exception(e.Message);
-    }
+            }
 
-}
+        }
 
         public IEnumerable<Patient> GetPatients()
         {
@@ -170,8 +175,8 @@ namespace DAL
 
         public IEnumerable<Prescription> GetPrescriptions()
         {
-            //try
-            //{
+            try
+            {
                 List<Prescription> result = new List<Prescription>();
                 using (var db = new MediKalDB())
                 {
@@ -181,8 +186,11 @@ namespace DAL
                     }
                 }
                 return result;
-            //}
-            //catch (Exception e) { throw new Exception(e.Message); }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
 
         }
 
@@ -195,7 +203,7 @@ namespace DAL
                 {
                     foreach (var d in db.Doctors)
                     {
-                        User user = new User(d.Id) { Birthday = d.Birthday, Mail = d.Mail, Password = d.Password, Phone = d.Phone, UserName = d.UserName, UserType = d.UserType ,PrimaryId = d.PrimaryId};
+                        User user = new User(d.Id) { Birthday = d.Birthday, Mail = d.Mail, Password = d.Password, Phone = d.Phone, UserName = d.UserName, UserType = d.UserType, PrimaryId = d.PrimaryId };
                         result.Add(user);
                     }
                     foreach (var d in db.Managers)
@@ -257,16 +265,11 @@ namespace DAL
                 using (var db = new MediKalDB())
                 {
                     var tmp = db.Medicines.First(m => m.NDCId == NDCId);
-                    tmp.ActiveIngredients = medicine.ActiveIngredients;
-                    tmp.Company = medicine.Company;
-                    tmp.GenericName = medicine.GenericName;
                     tmp.ImagePath = medicine.ImagePath;
-                    tmp.Name = medicine.Name;
                     db.SaveChanges();
                 }
             }
             catch (Exception e) { throw new Exception(e.Message); }
-
         }
 
         public void UpdatePatient(Patient patient, int Id)
@@ -283,28 +286,6 @@ namespace DAL
                     tmp.Mail = patient.Mail;
                     tmp.Phone = patient.Phone;
                     tmp.Password = patient.Password;
-                    tmp.Mail = patient.Mail;
-                    db.SaveChanges();
-                }
-            }
-            catch (Exception e) { throw new Exception(e.Message); }
-        }
-
-        public void UpdatePrescription(Prescription prescription, int Id)
-        {
-            try
-            {
-                using (var db = new MediKalDB())
-                {
-                    var tmp = db.Prescriptions.First(p => p.Id == Id);
-                    tmp.Comments = prescription.Comments;
-                    tmp.DoctorId = prescription.DoctorId;
-                    tmp.EndTime = prescription.EndTime;
-                    tmp.Frequency = prescription.Frequency;
-                    tmp.MedicineId = prescription.MedicineId;
-                    tmp.NumOfTimes = prescription.NumOfTimes;
-                    tmp.PatientId = prescription.PatientId;
-                    tmp.StartTime = prescription.StartTime;
                     db.SaveChanges();
                 }
             }
@@ -351,13 +332,14 @@ namespace DAL
             }
             catch (Exception e) { throw new Exception(e.Message); }
         }
-
+        #endregion
+        #region MEDICINES HELPERS
         public void ReadExcelMedicines(string path, int sheet)
         {
             path = $"~/DAL/MedicinesExcel/my version.xls";
 
             Excel excel = new Excel(System.Web.HttpContext.Current.Server.MapPath(path).Replace(@"MediKal\MediKal\DAL\MedicinesExcel\my version.xls", @"MediKal\DAL\MedicinesExcel\my version.xls"), 1);
-            Medicine medicine ;
+            Medicine medicine;
             for (int i = 2; i < 102; i++)
             {
                 medicine = new Medicine();
@@ -373,25 +355,25 @@ namespace DAL
         {
             if (NDCId.Length != 9)
                 return null;
-            if (NDCId[4] != '-') 
+            if (NDCId[4] != '-')
                 return null;
             string startupPath = Environment.CurrentDirectory;
             string path = $"~/DAL/MedicinesExcel/my version.xls";
-            
+
             Excel excel = new Excel(System.Web.HttpContext.Current.Server.MapPath(path).Replace(@"MediKal\MediKal\DAL\MedicinesExcel\my version.xls", @"MediKal\DAL\MedicinesExcel\my version.xls"), 1);
             Medicine medicine;
             double id = Double.Parse(NDCId.Replace("-", "."));
-            int i = BinarySearch(excel,id, 2, 16384);
+            int i = BinarySearch(excel, id, 2, 16384);
             if (i != -1)
-                {
-                    medicine = new Medicine();
-                    medicine.NDCId = excel.ReadCell(i, 1);
-                    medicine.Name = excel.ReadCell(i, 2);
-                    medicine.Company = excel.ReadCell(i, 3);
-                    medicine.GenericName = excel.ReadCell(i, 4);
-                    medicine.ServingOption = excel.ReadCell(i, 5);
-                    return medicine;
-                }
+            {
+                medicine = new Medicine();
+                medicine.NDCId = excel.ReadCell(i, 1);
+                medicine.Name = excel.ReadCell(i, 2);
+                medicine.Company = excel.ReadCell(i, 3);
+                medicine.GenericName = excel.ReadCell(i, 4);
+                medicine.ServingOption = excel.ReadCell(i, 5);
+                return medicine;
+            }
             return null;
         }
         int BinarySearch(Excel excel, double x, int left, int right)
@@ -404,21 +386,22 @@ namespace DAL
                 return middle;
 
             if (x < Double.Parse(excel.ReadCell(middle, 1).Replace("-", ".")))
-                return BinarySearch(excel,x, left, middle - 1);
+                return BinarySearch(excel, x, left, middle - 1);
 
-            return BinarySearch(excel,x, middle + 1, right);
+            return BinarySearch(excel, x, middle + 1, right);
         }
-
+        #endregion
+        #region GET BY ID
         public User GetUserById(int id)
         {
+            var result = new User();
             using (var db = new MediKalDB())
             {
-                User user = new User();
                 foreach (var d in db.Doctors)
                 {
-                    if(d.Id == id)
-                    return new User(d.Id) { Birthday = d.Birthday, Mail = d.Mail, Password = d.Password, Phone = d.Phone, UserName = d.UserName, UserType = d.UserType, PrimaryId = d.PrimaryId };
-             
+                    if (d.Id == id)
+                        return new User(d.Id) { Birthday = d.Birthday, Mail = d.Mail, Password = d.Password, Phone = d.Phone, UserName = d.UserName, UserType = d.UserType, PrimaryId = d.PrimaryId };
+
                 }
                 foreach (var d in db.Managers)
                 {
@@ -430,160 +413,204 @@ namespace DAL
                     if (d.Id == id)
                         return new User(d.Id) { Birthday = d.Birthday, Mail = d.Mail, Password = d.Password, Phone = d.Phone, UserName = d.UserName, UserType = d.UserType, PrimaryId = d.PrimaryId };
                 }
-                return user;
             }
+            return result;
         }
 
         public Doctor GetDoctorById(int id)
         {
+            var result = new Doctor();
             using (var db = new MediKalDB())
             {
-                return (from item in db.Doctors
-                 where item.Id == id
-                 select item).FirstOrDefault();
+                result = (from item in db.Doctors
+                        where item.Id == id
+                        select item).FirstOrDefault();
             }
+            return result;
         }
 
         public Doctor GetDoctorByPrimaryId(int PrimaryId)
         {
+            var result = new Doctor();
             using (var db = new MediKalDB())
             {
-                return (from item in db.Doctors
+                result = (from item in db.Doctors
                         where item.PrimaryId == PrimaryId
                         select item).FirstOrDefault();
             }
+            return result;
         }
 
         public Manager GetManagerById(int id)
         {
+            var result = new Manager();
             using (var db = new MediKalDB())
             {
-                return (from item in db.Managers
+                result = (from item in db.Managers
                         where item.Id == id
                         select item).FirstOrDefault();
             }
+            return result;
+
         }
 
         public Medicine GetMedicineById(string NDCid)
         {
+            var result = new Medicine();
             using (var db = new MediKalDB())
             {
-                return (from item in db.Medicines
+                result = (from item in db.Medicines
                         where item.NDCId == NDCid
                         select item).FirstOrDefault();
             }
+            return result;
         }
 
         public Patient GetPatientById(int id)
         {
+            var result = new Patient();
             using (var db = new MediKalDB())
             {
-                return (from item in db.Patients
+                result = (from item in db.Patients
                         where item.Id == id
                         select item).FirstOrDefault();
             }
+            return result;
         }
 
         public Patient GetPatientByPrimaryId(int PrimaryId)
         {
+            var result = new Patient();
             using (var db = new MediKalDB())
             {
-                return (from item in db.Patients
+                result = (from item in db.Patients
                         where item.PrimaryId == PrimaryId
                         select item).FirstOrDefault();
             }
+            return result;
         }
 
         public Prescription GetPrescriptionById(int id)
         {
+            var result = new Prescription();
             using (var db = new MediKalDB())
             {
-                return (from item in db.Prescriptions
+                result = (from item in db.Prescriptions
                         where item.Id == id
                         select item).FirstOrDefault();
             }
+            return result;
         }
 
         public Medicine GetMedicineByPrimaryId(int id)
         {
+            var result = new Medicine();
             using (var db = new MediKalDB())
             {
-                return (from item in db.Medicines
+                result = (from item in db.Medicines
                         where item.Id == id
                         select item).FirstOrDefault();
             }
+            return result;
         }
-
+        #endregion
+        #region FILTER
         public IEnumerable<Prescription> GetPrescriptionsOfPatient(int id)
         {
+            var result = new List<Prescription>();
             using (var db = new MediKalDB())
             {
-                return from item in db.Prescriptions
+                result =( from item in db.Prescriptions
                        where item.PatientId == id
-                       select item;
+                       select item).ToList();
             }
+            return result;
         }
 
         public IEnumerable<Prescription> GetPrescriptionsOfDoctor(int id)
         {
+            var result = new List<Prescription>();
             using (var db = new MediKalDB())
             {
-                return from item in db.Prescriptions
+                result = (from item in db.Prescriptions
                        where item.DoctorId == id
-                       select item;
+                       select item).ToList();
             }
+            return result;
         }
+
 
         public IEnumerable<Prescription> GetPrescriptionsOfMedicine(int medicineId)
         {
+            var result = new List<Prescription>();
             using (var db = new MediKalDB())
             {
-                return from item in db.Prescriptions
+                result = (from item in db.Prescriptions
                        where item.MedicineId == medicineId
-                       select item;
+                       select item).ToList();
             }
+            return result;
         }
         public Dictionary<string, int> GetStatisticMedicine(int medicineId, DateTime StartDate, DateTime EndDate)
         {
             if (StartDate > EndDate)
                 return new Dictionary<string, int>();
+            Dictionary<string, int> dictionary = new Dictionary<string, int>();
             using (var db = new MediKalDB())
             {
-                var months =  from item in db.Prescriptions
-                              where item.MedicineId == medicineId &&
-                                     item.PrescriptionDate >= StartDate &&
-                                     item.PrescriptionDate <= EndDate
-                              select item.PrescriptionDate;
-                
-               Dictionary<string, int> dictionary = new Dictionary<string, int>();
+                var months = from item in db.Prescriptions
+                             where item.MedicineId == medicineId &&
+                                    item.PrescriptionDate >= StartDate &&
+                                    item.PrescriptionDate <= EndDate
+                             select item.PrescriptionDate;
+
                 int count = ((EndDate.Year - StartDate.Year) * 12) + EndDate.Month - StartDate.Month;
-                for (int i = 0;i<=count;i++) 
+                for (int i = 0; i <= count; i++)
                 {
                     dictionary[StartDate.AddMonths(i).ToString("MMMM")] = 0;
                 }
-               
+
                 foreach (var item in months)
                 {
                     dictionary[item.ToString("MMMM")] += 1;
                 }
-                return dictionary;
             }
+            return dictionary;
         }
 
         public IEnumerable<string> GetMedicinesOfPatient(int id)
         {
+            var result = new List<string>();
             using (var db = new MediKalDB())
             {
-                return from pres in db.Prescriptions
+                result = (from pres in db.Prescriptions
                        from med in db.Medicines
                        where pres.PatientId == id && med.Id == pres.MedicineId && pres.EndTime >= DateTime.Now
-                       select med.NDCId;
-                           }
+                       select med.NDCId).ToList();
+            }
+            return result;
         }
-
-
         #endregion
-
-
+        #region SEND
+        public bool SendSMS(string phoneNumber, string receiverName, string message)
+        {
+            try
+            {
+                var client = new Client(creds: new Nexmo.Api.Request.Credentials
+                {
+                    ApiKey = "5a98600c",
+                    ApiSecret = "CCsPcyYQOl8Vo3TC"
+                });
+                var results = client.SMS.Send(request: new SMS.SMSRequest
+                {
+                    from = "Vonage APIs",
+                    to = "972" + phoneNumber.Substring(1,phoneNumber.Length - 1),
+                    text = "Hello," + message
+                });
+                return true;
+            }
+            catch (Exception e) { throw new Exception(e.Message); }
+        }
+        #endregion
     }
 }
