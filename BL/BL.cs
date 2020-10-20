@@ -362,8 +362,29 @@ namespace BL
                 return false;
             return true;
         }
+<<<<<<< HEAD
         #endregion
 
+=======
+        public IEnumerable<Prescription> GetPrescriptionsOfMedicine(int medicineId)
+        {
+            return dal.GetPrescriptionsOfMedicine(medicineId);
+        }
+        public Dictionary<string,int> GetStatisticMedicine(int medicineId, DateTime StartDate, DateTime EndDate)
+        {
+            var result = dal.GetStatisticMedicine(medicineId, StartDate, EndDate);
+            return result;
+            //Dictionary<string,int> medicines = new Dictionary<string, int>();
+            //foreach (var item in GetPrescriptionsOfMedicine(medicineId))
+            //{
+            //    if (item.PrescriptionDate.Ticks >= StartDate.Ticks && item.PrescriptionDate.Ticks <= EndDate.Ticks)
+            //    {
+            //        medicines[item.PrescriptionDate.Month.ToString("MMMM")] += 1;
+            //    }
+            //}
+            //return medicines;
+        }
+>>>>>>> a9155013ce285c2feb7ebe59d73acc4c45fe1f94
 
     }
 }
