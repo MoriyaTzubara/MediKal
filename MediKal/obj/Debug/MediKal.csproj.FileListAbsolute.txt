@@ -71,11 +71,19 @@ C:\Users\User\Desktop\MediKal\MediKal\bin\System.Web.WebPages.Deployment.dll
 C:\Users\User\Desktop\MediKal\MediKal\bin\System.Web.WebPages.dll
 C:\Users\User\Desktop\MediKal\MediKal\bin\System.Web.WebPages.Razor.dll
 C:\Users\User\Desktop\MediKal\MediKal\bin\WebGrease.dll
+C:\Users\User\Desktop\MediKal\MediKal\bin\RestSharp.dll
 C:\Users\User\Desktop\MediKal\MediKal\bin\Nexmo.Api.dll
+C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Configuration.dll
 C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Configuration.Json.dll
 C:\Users\User\Desktop\MediKal\MediKal\bin\jose-jwt.dll
+C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Logging.dll
+C:\Users\User\Desktop\MediKal\MediKal\bin\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.FileProviders.Abstractions.dll
 C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.FileProviders.Physical.dll
 C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.FileSystemGlobbing.dll
 C:\Users\User\Desktop\MediKal\MediKal\bin\BE.pdb
@@ -103,10 +111,18 @@ C:\Users\User\Desktop\MediKal\MediKal\bin\System.Web.WebPages.Deployment.xml
 C:\Users\User\Desktop\MediKal\MediKal\bin\System.Web.WebPages.Razor.xml
 C:\Users\User\Desktop\MediKal\MediKal\bin\Antlr3.Runtime.pdb
 C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\User\Desktop\MediKal\MediKal\bin\RestSharp.xml
 C:\Users\User\Desktop\MediKal\MediKal\bin\Nexmo.Api.xml
+C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Configuration.xml
 C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Configuration.Json.xml
+C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Logging.xml
+C:\Users\User\Desktop\MediKal\MediKal\bin\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.FileProviders.Abstractions.xml
 C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Configuration.FileExtensions.xml
+C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
 C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.FileProviders.Physical.xml
 C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.FileSystemGlobbing.xml
 C:\Users\User\Desktop\MediKal\MediKal\obj\Debug\MediKal.csprojAssemblyReference.cache
@@ -114,153 +130,3 @@ C:\Users\User\Desktop\MediKal\MediKal\obj\Debug\MediKal.csproj.CoreCompileInputs
 C:\Users\User\Desktop\MediKal\MediKal\obj\Debug\MediKal.csproj.CopyComplete
 C:\Users\User\Desktop\MediKal\MediKal\obj\Debug\MediKal.dll
 C:\Users\User\Desktop\MediKal\MediKal\obj\Debug\MediKal.pdb
-C:\Users\User\Desktop\MediKal\MediKal\bin\RestSharp.dll
-C:\Users\User\Desktop\MediKal\MediKal\bin\RestSharp.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\credentials.json
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\MediKal.dll.config
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\MediKal.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\MediKal.pdb
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\csc.exe
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\csc.exe.config
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\csc.rsp
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\csi.exe
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\csi.exe.config
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\csi.rsp
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\Microsoft.Managed.Core.targets
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.AppContext.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.Console.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.IO.Compression.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.IO.FileSystem.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.IO.FileSystem.Primitives.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.IO.Pipes.AccessControl.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.IO.Pipes.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.Security.AccessControl.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.Security.Claims.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.Security.Cryptography.Encoding.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.Security.Cryptography.Primitives.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.Security.Principal.Windows.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.Text.Encoding.CodePages.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.ValueTuple.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.Xml.ReaderWriter.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.Xml.XmlDocument.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.Xml.XPath.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\System.Xml.XPath.XDocument.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\vbc.exe
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\vbc.exe.config
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\vbc.rsp
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\VBCSCompiler.exe
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Antlr3.Runtime.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\BE.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\BL.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\DAL.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\EntityFramework.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\EntityFramework.SqlServer.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Google.Apis.Auth.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Google.Apis.Auth.PlatformServices.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Google.Apis.Core.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Google.Apis.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Google.Apis.Drive.v3.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Google.Apis.PlatformServices.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Newtonsoft.Json.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\System.Web.Helpers.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\System.Web.Mvc.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\System.Web.Optimization.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\System.Web.Razor.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\System.Web.WebPages.Deployment.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\System.Web.WebPages.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\System.Web.WebPages.Razor.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\WebGrease.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Nexmo.Api.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\RestSharp.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Extensions.Primitives.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Extensions.Configuration.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Extensions.Configuration.Json.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\jose-jwt.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Extensions.Logging.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Extensions.FileProviders.Abstractions.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Extensions.Configuration.FileExtensions.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Extensions.FileProviders.Physical.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Extensions.FileSystemGlobbing.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\BE.pdb
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\BL.pdb
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\BL.dll.config
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\DAL.pdb
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\DAL.dll.config
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\EntityFramework.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\EntityFramework.SqlServer.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Google.Apis.pdb
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Google.Apis.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Google.Apis.Auth.pdb
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Google.Apis.Auth.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Google.Apis.Core.pdb
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Google.Apis.Core.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Google.Apis.Drive.v3.pdb
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Google.Apis.Drive.v3.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Newtonsoft.Json.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\System.Web.Helpers.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\System.Web.Mvc.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\System.Web.Optimization.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\System.Web.Razor.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\System.Web.WebPages.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\System.Web.WebPages.Deployment.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\System.Web.WebPages.Razor.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Antlr3.Runtime.pdb
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Nexmo.Api.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\RestSharp.xml
-<<<<<<< HEAD
-C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Primitives.dll
-C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Configuration.dll
-C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Logging.dll
-C:\Users\User\Desktop\MediKal\MediKal\bin\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Configuration.Abstractions.xml
-C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Logging.Abstractions.xml
-C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Primitives.xml
-C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Configuration.xml
-C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.Logging.xml
-C:\Users\User\Desktop\MediKal\MediKal\bin\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\User\Desktop\MediKal\MediKal\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
-=======
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Extensions.Configuration.Abstractions.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Extensions.Logging.Abstractions.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Extensions.Primitives.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Extensions.Configuration.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Extensions.Configuration.Json.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Extensions.Logging.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Extensions.FileProviders.Abstractions.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Extensions.Configuration.FileExtensions.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Extensions.FileProviders.Physical.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\bin\Microsoft.Extensions.FileSystemGlobbing.xml
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\obj\Debug\MediKal.csprojAssemblyReference.cache
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\obj\Debug\MediKal.csproj.CopyComplete
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\obj\Debug\MediKal.dll
-C:\Users\User\Desktop\פרויקטים\MediKal git\MediKal\MediKal\obj\Debug\MediKal.pdb
->>>>>>> a9155013ce285c2feb7ebe59d73acc4c45fe1f94
