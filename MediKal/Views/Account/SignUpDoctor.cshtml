@@ -20,7 +20,7 @@
                     <div class="wow fadeInUp" data-wow-delay="0.8s">
 
                         <div class="col-md-12 col-sm-12">
-                            @Html.Label("User Name")
+                            @Html.Label("Full Name")
                             @Html.TextBoxFor(model => model.UserName, new { @class = "", placeholder = "Enter your user name" })
                             @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
                             <br />
@@ -44,13 +44,9 @@
                             @Html.TextBoxFor(model => model.LicenseNum, new { @class = "", placeholder = "Enter your license number" })
                             @Html.ValidationMessageFor(model => model.LicenseNum, "", new { @class = "text-danger" })
                             <br />
-                            @Html.Label("Birth Date")
-                            @Html.TextBoxFor(model => model.Birthday, new { @class = "", placeholder = "Enter your birth date" })
-                            @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
-                            <br />
-                            @Html.Label("Speciality")
-                            @*@Html.EnumDropDownListFor(SpecialtyEnum)*@
-
+                            @*@Html.Label("Speciality")
+                            @Html.EnumDropDownListFor(SpecialtyEnum)*@
+                            @*<br />*@
                             <button type="submit" class="green-btn" id="cf-submit" name="submit">Sign Up</button>
                         </div>
                     </div>

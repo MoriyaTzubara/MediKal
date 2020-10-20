@@ -144,7 +144,7 @@ namespace MediKal.Controllers
 
                 }
                 bl.AddDoctor(doctor);
-                string link = $"http://{Request.Url.Host}:{Request.Url.Port}/Account/SignUp";
+                string link = $"http://{Request.Url.Host}:{Request.Url.Port}/Account/EnterId";
                 bl.SendMail(doctor.Mail, "", $"You are invited to sign up for Medical :) <a href='{link}'> Sign up </a>");
                 ViewBag.IsSucceeded = true;
                 return View("Create", new DoctorViewModel(doctor));
