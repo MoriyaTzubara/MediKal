@@ -19,7 +19,6 @@ namespace MediKal.Controllers
         public ActionResult Index()
         {
             IBL bl = new BL.BL();
-            //bl.ReadExcelMedicines("", 1);
             var medicines = bl.GetMedicines().Select(item => new MedicineViewModel(item));
             return View(medicines);
         }
@@ -67,7 +66,6 @@ namespace MediKal.Controllers
                 bool result = true;
                 if (medicine.ImagePath != null)
                 {
-                    //var path = Server.MapPath(Url.Content($"~/images/{medicine.ImagePath}"));
                     result = imageValidate.Validate(medicine.ImagePath);
                 }
                 if (result)
@@ -114,7 +112,6 @@ namespace MediKal.Controllers
                 bool result = true;
                 if (medicine.ImagePath != null)
                 {
-                    //var path = Server.MapPath(Url.Content($"~/images/{medicine.ImagePath}"));
                     result = imageValidate.Validate(medicine.ImagePath);
                 }
                 if (result)

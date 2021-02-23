@@ -12,8 +12,8 @@ namespace BE
         public DateTime PrescriptionDate { get; set; }
         public int PatientId { get; set; }
         public int DoctorId { get; set; }
-        public int NumOfTimes { get; set; }//כמה פעמים לוקחים את התרופה
-        public FrequencyEnum Frequency { get; set; }//כל כמה זמן לקחת
+        public int NumOfTimes { get; set; }
+        public FrequencyEnum Frequency { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public int MedicineId { get; set; }

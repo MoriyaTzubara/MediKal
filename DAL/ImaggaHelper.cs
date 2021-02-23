@@ -8,7 +8,6 @@ namespace DAL
 {
     public class ImaggaHelper
     {
-        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public class Tag2
         {
             public string en { get; set; }

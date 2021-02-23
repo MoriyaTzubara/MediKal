@@ -19,6 +19,7 @@ namespace BE
         public string Mail { get; set; }
         public DateTime? Birthday { get; set; }
         public UserTypeEnum UserType { get; set; }
+        
         public User() {
             this.Birthday = null;
             this.Mail = null;

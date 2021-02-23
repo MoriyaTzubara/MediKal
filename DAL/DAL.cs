@@ -14,6 +14,7 @@ namespace DAL
     public class DAL : IDAL
     {
         #region ADD
+        
         public void AddMedicine(Medicine medicine)
         {
             try
@@ -61,7 +62,6 @@ namespace DAL
 
         }
 
-
         public void AddDoctor(Doctor doctor)
         {
             try
@@ -90,8 +90,10 @@ namespace DAL
             }
             catch (Exception e) { throw new Exception(e.Message); }
         }
+        
         #endregion
         #region DELETE
+        
         public void DeletePatient(int id)
         {
             try
@@ -106,6 +108,7 @@ namespace DAL
             catch (Exception e) { throw new Exception(e.Message); }
 
         }
+        
         public void DeleteDoctor(int id)
         {
             try
@@ -119,6 +122,7 @@ namespace DAL
             }
             catch (Exception e) { throw new Exception(e.Message); }
         }
+        
         public void DeleteManager(int id)
         {
             try
@@ -132,8 +136,10 @@ namespace DAL
             }
             catch (Exception e) { throw new Exception(e.Message); }
         }
+        
         #endregion
         #region GET
+        
         public IEnumerable<Medicine> GetMedicines()
         {
             try
@@ -222,6 +228,7 @@ namespace DAL
             catch (Exception e) { throw new Exception(e.Message); }
 
         }
+        
         public IEnumerable<Doctor> GetDoctors()
         {
             try
@@ -239,6 +246,7 @@ namespace DAL
             catch (Exception e) { throw new Exception(e.Message); }
 
         }
+        
         public IEnumerable<Manager> GetManagers()
         {
             try
@@ -258,6 +266,7 @@ namespace DAL
 
         #endregion
         #region UPDATE
+        
         public void UpdateMedicine(Medicine medicine, string NDCId)
         {
             try
@@ -332,8 +341,10 @@ namespace DAL
             }
             catch (Exception e) { throw new Exception(e.Message); }
         }
+        
         #endregion
         #region MEDICINES HELPERS
+        
         public void ReadExcelMedicines(string path, int sheet)
         {
             path = $"~/DAL/MedicinesExcel/my version.xls";
@@ -351,6 +362,7 @@ namespace DAL
                 AddMedicine(medicine);
             }
         }
+        
         public Medicine FindMedicineInExcel(string NDCId)
         {
             if (NDCId.Length != 9)
@@ -376,6 +388,7 @@ namespace DAL
             }
             return null;
         }
+        
         int BinarySearch(Excel excel, double x, int left, int right)
         {
             if (left > right)
@@ -390,8 +403,10 @@ namespace DAL
 
             return BinarySearch(excel, x, middle + 1, right);
         }
+        
         #endregion
         #region GET BY ID
+        
         public User GetUserById(int id)
         {
             var result = new User();
@@ -513,8 +528,10 @@ namespace DAL
             }
             return result;
         }
+        
         #endregion
         #region FILTER
+
         public IEnumerable<Prescription> GetPrescriptionsOfPatient(int id)
         {
             var result = new List<Prescription>();
@@ -539,7 +556,6 @@ namespace DAL
             return result;
         }
 
-
         public IEnumerable<Prescription> GetPrescriptionsOfMedicine(int medicineId)
         {
             var result = new List<Prescription>();
@@ -551,6 +567,7 @@ namespace DAL
             }
             return result;
         }
+
         public Dictionary<string, int> GetStatisticMedicine(int medicineId, DateTime StartDate, DateTime EndDate)
         {
             if (StartDate > EndDate)
@@ -590,8 +607,10 @@ namespace DAL
             }
             return result;
         }
+        
         #endregion
         #region SEND
+        
         public bool SendSMS(string phoneNumber, string receiverName, string message)
         {
             try
@@ -611,6 +630,7 @@ namespace DAL
             }
             catch (Exception e) { throw new Exception(e.Message); }
         }
+        
         #endregion
     }
 }

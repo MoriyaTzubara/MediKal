@@ -10,6 +10,7 @@ namespace BE
     {
         public string Background { get; set; }
         public BloodTypeEnum BloodType { get; set; }
+        
         public Patient() { }
         public Patient(int id) : base(id) { }
     }

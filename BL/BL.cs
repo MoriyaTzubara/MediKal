@@ -13,7 +13,9 @@ namespace BL
     public class BL : IBL
     {
         IDAL dal = new DAL.DAL();
+
         #region ADD
+
         public void AddDoctor(Doctor doctor)
         {
             if (!Validation.IsId(doctor.Id))
@@ -24,6 +26,7 @@ namespace BL
                 throw new Exception("This email isn't valid");
             dal.AddDoctor(doctor);
         }
+        
         public void AddMedicine(Medicine medicine)
         {
             if (!Validation.IsNDCId(medicine.NDCId))
@@ -57,12 +60,15 @@ namespace BL
                 throw new Exception("This email isn't valid");
             dal.AddManager(manager);
         }
+
         #endregion
         #region DELETE
+
         public void DeletePatient(int id)
         {
             dal.DeletePatient(id);
         }
+        
         public void DeleteDoctor(int id)
         {
             dal.DeleteDoctor(id);
@@ -72,8 +78,10 @@ namespace BL
         {
             dal.DeleteManager(id);
         }
+        
         #endregion
         #region UPDATE
+        
         public void UpdateMedicine(Medicine medicine, string NDCId)
         {
             dal.UpdateMedicine(medicine, NDCId);
@@ -85,6 +93,7 @@ namespace BL
                 throw new Exception("This email isn't valid");
             dal.UpdatePatient(patient, Id);
         }
+        
         public void UpdateDoctor(Doctor doctor, int Id)
         {
             if (!Validation.IsEmail(doctor.Mail))
@@ -101,14 +110,17 @@ namespace BL
 
         #endregion
         #region GET
+        
         public IEnumerable<Doctor> GetDoctors()
         {
             return dal.GetDoctors();
         }
+        
         public IEnumerable<Manager> GetManagers()
         {
             return dal.GetManagers();
         }
+        
         public IEnumerable<Medicine> GetMedicines()
         {
             return dal.GetMedicines();
@@ -123,20 +135,25 @@ namespace BL
         {
             return dal.GetPrescriptions();
         }
+        
         public IEnumerable<User> GetUsers()
         {
             return dal.GetUsers();
         }
+        
         #endregion
         #region GET BY ID
+        
         public Medicine GetMedicineById(string NDCid)
         {
             return dal.GetMedicineById(NDCid);
         }
+        
         public Medicine GetMedicineByPrimaryId(int id)
         {
             return dal.GetMedicineByPrimaryId(id);
         }
+        
         public Patient GetPatientByPrimaryId(int PrimaryId)
         {
             return dal.GetPatientByPrimaryId(PrimaryId);
@@ -146,22 +163,27 @@ namespace BL
         {
             return dal.GetPatientById(id);
         }
+        
         public Prescription GetPrescriptionById(int id)
         {
             return dal.GetPrescriptionById(id);
         }
+        
         public Doctor GetDoctorById(int id)
         {
             return dal.GetDoctorById(id);
         }
+        
         public Doctor GetDoctorByPrimaryId(int PrimaryId)
         {
             return dal.GetDoctorByPrimaryId(PrimaryId);
         }
+        
         public Manager GetManagerById(int id)
         {
             return dal.GetManagerById(id);
         }
+        
         public User GetUserById(int id)
         {
             try
@@ -170,8 +192,10 @@ namespace BL
             }
             catch (ArgumentNullException e) { throw e; }
         }
+        
         #endregion
         #region FILTER
+        
         public IEnumerable<Prescription> GetPrescriptionsOfDoctor(int PrimaryId)
         {
             return dal.GetPrescriptionsOfDoctor(PrimaryId);
@@ -181,20 +205,25 @@ namespace BL
         {
             return dal.GetPrescriptionsOfPatient(PrimaryId);
         }
+        
         public IEnumerable<string> GetMedicinesOfPatient(int id)
         {
             return dal.GetMedicinesOfPatient(id);
         }
+        
         public IEnumerable<Prescription> GetPrescriptionsOfMedicine(int medicineId)
         {
             return dal.GetPrescriptionsOfMedicine(medicineId);
         }
+        
         public Dictionary<string, int> GetStatisticMedicine(int medicineId, DateTime StartDate, DateTime EndDate)
         {
             return dal.GetStatisticMedicine(medicineId, StartDate, EndDate);
         }
+        
         #endregion
         #region ACCOUNT
+        
         public User SignIn(int id, string password)
         {
             User user = GetUserById(id);
@@ -216,8 +245,10 @@ namespace BL
             if (newUser.UserType == UserTypeEnum.Patient)
                 dal.UpdatePatient((Patient)newUser, newUser.Id);
         }
+        
         #endregion
         #region SEND
+        
         public void SendMail(string mailAdress, string receiverName, string message)
         {
             MailMessage mail;
@@ -245,8 +276,10 @@ namespace BL
         {
            return dal.SendSMS(phoneNumber, receiverName, message);
         }
+        
         #endregion
         #region MEDICINES HELPERS
+        
         public void ReadExcelMedicines(string path, int sheet)
         {
             dal.ReadExcelMedicines(path, sheet);
@@ -260,8 +293,10 @@ namespace BL
             }
             catch (Exception e) { throw e; }
         }
+        
         #endregion
         #region CONVERT
+        
         public Doctor ConvertUserToDoctor(User user)
         {
             Doctor tmp = new Doctor();
@@ -275,6 +310,7 @@ namespace BL
             tmp.Id = user.Id;
             return tmp;
         }
+        
         public Patient ConvertUserToPatient(User user)
         {
             Patient tmp = new Patient();
@@ -288,8 +324,10 @@ namespace BL
             tmp.Id = user.Id;
             return tmp;
         }
+        
         #endregion
         #region VAIDATION
+        
         public bool IsEmail(string s)
         {
             if (s == null || s == "")
@@ -362,6 +400,7 @@ namespace BL
                 return false;
             return true;
         }
+        
         #endregion
 
     }

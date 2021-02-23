@@ -5,18 +5,6 @@
     Layout = "~/Views/Shared/_ManagementLayout.cshtml";
     int? id = null;
 }
-
-@*<script>
-        function openModalClick(btn) {
-            alert();
-            var id = btn.getAttribute("data-id");
-            alert(id);
-            var iframe = document.getElementById("ifarme");
-            iframe.setAttribute("src", '@($"{HttpContext.Current.Request.Url.Host}:{HttpContext.Current.Request.Url.Port}/Prescriptions/PdfViewer/")' + id);
-            alert(iframe.getAttribute("src"));
-            alert(document.getElementById("ifarme").getAttribute("src"));
-        }
-    </script>*@
     <div class="m-5 p-3">
         @if (RouteConfig.user.UserType == BE.UserTypeEnum.Doctor)
         {
@@ -80,35 +68,9 @@
             </td>
             <td>
                 <a class="blue-btn m-1" href='@($"/Prescriptions/PdfViewer/{id = item.prescription.Id}")'><i class="fa fa-print"></i></a>
-                @*@Html.ActionLink("Print", "PdfViewer", new { id = item.prescription.Id},  new { @class = "green-btn" }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.prescription.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.prescription.Id })*@
             </td>
             <td></td>
         </tr>
     }
 
 </table>
-
-@*<div id="printModal">
-         Modal
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body" align="center">
-                        <iframe id="ifarme" width="700" height="2000"  src='~/'></iframe>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>*@

@@ -22,11 +22,6 @@
                 <div class="row">
                     @if (RouteConfig.user.UserType == UserTypeEnum.Doctor)
                     {
-
-                        //רשימת כל התרופות
-                        //רשימת כל המרשמים שהוא יצר
-                        //הוספת מרשם לפציינט
-                        //לא יכול לעדכן או למחוק כלום, חוץ מפרטים אישיים
                         <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                                 <div class="icon"><i class="fa fa-user-md"></i></div>
@@ -79,8 +74,6 @@
                     }
                     else if (RouteConfig.user.UserType == UserTypeEnum.Patient)
                     {
-                        //צפייה בכל המרשמים
-                        //עדכון פרטים אישיים
                         <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                                 <div class="icon"><i class="fa fa-user-md"></i></div>
@@ -111,11 +104,6 @@
                     }
                     else if (RouteConfig.user.UserType == UserTypeEnum.Manager)
                     {
-                        //רשימה של תרופות, יכול להוסיף תרופה, יכול לעדכן תמונה בלבד
-                        //יכול לראות את כל הדוקטורים, יכול להזמין דוקטור חדש
-                        //יכול לראות את כל הפציינטים, יכול להזמין פציינט, יכול לעדכן פרטיים רפואים של פציינט
-                        //יכול לראות את כל המרשמים
-                        //סטטיסטיקות
                         <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                             <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
                                 <div class="icon"><i class="fa fa-plus"></i></div>

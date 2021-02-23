@@ -46,7 +46,7 @@ namespace BL
         IEnumerable<Prescription> GetPrescriptionsOfDoctor(int id);
         IEnumerable<string> GetMedicinesOfPatient(int id);
         Dictionary<string,int> GetStatisticMedicine(int medicineId, DateTime StartDate, DateTime EndDate);
-       //MEDICINES HELPERS
+       // MEDICINES HELPERS
         Medicine FindMedicineInExcel(string NDCId);
         void ReadExcelMedicines(string path, int sheet);
         // SEND
@@ -55,7 +55,7 @@ namespace BL
         // ACCOUNT
         User SignIn(int id, string password);
         void SignUp(User newUser);
-        //CONVERT
+        // CONVERT
         Patient ConvertUserToPatient(User user);
         Doctor ConvertUserToDoctor(User user);
         // VALIDATION
