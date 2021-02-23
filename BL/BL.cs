@@ -223,7 +223,7 @@ namespace BL
             MailMessage mail;
             SmtpClient smtp;
             mail = new MailMessage();
-            mail.To.Add(mailAdress);//dam@zichron.org
+            mail.To.Add(mailAdress);
             mail.From = new MailAddress("deamlandapp@gmail.com");
             mail.Body = $"Hello {receiverName}, <br>" + message;
             mail.IsBodyHtml = true;

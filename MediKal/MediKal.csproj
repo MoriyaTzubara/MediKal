@@ -286,9 +286,6 @@
     <Content Include="images\team-image2.jpg" />
     <Content Include="images\team-image3.jpg" />
     <Content Include="images\user-profile.png" />
-    <Content Include="index.html" />
-    <Content Include="inner-page.html" />
-    <Content Include="news-detail.html" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />

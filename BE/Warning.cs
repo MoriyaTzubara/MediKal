@@ -13,15 +13,5 @@ namespace BE
         public string LevelOfRisk { get; set; }
         public string ConflictingMedicines { get; set; }
 
-        /*
-         *מחלקה של אזהרות על סתירות בין התרופה החדשה להיסטוריה של הפציינט
-         *צריך להיות פה לדוגמה 
-         * רמת סיכון
-         * מרכיבים סותרים
-         * תיאור הסתירה
-         */
-        // Naama Let's do it!
-        // Good Luck!
-
     }
 }
